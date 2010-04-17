@@ -1,0 +1,11 @@
+
+#breadcrumb li,
+.proposal {
+  zoom: 1;
+}
+
+.meta li,
+#breadcrumb li {
+  zoom: 1;
+  display: inline;
+}
