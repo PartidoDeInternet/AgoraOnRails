@@ -8,10 +8,17 @@
   
   <a class="official_url" href="<%= @proposal.official_url %>">Enlace oficial</a>
   
-  <% form_for [@proposal, Vote.new] do |f| -%>
-    <%= f.submit "Si" %>
-    <%= button_to "No", new_proposal_vote_path(@proposal, :value => "no"), :method => :get %>
-  <% end -%>
+  <% if @proposal.closed? %>
+    Propuesta Cerrada
+  <% elsif current_user && current_user.has_voted_for?(@proposal) %>
+    Ya has votado esta propuesta
+  <% else %>  
+    <% form_tag new_proposal_vote_path(@proposal), :method => :get do -%>
+      <button type="submit" name="value" value="si">Sí</button>
+      <button type="submit" name="value" value="no">No</button>
+      <button type="submit" name="value" value="abstencion">Abstención</button>
+    <% end -%>
+  <% end %>
 </div>
 
 

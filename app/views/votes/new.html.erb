@@ -1,18 +1,9 @@
 <h1>New vote</h1>
 
-Vas a votar <%= params[:value] == "no" ? "en contra" : "a favor" %> de la iniciativa “<%= @proposal.title %>”
+Vas <%= confirmation_text(params[:value]) %> la iniciativa “<%= @proposal.title %>”
 
 <% form_for([@proposal, @vote]) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.label :proposal_id %><br />
-    <%= f.text_field :proposal_id %>
-  </p>
   <p>
     <%= f.submit 'Confirmar' %>
   </p>
