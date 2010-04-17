@@ -9,7 +9,7 @@
   <a class="official_url" href="<%= @proposal.official_url %>">Enlace oficial</a>
   
   <% if @proposal.closed? %>
-    Propuesta Cerrada
+    Propuesta Cerrada    
   <% elsif current_user && current_user.has_voted_for?(@proposal) %>
     Ya has votado esta propuesta
   <% else %>  
@@ -19,6 +19,13 @@
       <button type="submit" name="value" value="abstencion">Abstención</button>
     <% end -%>
   <% end %>
+  
+  <h3>Votacion Popular</h3>
+  <% Vote.choices.each do |choice| %>
+    <div class="<%= choice %>">
+      <%= "#{ number_to_percentage(@proposal.percentage_for(choice.to_sym), :precision => 0) }" %>
+    </div>
+  <% end %>  
 </div>
 
 

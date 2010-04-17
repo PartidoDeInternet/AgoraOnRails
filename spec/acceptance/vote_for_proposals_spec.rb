@@ -8,6 +8,8 @@ feature "Vote for proposals", %q{
   
   background do
     @user = create_user(:dni => "123456789A")
+    @user2 = create_user(:dni => "123456789B")
+    @user3 = create_user(:dni => "123456789C")
   end
   
   scenario "Vote for open proposals" do
@@ -47,7 +49,7 @@ feature "Vote for proposals", %q{
   end
 
   scenario "Can't vote for closed proposals" do
-    proposal = create_proposal(:title => "Derogación del canon", :closed => true)
+    proposal = create_proposal(:closed => true)
     
     login_as @user
     visit proposal_path(proposal)
@@ -85,7 +87,40 @@ feature "Vote for proposals", %q{
     Vote.count.should == 1
   end 
   
-  scenario "Citizen vote results"
+  scenario "Citizen vote results" do
+    login_as @user
+    proposal = create_proposal
+    
+    visit proposal_path(proposal)
+    
+    click_button "Sí"
+    click_button "Confirmar"
+    
+    percentages_should_be(proposal, :in_favor => 100, :against => 0, :abstention => 0)
+    number_of_votes_should_be(proposal, :in_favor => 1, :against => 0, :abstention => 0)
+    
+    login_as @user2
+    visit proposal_path(proposal)
+    click_button "No"
+    click_button "Confirmar"
+ 
+    percentages_should_be(proposal, :in_favor => 50, :against => 50, :abstention => 0)
+    number_of_votes_should_be(proposal, :in_favor => 1, :against => 1, :abstention => 0)
+    
+    login_as @user3
+    visit proposal_path(proposal)
+    click_button "Abstención"
+    click_button "Confirmar"
+    
+    percentages_should_be(proposal, :in_favor => 33, :against => 33, :abstention => 33)
+    number_of_votes_should_be(proposal, :in_favor => 1, :against => 1, :abstention => 1)
+
+  end
   
-  scenario "Parlament vote results"
+  scenario "Parlament vote results" do 
+    pending
+    login_as @user
+    proposal = create_proposal(:closed => true, :official_resolution => "")
+    visit proposal_path(proposal)
+  end
 end

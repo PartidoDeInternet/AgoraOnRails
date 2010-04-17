@@ -4,6 +4,7 @@ Vas <%= confirmation_text(params[:value]) %> la iniciativa “<%= @proposal.titl
 
 <% form_for([@proposal, @vote]) do |f| %>
   <%= f.error_messages %>
+  <p><%= f.hidden_field :value, :value => params[:value] %>
   <p>
     <%= f.submit 'Confirmar' %>
   </p>
