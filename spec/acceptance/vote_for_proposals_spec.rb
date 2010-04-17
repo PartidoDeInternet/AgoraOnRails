@@ -49,12 +49,12 @@ feature "Vote for proposals", %q{
   end
 
   scenario "Can't vote for closed proposals" do
-    proposal = create_proposal(:closed => true)
+    proposal = create_proposal(:closed => true, :official_resolution => "Derogada")
     
     login_as @user
     visit proposal_path(proposal)
 
-    page.should have_content("Propuesta Cerrada")
+    page.should have_content("La Propuesta fué Derogada en el Congreso")
 
     page.should_not have_css("button", :content => "Sí")
     page.should_not have_css("button", :content => "No")
@@ -118,9 +118,10 @@ feature "Vote for proposals", %q{
   end
   
   scenario "Parlament vote results" do 
-    pending
     login_as @user
-    proposal = create_proposal(:closed => true, :official_resolution => "")
+    proposal = create_proposal(:closed => true, :official_resolution => "Aceptada")
     visit proposal_path(proposal)
+    save_and_open_page
+    page.should have_css(".official_resolution", :text => "Aceptada")
   end
 end

@@ -9,7 +9,7 @@
   <a class="official_url" href="<%= @proposal.official_url %>">Enlace oficial</a>
   
   <% if @proposal.closed? %>
-    Propuesta Cerrada    
+    La Propuesta fué <span class="official_resolution"> <%= @proposal.official_resolution %></span> en el Congreso.
   <% elsif current_user && current_user.has_voted_for?(@proposal) %>
     Ya has votado esta propuesta
   <% else %>  
