@@ -61,7 +61,8 @@ feature "Vote for proposals", %q{
     page.should_not have_css("button", :content => "Abstención")
     
     # Hacker-proof
-    pending
+    page.driver.post proposal_votes_path(proposal), :vote => {}
+    Vote.count.should == 1
   end
  
   scenario "Can't vote twice for the same proposal" do
