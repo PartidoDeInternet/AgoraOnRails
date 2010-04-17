@@ -1,0 +1,19 @@
+<div class="proposal">
+  
+  <h2 class="title"><%=h @proposal.title %></h2>
+  
+  <p class="proposal_type">
+    <%=h @proposal.proposal_type %>
+  </p>
+  
+  <a class="official_url" href="<%= @proposal.official_url %>">Enlace oficial</a>
+  
+  <% form_for [@proposal, Vote.new] do |f| -%>
+    <%= f.submit "Si" %>
+    <%= button_to "No", new_proposal_vote_path(@proposal, :value => "no"), :method => :get %>
+  <% end -%>
+</div>
+
+
+<%= link_to 'Edit', edit_proposal_path(@proposal) %> |
+<%= link_to 'Back', proposals_path %>

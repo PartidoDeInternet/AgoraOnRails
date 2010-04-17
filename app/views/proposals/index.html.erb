@@ -1,0 +1,24 @@
+<h1>Listing proposals</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Oficial url</th>
+    <th>Proposal type</th>
+  </tr>
+
+<% @proposals.each do |proposal| %>
+  <tr>
+    <td><%=h proposal.title %></td>
+    <td><%=h proposal.oficial_url %></td>
+    <td><%=h proposal.proposal_type %></td>
+    <td><%= link_to 'Show', proposal %></td>
+    <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
+    <td><%= link_to 'Destroy', proposal, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New proposal', new_proposal_path %>

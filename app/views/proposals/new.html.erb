@@ -1,0 +1,23 @@
+<h1>New proposal</h1>
+
+<% form_for(@proposal) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :oficial_url %><br />
+    <%= f.text_field :oficial_url %>
+  </p>
+  <p>
+    <%= f.label :proposal_type %><br />
+    <%= f.text_field :proposal_type %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', proposals_path %>

@@ -1,0 +1,22 @@
+<h1>Listing votes</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Proposal</th>
+  </tr>
+
+<% @votes.each do |vote| %>
+  <tr>
+    <td><%=h vote.user_id %></td>
+    <td><%=h vote.proposal_id %></td>
+    <td><%= link_to 'Show', vote %></td>
+    <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
+    <td><%= link_to 'Destroy', vote, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New vote', new_vote_path %>
