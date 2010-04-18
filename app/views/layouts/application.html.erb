@@ -33,7 +33,7 @@
           <dt><strong>¿De qué se habla?</strong></dt>
           <dd>
             <ul>
-              <% @categories.each_with_index do |category, index| %>
+              <% hot_categories.each_with_index do |category, index| %>
               <li class="category">
                 <a class="name tag-<%= index + 1 %>" href="#">
                   <%= category.name %>
@@ -51,7 +51,7 @@
           <dt><strong>¿Quién propone?</strong></dt>
           <dd>
             <ul>
-              <% @proposers.each_with_index do |proposer, index| %>
+              <% hot_proposers.each_with_index do |proposer, index| %>
               <li class="proposer">
                 <a class="name tag-<%= index + 1 %>" href="#">
                   <%= proposer.name %>

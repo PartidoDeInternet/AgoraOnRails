@@ -3,8 +3,6 @@ class Proposal < ActiveRecord::Base
   belongs_to :category, :counter_cache => true
   belongs_to :proposer, :counter_cache => true
   
-  validates_presence_of :proposer, :proposed_at
-  
   named_scope :open, :conditions => "not closed"
   named_scope :hot,  :order => "ranking DESC", :limit => 5
   
