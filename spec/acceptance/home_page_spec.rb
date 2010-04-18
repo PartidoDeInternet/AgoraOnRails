@@ -55,13 +55,34 @@ feature "Home page", %q{
     
     visit homepage
     
-    page.should have_css(".category", :count => 5)
-    page.should have_css(".category:first .name", :text => "Education")
-    page.should have_css(".category:first .count", :text => "3")
-    page.should_not have_css(".category", :text => "Defense")
+    page.should have_css("#categories .category", :count => 5)
+    page.should have_css("#categories .category:first .name", :text => "Education")
+    page.should have_css("#categories .category:first .count", :text => "3")
+    page.should_not have_css("#categories .category", :text => "Defense")
   end
   
-  scenario "Proposers"
+  scenario "Proposers" do
+    psoe     = create_proposer(:name => "PSOE")
+    pp       = create_proposer(:name => "PP")
+    pnv      = create_proposer(:name => "PNV")
+    iu       = create_proposer(:name => "IU")
+    gobierno = create_proposer(:name => "Gobierno")
+    senado   = create_proposer(:name => "Senado")
+    
+    2.times { create_proposal(:proposer => psoe) }
+    2.times { create_proposal(:proposer => pp) }
+    3.times { create_proposal(:proposer => pnv) }
+    2.times { create_proposal(:proposer => iu) }
+    1.times { create_proposal(:proposer => gobierno) }
+    2.times { create_proposal(:proposer => senado) }
+    
+    visit homepage
+
+    page.should have_css("#proposers .proposer", :count => 5)
+    page.should have_css("#proposers .proposer:first .name", :text => "PNV")
+    page.should have_css("#proposers .proposer:first .count", :text => "3")
+    page.should_not have_css("#proposers .proposer", :text => "Gobierno")
+  end
   
   scenario "Vote count"
   

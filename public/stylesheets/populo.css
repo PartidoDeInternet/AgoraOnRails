@@ -383,6 +383,10 @@ button.abstencion span {
   -moz-border-radius-bottomright:15px;
 }
 
+.tag_list li .count {
+  display:none;
+}
+
 .tag_list .tag-1 {
   width: 85%;
 }

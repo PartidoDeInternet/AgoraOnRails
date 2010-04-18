@@ -29,28 +29,38 @@
       <%= yield %>
       
       <aside>
-        <dl class="tag_list">
+        <dl class="tag_list" id="categories">
           <dt><strong>¿De qué se habla?</strong></dt>
           <dd>
             <ul>
-              <li><a href="#" class="tag-1">tag1</a></li>
-              <li><a href="#" class="tag-2">tag1</a></li>
-              <li><a href="#" class="tag-3">tag1</a></li>
-              <li><a href="#" class="tag-4">tag1</a></li>
-              <li><a href="#" class="tag-5">tag1</a></li>
+              <% @categories.each_with_index do |category, index| %>
+              <li class="category">
+                <a class="name tag-<%= index + 1 %>" href="#">
+                  <%= category.name %>
+                </a>
+                <span class="count">
+                  <%= category.proposals_count %>
+                </span>
+              </li>
+              <% end %>
             </ul>
           </dd>
         </dl>
 
-        <dl class="tag_list">
+        <dl class="tag_list" id="proposers">
           <dt><strong>¿Quién propone?</strong></dt>
           <dd>
             <ul>
-              <li><a href="#" class="tag-1">tag1</a></li>
-              <li><a href="#" class="tag-2">tag1</a></li>
-              <li><a href="#" class="tag-3">tag1</a></li>
-              <li><a href="#" class="tag-4">tag1</a></li>
-              <li><a href="#" class="tag-5">tag1</a></li>
+              <% @proposers.each_with_index do |proposer, index| %>
+              <li class="proposer">
+                <a class="name tag-<%= index + 1 %>" href="#">
+                  <%= proposer.name %>
+                </a>
+                <span class="count">
+                  <%= proposer.proposals_count %>
+                </span>
+              </li>
+              <% end %>
             </ul>
           </dd>
         </dl>

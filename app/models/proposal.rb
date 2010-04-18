@@ -1,7 +1,7 @@
 class Proposal < ActiveRecord::Base
   has_many :votes
   belongs_to :category, :counter_cache => true
-  belongs_to :proposer
+  belongs_to :proposer, :counter_cache => true
   
   validates_presence_of :proposer, :proposed_at
   
