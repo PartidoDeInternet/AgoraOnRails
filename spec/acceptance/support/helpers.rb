@@ -1,8 +1,8 @@
 module HelperMethods
   def login_as(user)
     visit login_path
-    fill_in "DNI", :with => user.dni
-    fill_in "Contraseña", :with => "secret"
+    fill_in "Introduce tu DNI", :with => user.dni
+    fill_in "Dinos tu contraseña", :with => "secret"
     click_button "Identificarse"
   end
   

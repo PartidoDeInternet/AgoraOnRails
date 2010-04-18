@@ -17,7 +17,7 @@ feature "Vote for proposals", %q{
     
     [["No",         "a votar en contra de"], 
      ["Sí",         "a votar a favor de"], 
-     ["Abstención", "a abstenerte de votar sobre"]].each do |vote, confirmation|
+     ["Abstencion", "a abstenerte de votar sobre"]].each do |vote, confirmation|
        
       proposal = create_proposal(:title => "Ley Sinde")
       
@@ -41,8 +41,8 @@ feature "Vote for proposals", %q{
     page.should have_content("Autenticación requerida")
     page.should_not have_css("button", :text => "Confirmar")
       
-    fill_in "DNI", :with => "123456789A"
-    fill_in "Contraseña", :with => "secret"
+    fill_in "Introduce tu DNI", :with => "123456789A"
+    fill_in "Dinos tu contraseña", :with => "secret"
     click_button "Identificarse"
     
     page.should have_content("Vas a votar a favor de la iniciativa “Derogación del canon”")
@@ -110,7 +110,7 @@ feature "Vote for proposals", %q{
     
     login_as @user3
     visit proposal_path(proposal)
-    click_button "Abstención"
+    click_button "Abstencion"
     click_button "Confirmar"
     
     percentages_should_be(proposal, :in_favor => 33, :against => 33, :abstention => 33)
