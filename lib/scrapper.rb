@@ -22,19 +22,19 @@ class Scrapper
         proposal_page = agent.get(title[:href])
         
         proposal_type = clean_text(proposal_page.search(".subtitulo_competencias").first.try(:content))
-        resolution = clean_text(proposal_page.search("//*[@class='apartado_iniciativa' and contains(text(),'Resultado de la tramitación')]/following-sibling::*[@class='texto']").first.try(:content))
+        resolution = clean_text(proposal_page.search("//*[@class='apartado_iniciativa' and contains(normalize-space(text()),'Resultado de la tramitación')]/following-sibling::*[@class='texto']").first.try(:content))
         
-        commission_name = clean_text(proposal_page.search("//*[@class='apartado_iniciativa' and contains(text(),'Comisión competente:')]/following-sibling::*[@class='texto']").first.try(:content))
+        commission_name = clean_text(proposal_page.search("//*[@class='apartado_iniciativa' and contains(normalize-space(text()),'Comisión competente:')]/following-sibling::*[@class='texto']").first.try(:content))
         category = Category.find_or_create_by_commission_name(commission_name)
         
-        full_name = clean_text(proposal_page.search("//*[@class='apartado_iniciativa' and contains(text(),'Autor:')]/following-sibling::*[@class='texto']").first.try(:content))
+        full_name = clean_text(proposal_page.search("//*[@class='apartado_iniciativa' and contains(normalize-space(text()),'Autor:')]/following-sibling::*[@class='texto']").first.try(:content))
         proposer = Proposer.find_or_create_by_full_name(full_name)
           
-        proposed_at_text = proposal_page.search("//*[@class='texto' and contains(text(),'Presentado el')]").first.try(:content)
-        proposed_at = Date.new($3.to_i, $2.to_i, $1.to_i) if proposed_at_text && proposed_at_text.match(/Presentado el (\d\d)\/(\d\d)\/(\d\d\d\d)/)
+        proposed_at_text = proposal_page.search("//*[@class='texto' and contains(normalize-space(text()),'Presentado el')]").first.try(:content)
+        proposed_at = Date.new($3.to_i, $2.to_i, $1.to_i) if proposed_at_text && proposed_at_text.match(/Presentado\s+el\s+(\d\d)\/(\d\d)\/(\d\d\d\d)/)
         
-        closed_at_text = proposal_page.search("//*[@class='apartado_iniciativa' and contains(text(),'Tramitación seguida por la iniciativa:')]/following-sibling::*[@class='texto']").first.try(:content)
-        closed_at = Date.new($3.to_i, $2.to_i, $1.to_i) if closed_at_text && closed_at_text.match(/Concluido .+ desde (\d\d)\/(\d\d)\/(\d\d\d\d)/)
+        closed_at_text = proposal_page.search("//*[@class='apartado_iniciativa' and contains(normalize-space(text()),'Tramitación seguida por la iniciativa:')]/following-sibling::*[@class='texto']").first.try(:content)
+        closed_at = Date.new($3.to_i, $2.to_i, $1.to_i) if closed_at_text && closed_at_text.match(/Concluido\s+.+\s+desde (\d\d)\/(\d\d)\/(\d\d\d\d)/)
         
         proposal = Proposal.find_or_create_by_title(clean_text(title.content))
         proposal.update_attributes! :official_url        => "http://www.congreso.es" + title[:href],
