@@ -6,7 +6,7 @@ module NavigationHelpers
   end
   
   def proposal_path(proposal)
-    "/proposals/#{proposal.id}"
+    "#{proposals_path}/#{proposal.id}"
   end
   
   def login_path
@@ -15,6 +15,10 @@ module NavigationHelpers
   
   def proposal_votes_path(proposal)
     proposal_path(proposal) + "/votes"
+  end
+  
+  def proposals_path
+    "/proposals"
   end
 end
 

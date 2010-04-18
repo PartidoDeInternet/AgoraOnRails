@@ -45,8 +45,22 @@ feature "Feature name", %q{
     page.should_not have_css(".proposal .title", :text => "Ley Sinde")
   end
   
-  scenario "View all proposals" do
+  scenario "Using proposer from a proposal" do
+    proposal = create_proposal :proposer => create_proposer(:name => "Gobierno")
     
+    visit homepage
+    within(:css, ".proposal") { click_link "Gobierno" }
+    
+    page.should have_content("Propuestas presentadas por Gobierno")
+  end
+  
+  scenario "View all proposals from a single proposal" do
+    2.times { create_proposal }
+    
+    visit proposals_path
+    
+    page.should have_content("Propuestas")
+    page.should have_css(".proposal", :count => 2)
   end
   
 end
