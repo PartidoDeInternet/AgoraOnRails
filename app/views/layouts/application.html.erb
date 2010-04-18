@@ -39,9 +39,7 @@
               <ul>
                 <% hot_categories.each_with_index do |category, index| %>
                 <li class="category">
-                  <a class="name tag-<%= index + 1 %>" href="#" title="<%= category.name %>">
-                    <%= category.name %>
-                  </a>
+                  <%= link_to category.name, [category, :proposals], :class => "name tag-#{index + 1}", :title => category.name %>
                   <span class="count">
                     <%= category.proposals_count %>
                   </span>
@@ -57,9 +55,7 @@
               <ul>
                 <% hot_proposers.each_with_index do |proposer, index| %>
                 <li class="proposer">
-                  <a class="name tag-<%= index + 1 %>" href="#" title="<%= proposer.name %>">
-                    <%= proposer.name %>
-                  </a>
+                  <%= link_to proposer.name, [proposer, :proposals], :class => "name tag-#{index + 1}", :title => proposer.name %>
                   <span class="count">
                     <%= proposer.proposals_count %>
                   </span>
