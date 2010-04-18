@@ -6,11 +6,12 @@
     <section class="proposal-content">
       <header>
         <hgroup>
-          <h2><%= link_to proposal.title, proposal %></h2>
+          <h2><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
           <h3>Presentado por: <a href="#">Grupo Mixto</a> el 24 de abril de 2010</h3>
         </hgroup>
       </header>
     </section>
+    <span class="decorate up"></span>
   </article>
   <% end %>
 </section>

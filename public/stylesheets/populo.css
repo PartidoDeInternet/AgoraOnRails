@@ -249,10 +249,19 @@ footer {
   background: url('../images/icon_view.gif') no-repeat left center;
 }
 
+.voted {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  font-size: 1.5em;
+  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
+}
+
 form.vote {
   display: block;
-  background: #66B9AF;
   text-align: center;
+  background: #66B9AF;
 }
 
 form.vote fieldset {
