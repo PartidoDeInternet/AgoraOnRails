@@ -58,6 +58,15 @@ fieldset {
   border: none;
 }
 
+.flash {
+  display: block;
+  font-size: 1.2em;
+  padding: 5px;
+  background: #888;
+  color: #FFF;
+  text-align: center;
+}
+
 /* custom selection colors */
 
 ::-moz-selection {
@@ -111,6 +120,7 @@ fieldset {
 --------------------------------------------- */
 
 #header {
+  position: relative;
   display: block;
   padding: 25px 0;
   background: url('../images/hr.gif') no-repeat bottom center;
@@ -136,6 +146,17 @@ fieldset {
   background: url('../images/mini_populo.gif') no-repeat center center;
   overflow: hidden;
   text-indent: -9000em;
+}
+
+#user-nav {
+  position: absolute;
+  top: 3px;
+  right: 0;
+}
+
+#user-nav li {
+  list-style: none;
+  color: #999;
 }
 
 
@@ -483,7 +504,7 @@ button.abstencion span {
   z-index:10000; 
   background: #E1E2DF url('../images/content.gif');
   width:650px;
-  height:300px; 
+  height:320px; 
   -moz-box-shadow:0 0 4px 5px #CCC; 
   -webkit-box-shadow: 0 0 4px #CCC;     
 } 
@@ -504,7 +525,7 @@ button.abstencion span {
 
 #overlay iframe {
   width:650px;
-  height:300px; 
+  height:320px; 
   border: none;
 }
 
@@ -512,9 +533,9 @@ button.abstencion span {
 
 #login-section {
   float: left;
-  width: 300px;
+  width: 280px;
   padding-right: 20px;
-  margin-right: 20px;
+  margin: 0 20px 5px 0;
   border-right: 1px dotted #ccc;
 }
 
@@ -533,36 +554,39 @@ button.abstencion span {
 }
 
 .actions {
+  display: block;
+  clear: both;
   text-align: center;
 }
 
 /* overlayfields */
 
-p.overlayfield {
+.overlayfield {
   position: relative;
   display: block;
   margin: 0.8em 0;
   padding: 0 0 0 0;
+  width:22em;
   border: 4px solid #DDDDDB;
   background: #FFFFFF;
 }
 
-p.overlayfield input {
+.overlayfield input {
   background: transparent;
   border:1px solid #CCC;
   display:block;
   font-size:1.2em;
   padding:0.4em;
   position:relative;
-  width:20em;
+  width:17.5em;
   z-index:2;
 }
 
-p.overlayfield label {
+.overlayfield label {
   padding: 0 0 0 0;
 }
 
-p.overlayfield span {
+.overlayfield span {
   position: absolute;
   font-size: 1.2em;
   border: none;

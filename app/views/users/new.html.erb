@@ -1,0 +1,46 @@
+<h2>Regístrate </h2>
+
+<% form_for @user, :url => users_path do |f| %>
+  <%= f.error_messages %>
+  
+  <fieldset id="login-section">
+  
+          <div class="overlayfield">
+            <%= f.label :dni, "<span>Introduce tu DNI</span>" %>
+            <%= f.text_field :dni %>
+          </div>
+  
+          <div class="overlayfield">
+            <%= f.label :password, "<span>Dinos tu contraseña</span>" %>
+            <%= f.password_field :password %>
+          </div>
+
+          <div class="overlayfield">
+            <%= f.label :password_confirmation, "<span>Repite tu contraseña</span>" %>
+            <%= f.password_field :password_confirmation %>
+          </div>
+      
+    </fieldset>
+    
+    <fieldset>
+      <div class="overlayfield">
+        <%= f.label :first_name, "<span>Tu nombre</span>" %>
+        <%= f.text_field :first_name %>
+      </div>
+      
+      <div class="overlayfield">
+        <%= f.label :last_name, "<span>Tus apellidos</span>" %>
+        <%= f.text_field :last_name %>
+      </div>
+      
+      <div class="overlayfield">
+        <%= f.label :email, "<span>Y por último tu email</span>" %>
+        <%= f.text_field :email %>
+      </div>
+      
+    </fieldset>
+
+    <p class="actions">
+      <button type="submit" class="confirm"><span>Regístrate</span></button>
+    </p>
+<% end %>

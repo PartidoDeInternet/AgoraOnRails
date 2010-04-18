@@ -25,10 +25,19 @@
           <header>
             <h1><a id="logo" href="/"><strong>Populo</strong></a></h1>
           </header>
+          <% if current_user %>
+            <nav id="user-nav">
+              <ul>
+                <li>Estoy logueado y <%= link_to "quiero salir", user_session_path, :method => "delete" %></li>
+              </ul>
+            </nav>
+          <% end %>
         </section>
-
-        <p style="color: green"><%= flash[:notice] %></p>
-      
+        
+        <% if flash[:notice] %>
+        <div class="flash"><%= flash[:notice] %></div>
+        <% end %>
+        
         <%= yield %>
       
         <aside>

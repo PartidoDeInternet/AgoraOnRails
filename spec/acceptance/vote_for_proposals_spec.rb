@@ -26,7 +26,7 @@ feature "Vote for proposals", %q{
       
       page.should have_content("Vas #{confirmation} la iniciativa “Ley Sinde”")
     
-      click_button "Confirmar"
+      click_button "Estoy seguro"
     
       page.should have_content("Tu voto ha sido contabilizado.")
     end
@@ -43,7 +43,7 @@ feature "Vote for proposals", %q{
       
     fill_in "Introduce tu DNI", :with => "123456789A"
     fill_in "Dinos tu contraseña", :with => "secret"
-    click_button "Identificarse"
+    click_button "Identifícate"
     
     page.should have_content("Vas a votar a favor de la iniciativa “Derogación del canon”")
   end
@@ -72,7 +72,7 @@ feature "Vote for proposals", %q{
     visit proposal_path(proposal)
         
     click_button "Sí"
-    click_button "Confirmar"
+    click_button "Estoy seguro"
     
     visit proposal_path(proposal)
 
@@ -95,7 +95,7 @@ feature "Vote for proposals", %q{
     visit proposal_path(proposal)
     
     click_button "Sí"
-    click_button "Confirmar"
+    click_button "Estoy seguro"
     
     percentages_should_be(proposal, :in_favor => 100, :against => 0, :abstention => 0)
     number_of_votes_should_be(proposal, :in_favor => 1, :against => 0, :abstention => 0)
@@ -103,7 +103,7 @@ feature "Vote for proposals", %q{
     login_as @user2
     visit proposal_path(proposal)
     click_button "No"
-    click_button "Confirmar"
+    click_button "Estoy seguro"
  
     percentages_should_be(proposal, :in_favor => 50, :against => 50, :abstention => 0)
     number_of_votes_should_be(proposal, :in_favor => 1, :against => 1, :abstention => 0)
@@ -111,7 +111,7 @@ feature "Vote for proposals", %q{
     login_as @user3
     visit proposal_path(proposal)
     click_button "Abstencion"
-    click_button "Confirmar"
+    click_button "Estoy seguro"
     
     percentages_should_be(proposal, :in_favor => 33, :against => 33, :abstention => 33)
     number_of_votes_should_be(proposal, :in_favor => 1, :against => 1, :abstention => 1)

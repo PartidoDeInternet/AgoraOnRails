@@ -3,7 +3,7 @@ module HelperMethods
     visit login_path
     fill_in "Introduce tu DNI", :with => user.dni
     fill_in "Dinos tu contraseña", :with => "secret"
-    click_button "Identificarse"
+    click_button "Identifícate"
   end
   
   def percentages_should_be(proposal, results)
