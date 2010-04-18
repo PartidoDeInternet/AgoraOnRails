@@ -9,7 +9,8 @@ footer {
 .proposal aside,
 .meta li,
 #breadcrumb li,
-.voters {
+.voters,
+#related {
   zoom: 1;
   display: inline;
 }

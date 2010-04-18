@@ -308,7 +308,8 @@ footer p {
 .proposal-content,
 .proposal aside,
 .voters,
-.documents-list.voters {
+.documents-list.voters,
+#related {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: top;
@@ -320,6 +321,7 @@ footer p {
   width: 440px;
 }
 
+#related,
 .voters {
   width: 205px;
 }
@@ -582,6 +584,10 @@ button.abstencion span {
   -webkit-border-bottom-right-radius:15px;
   -moz-border-radius-topright:15px;
   -moz-border-radius-bottomright:15px;
+}
+
+#related li a {
+  background: #9B3666;
 }
 
 .tag_list li .count {
