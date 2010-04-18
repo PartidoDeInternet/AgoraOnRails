@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
   before_filter :require_user, :only => :destroy
+  layout "mini_application"
   
   def new
     @user_session = UserSession.new

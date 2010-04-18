@@ -19,7 +19,7 @@
       
       
       <% if @proposal.closed? %>
-        La Propuesta fué <span class="official_resolution"> <%= @proposal.official_resolution %></span> en el Congreso.
+        <p class="solved">La Propuesta fué <span class="official_resolution"> <%= @proposal.official_resolution %></span> en el Congreso.</p>
       <% elsif current_user && current_user.has_voted_for?(@proposal) %>
         <p class="voted">Ya has votado esta propuesta</p>
       <% else %>  
@@ -48,6 +48,7 @@
         </dl>
       </section>
       
+      <!-- 
       <section class="documentation documents-list">
         <dl>
           <dt><strong>Documentación</strong></dt>
@@ -73,6 +74,7 @@
           </dd>
         </dl>
       </section>
+      -->
     </section>
     
     <span class="decorate up"></span>
