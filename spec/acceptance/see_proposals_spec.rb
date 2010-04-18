@@ -22,7 +22,7 @@ feature "See proposals", %q{
       page.should have_css(".title", :text => "Ley Sinde")
       page.should have_css(".official_url", :text => "Enlace oficial", :href => "http://congreso.es/sinde")
       page.should have_css(".votes", :text => "3 votos")
-      page.should have_css(".views", :text => "6 visitas")
+      page.should have_css(".views", :text => "5 visitas")
     end
   end
   

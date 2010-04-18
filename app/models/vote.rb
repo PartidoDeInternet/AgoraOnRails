@@ -6,7 +6,7 @@ class Vote < ActiveRecord::Base
   
   validates_uniqueness_of :proposal_id, :scope => :user_id
   
-  after_create :update_results, :update_ranking
+  after_create :update_results
   
   def update_results
     case value
@@ -14,11 +14,6 @@ class Vote < ActiveRecord::Base
     when "no": proposal.against += 1
     when "abstencion": proposal.abstention += 1
     end
-    proposal.save!
-  end
-  
-  def update_ranking
-    proposal.ranking += 3
     proposal.save!
   end
   

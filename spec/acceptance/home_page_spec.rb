@@ -7,12 +7,12 @@ feature "Home page", %q{
 } do
   
   scenario "Hot proposals" do
-    create_proposal(:title => "Legalize it",         :ranking => 8)
-    create_proposal(:title => "Cafe para todos",     :ranking => 4)
-    create_proposal(:title => "Zapatero Dimisión",   :ranking => 7)
-    create_proposal(:title => "Ley Sinde",           :ranking => 10)
-    create_proposal(:title => "Bajar el IVA",        :ranking => 6)
-    create_proposal(:title => "WIFI en todo Madrid", :ranking => 5)
+    create_proposal(:title => "Legalize it",         :votes_count => 2, :visits => 2) # hotness 8
+    create_proposal(:title => "Cafe para todos",     :votes_count => 1, :visits => 1) # hotness 4
+    create_proposal(:title => "Zapatero Dimisión",   :votes_count => 2, :visits => 1) # hotness 7
+    create_proposal(:title => "Ley Sinde",           :votes_count => 3, :visits => 1) # hotness 10 !!
+    create_proposal(:title => "Bajar el IVA",        :votes_count => 0, :visits => 6) # hotness 6
+    create_proposal(:title => "WIFI en todo Madrid", :votes_count => 1, :visits => 3) # hotness 6
     
     visit homepage
     
