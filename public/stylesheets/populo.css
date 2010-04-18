@@ -1,0 +1,338 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: x-small;
+  font-variant: normal;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.5em;
+  text-align: center;
+  background: #FFFFFF;
+  color: #666666;
+}
+
+* { 
+  margin: 0; 
+  padding: 0;
+}
+
+.accessible {
+  display: none
+}
+
+a {
+  color: #205F82
+}
+
+a:focus {
+  outline: none;
+}
+
+h2, h3 {
+  color: #333;
+  line-height: normal;
+}
+
+h2 {
+  font-size: 1.6em;
+  padding-bottom: 5px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 1.2em;
+  padding-bottom: 10px;
+  color: #666666;
+}
+
+p {
+  font-size: 1.2em;
+  padding-bottom: 7px;
+}
+
+ul {
+  font-size: 1.2em;
+  padding: 3px 15px;
+}
+
+fieldset {
+  border: none;
+}
+
+/* custom selection colors */
+
+::-moz-selection {
+  color: #fff;
+  color: rgba(255,255,255,.85);
+  background: #66B9AF;
+}
+
+::selection {
+  color: #fff;
+  color: rgba(255,255,255,.85);
+  background: #66B9AF;
+}
+
+
+/* page structure 
+--------------------------------------------- */
+
+#wrap {
+  background: #E1E2DF url('../images/content.gif');
+  border-bottom: 1px solid #FFF;
+}
+
+#wrap-inner {
+  background: url('../images/content_deg.png') repeat-x top;
+  height: 1%;
+  padding: 0 0 20px;
+  overflow: hidden;
+}
+
+.wrap-fit {
+  display: block;
+  width: 951px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+
+/* header 
+--------------------------------------------- */
+
+#header {
+  display: block;
+  padding: 25px 0;
+  background: url('../images/hr.gif') no-repeat bottom center;
+}
+
+#logo {
+  display: block;
+  width: 140px;
+  height: 35px;
+  background: url('../images/populo.gif') no-repeat center center;
+  overflow: hidden;
+  text-indent: -9000em;
+}
+
+
+/* content 
+--------------------------------------------- */
+
+#content {
+  padding: 15px 0 0 0;
+  width: 711px;
+  float: left;
+}
+
+/* sidebar 
+--------------------------------------------- */
+
+aside {
+  padding: 15px 0 0 0;
+  width: 231px;
+  float: right;
+}
+
+/* footer 
+--------------------------------------------- */
+
+footer {
+  display: block;
+  border-top: 1px solid #D6D6D6;
+}
+
+
+/* modules
+--------------------------------------------- */
+
+/* breadcrumb */
+
+#breadcrumb {
+  background: url('../images/hr_content.gif') no-repeat bottom center;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+#breadcrumb li {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1px 3px;
+  list-style: none;
+}
+
+#breadcrumb li a {
+  display: block;
+  text-decoration: none;
+  border-bottom: 3px solid #666666;
+  color: #333333;
+  text-transform: uppercase;
+  padding: 0 0 3px 0;
+  font-size: 0.9em;
+}
+
+/* proposal */
+
+.proposal {
+  display: block;
+  position: relative;
+  padding: 25px 13px;
+  border: 1px solid #F6F6F6;
+  background: #FFFFFF;
+  -o-box-shadow: 1px 1px 1px #BBBCBA;
+  -icab-box-shadow: 1px 1px 1px #BBBCBA;
+  -khtml-box-shadow: 1px 1px 1px #BBBCBA;
+  -moz-box-shadow: 1px 1px 1px #BBBCBA;
+  -webkit-box-shadow: 1px 1px 1px #BBBCBA;
+  box-shadow: 1px 1px 1px #BBBCBA;
+}
+
+.proposal-content,
+.proposal aside {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 15px 0 0;
+  list-style: none;
+}
+
+.proposal-content {
+  width: 440px;
+}
+
+.decorate {
+  position: absolute;
+  width: 33px;
+  height: 17px;
+  left: 12px;
+  top: -7px;
+  background: url('../images/decorate_up.gif') no-repeat left top;
+}
+
+.decorate.down {
+  top: auto;
+  bottom: -7px;
+  background: url('../images/decorate_down.gif') no-repeat left top;
+}
+
+.meta {
+  border-top: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E8E8;
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+
+.meta li {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  margin: 1px 3px;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.votes {
+  background: url('../images/icon_vote.gif') no-repeat left center;
+}
+
+.views {
+  background: url('../images/icon_view.gif') no-repeat left center;
+}
+
+form.vote {
+  display: block;
+  background: #66B9AF;
+  text-align: center;
+}
+
+form.vote fieldset {
+  padding: 10px;
+}
+
+form.vote strong {
+  display: block;
+  color: #333;
+  font-size: 1.5em;
+  padding-bottom: 10px;
+}
+
+form.vote button {
+  margin: 0 3px;
+  padding: 0;
+  border: 1px solid #333;
+  background: #333;
+  color: #FFFFFF;
+  letter-spacing: -1px;
+  font-size: 1.5em;
+  width: auto;
+  overflow: visible;
+  -o-box-shadow: 1px 1px 1px #579D95;
+  -icab-box-shadow: 1px 1px 1px #579D95;
+  -khtml-box-shadow: 1px 1px 1px #579D95;
+  -moz-box-shadow: 1px 1px 1px #579D95;
+  -webkit-box-shadow: 1px 1px 1px #579D95;
+  box-shadow: 1px 1px 1px #579D95;
+}
+
+form.vote button span {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding: 5px 5px 5px 35px;
+  margin-left:5px;
+}
+
+button.si span {
+  background-image: url('../images/icon_si.gif');
+}
+
+button.no span {
+  background-image: url('../images/icon_no.gif');
+}
+
+button.abstencion span {
+  background-image: url('../images/icon_abstencion.gif');
+}
+
+.documents-list {
+  padding: 7px 0;
+  display: block;
+}
+
+.documents-list dt {
+  display: block;
+  font-size: 1.2em;
+  color: #333;
+  border-bottom: 3px solid #D0D0D0;
+}
+
+.documents-list dt strong {
+  display: block;
+  padding: 2px 3px;
+}
+
+.documents-list ul {
+  padding: 0;
+}
+
+.documents-list ul li {
+  list-style: none;
+  padding: 4px 4px 4px 25px;
+  border-top: 1px solid #E8E8E8;
+  background: url('../images/icon_docu.gif') no-repeat 3px center;
+}
+
+.sessions ul li {
+  background: url('../images/icon_diary.gif') no-repeat 3px center;
+}
+
+
+/* tag list */
+
+.tag_list dt {
+  display: block;
+  font-size: 1.2em;
+  color: #333;
+  border-bottom: 3px solid #C2C3C2;
+}
+
