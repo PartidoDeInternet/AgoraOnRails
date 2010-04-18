@@ -329,6 +329,10 @@ button.abstencion span {
 
 /* tag list */
 
+.tag_list {
+  padding-bottom: 30px;
+}
+
 .tag_list dt {
   display: block;
   font-size: 1.2em;
@@ -336,3 +340,75 @@ button.abstencion span {
   border-bottom: 3px solid #C2C3C2;
 }
 
+.tag_list dt strong {
+  display: block;
+  font-weight: normal;
+  padding: 0 0 3px;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.tag_list ul {
+  padding: 0;
+}
+
+.tag_list li {
+  list-style: none;
+  margin-top: 5px;
+}
+
+.tag_list li a {
+  display: block;
+  list-style: none;
+  padding: 7px 25px 7px 10px;
+  text-overflow: ellipsis;
+  background: #5A5A59;
+  color: #FFF;
+  font-size: 1em;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #333;
+  -webkit-border-top-right-radius:15px;
+  -webkit-border-bottom-right-radius:15px;
+  -moz-border-radius-topright:15px;
+  -moz-border-radius-bottomright:15px;
+}
+
+.tag_list .tag-1 {
+  width: 85%;
+}
+
+.tag_list .tag-2 {
+  width: 75%;
+}
+
+.tag_list .tag-3 {
+  width: 65%;
+}
+
+.tag_list .tag-4 {
+  width: 55%;
+}
+
+.tag_list .tag-5 {
+  width: 45%;
+}
+
+.tag_list .tag-6 {
+  width: 35%;
+}
+
+.tag_list .tag-7 {
+  width: 25%;
+}
+
+.tag_list .tag-8 {
+  width: 15%;
+}
+
+.tag_list .tag-9 {
+  width: 5%;
+}
+
+.tag_list .tag-1 {
+  width: 85%;
+}
