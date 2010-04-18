@@ -6,10 +6,18 @@
     </ul>
   </nav>  
   <section id="hot_proposals" class="proposals">
+    <header class="proposal-head">
+      <h2>Lo más hot!</h2>
+      <p>Las propuestas más visitadas o las más votadas. Vota y da tu opinión ahora que todavía estás a tiempo.</p>
+    </header>
     <%= render :partial => 'proposals/proposal', :collection => @hot_proposals %>
   </section>
   
   <section id="recently_closed" class="proposals">
+    <header class="proposal-head">
+      <h2>Recién tramitadas</h2>
+      <p>Son las propuestas que acaban de ser tramitadas. Mira lo que se decidió en el congreso y lo que decidió la gente a través de la web.</p>
+    </header>
     <%= render :partial => 'proposals/proposal', :collection => @recently_closed %>
   </section>
 </section>
