@@ -25,5 +25,5 @@ feature "See proposals", %q{
       page.should have_css(".views", :text => "5 visitas")
     end
   end
-  
+    
 end

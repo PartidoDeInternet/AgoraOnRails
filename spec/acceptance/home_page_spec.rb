@@ -50,6 +50,10 @@ feature "Home page", %q{
 
     page.should have_css("#recently_closed .proposal", :count => 5)
     page.should have_css("#recently_closed .proposal:first .title", :text => "WIFI en todo Madrid")
+    
+    page.should have_css(".in_favor", :text => "Sí")
+    page.should have_css(".against", :text => "No")
+    page.should have_css(".abstention", :text => "Abs")
   end
   
   scenario "Categories" do

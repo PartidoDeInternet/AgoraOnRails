@@ -116,6 +116,9 @@ feature "Vote for proposals", %q{
     percentages_should_be(proposal, :in_favor => 33, :against => 33, :abstention => 33)
     number_of_votes_should_be(proposal, :in_favor => 1, :against => 1, :abstention => 1)
 
+    page.should have_css(".in_favor", :text => "Sí")
+    page.should have_css(".against", :text => "No")
+    page.should have_css(".abstention", :text => "Abs")
   end
   
   scenario "Parlament vote results" do 

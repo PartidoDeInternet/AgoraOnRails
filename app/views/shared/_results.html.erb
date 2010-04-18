@@ -1,0 +1,8 @@
+<ul>
+  <% Vote.choices.each do |choice| %>
+    <li class="<%= choice %>">
+      <strong style="width:<%= "#{ number_to_percentage(proposal.percentage_for(choice.to_sym)-width, :precision => 0) }" %>"><%= humanize(choice) %></strong>
+      <span><%= "#{ number_to_percentage(proposal.percentage_for(choice.to_sym), :precision => 0) }" %></span>
+    </li>
+  <% end %>
+</ul>

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20100418202324) do
   end
 
   create_table "proposals", :force => true do |t|
-    t.string   "title"
+    t.string   "title",               :limit => 1024
     t.string   "official_url",        :limit => 1024
     t.string   "proposal_type"
     t.datetime "created_at"
@@ -33,9 +33,8 @@ ActiveRecord::Schema.define(:version => 20100418202324) do
     t.integer  "proposer_id"
     t.date     "proposed_at"
     t.date     "closed_at"
-    t.integer  "votes_count"
-    t.integer  "visits_count"
     t.integer  "visits",                              :default => 0
+    t.integer  "votes_count"
   end
 
   create_table "proposers", :force => true do |t|

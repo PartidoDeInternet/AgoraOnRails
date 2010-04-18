@@ -20,4 +20,12 @@ module ApplicationHelper
     l = length - truncate_string.mb_chars.length
     text.mb_chars.length > length ? text[/\A.{#{l}}\w*\;?/m][/.*[\w\;]/m] + truncate_string : text
   end
+  
+  def humanize(choice)
+    case choice
+    when "in_favor": "Sí"
+    when "against": "No"
+    when "abstention": "Abs"
+    end
+  end
 end

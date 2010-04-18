@@ -62,5 +62,5 @@ feature "Feature name", %q{
     page.should have_content("Propuestas")
     page.should have_css(".proposal", :count => 2)
   end
-  
+    
 end

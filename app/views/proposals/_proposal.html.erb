@@ -15,14 +15,7 @@
       <dl>
         <dt class="accessible"><strong>Resultados de la popular</strong></dt>
         <dd>
-          <ul>
-            <% Vote.choices.each do |choice| %>
-              <li class="<%= choice %>">
-                <strong style="width:<%= "#{ number_to_percentage(proposal.percentage_for(choice.to_sym)-40, :precision => 0) }" %>"><%= choice %></strong>
-                <span><%= "#{ number_to_percentage(proposal.percentage_for(choice.to_sym), :precision => 0) }" %></span>
-              </li>
-            <% end %>
-          </ul>
+          <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 40} %>
         </dd>
       </dl>
     </section>
