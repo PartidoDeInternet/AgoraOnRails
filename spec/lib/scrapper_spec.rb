@@ -44,6 +44,7 @@ describe Scrapper do
       proposal.proposal_type.should == "Proyecto de ley"
       proposal.should_not be_closed
       proposal.official_resolution.should be_blank
+      proposal.proposed_at.should == Date.new(2010, 4, 9)
       proposal.category.name.should == "Medio Ambiente"
       proposal.proposer.name.should == "PSOE"   
     end

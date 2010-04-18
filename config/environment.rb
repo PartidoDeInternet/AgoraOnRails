@@ -9,4 +9,6 @@ Rails::Initializer.run do |config|
   config.gem "mechanize"
   config.gem "authlogic"
   config.gem "inherited_resources", :version => "1.0.6"  
+  
+  config.i18n.default_locale = :es
 end

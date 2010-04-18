@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100418105110) do
+ActiveRecord::Schema.define(:version => 20100418122451) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "commission_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "proposals_count"
   end
 
   create_table "proposals", :force => true do |t|
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20100418105110) do
     t.integer  "ranking",             :default => 0
     t.integer  "category_id"
     t.integer  "proposer_id"
+    t.date     "proposed_at"
   end
 
   create_table "proposers", :force => true do |t|

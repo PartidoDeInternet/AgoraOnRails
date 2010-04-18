@@ -1,7 +1,9 @@
 class Proposal < ActiveRecord::Base
   has_many :votes
-  belongs_to :category
+  belongs_to :category, :counter_cache => true
   belongs_to :proposer
+  
+  validates_presence_of :proposer, :proposed_at
   
   named_scope :open, :conditions => "not closed"
   named_scope :hot,  :order => "ranking DESC", :limit => 5

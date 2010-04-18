@@ -1,14 +1,34 @@
 <section id="content">
-  <% @hot_proposals.each do |hot_proposal| %>
-  <article class="proposal">
-    <section class="proposal-content">
-      <header>
-        <hgroup>
-          <h2><%= link_to hot_proposal.title, hot_proposal %></h2>
-          <h3>Presentado por: <a href="#">Grupo Mixto</a> el 24 de abril de 2010</h3>
-        </hgroup>
-      </header>
-    </section>
-  </article>
-  <% end %>
+  <section id="hot_proposals">
+    <% @hot_proposals.each do |proposal| %>
+    <article class="proposal">
+      <section class="proposal-content">
+        <header>
+          <hgroup>
+            <h2 class="title"><%= link_to proposal.title, proposal %></h2>
+            <h3>
+              Presentado por: <a class="proposer" href="#"><%= proposal.proposer.name %></a> 
+              el <span class="proposed_at"><%= l proposal.proposed_at, :format => :long %></span>
+            </h3>
+          </hgroup>
+        </header>
+      </section>
+    </article>
+    <% end %>
+  </section>
+  
+  <section id="categories">
+    <% @categories.each do |category| %>
+    <article class="category">
+      <span class="name">
+        <%= category.name %>
+      </span>
+      <span class="count">
+        <%= category.proposals.count %>
+      </span>
+    </article>
+    <% end %>
+  </section>
 </section>
+
+

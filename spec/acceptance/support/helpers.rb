@@ -22,7 +22,7 @@ module HelperMethods
   
   def should_see_hot_proposals(titles)
     titles.each do |title|
-      page.should have_css(".hot_proposal .title", :text => title)
+      page.should have_css("#hot_proposals .proposal .title", :text => title)
     end
   end
   

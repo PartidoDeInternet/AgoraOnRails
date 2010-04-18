@@ -39,7 +39,7 @@ feature "Vote for proposals", %q{
     click_button "Sí"
     
     page.should have_content("Autenticación requerida")
-    page.should_not have_css("button", :content => "Confirmar")
+    page.should_not have_css("button", :text => "Confirmar")
       
     fill_in "DNI", :with => "123456789A"
     fill_in "Contraseña", :with => "secret"
@@ -56,9 +56,9 @@ feature "Vote for proposals", %q{
 
     page.should have_content("La Propuesta fué Derogada en el Congreso")
 
-    page.should_not have_css("button", :content => "Sí")
-    page.should_not have_css("button", :content => "No")
-    page.should_not have_css("button", :content => "Abstención")
+    page.should_not have_css("button", :text => "Sí")
+    page.should_not have_css("button", :text => "No")
+    page.should_not have_css("button", :text => "Abstención")
     
     # Hacker-proof
     page.driver.post proposal_votes_path(proposal), :vote => {}
@@ -78,9 +78,9 @@ feature "Vote for proposals", %q{
 
     page.should have_content("Ya has votado esta propuesta")
         
-    page.should_not have_css("button", :content => "Sí")
-    page.should_not have_css("button", :content => "No")
-    page.should_not have_css("button", :content => "Abstención")
+    page.should_not have_css("button", :text => "Sí")
+    page.should_not have_css("button", :text => "No")
+    page.should_not have_css("button", :text => "Abstención")
     
     # Hacker-proof
     page.driver.post proposal_votes_path(proposal), :vote => {}
