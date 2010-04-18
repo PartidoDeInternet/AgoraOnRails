@@ -11,13 +11,16 @@
     </header>
   </section>
     <% if proposal.closed? %>
-    <section class="vote-results documents-list voters">
-      <dl>
-        <dt class="accessible"><strong>Resultados de la popular</strong></dt>
-        <dd>
-          <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 40} %>
-        </dd>
-      </dl>
+    <section class="voters">
+      <p class="solved"><span class="official_resolution"> <%= proposal.official_resolution %></span> en el Congreso.</p>
+      <section class="vote-results documents-list voters">
+        <dl>
+          <dt><strong>Resultados de la votación popular</strong></dt>
+          <dd>
+            <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 40} %>
+          </dd>
+        </dl>
+      </section>
     </section>
     <% else %>
     <section class="voters">
