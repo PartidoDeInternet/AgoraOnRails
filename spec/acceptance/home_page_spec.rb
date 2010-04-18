@@ -103,11 +103,11 @@ feature "Home page", %q{
     
     page.should have_content("0 votos a través de populo")
     
-    15.times { create_vote }
+    3.times { create_vote }
     
     visit homepage
     
-    page.should have_content("15 votos a través de populo")
+    page.should have_content("3 votos a través de populo")
   end
   
 end

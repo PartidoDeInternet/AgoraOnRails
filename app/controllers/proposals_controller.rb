@@ -5,6 +5,7 @@ class ProposalsController < InheritedResources::Base
   
   def show
     @proposal = Proposal.find(params[:id])
+    @proposal.visits += 1
     @proposal.ranking += 1
     @proposal.save!
     show!
