@@ -13,16 +13,16 @@ feature "Hot Proposals", %q{
   end
     
   scenario "Ranking should increase by 1 after a visit" do
-    lambda do
+    expect do
       visit proposal_path(@proposal)
       @proposal.reload
-    end.should change { @proposal.ranking }.by(1)
+    end.to change { @proposal.ranking }.by(1)
   end
   
   scenario "Ranking should increase by 3 after a vote" do
-    lambda do 
-        create_vote(:proposal => @proposal)
-        @proposal.reload
-    end.should change { @proposal.ranking }.by(3) 
+    expect do 
+      create_vote(:proposal => @proposal)
+      @proposal.reload
+    end.to change { @proposal.ranking }.by(3) 
   end
 end
