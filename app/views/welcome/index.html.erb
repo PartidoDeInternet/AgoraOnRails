@@ -1,6 +1,30 @@
 <section id="content">
+  <nav>
+    <ul>
+      <li><%= link_to "Hot!", "#hot_proposals" %></li>
+      <li><%= link_to "Recién tramitadas", "#recently_closed" %></li>
+    </ul>
+  </nav>  
   <section id="hot_proposals">
     <% @hot_proposals.each do |proposal| %>
+    <article class="proposal">
+      <section class="proposal-content">
+        <header>
+          <hgroup>
+            <h2 class="title"><%= link_to proposal.title, proposal %></h2>
+            <h3>
+              Presentado por: <a class="proposer" href="#"><%= proposal.proposer.name %></a> 
+              el <span class="proposed_at"><%= l proposal.proposed_at, :format => :long %></span>
+            </h3>
+          </hgroup>
+        </header>
+      </section>
+    </article>
+    <% end %>
+  </section>
+  
+  <section id="recently_closed">
+    <% @recently_closed.each do |proposal| %>
     <article class="proposal">
       <section class="proposal-content">
         <header>

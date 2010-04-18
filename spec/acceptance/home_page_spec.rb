@@ -36,7 +36,21 @@ feature "Home page", %q{
     page.should have_css(".proposal .proposed_at", :text => "24 de Abril de 2010")
   end
   
-  scenario "Recently closed proposals"
+  scenario "Recently closed proposals" do
+    create_proposal :title => "Legalize it",         :closed_at => 20.days.ago.to_date
+    create_proposal :title => "Cafe para todos",     :closed_at => 15.days.ago.to_date
+    create_proposal :title => "Zapatero Dimisión",   :closed_at => 23.days.ago.to_date
+    create_proposal :title => "Juanjo for president"
+    create_proposal :title => "WIFI en todo Madrid", :closed_at => 1.days.ago.to_date
+    create_proposal :title => "Ley Sinde",           :closed_at => 2.days.ago.to_date
+    create_proposal :title => "Bajar el IVA",        :closed_at => 5.days.ago.to_date
+    
+    visit homepage
+    click_link "Recién tramitadas"
+
+    page.should have_css("#recently_closed .proposal", :count => 5)
+    page.should have_css("#recently_closed .proposal:first .title", :text => "WIFI en todo Madrid")
+  end
   
   scenario "Categories" do
     economy   = create_category(:name => "Economy")

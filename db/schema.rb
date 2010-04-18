@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100418145608) do
+ActiveRecord::Schema.define(:version => 20100418161703) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20100418145608) do
     t.string   "proposal_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "closed",              :default => false
     t.integer  "in_favor",            :default => 0
     t.integer  "against",             :default => 0
     t.integer  "abstention",          :default => 0
@@ -34,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20100418145608) do
     t.integer  "category_id"
     t.integer  "proposer_id"
     t.date     "proposed_at"
+    t.date     "closed_at"
   end
 
   create_table "proposers", :force => true do |t|

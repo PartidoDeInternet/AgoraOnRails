@@ -33,10 +33,13 @@ class Scrapper
         proposed_at_text = proposal_page.search("//*[@class='texto' and contains(text(),'Presentado el')]").first.try(:content)
         proposed_at = Date.new($3.to_i, $2.to_i, $1.to_i) if proposed_at_text && proposed_at_text.match(/Presentado el (\d\d)\/(\d\d)\/(\d\d\d\d)/)
         
+        closed_at_text = proposal_page.search("//*[@class='apartado_iniciativa' and contains(text(),'Tramitación seguida por la iniciativa:')]/following-sibling::*[@class='texto']").first.try(:content)
+        closed_at = Date.new($3.to_i, $2.to_i, $1.to_i) if closed_at_text && closed_at_text.match(/Concluido .+ desde (\d\d)\/(\d\d)\/(\d\d\d\d)/)
+        
         proposal = Proposal.find_or_create_by_title(clean_text(title.content))
         proposal.update_attributes! :official_url        => "http://www.congreso.es" + title[:href],
                                     :proposal_type       => proposal_type,
-                                    :closed              => resolution.present?,
+                                    :closed_at           => closed_at,
                                     :official_resolution => resolution,
                                     :category            => category,
                                     :proposer            => proposer,

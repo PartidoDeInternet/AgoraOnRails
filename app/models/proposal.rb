@@ -3,8 +3,13 @@ class Proposal < ActiveRecord::Base
   belongs_to :category, :counter_cache => true
   belongs_to :proposer, :counter_cache => true
   
-  named_scope :open, :conditions => "not closed"
+  named_scope :open, :conditions => "closed_at is null"
   named_scope :hot,  :order => "ranking DESC", :limit => 5
+  named_scope :recently_closed, :conditions => "closed_at is not null", :order => "closed_at DESC", :limit => 5
+  
+  def closed?
+    closed_at.present?
+  end
   
   #choices can be in_favor, against or abstention
   def percentage_for(choice)

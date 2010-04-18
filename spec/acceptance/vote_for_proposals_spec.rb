@@ -49,7 +49,7 @@ feature "Vote for proposals", %q{
   end
 
   scenario "Can't vote for closed proposals" do
-    proposal = create_proposal(:closed => true, :official_resolution => "Derogada")
+    proposal = create_proposal(:closed_at => Date.yesterday, :official_resolution => "Derogada")
     
     login_as @user
     visit proposal_path(proposal)
@@ -120,7 +120,7 @@ feature "Vote for proposals", %q{
   
   scenario "Parlament vote results" do 
     login_as @user
-    proposal = create_proposal(:closed => true, :official_resolution => "Aceptada")
+    proposal = create_proposal(:closed_at => Date.yesterday, :official_resolution => "Aceptada")
     visit proposal_path(proposal)
     page.should have_css(".official_resolution", :text => "Aceptada")
   end

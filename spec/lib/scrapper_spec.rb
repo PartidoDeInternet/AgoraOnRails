@@ -54,7 +54,7 @@ describe Scrapper do
       proposal = Proposal.last
       proposal.official_url.should == proposal_page4
       proposal.proposal_type.should == "Proyecto de ley"
-      proposal.should be_closed
+      proposal.closed_at.should == Date.new(2009, 6, 24)
       proposal.official_resolution.should == "Aprobado sin modificaciones"
       proposal.category.name.should == "Economía y Hacienda"
       proposal.category.commission_name.should == "Comisión de Economía y Hacienda"
