@@ -21,7 +21,7 @@
     </section>
     <% else %>
     <section class="voters">
-      <%= link_to "<strong>Vota!</strong> #{proposal.votes.blank? ? 'Se el primero en votar' : 'otros NaN ya lo han hecho'}", proposal, :class => "vote-link" %>
+      <%= link_to vote_text(proposal), proposal, :class => "vote-link" %>
     </section>
     <% end %>
   <span class="decorate up"></span>

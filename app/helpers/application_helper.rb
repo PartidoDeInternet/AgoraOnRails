@@ -28,4 +28,12 @@ module ApplicationHelper
     when "abstention": "Abs"
     end
   end
+  
+  def vote_text(proposal)
+    if proposal.votes.blank?
+      "<strong>Vota!</strong> Se el primero en votar"
+    else
+      "<strong>Vota!</strong> otros #{proposal.votes.count} ya lo han hecho"
+    end
+  end
 end
