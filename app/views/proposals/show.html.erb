@@ -1,33 +1,38 @@
-<div class="proposal">
-  
-  <h2 class="title"><%=h @proposal.title %></h2>
-  
-  <p class="proposal_type">
-    <%=h @proposal.proposal_type %>
-  </p>
-  
-  <a class="official_url" href="<%= @proposal.official_url %>">Enlace oficial</a>
-  
-  <% if @proposal.closed? %>
-    La Propuesta fué <span class="official_resolution"> <%= @proposal.official_resolution %></span> en el Congreso.
-  <% elsif current_user && current_user.has_voted_for?(@proposal) %>
-    Ya has votado esta propuesta
-  <% else %>  
-    <% form_tag new_proposal_vote_path(@proposal), :method => :get do -%>
-      <button type="submit" name="value" value="si">Sí</button>
-      <button type="submit" name="value" value="no">No</button>
-      <button type="submit" name="value" value="abstencion">Abstención</button>
-    <% end -%>
-  <% end %>
-  
-  <h3>Votacion Popular</h3>
-  <% Vote.choices.each do |choice| %>
-    <div class="<%= choice %>">
-      <%= "#{ number_to_percentage(@proposal.percentage_for(choice.to_sym), :precision => 0) }" %>
-    </div>
-  <% end %>  
-</div>
+<section id="content">
 
 
-<%= link_to 'Edit', edit_proposal_path(@proposal) %> |
-<%= link_to 'Back', proposals_path %>
+  <div class="proposal">
+  
+    <h2 class="title"><%=h @proposal.title %></h2>
+  
+    <p class="proposal_type">
+      <%=h @proposal.proposal_type %>
+    </p>
+  
+    <a class="official_url" href="<%= @proposal.official_url %>">Enlace oficial</a>
+  
+    <% if @proposal.closed? %>
+      La Propuesta fué <span class="official_resolution"> <%= @proposal.official_resolution %></span> en el Congreso.
+    <% elsif current_user && current_user.has_voted_for?(@proposal) %>
+      Ya has votado esta propuesta
+    <% else %>  
+      <% form_tag new_proposal_vote_path(@proposal), :method => :get do -%>
+        <button type="submit" name="value" value="si">Sí</button>
+        <button type="submit" name="value" value="no">No</button>
+        <button type="submit" name="value" value="abstencion">Abstención</button>
+      <% end -%>
+    <% end %>
+  
+    <h3>Votacion Popular</h3>
+    <% Vote.choices.each do |choice| %>
+      <div class="<%= choice %>">
+        <%= "#{ number_to_percentage(@proposal.percentage_for(choice.to_sym), :precision => 0) }" %>
+      </div>
+    <% end %>  
+  </div>
+
+
+  <%= link_to 'Edit', edit_proposal_path(@proposal) %> |
+  <%= link_to 'Back', proposals_path %>
+
+</section>

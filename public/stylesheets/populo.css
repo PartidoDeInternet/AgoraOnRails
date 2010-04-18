@@ -177,6 +177,7 @@ footer {
   display: block;
   position: relative;
   padding: 25px 13px;
+  margin-bottom: 10px;
   border: 1px solid #F6F6F6;
   background: #FFFFFF;
   -o-box-shadow: 1px 1px 1px #BBBCBA;
@@ -185,6 +186,15 @@ footer {
   -moz-box-shadow: 1px 1px 1px #BBBCBA;
   -webkit-box-shadow: 1px 1px 1px #BBBCBA;
   box-shadow: 1px 1px 1px #BBBCBA;
+}
+
+.proposal h2 a {
+  color: #333;
+  text-decoration: none;
+}
+
+.proposal h2 a:hover {
+  text-decoration: underline;
 }
 
 .proposal-content,

@@ -1,17 +1,71 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html dir="ltr" lang="es-ES">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Proposals: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
+  <title>Populo</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="/stylesheets/populo.css" type="text/css" media="screen" charset="utf-8"/>
+  <!--[if lte IE 6]>
+    <link rel="stylesheet" href="/stylesheets/populo-ie.css" type="text/css" media="screen" charset="utf-8"/>
+  <![endif]-->
+  <script src="/javascripts/html5.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
+<a href="#content" class="accessible">Saltar al contenido</a>
 
-<%= yield %>
+<div id="wrap">
+  <div id="wrap-inner">
+    <div class="wrap-fit">
+    
+      <section id="header">
+        <header>
+          <h1><a id="logo" href="/"><strong>Populo</strong></a></h1>
+        </header>
+      </section>
+
+      <p style="color: green"><%= flash[:notice] %></p>
+      
+      <%= yield %>
+      
+      <aside>
+        <dl class="tag_list">
+          <dt><strong>¿De qué se habla?</strong></dt>
+          <dd>
+            <ul>
+              <li><a href="#" class="tag-1">tag1</a></li>
+              <li><a href="#" class="tag-2">tag1</a></li>
+              <li><a href="#" class="tag-3">tag1</a></li>
+              <li><a href="#" class="tag-4">tag1</a></li>
+              <li><a href="#" class="tag-5">tag1</a></li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl class="tag_list">
+          <dt><strong>¿Quién propone?</strong></dt>
+          <dd>
+            <ul>
+              <li><a href="#" class="tag-1">tag1</a></li>
+              <li><a href="#" class="tag-2">tag1</a></li>
+              <li><a href="#" class="tag-3">tag1</a></li>
+              <li><a href="#" class="tag-4">tag1</a></li>
+              <li><a href="#" class="tag-5">tag1</a></li>
+            </ul>
+          </dd>
+        </dl>
+
+      </aside>
+      
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap-fit">
+    el pie!!
+  </div>
+</footer>
 
 </body>
 </html>

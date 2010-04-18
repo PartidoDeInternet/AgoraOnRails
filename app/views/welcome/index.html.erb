@@ -1,11 +1,14 @@
-<h1>Hot Proposals</h1>
-
-<div id="hot_proposals">
+<section id="content">
   <% @hot_proposals.each do |hot_proposal| %>
-    <div class="hot_proposal">
-      <div class="title"> 
-        <%= hot_proposal.title %>
-      </div>        
-    </div>
+  <article class="proposal">
+    <section class="proposal-content">
+      <header>
+        <hgroup>
+          <h2><%= link_to hot_proposal.title, hot_proposal %></h2>
+          <h3>Presentado por: <a href="#">Grupo Mixto</a> el 24 de abril de 2010</h3>
+        </hgroup>
+      </header>
+    </section>
+  </article>
   <% end %>
-<div>
+</section>
