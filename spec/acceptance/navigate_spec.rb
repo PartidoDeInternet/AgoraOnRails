@@ -15,7 +15,7 @@ feature "Feature name", %q{
     visit homepage
     
     click_link "Cultura"
-    save_and_open_page
+
     page.should have_content("Propuestas relacionadas con Cultura")
     page.should have_css(".proposal .title", :text => "Ley Sinde")
     page.should_not have_css(".proposal .title", :text => "Usar Google en los examenes")
