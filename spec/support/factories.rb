@@ -21,6 +21,14 @@ module Factories
     User.create!(attrs)
   end
   
+  def create_category(attrs = {})
+    Category.create!(attrs)
+  end
+  
+  def create_proposer(attrs = {})
+    Proposer.create!(attrs)
+  end
+  
 end
 
 Spec::Runner.configuration.include(Factories)

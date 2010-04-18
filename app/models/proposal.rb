@@ -1,5 +1,7 @@
 class Proposal < ActiveRecord::Base
   has_many :votes
+  belongs_to :category
+  belongs_to :proposer
   
   named_scope :open, :conditions => "not closed"
   named_scope :hot,  :order => "ranking DESC", :limit => 5

@@ -35,11 +35,17 @@ describe Scrapper do
     end
     
     it "should populate open proposals info" do
+      create_category :name => "Medio Ambiente", :commission_name => "Comisión de Medio Ambiente, Agricultura y Pesca"
+      create_proposer :name => "PSOE", :full_name => "Grupo Parlamentario Socialista"
+      
       Scrapper.scrape
       proposal = Proposal.first
       proposal.official_url.should == proposal_page1
       proposal.proposal_type.should == "Proyecto de ley"
       proposal.should_not be_closed
+      proposal.official_resolution.should be_blank
+      proposal.category.name.should == "Medio Ambiente"
+      proposal.proposer.name.should == "PSOE"   
     end
     
     it "should populate closed proposals info" do
@@ -48,6 +54,11 @@ describe Scrapper do
       proposal.official_url.should == proposal_page4
       proposal.proposal_type.should == "Proyecto de ley"
       proposal.should be_closed
+      proposal.official_resolution.should == "Aprobado sin modificaciones"
+      proposal.category.name.should == "Economía y Hacienda"
+      proposal.category.commission_name.should == "Comisión de Economía y Hacienda"
+      proposal.proposer.full_name.should == "Gobierno"
+      proposal.proposer.name.should == "Gobierno"
     end
     
     it "should update existing proposals" do
