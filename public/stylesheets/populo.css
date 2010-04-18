@@ -406,6 +406,46 @@ button.abstencion span {
   background: url('../images/icon_diary.gif') no-repeat 3px center;
 }
 
+.vote-results ul li {
+  background: none;
+  padding: 2px 0;
+  border: none;
+  height: 1%;
+  overflow: hidden;
+}
+
+.vote-results ul li strong {
+  display: inline;
+  float: left;
+  padding: 7px 25px 7px 10px;
+  -webkit-border-top-right-radius:15px;
+  -webkit-border-bottom-right-radius:15px;
+  -moz-border-radius-topright:15px;
+  -moz-border-radius-bottomright:15px;
+  background: #666;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #999;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 1px;
+}
+
+.vote-results ul li span {
+  float: left;
+  padding: 7px 2px;
+}
+
+.vote-results ul li.in_favor strong {
+  background:#66B9AF;
+  text-shadow: 1px 1px 1px #579D95;
+}
+
+.vote-results ul li.against strong {
+  background:#9B3666;
+  text-shadow: 1px 1px 1px #6E2B48;
+}
+
 
 /* tag list */
 

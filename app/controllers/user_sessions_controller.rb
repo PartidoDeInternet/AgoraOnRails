@@ -18,6 +18,6 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = "oh! adios :("
-    redirect_back_or_default root_path
+    redirect_to root_path
   end
 end
