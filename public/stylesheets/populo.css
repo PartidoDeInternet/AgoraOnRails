@@ -187,6 +187,19 @@ footer {
   box-shadow: 1px 1px 1px #BBBCBA;
 }
 
+.proposal-content,
+.proposal aside {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 15px 0 0;
+  list-style: none;
+}
+
+.proposal-content {
+  width: 440px;
+}
+
 .decorate {
   position: absolute;
   width: 33px;
@@ -281,28 +294,28 @@ button.abstencion span {
   background-image: url('../images/icon_abstencion.gif');
 }
 
-.documents_list {
+.documents-list {
   padding: 7px 0;
   display: block;
 }
 
-.documents_list dt {
+.documents-list dt {
   display: block;
   font-size: 1.2em;
   color: #333;
   border-bottom: 3px solid #D0D0D0;
 }
 
-.documents_list dt strong {
+.documents-list dt strong {
   display: block;
   padding: 2px 3px;
 }
 
-.documents_list ul {
+.documents-list ul {
   padding: 0;
 }
 
-.documents_list ul li {
+.documents-list ul li {
   list-style: none;
   padding: 4px 4px 4px 25px;
   border-top: 1px solid #E8E8E8;
@@ -312,3 +325,14 @@ button.abstencion span {
 .sessions ul li {
   background: url('../images/icon_diary.gif') no-repeat 3px center;
 }
+
+
+/* tag list */
+
+.tag_list dt {
+  display: block;
+  font-size: 1.2em;
+  color: #333;
+  border-bottom: 3px solid #C2C3C2;
+}
+
