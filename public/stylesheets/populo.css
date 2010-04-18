@@ -263,7 +263,9 @@ footer {
 }
 
 .proposal-content,
-.proposal aside {
+.proposal aside,
+.voters,
+.documents-list.voters {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: top;
@@ -273,6 +275,32 @@ footer {
 
 .proposal-content {
   width: 440px;
+}
+
+.voters {
+  width: 205px;
+}
+
+.vote-link {
+  display: block;
+  padding: 10px;
+  background: #66B9AF;
+  text-align: center;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.2em;
+  -o-box-shadow: 1px 1px 1px #BBBCBA;
+  -icab-box-shadow: 1px 1px 1px #BBBCBA;
+  -khtml-box-shadow: 1px 1px 1px #BBBCBA;
+  -moz-box-shadow: 1px 1px 1px #BBBCBA;
+  -webkit-box-shadow: 1px 1px 1px #BBBCBA;
+  box-shadow: 1px 1px 1px #BBBCBA;
+}
+
+.vote-link strong {
+  display: block;
+  padding: 6px;
+  font-size: 3em;
 }
 
 .decorate {
@@ -398,6 +426,10 @@ button.abstencion span {
   font-size: 1.2em;
   color: #333;
   border-bottom: 3px solid #D0D0D0;
+}
+
+.documents-list dt.accessible {
+  display: none;
 }
 
 .documents-list dt strong {
