@@ -9,14 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100418202324) do
+ActiveRecord::Schema.define(:version => 20100418212305) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "commission_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "proposals_count"
+    t.integer  "proposals_count", :default => 0
   end
 
   create_table "proposals", :force => true do |t|
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20100418202324) do
     t.string   "full_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "proposals_count"
+    t.integer  "proposals_count", :default => 0
   end
 
   create_table "users", :force => true do |t|
