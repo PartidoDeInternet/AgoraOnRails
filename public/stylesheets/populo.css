@@ -630,6 +630,15 @@ button.abstencion span {
   width: 5%;
 }
 
+/* welcome */
+#welcome {
+  padding: 10px;
+  background: #FFFFFF;
+  margin-top: 5px;
+  display: block;
+}
+
+
 /* overlay */
 
 /* the overlayed element */ 
