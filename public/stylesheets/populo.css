@@ -198,12 +198,14 @@ footer {
 
 /* breadcrumb */
 
+#nav ul,
 #breadcrumb {
   background: url('../images/hr_content.gif') no-repeat bottom center;
   padding: 0;
   margin: 0 0 20px 0;
 }
 
+#nav li,
 #breadcrumb li {
   display: -moz-inline-stack;
   display: inline-block;
@@ -212,6 +214,16 @@ footer {
   list-style: none;
 }
 
+#nav li a {
+  display: block;
+  text-decoration: none;
+  color: #333333;
+  text-transform: uppercase;
+  padding: 0 0 3px 0;
+  font-size: 0.9em;
+}
+
+#nav li a.active,
 #breadcrumb li a {
   display: block;
   text-decoration: none;
@@ -221,6 +233,8 @@ footer {
   padding: 0 0 3px 0;
   font-size: 0.9em;
 }
+
+
 
 /* proposal */
 
@@ -433,7 +447,7 @@ button.abstencion span {
 
 .vote-results ul li span {
   float: left;
-  padding: 7px 2px;
+  padding: 7px 3px;
 }
 
 .vote-results ul li.in_favor strong {

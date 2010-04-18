@@ -1,15 +1,15 @@
 <section id="content">
-  <nav>
+  <nav id="nav">
     <ul>
-      <li><%= link_to "Hot!", "#hot_proposals" %></li>
-      <li><%= link_to "Recién tramitadas", "#recently_closed" %></li>
+      <li><%= link_to "Hot!", "#hot_proposals", :id => "hot_proposals_link", :class => "navlinks" %></li>
+      <li><%= link_to "Recién tramitadas", "#recently_closed", :id => "recently_closed_link", :class => "navlinks" %></li>
     </ul>
   </nav>  
-  <section id="hot_proposals">
+  <section id="hot_proposals" class="proposals">
     <%= render :partial => 'proposals/proposal', :collection => @hot_proposals %>
   </section>
   
-  <section id="recently_closed">
+  <section id="recently_closed" class="proposals">
     <%= render :partial => 'proposals/proposal', :collection => @recently_closed %>
   </section>
 </section>

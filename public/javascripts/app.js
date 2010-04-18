@@ -26,14 +26,13 @@ $.fn.overlayfield = function() {
   });
 };
 
-var overlayapi;
-
 $(function(){
   
+  // Vote vote!
   $("form.vote button").click(function(e) { 
     e.preventDefault();
     $("#overlay iframe").attr("src", $("form.vote").attr("action") + "?value=" + $(this).attr("value"));
-    overlayapi = $("#overlay").overlay({ 
+    $("#overlay").overlay({ 
       expose: { 
         color: '#fff', 
         loadSpeed: 200, 
@@ -43,6 +42,21 @@ $(function(){
       api: true 
     }).load();
   });
+  
+  // Home!
+  var hot_proposals = $("#hot_proposals"),
+  recently_closed =  $("#recently_closed"),
+  hot_proposals_link = $("#hot_proposals_link");
+  
+  if(hot_proposals.length > 0 && recently_closed.length > 0){
+    recently_closed.addClass("accessible");
+    hot_proposals_link.addClass("active");
+    $(".navlinks").click(function(e){
+      e.preventDefault();
+      $(".navlinks").toggleClass("active");
+      $(".proposals").toggleClass("accessible");
+    });
+  }
   
   $(".overlayfield").overlayfield();
 });

@@ -2,7 +2,7 @@
   <section class="proposal-content">
     <header>
       <hgroup>
-        <h2 class="title"><%= link_to proposal.title, proposal %></h2>
+        <h2 class="title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
         <h3>
           Presentado por: <%= link_to proposal.proposer.name, proposal.proposer, :class => "proposer" %>
           el <span class="proposed_at"><%= l proposal.proposed_at, :format => :long %></span>
