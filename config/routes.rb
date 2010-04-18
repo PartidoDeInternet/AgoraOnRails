@@ -8,5 +8,4 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.root :controller => :welcome
-  #map.home "/", :controller => :proposals, :action => :index
 end

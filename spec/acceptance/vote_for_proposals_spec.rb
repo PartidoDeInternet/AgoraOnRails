@@ -122,7 +122,6 @@ feature "Vote for proposals", %q{
     login_as @user
     proposal = create_proposal(:closed => true, :official_resolution => "Aceptada")
     visit proposal_path(proposal)
-    save_and_open_page
     page.should have_css(".official_resolution", :text => "Aceptada")
   end
 end
