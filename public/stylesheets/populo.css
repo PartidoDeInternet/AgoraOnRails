@@ -190,11 +190,54 @@ aside {
 footer {
   display: block;
   border-top: 1px solid #D6D6D6;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+footer p {
+  color: #999;
+}
+
+#total-votes {
+  width: 231px;
+  float: right;
+  font-size: 1.3em;
+}
+
+#total-votes strong {
+  display: block;
+  font-size: 2em;
+  padding-bottom: 3px;
+  color: #000000;
+  text-shadow: 1px 1px 1px #999;
 }
 
 
 /* modules
 --------------------------------------------- */
+
+/* proposal-head */
+
+.proposal-head {
+  display: block;
+  padding: 0 50px 5px 0;
+  border-bottom: 1px solid #D6D6D6;
+  margin-bottom: 15px;
+}
+.proposal-head h2 {
+  font-size: 3em;
+  font-weight: normal;
+  letter-spacing: -1px;
+}
+
+.proposal-head strong {
+  display: block;
+  padding-bottom: 15px;
+  font-size: 2.5em;
+  font-weight: normal;
+  letter-spacing: -1px;
+  color: #333;
+}
 
 /* breadcrumb */
 

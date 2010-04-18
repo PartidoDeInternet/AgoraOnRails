@@ -1,4 +1,12 @@
 <section id="content">
-  <strong><%= proposals_heading %></strong>
+  <ul id="breadcrumb">
+    <li><a href="/">Inicio »</a></li>
+    <li><%= link_to "Proposiciones", proposals_path %></li>
+  </ul>
+  
+  <header class="proposal-head">
+    <strong><%= proposals_heading %></strong>
+  </header>
+  
   <%= render :partial => 'proposal', :collection => @proposals %>
 </section>
