@@ -1,1 +1,11 @@
-Tu voto ha sido contabilizado.
+<h2>Hooray!!</h2>
+
+<p class="confirmation-message">
+  <strong>Tu voto ha sido contabilizado.</strong>
+  Si nadie lo remedia en 5 segundos te llevaremos a los resultados.
+</p>
+
+
+<script type="text/javascript" charset="utf-8">
+  var t = setTimeout("top.document.location.href = '<%= proposal_path @proposal %>'", 5000);  
+</script>

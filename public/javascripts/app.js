@@ -26,17 +26,18 @@ $.fn.overlayfield = function() {
   });
 };
 
+var overlayapi;
 
 $(function(){
   
   $("form.vote button").click(function(e) { 
     e.preventDefault();
     $("#overlay iframe").attr("src", $("form.vote").attr("action") + "?value=" + $(this).attr("value"));
-    $("#overlay").overlay({ 
+    overlayapi = $("#overlay").overlay({ 
       expose: { 
         color: '#fff', 
         loadSpeed: 200, 
-        opacity: 0.5 
+        opacity: 0.7 
       }, 
       closeOnClick: false, 
       api: true 
@@ -44,5 +45,4 @@ $(function(){
   });
   
   $(".overlayfield").overlayfield();
-  
 });

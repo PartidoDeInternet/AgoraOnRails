@@ -483,7 +483,7 @@ button.abstencion span {
   z-index:10000; 
   background: #E1E2DF url('../images/content.gif');
   width:650px;
-  height:400px; 
+  height:300px; 
   -moz-box-shadow:0 0 4px 5px #CCC; 
   -webkit-box-shadow: 0 0 4px #CCC;     
 } 
@@ -504,7 +504,7 @@ button.abstencion span {
 
 #overlay iframe {
   width:650px;
-  height:400px; 
+  height:300px; 
   border: none;
 }
 
@@ -514,7 +514,26 @@ button.abstencion span {
   float: left;
   width: 300px;
   padding-right: 20px;
+  margin-right: 20px;
   border-right: 1px dotted #ccc;
+}
+
+.confirmation-message {
+  padding-bottom: 20px;
+}
+
+.confirmation-message strong{
+  display: block;
+  font-size: 3em;
+  padding: 25px 0;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+  background: #66B9AF;
+}
+
+.actions {
+  text-align: center;
 }
 
 /* overlayfields */
@@ -552,3 +571,49 @@ p.overlayfield span {
   background: transparent;
   color: #B5B5B5;
 }
+
+/* form buttons */
+
+button.login,
+button.register,
+button.confirm {
+  padding: 0;
+  border: 1px solid #333;
+  background: #333;
+  color: #FFFFFF;
+  letter-spacing: -1px;
+  font-size: x-small;
+  width: auto;
+  overflow: visible;
+  -o-box-shadow: 1px 1px 1px #999;
+  -icab-box-shadow: 1px 1px 1px #999;
+  -khtml-box-shadow: 1px 1px 1px #999;
+  -moz-box-shadow: 1px 1px 1px #999;
+  -webkit-box-shadow: 1px 1px 1px #999;
+  box-shadow: 1px 1px 1px #999;
+}
+
+button.login span,
+button.register span,
+button.confirm span {
+  font-size: 1.5em;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding: 5px 5px 5px 35px;
+  margin-left: 5px;
+}
+
+button.login span {
+  background-image: url('../images/icon_key.gif');
+}
+
+button.register span {
+  background-image: url('../images/icon_user.gif');
+}
+
+button.confirm span {
+  background-image: url('../images/icon_checkmark_dark.gif');
+}
+
+
