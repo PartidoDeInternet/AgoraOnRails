@@ -1,14 +1,25 @@
-<h1>Autenticación requerida</h1>
+<h2>Autenticación requerida</h2>
 
-<% form_for @user_session, :url => user_session_path do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :dni, "DNI" %><br />
-  <%= f.text_field :dni %><br />
-  <br />
-  <%= f.label :password, "Contraseña" %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-  <br />
-  <%= f.submit "Identificarse" %>
-<% end %>
+<section id="login-section">
+  <% form_for @user_session, :url => user_session_path do |f| %>
+    <fieldset>
+      <%= f.error_messages %>
+  
+      <p class="overlayfield">
+        <%= f.label :dni, "<span>Introduce tu DNI</span>" %>
+        <%= f.text_field :dni %>
+      </p>
+  
+      <p class="overlayfield">
+        <%= f.label :password, "<span>Dinos tu contraseña</span>" %>
+        <%= f.password_field :password %>
+      </p>
+    
+      <p>
+        <%= f.check_box :remember_me %><%= f.label :remember_me %>
+      </p>
+    
+      <%= f.submit "Identificarse" %>
+    </fieldset>
+  <% end %>
+</section>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es-ES">
+<head>
+  <title>Populo</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="/stylesheets/populo.css" type="text/css" media="screen" charset="utf-8"/>
+  <!--[if lte IE 6]>
+    <link rel="stylesheet" href="/stylesheets/populo-ie.css" type="text/css" media="screen" charset="utf-8"/>
+  <![endif]-->
+  <script src="/javascripts/html5.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/javascripts/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/javascripts/app.js" type="text/javascript" charset="utf-8"></script>
+  
+</head>
+<body id="mini">
+
+  <div id="wrap">
+    <div id="wrap-inner">
+    
+        <section id="header">
+          <header>
+            <h1><a id="minilogo" href="/"><strong>Populo</strong></a></h1>
+          </header>
+        </section>
+        
+        <section id="content">
+          <p style="color: green"><%= flash[:notice] %></p>
+      
+          <%= yield %>
+        </section>
+        
+    </div>
+  </div>
+
+</body>
+</html>

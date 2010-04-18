@@ -76,9 +76,16 @@ fieldset {
 /* page structure 
 --------------------------------------------- */
 
+#mini,
 #wrap {
   background: #E1E2DF url('../images/content.gif');
   border-bottom: 1px solid #FFF;
+}
+
+#mini,
+#mini #wrap {
+  background: #E1E2DF url('../images/content.gif');
+  border: none;
 }
 
 #wrap-inner {
@@ -86,6 +93,10 @@ fieldset {
   height: 1%;
   padding: 0 0 20px;
   overflow: hidden;
+}
+
+#mini #wrap-inner {
+  padding: 20px;
 }
 
 .wrap-fit {
@@ -105,11 +116,24 @@ fieldset {
   background: url('../images/hr.gif') no-repeat bottom center;
 }
 
+#mini #header {
+  padding: 5px 0 10px 0;
+}
+
 #logo {
   display: block;
   width: 140px;
   height: 35px;
   background: url('../images/populo.gif') no-repeat center center;
+  overflow: hidden;
+  text-indent: -9000em;
+}
+
+#minilogo {
+  display: block;
+  width: 59px;
+  height: 15px;
+  background: url('../images/mini_populo.gif') no-repeat center center;
   overflow: hidden;
   text-indent: -9000em;
 }
@@ -122,6 +146,12 @@ fieldset {
   padding: 15px 0 0 0;
   width: 711px;
   float: left;
+}
+
+#mini #content {
+  float: none;
+  width: 100%;
+  text-align: left;
 }
 
 /* sidebar 
@@ -249,10 +279,29 @@ footer {
   background: url('../images/icon_view.gif') no-repeat left center;
 }
 
+.solved {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  font-size: 1.5em;
+  background: #66B9AF url('../images/icon_padlock_closed.gif') no-repeat 10px center;
+}
+
+.voted {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  font-size: 1.5em;
+  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
+  background: #66B9AF url('../images/icon_padlock_closed.gif') no-repeat 10px center;
+}
+
 form.vote {
   display: block;
-  background: #66B9AF;
   text-align: center;
+  background: #66B9AF;
 }
 
 form.vote fieldset {
@@ -372,6 +421,8 @@ button.abstencion span {
   list-style: none;
   padding: 7px 25px 7px 10px;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   background: #5A5A59;
   color: #FFF;
   font-size: 1em;
@@ -423,6 +474,81 @@ button.abstencion span {
   width: 5%;
 }
 
-.tag_list .tag-1 {
-  width: 85%;
+/* overlay */
+
+/* the overlayed element */ 
+
+#overlay { 
+  display:none; 
+  z-index:10000; 
+  background: #E1E2DF url('../images/content.gif');
+  width:650px;
+  height:400px; 
+  -moz-box-shadow:0 0 4px 5px #CCC; 
+  -webkit-box-shadow: 0 0 4px #CCC;     
+} 
+
+#overlay-inner { 
+  background: url('../images/content_deg.png') repeat-x top;
+} 
+
+#overlay .close { 
+  background: url('../images/icon_delete.gif') no-repeat center center;
+  position:absolute; 
+  right:10px; 
+  top:10px; 
+  cursor:pointer; 
+  height:16px; 
+  width:16px; 
+}
+
+#overlay iframe {
+  width:650px;
+  height:400px; 
+  border: none;
+}
+
+/* loginform */
+
+#login-section {
+  float: left;
+  width: 300px;
+  padding-right: 20px;
+  border-right: 1px dotted #ccc;
+}
+
+/* overlayfields */
+
+p.overlayfield {
+  position: relative;
+  display: block;
+  margin: 0.8em 0;
+  padding: 0 0 0 0;
+  border: 4px solid #DDDDDB;
+  background: #FFFFFF;
+}
+
+p.overlayfield input {
+  background: transparent;
+  border:1px solid #CCC;
+  display:block;
+  font-size:1.2em;
+  padding:0.4em;
+  position:relative;
+  width:20em;
+  z-index:2;
+}
+
+p.overlayfield label {
+  padding: 0 0 0 0;
+}
+
+p.overlayfield span {
+  position: absolute;
+  font-size: 1.2em;
+  border: none;
+  padding: 8px;
+  margin: 0 0 0 0;
+  background: transparent;
+  color: #B5B5B5;
 }
