@@ -20,7 +20,7 @@ feature "Home page", %q{
                               "Bajar el IVA", "WIFI en todo Madrid"])
     
     page.should have_css("#hot_proposals .proposal", :count => 5)
-    page.should have_css("#hot_proposals .proposal:first .title", :text => "Ley Sinde")
+    page.should have_css("#hot_proposals article.proposal:first-of-type .title", :text => "Ley Sinde")
     
   end
   
@@ -49,7 +49,7 @@ feature "Home page", %q{
     click_link "Recién tramitadas"
 
     page.should have_css("#recently_closed .proposal", :count => 5)
-    page.should have_css("#recently_closed .proposal:first .title", :text => "WIFI en todo Madrid")
+    page.should have_css("#recently_closed article.proposal:first-of-type .title", :text => "WIFI en todo Madrid")
   end
   
   scenario "Categories" do
