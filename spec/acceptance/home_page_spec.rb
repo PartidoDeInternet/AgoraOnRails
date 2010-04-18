@@ -84,6 +84,16 @@ feature "Home page", %q{
     page.should_not have_css("#proposers .proposer", :text => "Gobierno")
   end
   
-  scenario "Vote count"
+  scenario "Vote count" do
+    visit homepage
+    
+    page.should have_content("0 votos a través de populo")
+    
+    15.times { create_vote }
+    
+    visit homepage
+    
+    page.should have_content("15 votos a través de populo")
+  end
   
 end
