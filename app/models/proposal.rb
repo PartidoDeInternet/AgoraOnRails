@@ -5,7 +5,7 @@ class Proposal < ActiveRecord::Base
   
   named_scope :open, :conditions => "closed_at is null"
   named_scope :hot,  :order => "(visits + votes_count * 3) DESC", :limit => 5
-  named_scope :recently_closed, :conditions => "closed_at is not null", :order => "closed_at DESC", :limit => 5
+  named_scope :recently_closed, :conditions => "closed_at is not null and official_resolution is not null", :order => "closed_at DESC", :limit => 5
   
   def closed?
     closed_at.present?
