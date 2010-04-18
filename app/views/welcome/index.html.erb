@@ -1,0 +1,11 @@
+<h1>Hot Proposals</h1>
+
+<div id="hot_proposals">
+  <% @hot_proposals.each do |hot_proposal| %>
+    <div class="hot_proposal">
+      <div class="title"> 
+        <%= hot_proposal.title %>
+      </div>        
+    </div>
+  <% end %>
+<div>

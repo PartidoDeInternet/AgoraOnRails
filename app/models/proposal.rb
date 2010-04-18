@@ -1,6 +1,9 @@
 class Proposal < ActiveRecord::Base
   has_many :votes
   
+  named_scope :open, :conditions => "not closed"
+  named_scope :hot,  :order => "ranking DESC", :limit => 5
+  
   #choices can be in_favor, against or abstention
   def percentage_for(choice)
     vote_choice = self.send(choice)

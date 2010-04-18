@@ -14,6 +14,8 @@ class ProposalsController < ApplicationController
   # GET /proposals/1.xml
   def show
     @proposal = Proposal.find(params[:id])
+    @proposal.ranking +=1 
+    @proposal.save!
 
     respond_to do |format|
       format.html # show.html.erb

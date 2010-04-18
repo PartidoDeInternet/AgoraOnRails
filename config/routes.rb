@@ -7,5 +7,6 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :users
   
-  map.home '/', :controller => :proposals, :action => :index
+  map.root :controller => :welcome
+  #map.home "/", :controller => :proposals, :action => :index
 end

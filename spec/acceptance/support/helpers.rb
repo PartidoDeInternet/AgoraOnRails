@@ -20,6 +20,12 @@ module HelperMethods
     end
   end
   
+  def should_see_hot_proposals(titles)
+    titles.each do |title|
+      page.should have_css(".hot_proposal .title", :text => title)
+    end
+  end
+  
 end
 
 Spec::Runner.configuration.include(HelperMethods)

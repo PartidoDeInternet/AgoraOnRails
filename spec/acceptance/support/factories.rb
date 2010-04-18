@@ -5,8 +5,14 @@ module Factories
     Proposal.create!(attrs)
   end
   
+  def create_vote(attrs = {})
+    attrs[:user] ||= create_user
+    attrs[:proposal] ||= create_proposal
+    Vote.create!(attrs)
+  end
+  
   def create_user(attrs = {})
-    attrs[:dni] ||= "999999999Z"
+    attrs[:dni] ||= "99999999#{rand(1000)}Z"
     attrs[:password] ||= "secret"
     attrs[:password_confirmation] ||= "secret"
     attrs[:email] ||= "pepe#{rand(1000)}@gmail.com"

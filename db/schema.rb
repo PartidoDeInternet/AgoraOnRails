@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100417204318) do
+ActiveRecord::Schema.define(:version => 20100417233538) do
 
   create_table "proposals", :force => true do |t|
     t.string   "title"
@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(:version => 20100417204318) do
     t.string   "proposal_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "closed"
+    t.boolean  "closed",              :default => false
     t.integer  "in_favor",            :default => 0
     t.integer  "against",             :default => 0
     t.integer  "abstention",          :default => 0
     t.string   "official_resolution"
+    t.integer  "ranking",             :default => 0
   end
 
   create_table "users", :force => true do |t|
