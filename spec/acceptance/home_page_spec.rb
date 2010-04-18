@@ -57,6 +57,7 @@ feature "Home page", %q{
   end
   
   scenario "Categories" do
+    love      = create_category(:name => "Love")
     economy   = create_category(:name => "Economy")
     health    = create_category(:name => "Health")
     education = create_category(:name => "Education")

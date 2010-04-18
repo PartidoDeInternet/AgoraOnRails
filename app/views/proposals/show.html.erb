@@ -73,6 +73,18 @@
       </section>
       -->
     </section>
+    <% unless @proposal.category.blank? %>
+    <dl class="tag_list" id="related">
+      <dt><strong>Relacionada con</strong></dt>
+      <dd>
+        <ul>
+          <li class="related">
+            <%= link_to @proposal.category.name, [@proposal.category, :proposals], :title => @proposal.category.name %>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+    <% end %>
     
     <span class="decorate up"></span>
     <span class="decorate down"></span>
