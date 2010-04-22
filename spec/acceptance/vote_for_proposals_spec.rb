@@ -7,9 +7,9 @@ feature "Vote for proposals", %q{
 } do
   
   background do
-    @user = create_user(:dni => "123456789A")
-    @user2 = create_user(:dni => "123456789B")
-    @user3 = create_user(:dni => "123456789C")
+    @user = create_user(:login => "123456789A")
+    @user2 = create_user(:login => "123456789B")
+    @user3 = create_user(:login => "123456789C")
   end
   
   scenario "Vote for open proposals" do
@@ -41,7 +41,7 @@ feature "Vote for proposals", %q{
     page.should have_content("Autenticación requerida")
     page.should_not have_css("button", :text => "Confirmar")
       
-    fill_in "Introduce tu DNI", :with => "123456789A"
+    fill_in "Introduce tu usuario", :with => "123456789A"
     fill_in "Dinos tu contraseña", :with => "secret"
     click_button "Identifícate"
     

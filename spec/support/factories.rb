@@ -14,12 +14,10 @@ module Factories
   end
   
   def create_user(attrs = {})
-    attrs[:dni] ||= "99999999#{rand(1000)}Z"
+    attrs[:login] ||= "99999999#{rand(1000)}Z"
     attrs[:password] ||= "secret"
     attrs[:password_confirmation] ||= "secret"
     attrs[:email] ||= "pepe#{rand(1000)}@gmail.com"
-    attrs[:first_name] ||= "José"
-    attrs[:last_name] ||= "López"
     User.create!(attrs)
   end
   

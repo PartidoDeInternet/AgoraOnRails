@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string    :dni,                 :null => false                # optional, you can use email instead, or both
+      t.string    :login,                 :null => false                # optional, you can use email instead, or both
       t.string    :first_name,          :null => false
       t.string    :last_name,           :null => false
       t.string    :email,               :null => false                # optional, you can use login instead, or both
