@@ -4,7 +4,8 @@
 
 == Description:
 
-Populo aims to revolutionize democracy by empowering citizens to directly vote for real proposals.
+Populo aims to revolutionize democracy by empowering citizens to directly vote real proposals,
+extracted from the Spanish Congress official web page http://www.congreso.es/portal/page/portal/Congreso/Congreso/Iniciativas
 
 == Install and Use:
 
