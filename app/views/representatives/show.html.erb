@@ -1,0 +1,25 @@
+<h1>Representante</h1>
+
+<p>
+  <strong>Nombre:</strong>
+  <%=h @representative.name %>
+</p>
+<p>
+  <strong>Descripción:</strong>
+  <%=h @representative.description %>
+</p>
+
+<% if current_user %>
+	<% form_for current_user, 
+		:url => choose_representative_user_path, 
+		:html => {:method => :put, :id => 'choose_representative_form'} do |f| -%>
+		
+	  <%= hidden_field_tag :representative_id, @representative.id %>
+	  <%= f.submit "Elegir como representante", :id => "choose_representative_button" %>
+	<% end -%>
+<% end %>
+<p>
+  <%= link_to "Edit", edit_representative_path(@representative) %> |
+  <%= link_to "Destroy", @representative, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", representatives_path %>
+</p>

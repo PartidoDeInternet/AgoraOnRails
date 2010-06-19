@@ -29,6 +29,12 @@ module Factories
     Proposer.create!(attrs)
   end
   
+  def create_representative(attrs = {})
+    attrs[:name] ||= "Factory Greenpeace"
+    attrs[:description] ||= "Factory an ONG"
+    Representative.create!(attrs)
+  end
+  
 end
 
 Spec::Runner.configuration.include(Factories)

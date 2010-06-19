@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
+  before_filter :require_user, :only => :choose_representative
   #before_filter :require_user, :only => [:show, :edit, :update]
   
   layout "mini_application"
@@ -35,4 +36,13 @@ class UsersController < ApplicationController
   #    render :action => :edit
   #  end
   #end
+  
+  def choose_representative
+    @user = current_user
+    representative = Representative.find(params[:representative_id])
+    @user.representative = representative
+    @user.save!
+    flash[:notice] = "Has elegido a tu representante."
+    redirect_to root_url
+  end
 end
