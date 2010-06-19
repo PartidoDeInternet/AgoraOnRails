@@ -9,8 +9,9 @@ Rails::Initializer.run do |config|
   config.gem "mechanize"
   config.gem "authlogic"
   config.gem "inherited_resources", :version => "1.0.6" 
-  config.gem "rspec", :version => "1.3.0"
-  config.gem "rspec-rails", :version => "1.3.2"
+#TODO: failing to load libraries
+#  config.gem "rspec", :version => "1.3.0"
+#  config.gem "rspec-rails", :version => "1.3.2"
   config.gem "capybara"  
   
   
