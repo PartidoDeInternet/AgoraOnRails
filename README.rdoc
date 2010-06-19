@@ -25,6 +25,9 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
 == Running the test suite:
     
     sudo gem install steak webmock
+    sudo gem install rspec --version 1.3.0
+    sudo gem install rspec-rails --version 1.3.2
+    sudo gem install capybara
     
     rake
     
