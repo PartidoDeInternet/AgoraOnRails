@@ -1,0 +1,25 @@
+<h1>Representante</h1>
+
+<p>
+  <strong>Nombre:</strong>
+  <%=h @organization.name %>
+</p>
+<p>
+  <strong>Descripción:</strong>
+  <%=h @organization.description %>
+</p>
+
+<% if current_user %>
+	<% form_for current_user, 
+		:url => choose_organization_user_path, 
+		:html => {:method => :put, :id => 'choose_organization_form'} do |f| -%>
+		
+	  <%= hidden_field_tag :organization_id, @organization.id %>
+	  <%= f.submit "Elegir como organización representante", :id => "choose_organization_button" %>
+	<% end -%>
+<% end %>
+<p>
+  <%= link_to "Edit", edit_organization_path(@organization) %> |
+  <%= link_to "Destroy", @organization, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", organizations_path %>
+</p>

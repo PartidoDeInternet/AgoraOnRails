@@ -29,10 +29,10 @@ module Factories
     Proposer.create!(attrs)
   end
   
-  def create_representative(attrs = {})
+  def create_organization(attrs = {})
     attrs[:name] ||= "Factory Greenpeace"
     attrs[:description] ||= "Factory an ONG"
-    Representative.create!(attrs)
+    Organization.create!(attrs)
   end
   
 end

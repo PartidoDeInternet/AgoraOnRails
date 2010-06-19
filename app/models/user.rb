@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :votes
   has_many :voted_proposals, :through => :votes, :source => :proposal
-  belongs_to :representative
-  
+  belongs_to :organization
   
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)

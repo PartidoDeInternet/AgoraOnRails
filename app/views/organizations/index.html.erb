@@ -1,0 +1,19 @@
+<h1>Organizations</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <% for organization in @organizations %>
+    <tr>
+      <td><%=h organization.name %></td>
+      <td><%=h organization.description %></td>
+      <td><%= link_to "Show", organization %></td>
+      <td><%= link_to "Edit", edit_organization_path(organization) %></td>
+      <td><%= link_to "Destroy", organization, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Organization", new_organization_path %></p>
