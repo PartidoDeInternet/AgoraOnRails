@@ -1,0 +1,35 @@
+<h2>Revisa tu voto</h2>
+
+<div class="confirmation-message">
+  <strong>Vas <%= confirmation_text(params[:value]) %></strong>
+  la iniciativa “<%= @opinion.proposal.title %>”
+  <p>con esta explicación:<p>
+  
+  <div><%= @opinion.explanation %></div>
+  
+  <p>y con este enlace<br/>
+  	<%= @opinion.link %>
+  </p>
+	
+</div>
+
+<% form_for @opinion do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :value %>
+  <%= f.hidden_field :explanation %>
+  <%= f.hidden_field :link %>
+  <%= f.hidden_field :proposal_id %>
+  <%= f.hidden_field :organization_id %>
+  <p class="actions">
+    <button type="submit" class="confirm"><span>Estoy seguro</span></button> o bueno... <%= link_to 'quiero pensármelo mejor', "#", :class => "oh-no" %>
+  </p>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  $(".oh-no").click(function(e){
+    e.preventDefault();
+    top.document.location.href = '<%= proposal_path @opinion.proposal %>'
+  });
+});
+</script>

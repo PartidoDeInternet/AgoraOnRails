@@ -34,6 +34,31 @@
             <button type="submit" name="value" value="abstencion" class="abstencion"><span>Abstencion</span></button>
           </fieldset>
         <% end -%>
+		
+		<% if @opinion %>
+			<% form_for @opinion, :url => new_opinion_path, :html => {:method => :get} do |f| -%>
+			  <fieldset>
+	            <strong>Vota como representante de <%= @opinion.organization.name %></strong>
+				<div>
+					<%= f.label :explanation, "Explica tu opinión" %><br/>
+					<%= f.text_area :explanation %>
+				</div>
+				<p>
+					<%= f.label :link, "Enlace" %><br/>
+					<%= f.text_field :link %>
+				</p>
+				<%= f.hidden_field :proposal_id, :value => @proposal.id %>
+				<%= f.hidden_field :organization_id, :value => @opinion.organization.id %>
+	            <button type="submit" name="value" value="si" class="si" id="representant_vote_yes">	
+					<span>Sí</span></button>
+	            <button type="submit" name="value" value="no" class="no" id="representant_vote_no">
+					<span>No</span></button>
+	            <button type="submit" name="value" value="abstencion" class="abstencion"
+					id="representant_vote_abstention">
+					<span>Abstencion</span></button>
+	          </fieldset>
+			<% end -%>
+		<% end -%>
       <% end %>
       
       <section class="vote-results documents-list">

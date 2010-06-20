@@ -1,0 +1,2 @@
+module OpinionsHelper
+end

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :opinions
+
   map.resources :organizations
   map.resources :votes
   map.resources :proposals, :has_many => :votes

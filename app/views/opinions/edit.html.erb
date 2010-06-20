@@ -1,0 +1,32 @@
+<h1>Editing opinion</h1>
+
+<% form_for(@opinion) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :organization_id %><br />
+    <%= f.text_field :organization_id %>
+  </p>
+  <p>
+    <%= f.label :proposal_id %><br />
+    <%= f.text_field :proposal_id %>
+  </p>
+  <p>
+    <%= f.label :explanation %><br />
+    <%= f.text_area :explanation %>
+  </p>
+  <p>
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @opinion %> |
+<%= link_to 'Back', opinions_path %>

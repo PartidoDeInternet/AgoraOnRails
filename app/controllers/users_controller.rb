@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def choose_organization
     @user = current_user
     organization = Organization.find(params[:organization_id])
-    @user.organization = organization
+    @user.representer = organization
     @user.save!
     flash[:notice] = "Has elegido a tu representante."
     redirect_to root_url

@@ -35,7 +35,7 @@ feature "Feature name", %q{
     
     page.should have_content("Has elegido a tu representante.")
     @user.reload
-    @user.organization.should == organization
+    @user.representer.should == organization
   end
   
   scenario "Don't allow to choose organization unless user is logged in" do
