@@ -35,6 +35,14 @@ module Factories
     Organization.create!(attrs)
   end
   
+  def create_opinion(attrs = {})
+    attrs[:organization] ||= create_organization
+    attrs[:proposal] ||= create_proposal
+    attrs[:value] ||= "si"
+    attrs[:explanation] ||= "¿Y por qué no?"
+    Opinion.create!(attrs)
+  end
+  
 end
 
 Spec::Runner.configuration.include(Factories)

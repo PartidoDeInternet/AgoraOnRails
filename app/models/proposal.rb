@@ -21,5 +21,19 @@ class Proposal < ActiveRecord::Base
   def visited!
     Proposal.increment_counter :visits, id
   end
+  
+  def count_delegated_votes!
+    User.all.each do |user|
+      opinion = user.delegated_opinion_for(self)
+      if opinion
+        case opinion.value
+        when "si": self.in_favor += 1
+        when "no": self.against += 1
+        when "abstencion": self.abstention += 1
+        end
+        self.save!
+      end
+    end
+  end
     
 end

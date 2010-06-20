@@ -13,4 +13,10 @@ class User < ActiveRecord::Base
   def represents_organization?
     represented_organization
   end
+  
+  def delegated_opinion_for(proposal)
+    return nil if has_voted_for?(proposal) or representer.nil? 
+    representer.opinion_for(proposal)
+  end
+
 end

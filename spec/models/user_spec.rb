@@ -13,4 +13,11 @@ describe User do
     psoe = create_organization(:name => "PSOE", :spokesman => zp)
     zp.represented_organization.should == psoe
   end
+  
+  it "should not have delegated opinion if she has already voted" do
+    user = create_user
+    ley_sinde = create_proposal
+    create_vote(:user => user, :proposal => ley_sinde, :value => 'no')
+    user.delegated_opinion_for(ley_sinde).should == nil
+  end
 end

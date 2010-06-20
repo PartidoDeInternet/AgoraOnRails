@@ -7,4 +7,8 @@ class Organization < ActiveRecord::Base
   def has_opined_for?(proposal)
     opinions.map(&:proposal).include?(proposal)
   end
+  
+  def opinion_for(proposal)
+    opinions.find_by_proposal_id(proposal)
+  end
 end
