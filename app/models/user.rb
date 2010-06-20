@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   belongs_to :representer, :class_name => "Organization"
   has_one :represented_organization, :class_name => "Organization", :foreign_key => "spokesman_id"
   
+  def name
+    "#{first_name} #{last_name}"
+  end
+  
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)
   end

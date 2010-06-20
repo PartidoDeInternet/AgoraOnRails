@@ -4,6 +4,8 @@ class Organization < ActiveRecord::Base
   belongs_to :spokesman, :class_name => "User"
   has_many :opinions
   
+  validates_presence_of :spokesman
+  
   def has_opined_for?(proposal)
     opinions.map(&:proposal).include?(proposal)
   end

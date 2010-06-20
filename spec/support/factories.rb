@@ -32,6 +32,7 @@ module Factories
   def create_organization(attrs = {})
     attrs[:name] ||= "Factory Greenpeace"
     attrs[:description] ||= "Factory an ONG"
+    attrs[:spokesman] ||= create_user(:first_name => "Factory spokesman")
     Organization.create!(attrs)
   end
   
