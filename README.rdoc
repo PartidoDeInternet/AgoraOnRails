@@ -1,6 +1,6 @@
 = Populo
 
-* http://github.com/cavalle/populo
+* http://github.com/partidodeinternet/populo
 
 == Description:
 
@@ -12,7 +12,7 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
     sudo gem install progressbar mechanize authlogic
     sudo gem install inherited_resources --version 1.0.6
     
-    git clone git://github.com/cavalle/populo.git
+    git clone git://github.com/partidodeinternet/populo.git
     
     rake db:migrate 
     
