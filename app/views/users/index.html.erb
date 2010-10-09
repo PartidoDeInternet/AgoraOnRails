@@ -1,0 +1,23 @@
+<section id="organizations_list">
+	<header>
+		<h2>Usuarios presentes en Populo</h2>
+		<p>
+			Algunas organizaciones están presentes en Populo. Puedes delegar tu voto en ellas para
+			las propuestas en las que no votes directamente.
+		</p>
+	</header>
+	<% for user in @users do %>
+		<article class="user">
+			<header>
+				<h3 class="name"><%= link_to user.login, user %></h3>
+			</header>
+			
+			<p class="description"> <%= user.description %></p>
+			<p class="link"> <%= user.link %></p>
+			<section class="spokesman">
+				<p class="name"><%= user.spokesman ? user.spokesman.name : "Nadie" %></p>
+			</section>
+		</article>
+	<% end %>
+</section>	
+

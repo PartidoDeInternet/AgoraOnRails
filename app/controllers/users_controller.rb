@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   
   layout "mini_application"
   
+  def index
+    @users = User.all
+  end
+  
   def new
    @user = User.new
   end
@@ -18,10 +22,10 @@ class UsersController < ApplicationController
      render :action => :new
    end
   end
-  #
-  #def show
-  #  @user = @current_user
-  #end
+  
+  def show
+    @user = User.find(params[:id])
+  end
   #
   #def edit
   #  @user = @current_user
@@ -37,12 +41,4 @@ class UsersController < ApplicationController
   #  end
   #end
   
-  def choose_organization
-    @user = current_user
-    organization = Organization.find(params[:organization_id])
-    @user.representer = organization
-    @user.save!
-    flash[:notice] = "Has elegido a tu representante."
-    redirect_to root_url
-  end
 end

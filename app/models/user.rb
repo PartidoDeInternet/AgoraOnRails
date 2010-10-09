@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   
   has_many :votes
   has_many :voted_proposals, :through => :votes, :source => :proposal
-  belongs_to :representer, :class_name => "Organization"
+  belongs_to :spokesman, :class_name => "User"
+    
   has_one :represented_organization, :class_name => "Organization", :foreign_key => "spokesman_id"
   
   def name

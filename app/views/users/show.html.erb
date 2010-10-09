@@ -1,0 +1,14 @@
+<h1>Usuario</h1>
+
+<p>
+  <strong>Nombre:</strong>
+  <%=h @user.login %>
+</p>
+
+<% spokesman = @user %>
+<% form_for spokesman, 
+	:url => spokesman_path(spokesman), 
+	:html => {:method => :put, :id => 'choose_spokesman_form'} do |f| -%>
+
+  <%= f.submit "Elegir como portavoz", :id => "choose_spokesman_button" %>
+<% end -%>
