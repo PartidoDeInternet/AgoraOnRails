@@ -1,4 +1,4 @@
-<section id="organizations_list">
+<section id="user_list">
 	<header>
 		<h2>Usuarios presentes en Populo</h2>
 		<p>
@@ -12,7 +12,6 @@
 				<h3 class="name"><%= link_to user.login, user %></h3>
 			</header>
 			
-			<p class="description"> <%= user.description %></p>
 			<p class="link"> <%= user.link %></p>
 			<section class="spokesman">
 				<p class="name"><%= user.spokesman ? user.spokesman.name : "Nadie" %></p>

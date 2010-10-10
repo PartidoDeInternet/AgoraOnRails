@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   belongs_to :spokesman, :class_name => "User"
   has_many :represented_users, :class_name => "User", :foreign_key => :spokesman_id
   
-  has_one :represented_organization, :class_name => "Organization", :foreign_key => "spokesman_id"
-  
   def name
     "#{first_name} #{last_name}"
   end
@@ -15,11 +13,7 @@ class User < ActiveRecord::Base
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)
   end
-  
-  def represents_organization?
-    represented_organization
-  end
-  
+    
   def delegated_vote_for(proposal)
     return nil if has_voted_for?(proposal) or spokesman.nil? 
     spokesman.has_voted_for?(proposal) ? spokesman.votes.find_by_proposal_id(proposal) : nil

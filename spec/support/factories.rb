@@ -29,21 +29,6 @@ module Factories
     Proposer.create!(attrs)
   end
   
-  def create_organization(attrs = {})
-    attrs[:name] ||= "Factory Greenpeace"
-    attrs[:description] ||= "Factory an ONG"
-    attrs[:spokesman] ||= create_user(:first_name => "Factory spokesman")
-    Organization.create!(attrs)
-  end
-  
-  def create_opinion(attrs = {})
-    attrs[:organization] ||= create_organization
-    attrs[:proposal] ||= create_proposal
-    attrs[:value] ||= "si"
-    attrs[:explanation] ||= "¿Y por qué no?"
-    Opinion.create!(attrs)
-  end
-  
 end
 
 Spec::Runner.configuration.include(Factories)

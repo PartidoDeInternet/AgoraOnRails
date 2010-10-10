@@ -16,14 +16,12 @@ feature "Spokesmen", %q{
     
     visit "/"
     click_link "Usuarios"
-
+save_and_open_page
     page.should have_css(".user .name", "PSOE")
-    page.should have_css(".user .description", "Partido Socialista")
     page.should have_css(".user .link", "http://www.psoe.es")
     page.should have_css(".user .spokesman .name", "Nadie")
 
     page.should have_css(".user .name", "PP")
-    page.should have_css(".user .description", "Partido Popular")
     page.should have_css(".user .link", "http://www.pp.es")
     page.should have_css(".user .spokesman .name", "Nadie")
   end

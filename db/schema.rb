@@ -19,25 +19,6 @@ ActiveRecord::Schema.define(:version => 20101010120828) do
     t.integer  "proposals_count", :default => 0
   end
 
-  create_table "opinions", :force => true do |t|
-    t.string   "value"
-    t.integer  "organization_id"
-    t.integer  "proposal_id"
-    t.text     "explanation"
-    t.string   "link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "organizations", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "spokesman_id"
-    t.string   "link"
-  end
-
   create_table "proposals", :force => true do |t|
     t.string   "title",               :limit => 1024
     t.string   "official_url",        :limit => 1024
@@ -80,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20101010120828) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "organization_id"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "representer_id"
