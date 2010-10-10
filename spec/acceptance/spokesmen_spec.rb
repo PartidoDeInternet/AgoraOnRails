@@ -16,7 +16,7 @@ feature "Spokesmen", %q{
     
     visit "/"
     click_link "Usuarios"
-save_and_open_page
+
     page.should have_css(".user .name", "PSOE")
     page.should have_css(".user .link", "http://www.psoe.es")
     page.should have_css(".user .spokesman .name", "Nadie")

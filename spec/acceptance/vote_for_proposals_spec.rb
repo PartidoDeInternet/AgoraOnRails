@@ -22,7 +22,7 @@ feature "Vote for proposals", %q{
       proposal = create_proposal(:title => "Ley Sinde")
       
       visit proposal_path(proposal)
-save_and_open_page      
+
       click_button vote
 
       page.should have_content("Vas #{confirmation} la iniciativa “Ley Sinde”")

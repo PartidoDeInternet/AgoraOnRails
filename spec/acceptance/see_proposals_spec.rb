@@ -6,16 +6,19 @@ feature "See proposals", %q{
   I want to see all the relevant information about a proposal
 } do
   
+  background do
+    @proposal = create_proposal(
+               :title => "Ley Sinde", 
+               :official_url => "http://congreso.es/sinde", 
+               :proposal_type => "Proyecto de Ley")
+  end
+  
   scenario "See a proposal basic information" do
-    # Given we have a proposal
-    proposal = create_proposal(:title => "Ley Sinde", :official_url => "http://congreso.es/sinde", :proposal_type => "Proyecto de Ley")
-     
-    3.times { create_vote(:proposal => proposal) }
-    5.times { visit proposal_path(proposal) }
-    # When I go to the proposal´s page
-    visit proposal_path(proposal)
-    
-    # Then I should see the relevant information about a proposal
+    3.times { create_vote(:proposal => @proposal) }
+    5.times { visit proposal_path(@proposal) }
+
+    visit proposal_path(@proposal)
+
     page.should have_css(".proposal", :count => 1)
     within(:css, ".proposal") do
       page.should have_css(".proposal_type", :text => "Proyecto de Ley")
@@ -25,5 +28,41 @@ feature "See proposals", %q{
       page.should have_css(".views", :text => "5 visitas")
     end
   end
+  
+  scenario "See comments and links for a proposal" do
+    punset  = create_user(:login => "Punset")
+
+    punsets_vote = create_vote(
+      :user        => punset,
+      :proposal    => @proposal, 
+      :explanation => "Internet es un derecho fundamental de todos los humanos",
+      :link        => "http://derechoshumanos.com")
+                    
+    visit proposal_path(@proposal)
+
+    within(:css, ".proposal") do      
+      within(:css, "#vote_#{punsets_vote.id}") do 
+        page.should have_css(".login", :text => "Punset")
+        page.should have_css(".explanation", :text => "Internet es un derecho fundamental de todos los humanos")
+        page.should have_css(".link", :text => "http://derechoshumanos.com")
+      end
+    end
+  end
+
+  scenario "Only displays votes with a comment" do
+    trol = create_user(:login => "Trol")
+ 
+    trols_vote = create_vote( 
+       :user        => trol,
+       :proposal    => @proposal, 
+       :link        => "http://youporn.com")
     
+    visit proposal_path(@proposal)
+        
+    within(:css, ".proposal") do
+      page.should_not have_css(".login", :text => "Trol")
+      page.should_not have_css(".link", :text => "http://youporn.com")
+    end
+  end
+  
 end
