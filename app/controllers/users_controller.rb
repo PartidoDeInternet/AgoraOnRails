@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  layout "mini_application"
-  
+
   def index
     @users = User.all
   end
   
   def new
    @user = User.new
+   render :layout => "mini_application"
   end
   
   def create
@@ -22,5 +22,6 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @proposals = @user.voted_proposals
   end 
 end

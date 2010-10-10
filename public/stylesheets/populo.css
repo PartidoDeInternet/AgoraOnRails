@@ -785,3 +785,55 @@ button.confirm span {
 }
 
 
+/* user profile */
+.voted_in_favor {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  font-size: 1.5em;
+  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
+  background: #66B9AF url('../images/icon_si.gif') no-repeat 10px center;
+	width:225px;
+}
+
+.voted_against {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  font-size: 1.5em;
+  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
+  background: #66B9AF url('../images/icon_no.gif') no-repeat 10px center;
+	width:225px;
+}
+
+.voted_abstention {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  font-size: 1.5em;
+  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
+  background: #66B9AF url('../images/icon_abstencion.gif') no-repeat 10px center;
+	width:225px;
+}
+
+.make-my-spokesman {
+  display: block;
+  padding: 10px;
+  background: #66B9AF;
+  text-align: center;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  -o-box-shadow: 1px 1px 1px #BBBCBA;
+  -icab-box-shadow: 1px 1px 1px #BBBCBA;
+  -khtml-box-shadow: 1px 1px 1px #BBBCBA;
+  -moz-box-shadow: 1px 1px 1px #BBBCBA;
+  -webkit-box-shadow: 1px 1px 1px #BBBCBA;
+  box-shadow: 1px 1px 1px #BBBCBA;
+}
+
+

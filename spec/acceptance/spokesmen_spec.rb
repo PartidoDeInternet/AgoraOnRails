@@ -32,7 +32,7 @@ feature "Spokesmen", %q{
     
     visit users_path
     click_link "Fan de Punset"
-    click_button "Elegir como portavoz"
+    click_button "Elegir a Fan de Punset como mi portavoz"
     
     page.should have_content("Has elegido a tu portavoz.")
     @user.reload
@@ -44,10 +44,28 @@ feature "Spokesmen", %q{
     
     visit users_path
     click_link "Fan de Punset"
-    click_button "Elegir como portavoz"
+    click_button "Elegir a Fan de Punset como mi portavoz"
 
     page.should have_content("Autenticación requerida")
     page.should_not have_content("Has elegido a tu portavoz.")
+  end
+  
+  scenario "View proposals voted by the user" do
+    [["Ley Sinde",           "no",         "En contra",  "voted_against"], 
+     ["Wifi gratis",         "si",         "A favor",    "voted_in_favor"], 
+     ["Ley que no entiendo", "abstencion", "Abstención", "voted_abstention"]].each do |title, vote, humanize_vote_text, css_image|
+ 
+      proposal = create_proposal :title => title
+      create_vote :user => @user, :proposal => proposal, :value => vote
+      
+      visit user_path(@user)
+      
+      page.should have_css(".proposal")
+      within(:css, "#proposal_#{proposal.id}") do
+        page.should have_css(".title", :text => title)
+        page.should have_css(".#{css_image}", :text => humanize_vote_text)
+      end
+    end
   end
     
 end

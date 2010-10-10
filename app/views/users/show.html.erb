@@ -1,14 +1,20 @@
-<h1>Usuario</h1>
-
-<p>
-  <strong>Nombre:</strong>
-  <%=h @user.login %>
-</p>
-
-<% spokesman = @user %>
-<% form_for spokesman, 
-	:url => spokesman_path(spokesman), 
-	:html => {:method => :put, :id => 'choose_spokesman_form'} do |f| -%>
-
-  <%= f.submit "Elegir como portavoz", :id => "choose_spokesman_button" %>
-<% end -%>
+<% @title = "#{@user.login}" %>
+<section id="content">
+  <ul id="breadcrumb">
+    <li><a href="/">Inicio »</a></li>
+    <li><%= link_to "Proposiciones", proposals_path %></li>
+    <li><%= link_to "Usuarios", users_path %></li>
+  </ul>
+  
+  <% spokesman = @user %>
+  <% form_for spokesman, 
+  	:url => spokesman_path(spokesman), 
+  	:html => {:method => :put, :id => 'choose_spokesman_form'} do |f| -%>
+  
+    <%= f.submit "Elegir a #{h @user.login} como mi portavoz", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
+  <% end -%>
+  
+  
+  <%= render :partial => "proposal", :collection => @proposals %>
+  
+</section>
