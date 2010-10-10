@@ -48,6 +48,12 @@ feature "Spokesmen", %q{
 
     page.should have_content("Autenticación requerida")
     page.should_not have_content("Has elegido a tu portavoz.")
+    
+    fill_in "Introduce tu usuario", :with => @user.login
+    fill_in "Dinos tu contraseña", :with => "secret"
+    click_button "Identifícate"
+    
+    page.should have_content("Has elegido a tu portavoz.")
   end
   
   scenario "View proposals voted by the user" do

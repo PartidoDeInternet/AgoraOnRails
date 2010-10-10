@@ -6,15 +6,9 @@
     <li><%= link_to "Usuarios", users_path %></li>
   </ul>
   
-  <% spokesman = @user %>
-  <% form_for spokesman, 
-  	:url => spokesman_path(spokesman), 
-  	:html => {:method => :put, :id => 'choose_spokesman_form'} do |f| -%>
-  
-    <%= f.submit "Elegir a #{h @user.login} como mi portavoz", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
+  <% form_for @user, :url => choose_as_spokesman_user_path(@user) do |f| -%>
+    <%= submit_tag "Elegir a #{h @user.login} como mi portavoz", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
   <% end -%>
   
-  
   <%= render :partial => "proposal", :collection => @proposals %>
-  
 </section>
