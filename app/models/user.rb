@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :voted_proposals, :through => :votes, :source => :proposal
   belongs_to :spokesman, :class_name => "User"
-    
+  has_many :represented_users, :class_name => "User", :foreign_key => :spokesman_id
+  
   has_one :represented_organization, :class_name => "Organization", :foreign_key => "spokesman_id"
   
   def name
@@ -19,9 +20,9 @@ class User < ActiveRecord::Base
     represented_organization
   end
   
-  def delegated_opinion_for(proposal)
-    return nil if has_voted_for?(proposal) or representer.nil? 
-    representer.opinion_for(proposal)
+  def delegated_vote_for(proposal)
+    return nil if has_voted_for?(proposal) or spokesman.nil? 
+    spokesman.has_voted_for?(proposal) ? spokesman.votes.find_by_proposal_id(proposal) : nil
   end
 
 end

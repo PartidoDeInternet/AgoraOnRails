@@ -24,9 +24,9 @@ class Proposal < ActiveRecord::Base
   
   def count_delegated_votes!
     User.all.each do |user|
-      opinion = user.delegated_opinion_for(self)
-      if opinion
-        case opinion.value
+      vote = user.delegated_vote_for(self)
+      if vote
+        case vote.value
         when "si": self.in_favor += 1
         when "no": self.against += 1
         when "abstencion": self.abstention += 1
