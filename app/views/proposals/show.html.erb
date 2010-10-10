@@ -53,7 +53,9 @@
         </dl>
       </section>
       
-      <%= render :partial => "vote", :collection => @proposal.votes %>
+      <p class="votes_with_explanations">
+        <%= render :partial => "vote", :collection => @proposal.votes.order_by_represented_users %>
+      </p>
       
       <!-- 
       <section class="documentation documents-list">

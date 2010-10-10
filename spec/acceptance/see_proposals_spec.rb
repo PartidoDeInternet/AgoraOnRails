@@ -65,4 +65,27 @@ feature "See proposals", %q{
     end
   end
   
+  scenario "Order comments by number of represented users" do
+    jenny = create_user(:login => "Jenny")
+    1.times { create_user :spokesman => jenny}
+    
+    jonnhy = create_user(:login => "Jonnhy")
+    3.times { create_user :spokesman => jonnhy}
+    
+    punset = create_user(:login => "Punset")
+    10.times { create_user :spokesman => punset}
+    
+    [jenny, punset, jonnhy].each { |user| 
+      create_vote :user => user, :proposal => @proposal, :explanation => "#{user.login}'s explanation" }
+    
+    visit proposal_path(@proposal)
+
+    within(:css, ".proposal") do           
+      page.should have_css(".vote:nth-child(5) .explanation", :text => "Punset's explanation")
+      page.should have_css(".vote:nth-child(6) .explanation", :text => "Jonnhy's explanation")
+      page.should have_css(".vote:nth-child(7) .explanation", :text => "Jenny's explanation")
+    end
+    
+  end
+  
 end
