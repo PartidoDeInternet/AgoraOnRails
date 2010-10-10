@@ -3,11 +3,22 @@
 <p class="confirmation-message">
   <strong>Vas <%= confirmation_text(params[:value]) %></strong>
   la iniciativa “<%= @proposal.title %>”
+  
+  <% if params[:explanation].any? %>
+    <p>Porque <%= params[:explanation] %></p>
+  <% end %>
+  
+  <% if params[:link].any? %>
+    <p>Más información <%= params[:link] %></p>
+  <% end %>
+  
 </p>
 
 <% form_for([@proposal, @vote]) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :value, :value => params[:value] %>
+  <%= f.hidden_field :explanation, :value => params[:explanation] %>
+  <%= f.hidden_field :link, :value => params[:link] %>
   <p class="actions">
     <button type="submit" class="confirm"><span>Estoy seguro</span></button> o bueno... <%= link_to 'quiero pensármelo mejor', "#", :class => "oh-no" %>
   </p>

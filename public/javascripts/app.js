@@ -31,7 +31,7 @@ $(function(){
   // Vote vote!
   $("form.vote button").click(function(e) { 
     e.preventDefault();
-    $("#overlay iframe").attr("src", $("form.vote").attr("action") + "?value=" + $(this).attr("value"));
+    $("#overlay iframe").attr("src", $("form.vote").attr("action") + "?value=" + $(this).attr("value") + "&explanation=" + $("form.vote").attr("explanation").value + "&link=" + $("form.vote").attr("link").value);
     $("#overlay").overlay({ 
       expose: { 
         color: '#fff', 

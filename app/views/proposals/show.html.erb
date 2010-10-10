@@ -26,9 +26,18 @@
       <% elsif current_user && current_user.has_voted_for?(@proposal) %>
         <p class="voted">Ya has votado esta propuesta</p>
       <% else %>  
-        <% form_tag new_proposal_vote_path(@proposal), :method => :get, :class => "vote" do -%>
+        <% form_tag new_proposal_vote_path(@proposal), {:method => :get, :class => "vote"} do -%>
           <fieldset>
             <strong>Vota esta propuesta</strong>
+            <div>
+            	<%= label_tag :explanation, "Explica tu opinión (opcional)" %><br/>
+						  <%= text_area_tag :explanation, nil, :size => "40x5" %>
+						</div>
+						<div>
+							<%= label_tag :link, "Enlace (opcional)" %><br/>
+						  <%= text_field_tag :link, nil, :size => "40" %>
+						</div>
+						<br/>
             <button type="submit" name="value" value="si" class="si"><span>Sí</span></button>
             <button type="submit" name="value" value="no" class="no"><span>No</span></button>
             <button type="submit" name="value" value="abstencion" class="abstencion"><span>Abstencion</span></button>
@@ -39,7 +48,7 @@
 			<% if current_user.represented_organization.has_opined_for?(@proposal) %>
 				<p class="voted"><%= current_user.represented_organization.name %> ya ha opinado sobre esta propuesta.</p>
 			<% else %>
-				<% form_for @opinion, :url => new_opinion_path, :html => {:method => :get} do |f| -%>
+				<% form_for Vote.new, :url => new_vote_path, :html => {:method => :get} do |f| -%>
 				  <fieldset>
 		            <strong>Vota como representante de <%= @opinion.organization.name %></strong>
 					<div>

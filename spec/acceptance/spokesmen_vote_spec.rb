@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/acceptance_helper'
 
-feature "Organization Vote", %q{
+feature "Spokesman Vote", %q{
   In order to change the mother fucking world
-  As a citizen
+  As a spokesman
   I want to vote for/against proposals
 } do
   
@@ -11,12 +11,12 @@ feature "Organization Vote", %q{
     @psoe = create_organization :name => "PSOE", :spokesman => @zapatero
   end
  #acordarse de votar desde el index  
- scenario "A organization votes" do 
+ scenario "A spokesman votes" do 
    login_as @zapatero
 
-   [["no",         "a votar en contra de",        "representant_vote_no"], 
-    ["si",         "a votar a favor de",          "representant_vote_yes"], 
-    ["abstencion", "a abstenerte de votar sobre", "representant_vote_abstention"]].each do |vote, confirmation, button_id|
+   [["no",         "a votar en contra de",        "spokesman_vote_no"], 
+    ["si",         "a votar a favor de",          "spokesman_vote_yes"], 
+    ["abstencion", "a abstenerte de votar sobre", "spokesman_vote_abstention"]].each do |vote, confirmation, button_id|
    
      proposal = create_proposal :title => "Ley Sinde"
      
@@ -39,7 +39,7 @@ feature "Organization Vote", %q{
    end
  end
  
- scenario "Organization can't opine twice for the same proposal" do
+ scenario "Spokesman can't opine twice for the same proposal" do
    proposal = create_proposal(:title => "Derogación del canon")
    
    login_as @zapatero

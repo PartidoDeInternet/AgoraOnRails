@@ -23,13 +23,49 @@ feature "Vote for proposals", %q{
       
       visit proposal_path(proposal)
       click_button vote
-      
+
       page.should have_content("Vas #{confirmation} la iniciativa “Ley Sinde”")
+      page.should_not have_content("Porque")
+      page.should_not have_content("Más información")
     
       click_button "Estoy seguro"
     
       page.should have_content("Tu voto ha sido contabilizado.")
     end
+  end
+  
+  scenario "Add an optional explanation to your vote" do
+    login_as @user
+    proposal = create_proposal(:title => "Ley Sinde")
+    explanation = "we don't want the ignorance in 'A Brave New World'"
+    
+    visit proposal_path(proposal)
+    fill_in "Explica tu opinión (opcional)", :with => explanation
+    click_button "Sí"
+    
+    page.should have_content("Porque #{explanation}")
+    page.should_not have_content("Más información")
+
+    click_button "Estoy seguro"    
+
+    @user.votes.last.explanation.should == explanation
+  end
+  
+  scenario "Add an optional link to your vote" do
+    login_as @user
+    proposal = create_proposal(:title => "Ley Sinde")
+    link = "http://en.wikipedia.org/wiki/Brave_New_World"
+    
+    visit proposal_path(proposal)
+    fill_in "Enlace", :with => link
+    click_button "Sí"
+    
+    page.should have_content("Más información #{link}")
+    page.should_not have_content("Porque")
+    
+    click_button "Estoy seguro"    
+
+    @user.votes.last.link.should == link
   end
   
   scenario "Can't vote if i'm not logged in" do
