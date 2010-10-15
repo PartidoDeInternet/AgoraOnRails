@@ -73,6 +73,12 @@ feature "Spokesmen", %q{
     page.should have_content("Has elegido a tu portavoz.")
   end
   
+  scenario "Don't allow to choose myself as a my own spokesman" do
+    login_as @user
+    visit user_path(@user)
+    page.should_not have_css("#choose_spokesman_button")
+  end
+  
   scenario "View proposals voted by the user" do
     [["Ley Sinde",           "no",         "En contra",  "voted_against"], 
      ["Wifi gratis",         "si",         "A favor",    "voted_in_favor"], 
