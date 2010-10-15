@@ -836,4 +836,21 @@ button.confirm span {
   box-shadow: 1px 1px 1px #BBBCBA;
 }
 
+.discharge-my-spokesman {
+  display: block;
+  padding: 10px;
+  background:#9B3666;
+  text-align: center;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  -o-box-shadow: 1px 1px 1px #BBBCBA;
+  -icab-box-shadow: 1px 1px 1px #BBBCBA;
+  -khtml-box-shadow: 1px 1px 1px #BBBCBA;
+  -moz-box-shadow: 1px 1px 1px #BBBCBA;
+  -webkit-box-shadow: 1px 1px 1px #BBBCBA;
+  box-shadow: 1px 1px 1px #BBBCBA;
+}
+
 

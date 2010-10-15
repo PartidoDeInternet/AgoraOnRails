@@ -6,9 +6,16 @@
     <li><%= link_to "Usuarios", users_path %></li>
   </ul>
   
-  <% form_for @user, :url => choose_as_spokesman_user_path(@user) do |f| -%>
-    <%= submit_tag "Elegir a #{h @user.login} como mi portavoz", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
-  <% end -%>
+  <% if current_user && current_user.spokesman %>
+    <% form_for @user, :url => discharge_as_spokesman_user_path(@user) do |f| -%>
+       <%= submit_tag "Destituir a #{h @user.login} de ser mi portavoz", :id => "discharge_spokesman_button", :class => "discharge-my-spokesman" %>
+     <% end -%>
+  <% else %>
+    <% form_for @user, :url => choose_as_spokesman_user_path(@user) do |f| -%>
+      <%= submit_tag "Elegir a #{h @user.login} como mi portavoz", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
+    <% end -%>
+  <% end %>  
   
   <%= render :partial => "proposal", :collection => @proposals %>
 </section>
+

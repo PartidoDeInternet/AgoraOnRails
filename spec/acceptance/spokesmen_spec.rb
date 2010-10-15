@@ -39,6 +39,23 @@ feature "Spokesmen", %q{
     @user.spokesman.should == fan_de_punset
   end
   
+  scenario "Discharge spokesman" do
+    zapatero = create_user :login => "Zapatero"
+    @user.spokesman = zapatero
+    @user.save!
+    
+    login_as @user
+    
+    visit users_path
+    click_link "Zapatero"
+    click_button "Destituir a Zapatero de ser mi portavoz"
+
+    page.should have_content("Has destituido a tu portavoz.")
+
+    @user.reload
+    @user.spokesman.should == nil
+  end
+  
   scenario "Don't allow to choose spokesman unless user is logged in" do
     fan_de_punset = create_user :login => "Fan de Punset"
     

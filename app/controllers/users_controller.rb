@@ -34,4 +34,12 @@ class UsersController < ApplicationController
     flash[:notice] = "Has elegido a tu portavoz."
     redirect_to spokesman
   end
+  
+  def discharge_as_spokesman
+    spokesman = User.find(params[:id])
+    current_user.spokesman = nil
+    current_user.save!
+    flash[:notice] = "Has destituido a tu portavoz."
+    redirect_to spokesman
+  end
 end
