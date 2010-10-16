@@ -2,10 +2,17 @@ class Proposal < ActiveRecord::Base
   has_many :votes
   belongs_to :category, :counter_cache => true
   belongs_to :proposer, :counter_cache => true
+  has_one :delegated_vote
   
   named_scope :open, :conditions => "closed_at is null"
   named_scope :hot,  :order => "(visits + votes_count * 3) DESC", :limit => 5
   named_scope :recently_closed, :conditions => "closed_at is not null and official_resolution is not null", :order => "closed_at DESC", :limit => 5
+  
+  after_create :set_delegated_vote
+  
+  def set_delegated_vote
+    DelegatedVote.create!(:proposal => self)
+  end
   
   def closed?
     closed_at.present?
@@ -14,7 +21,7 @@ class Proposal < ActiveRecord::Base
   #choices can be in_favor, against or abstention
   def percentage_for(choice)
     vote_choice = self.send(choice)
-    vote_choice > 0 ? (vote_choice.to_f / votes.count * 100) : 0  
+    vote_choice > 0 ? (vote_choice.to_f / total_votes * 100) : 0  
   end
   
   def visited!
@@ -22,17 +29,34 @@ class Proposal < ActiveRecord::Base
   end
   
   def count_delegated_votes!
+    delegated_vote.reset!
+    
     User.all.each do |user|
       vote = user.delegated_vote_for(self)
-      if vote
+      if vote    
         case vote.value
-        when "si": self.in_favor += 1
-        when "no": self.against += 1
-        when "abstencion": self.abstention += 1
+        when "si": delegated_vote.in_favor += 1
+        when "no": delegated_vote.against += 1
+        when "abstencion": delegated_vote.abstention += 1
         end
-        self.save!
+        delegated_vote.save!
       end
     end
   end
     
+  def total_votes
+    self.in_favor + self.against + self.abstention
+  end
+  
+  def total_in_favor
+    self.in_favor + self.delegated_vote.in_favor
+  end
+  
+  def total_against
+    self.against + self.delegated_vote.against
+  end
+  
+  def total_abstention
+    self.abstention + self.delegated_vote.abstention
+  end
 end

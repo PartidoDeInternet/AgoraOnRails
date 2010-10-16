@@ -96,5 +96,52 @@ feature "Spokesmen", %q{
       end
     end
   end
+  
+  scenario "Update votes when a spokesman is choosen" do
+    free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+    punset = create_user :login => "Punset" 
+    create_vote :proposal => free_wifi, :user => punset, :value => "si"
     
+    visit user_path(punset)
+    
+    within(:css, "#proposal_#{free_wifi.id}") do
+      page.should have_css(".in_favor span.vote_count", :text => "1 votos")
+    end
+    
+    login_as @user
+    visit user_path(punset)
+    click_button "Elegir a Punset como mi portavoz"
+    
+    within(:css, "#proposal_#{free_wifi.id}") do
+      page.should have_css(".in_favor span.vote_count", :text => "2 votos")
+      page.should have_css(".in_favor span.vote_percentage", :text => "100%")
+    end
+  end
+  
+  scenario "Update votes when a spokesman is discharged" do
+    zapatero = create_user :login => "Zapatero" 
+    @user.spokesman = zapatero
+    @user.save!
+    
+    economia_sostenible = create_proposal :title => "Ley de Economia sostenible"
+    create_vote :proposal => economia_sostenible, :user => zapatero, :value => "si"
+
+    economia_sostenible.count_delegated_votes!
+
+    visit user_path(zapatero)
+
+    within(:css, "#proposal_#{economia_sostenible.id}") do
+      page.should have_css(".in_favor span.vote_count", :text => "2 votos")
+    end
+    
+    login_as @user
+    visit user_path(zapatero)
+    click_button "Destituir a Zapatero de ser mi portavoz"
+
+    within(:css, "#proposal_#{economia_sostenible.id}") do
+      page.should have_css(".in_favor span.vote_count", :text => "1 votos")
+      page.should have_css(".in_favor span.vote_percentage", :text => "100%")
+    end
+  end
+
 end

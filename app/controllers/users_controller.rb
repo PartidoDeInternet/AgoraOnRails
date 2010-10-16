@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     spokesman = User.find(params[:id])
     user.spokesman = spokesman
     user.save!
+    spokesman.voted_proposals.map(&:count_delegated_votes!)
     flash[:notice] = "Has elegido a tu portavoz."
     redirect_to spokesman
   end
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
     spokesman = User.find(params[:id])
     current_user.spokesman = nil
     current_user.save!
+    spokesman.voted_proposals.map(&:count_delegated_votes!)
     flash[:notice] = "Has destituido a tu portavoz."
     redirect_to spokesman
   end
