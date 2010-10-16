@@ -7,21 +7,18 @@ feature "Home page", %q{
 } do
   
   scenario "Hot proposals" do
-    create_proposal(:title => "Legalize it",         :votes_count => 2, :visits => 2) # hotness 8
-    create_proposal(:title => "Cafe para todos",     :votes_count => 1, :visits => 1) # hotness 4
-    create_proposal(:title => "Zapatero Dimisión",   :votes_count => 2, :visits => 1) # hotness 7
-    create_proposal(:title => "Ley Sinde",           :votes_count => 3, :visits => 1) # hotness 10 !!
-    create_proposal(:title => "Bajar el IVA",        :votes_count => 0, :visits => 6) # hotness 6
-    create_proposal(:title => "WIFI en todo Madrid", :votes_count => 1, :visits => 3) # hotness 6
+    create_proposal(:title => "Legalize it",         :position => 3)
+    create_proposal(:title => "Cafe para todos",     :position => 6)
+    create_proposal(:title => "Zapatero Dimisión",   :position => 5)
+    create_proposal(:title => "Ley Sinde",           :position => 1)
+    create_proposal(:title => "Bajar el IVA",        :position => 4)
+    create_proposal(:title => "WIFI en todo Madrid", :position => 2)
     
     visit homepage
     
-    should_see_hot_proposals(["Ley Sinde", "Legalize it", "Zapatero Dimisión", 
-                              "Bajar el IVA", "WIFI en todo Madrid"])
-    
     page.should have_css("#hot_proposals .proposal", :count => 5)
-    page.should have_css("#hot_proposals article.proposal:first-of-type .title", :text => "Ley Sinde")
-    
+    should_see_hot_proposals_in_this_order(
+    ["Ley Sinde", "WIFI en todo Madrid", "Legalize it", "Bajar el IVA", "Zapatero Dimisión"])   
   end
   
   scenario "Proposal information" do

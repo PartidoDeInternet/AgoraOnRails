@@ -20,9 +20,9 @@ module HelperMethods
     end
   end
   
-  def should_see_hot_proposals(titles)
-    titles.each do |title|
-      page.should have_css("#hot_proposals .proposal .title", :text => title)
+  def should_see_hot_proposals_in_this_order(titles)
+    titles.each_with_index do |title, index|
+      page.should have_css("#hot_proposals .proposal:nth-child(#{index + 2}) .title", :text => title)
     end
   end
   
