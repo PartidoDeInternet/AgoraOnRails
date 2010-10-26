@@ -16,12 +16,12 @@ describe Scrapper do
     
     it "should go to the proposal search form" do
       Scrapper.scrape
-      request(:get, search_page).should have_been_made
+      a_request(:get, search_page).should have_been_made
     end
     
     it "should search the proposals we're interested in" do
       Scrapper.scrape
-      request(:post, search_results_page).with{|r| r.body =~ /TPTR=Competencia\+Legislativa\+Plena/}.should have_been_made
+      a_request(:post, search_results_page).with{|r| r.body =~ /TPTR=Competencia\+Legislativa\+Plena/}.should have_been_made
     end
     
     it "should create one proposal for record found" do

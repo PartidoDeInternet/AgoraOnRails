@@ -4,6 +4,7 @@ module Factories
     attrs[:title] ||= "Ley Sinde"
     attrs[:proposer] ||= create_proposer
     attrs[:proposed_at]  ||= 2.weeks.ago.to_date
+    attrs[:position]  ||= 1
     Proposal.create!(attrs)
   end
   

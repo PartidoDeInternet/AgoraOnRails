@@ -20,6 +20,14 @@ module NavigationHelpers
   def proposals_path
     "/proposals"
   end
+  
+  def user_path(user)
+    "#{users_path}/#{user.id}"
+  end
+
+  def users_path
+    "/users"
+  end
 end
 
 Spec::Runner.configuration.include(NavigationHelpers)

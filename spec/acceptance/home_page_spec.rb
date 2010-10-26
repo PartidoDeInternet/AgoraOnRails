@@ -13,11 +13,11 @@ feature "Home page", %q{
     create_proposal(:title => "Ley Sinde",           :position => 1)
     create_proposal(:title => "Bajar el IVA",        :position => 4)
     create_proposal(:title => "WIFI en todo Madrid", :position => 2)
-    create_proposal(:title => "Pesca sostenible",    :position => nil)
     
     visit homepage
     
     page.should have_css("#hot_proposals .proposal", :count => 5)
+
     should_see_hot_proposals_in_this_order(
     ["Ley Sinde", "WIFI en todo Madrid", "Legalize it", "Bajar el IVA", "Zapatero Dimisión"])   
   end

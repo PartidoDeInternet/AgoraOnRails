@@ -1,17 +1,13 @@
 <% unless vote.explanation.blank? %>
-<article class="proposal">
-  <section class="proposal-content">
-     <% div_for vote do %>
-       <p class="login">
-         <%= link_to vote.user.login, vote.user %>
-       <p>
-       <p class="explanation">
-         <%= vote.explanation %>
-       </p>
-       <p class="link">
-         <%= link_to vote.link, vote.link %>
-       </p>
-     <% end %>
-  </section>
-</article>
+   <% div_for vote do %>
+     <p class="login">
+       <%= link_to vote.user.login, vote.user %>
+     <p>
+     <p class="explanation">
+       <%= vote.explanation %>
+     </p>
+     <p class="link">
+       <%= link_to vote.link, vote.link %>
+     </p>
+   <% end %>
 <% end %>
