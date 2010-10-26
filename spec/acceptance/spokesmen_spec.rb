@@ -19,11 +19,9 @@ feature "Spokesmen", %q{
 
     page.should have_css(".user .name", "PSOE")
     page.should have_css(".user .link", "http://www.psoe.es")
-    page.should have_css(".user .spokesman .name", "Nadie")
 
     page.should have_css(".user .name", "PP")
     page.should have_css(".user .link", "http://www.pp.es")
-    page.should have_css(".user .spokesman .name", "Nadie")
   end
     
   scenario "Choose spokesman" do
