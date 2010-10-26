@@ -43,6 +43,7 @@ feature "See proposals", %q{
     within(:css, ".proposal") do      
       within(:css, "#vote_#{punsets_vote.id}") do 
         page.should have_css(".login", :text => "Punset")
+        page.should have_css(".login a", :href => "users/#{punset.id}")
         page.should have_css(".explanation", :text => "Internet es un derecho fundamental de todos los humanos")
         page.should have_css(".link", :text => "http://derechoshumanos.com")
       end

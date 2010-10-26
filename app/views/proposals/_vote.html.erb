@@ -1,7 +1,7 @@
 <% unless vote.explanation.blank? %>
   <% div_for vote do %>
     <p class="login">
-      <%= vote.user.login %>
+      <%= link_to vote.user.login, vote.user %>
     <p>
     <p class="explanation">
       <%= vote.explanation %>
