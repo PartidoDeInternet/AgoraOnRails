@@ -12,6 +12,8 @@ group :test do
   gem "capybara" 
   gem 'steak'
   gem 'webmock'
+  gem 'launchy'
+  gem 'ruby-debug'
 end
 
 group :development do
