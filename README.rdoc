@@ -1,18 +1,19 @@
-= Populo
+= AgoraOnRails
 
-* http://github.com/partidodeinternet/populo
+* http://agoraonrails.com
 
 == Description:
 
-Populo aims to revolutionize democracy by empowering citizens to directly vote real proposals,
+AgoraOnRails aims to revolutionize democracy by empowering citizens to directly vote real proposals
 extracted from the Spanish Congress official web page http://www.congreso.es/portal/page/portal/Congreso/Congreso/Iniciativas
 
 == Install and Use:
 
-    sudo gem install progressbar mechanize authlogic
-    sudo gem install inherited_resources --version 1.0.6
-    
-    git clone git://github.com/partidodeinternet/populo.git
+    git clone git://github.com/PartidoDeInternet/AgoraOnRails.git
+
+    cd AgoraOnRails
+
+    bundle install
     
     rake db:migrate 
     
@@ -24,17 +25,13 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
 
 == Running the test suite:
     
-    sudo gem install steak webmock capybara
-    sudo gem install rspec --version 1.3.0
-    sudo gem install rspec-rails --version 1.3.2
-    
-    rake
+    rake spec
     
 == License:
 
 (The MIT License)
 
-Copyright (c) 2009 Abredatos
+Copyright (c) 2010 Partide de Internet
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
