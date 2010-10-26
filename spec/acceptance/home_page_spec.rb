@@ -104,13 +104,13 @@ feature "Home page", %q{
   scenario "Vote count" do
     visit homepage
     
-    page.should have_content("0 votos a través de populo")
+    page.should have_content("0 votos a través de AgoraOnRails")
     
     3.times { create_vote }
     
     visit homepage
     
-    page.should have_content("3 votos a través de populo")
+    page.should have_content("3 votos a través de AgoraOnRails")
   end
   
 end

@@ -15,7 +15,7 @@ feature "Spokesmen", %q{
     rajoy = create_user :first_name => "Mariano", :last_name => "Rajoy"
     
     visit "/"
-    click_link "Usuarios"
+    click_link "Usuari@s"
 
     page.should have_css(".user .name", "PSOE")
     page.should have_css(".user .link", "http://www.psoe.es")
