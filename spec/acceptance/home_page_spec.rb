@@ -13,6 +13,7 @@ feature "Home page", %q{
     create_proposal(:title => "Ley Sinde",           :position => 1)
     create_proposal(:title => "Bajar el IVA",        :position => 4)
     create_proposal(:title => "WIFI en todo Madrid", :position => 2)
+    create_proposal(:title => "Pesca sostenible",    :position => nil)
     
     visit homepage
     
