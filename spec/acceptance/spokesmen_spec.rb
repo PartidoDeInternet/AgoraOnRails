@@ -54,6 +54,23 @@ feature "Spokesmen", %q{
     @user.spokesman.should == nil
   end
   
+  scenario "Display the correct button in a spokeman's page" do
+    rajoy = create_user :login => "Rajoy"
+    zapatero = create_user :login => "Zapatero"
+    
+    @user.spokesman = zapatero
+    @user.save!
+    
+    login_as @user
+
+    visit user_path(zapatero)
+    page.should have_css("#discharge_spokesman_button")
+    
+    visit user_path(rajoy)
+    page.should have_css("#choose_spokesman_button")
+    page.should_not have_css("#discharge_spokesman_button")
+  end
+  
   scenario "Don't allow to choose spokesman unless user is logged in" do
     fan_de_punset = create_user :login => "Fan de Punset"
     
