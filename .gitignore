@@ -1,5 +1,4 @@
-capybara*
-tmp/
-log/
-db/*.sqlite3*
-test/
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*

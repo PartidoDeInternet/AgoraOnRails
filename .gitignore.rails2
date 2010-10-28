@@ -1,0 +1,5 @@
+capybara*
+tmp/
+log/
+db/*.sqlite3*
+test/
