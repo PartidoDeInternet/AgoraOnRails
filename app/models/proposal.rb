@@ -21,7 +21,7 @@ class Proposal < ActiveRecord::Base
   
   #choices can be in_favor, against or abstention
   def percentage_for(choice)
-    vote_choice = self.send(choice)
+    vote_choice = self.send("total_#{choice}")
     vote_choice > 0 ? (vote_choice.to_f / total_votes * 100) : 0  
   end
   
@@ -46,7 +46,7 @@ class Proposal < ActiveRecord::Base
   end
     
   def total_votes
-    self.in_favor + self.against + self.abstention
+    self.total_in_favor + self.total_against + self.total_abstention
   end
   
   def total_in_favor

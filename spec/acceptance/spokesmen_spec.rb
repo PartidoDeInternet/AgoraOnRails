@@ -112,7 +112,7 @@ feature "Spokesmen", %q{
     end
   end
   
-  scenario "Update votes when a spokesman is choosen" do
+  scenario "Update vote count when a spokesman is chosen" do
     free_wifi = create_proposal :title => "Wifi Gratis en toda España"
     punset = create_user :login => "Punset" 
     create_vote :proposal => free_wifi, :user => punset, :value => "si"
@@ -133,7 +133,7 @@ feature "Spokesmen", %q{
     end
   end
   
-  scenario "Update votes when a spokesman is discharged" do
+  scenario "Update vote count when a spokesman is discharged" do
     zapatero = create_user :login => "Zapatero" 
     @user.spokesman = zapatero
     @user.save!
@@ -157,6 +157,26 @@ feature "Spokesmen", %q{
       page.should have_css(".in_favor span.vote_count", :text => "1 votos")
       page.should have_css(".in_favor span.vote_percentage", :text => "100%")
     end
+  end
+    
+  scenario "Update vote percentages when a spokesman is chosen/discharged" do    
+    free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+    punset = create_user :login => "Punset" 
+    telefonica = create_user :login => "Telefonica" 
+
+    create_vote :proposal => free_wifi, :user => punset, :value => "si"
+    create_vote :proposal => free_wifi, :user => telefonica, :value => "no"
+    
+    login_as @user
+    visit user_path(punset)
+    
+    percentages_should_be(free_wifi, :in_favor => 50, :against => 50, :abstention => 0)
+    
+    click_button "Elegir a Punset como mi portavoz"
+    percentages_should_be(free_wifi, :in_favor => 67, :against => 33, :abstention => 0)
+    
+    click_button "Destituir a Punset de ser mi portavoz"
+    percentages_should_be(free_wifi, :in_favor => 50, :against => 50, :abstention => 0)
   end
 
 end

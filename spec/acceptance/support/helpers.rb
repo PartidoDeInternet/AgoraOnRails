@@ -5,11 +5,12 @@ module HelperMethods
     fill_in "Dinos tu contraseña", :with => "secret"
     click_button "Identifícate"
   end
-  
+
   def percentages_should_be(proposal, results)
-    visit proposal_path(proposal)
-    results.each do |key, value|
-      page.should have_css(".#{key}", :text => "#{value}%")
+    within(:css, "#proposal_#{proposal.id}") do
+      results.each do |key, value|
+        page.should have_css(".#{key} span.vote_percentage", :text => "#{value}%")
+      end
     end
   end
   

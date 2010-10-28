@@ -134,6 +134,8 @@ feature "Vote for proposals", %q{
     click_button "Sí"
     click_button "Estoy seguro"
     
+    visit proposal_path(proposal)
+    
     percentages_should_be(proposal, :in_favor => 100, :against => 0, :abstention => 0)
     number_of_votes_should_be(proposal, :in_favor => 1, :against => 0, :abstention => 0)
     
@@ -141,7 +143,8 @@ feature "Vote for proposals", %q{
     visit proposal_path(proposal)
     click_button "No"
     click_button "Estoy seguro"
- 
+    visit proposal_path(proposal)
+
     percentages_should_be(proposal, :in_favor => 50, :against => 50, :abstention => 0)
     number_of_votes_should_be(proposal, :in_favor => 1, :against => 1, :abstention => 0)
     
@@ -150,6 +153,7 @@ feature "Vote for proposals", %q{
     click_button "Abstencion"
     click_button "Estoy seguro"
     
+    visit proposal_path(proposal)
     percentages_should_be(proposal, :in_favor => 33, :against => 33, :abstention => 33)
     number_of_votes_should_be(proposal, :in_favor => 1, :against => 1, :abstention => 1)
 
