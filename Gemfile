@@ -29,8 +29,9 @@ gem 'rails', '3.0.1'
 
 gem "progressbar"
 gem "mechanize"
-gem "authlogic", :require => "authlogic"
+gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem "inherited_resources"
+gem "dynamic_form"
 
 group :test do
   gem "rspec", "1.3.0"

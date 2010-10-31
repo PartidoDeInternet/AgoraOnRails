@@ -1,7 +1,6 @@
 class VotesController < InheritedResources::Base
   belongs_to :proposal
   before_filter :require_user
-  before_filter :store_location, :only => new
   layout "mini_application"
   
   def new

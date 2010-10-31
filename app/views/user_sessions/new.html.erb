@@ -1,17 +1,17 @@
 <h2>Autenticación requerida</h2>
 
 <section id="login-section">
-  <% form_for @user_session, :url => user_session_path do |f| %>
+  <%= form_for @user_session, :url => user_session_path do |f| %>
     <fieldset>
       <%= f.error_messages %>
   
       <div class="overlayfield">
-        <%= f.label :login, "<span>Introduce tu usuario</span>" %>
+        <%= f.label :login, "<span>Introduce tu usuario</span>".html_safe %>
         <%= f.text_field :login %>
       </div>
   
       <div class="overlayfield">
-        <%= f.label :password, "<span>Dinos tu contraseña</span>" %>
+        <%= f.label :password, "<span>Dinos tu contraseña</span>".html_safe %>
         <%= f.password_field :password %>
       </div>
     

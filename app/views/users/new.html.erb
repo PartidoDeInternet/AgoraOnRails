@@ -6,17 +6,17 @@
   <fieldset id="login-section">
   
           <div class="overlayfield">
-            <%= f.label :login, "<span>Introduce tu usuario</span>" %>
+            <%= f.label :login, "<span>Introduce tu usuario</span>".html_safe %>
             <%= f.text_field :login %>
           </div>
   
           <div class="overlayfield">
-            <%= f.label :password, "<span>Dinos tu contraseña</span>" %>
+            <%= f.label :password, "<span>Dinos tu contraseña</span>".html_safe %>
             <%= f.password_field :password %>
           </div>
 
           <div class="overlayfield">
-            <%= f.label :password_confirmation, "<span>Repite tu contraseña</span>" %>
+            <%= f.label :password_confirmation, "<span>Repite tu contraseña</span>".html_safe %>
             <%= f.password_field :password_confirmation %>
           </div>
       
@@ -25,7 +25,7 @@
     <fieldset>
       
       <div class="overlayfield">
-        <%= f.label :email, "<span>Y por último tu email</span>" %>
+        <%= f.label :email, "<span>Y por último tu email</span>".html_safe %>
         <%= f.text_field :email %>
       </div>
       
