@@ -6,7 +6,9 @@ class Category < ActiveRecord::Base
   named_scope :hot, :order => "proposals_count DESC", :limit => 5
   
   def set_name
-    self.name = upcase_first(commission_name.gsub(/Comisión( Mixta)?( del?| para las?)? /, "")) if commission_name
+    if commission_name and name.nil?
+      self.name = upcase_first(commission_name.gsub(/Comisión( Mixta)?( del?| para las?)? /, "")) 
+    end
   end
   
   private

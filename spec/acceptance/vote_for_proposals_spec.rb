@@ -78,9 +78,9 @@ feature "Vote for proposals", %q{
     page.should have_content("Autenticación requerida")
     page.should_not have_css("button", :text => "Confirmar")
       
-    fill_in "Introduce tu usuario", :with => "123456789A"
-    fill_in "Dinos tu contraseña", :with => "secret"
-    click_button "Identifícate"
+    fill_in "user_session_login", :with => "123456789A"
+    fill_in "user_session_password", :with => "secret"
+    click_button "user_session_submit"
     
     page.should have_content("Vas a votar a favor de la iniciativa “Derogación del canon”")
   end

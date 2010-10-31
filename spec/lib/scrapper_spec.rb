@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + "/scrapper_spec_helper"
+require File.dirname(__FILE__) + "/../../lib/scrapper"
 
 describe Scrapper do
   

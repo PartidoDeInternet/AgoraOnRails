@@ -1,16 +1,15 @@
 module HelperMethods
   def login_as(user)
     visit login_path
-    fill_in "user_session_login", :with => user.login
-    fill_in "user_session_password", :with => "secret"
-    click_button "user_session_submit"
+    fill_in "Introduce tu usuario", :with => user.login
+    fill_in "Dinos tu contraseña", :with => "secret"
+    click_button "Identifícate"
   end
-
+  
   def percentages_should_be(proposal, results)
-    within(:css, "#proposal_#{proposal.id}") do
-      results.each do |key, value|
-        page.should have_css(".#{key} span.vote_percentage", :text => "#{value}%")
-      end
+    visit proposal_path(proposal)
+    results.each do |key, value|
+      page.should have_css(".#{key}", :text => "#{value}%")
     end
   end
   
@@ -26,6 +25,7 @@ module HelperMethods
       page.should have_css("#hot_proposals .proposal:nth-child(#{index + 2}) .title", :text => title)
     end
   end
+  
 end
 
-RSpec.configuration.include HelperMethods, :type => :acceptance
+Spec::Runner.configuration.include(HelperMethods)

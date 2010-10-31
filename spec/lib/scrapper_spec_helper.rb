@@ -37,5 +37,5 @@ module HelperMethods
   end
 end
 
-Spec::Runner.configuration.include(HelperMethods)
-Spec::Runner.configuration.include(CongressWebSitePaths)
+RSpec.configuration.include HelperMethods
+RSpec.configuration.include CongressWebSitePaths

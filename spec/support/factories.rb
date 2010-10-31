@@ -32,4 +32,4 @@ module Factories
   
 end
 
-Spec::Runner.configuration.include(Factories)
+RSpec.configuration.include Factories

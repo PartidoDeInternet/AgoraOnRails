@@ -11,17 +11,14 @@ feature "Spokesmen", %q{
   end
   
   scenario "View Users" do
-    zapatero = create_user :first_name => "Jose Luis", :last_name => "Zapatero"
-    rajoy = create_user :first_name => "Mariano", :last_name => "Rajoy"
+    zapatero = create_user :login => "Jose Luis"
+    rajoy = create_user :login => "Mariano"
     
     visit "/"
     click_link "Usuari@s"
 
-    page.should have_css(".user .name", "PSOE")
-    page.should have_css(".user .link", "http://www.psoe.es")
-
-    page.should have_css(".user .name", "PP")
-    page.should have_css(".user .link", "http://www.pp.es")
+    page.should have_css(".user .name a", :text => "Jose Luis", :href => user_path(zapatero))
+    page.should have_css(".user .name a", :text => "Mariano", :href => user_path(rajoy))
   end
     
   scenario "Choose spokesman" do
@@ -81,9 +78,9 @@ feature "Spokesmen", %q{
     page.should have_content("Autenticación requerida")
     page.should_not have_content("Has elegido a tu portavoz.")
     
-    fill_in "Introduce tu usuario", :with => @user.login
-    fill_in "Dinos tu contraseña", :with => "secret"
-    click_button "Identifícate"
+    fill_in "user_session_login", :with => @user.login
+    fill_in "user_session_password", :with => "secret"
+    click_button "user_session_submit"
     
     page.should have_content("Has elegido a tu portavoz.")
   end
