@@ -17,6 +17,10 @@ group :development, :test do
   gem 'webmock'
   gem 'launchy'
   gem 'ruby-debug'
+  gem 'ZenTest'
+  gem 'autotest-rails'
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
 end
 
 # Bundle edge Rails instead:
