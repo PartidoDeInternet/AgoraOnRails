@@ -14,7 +14,7 @@
   
 </p>
 
-<% form_for([@proposal, @vote]) do |f| %>
+<%= form_for([@proposal, @vote]) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :value, :value => params[:value] %>
   <%= f.hidden_field :explanation, :value => params[:explanation] %>

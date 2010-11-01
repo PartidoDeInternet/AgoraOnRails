@@ -12,7 +12,7 @@
      <% end -%>
   <% else %>
     <% unless current_user == @user %>
-      <% form_for @user, :url => choose_as_spokesman_user_path(@user) do |f| -%>
+      <%= form_for @user, :url => choose_as_spokesman_user_path(@user) do |f| -%>
         <%= submit_tag "Elegir a #{h @user.login} como mi portavoz", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
       <% end -%>
     <% end %>

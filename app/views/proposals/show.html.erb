@@ -26,7 +26,7 @@
       <% elsif current_user && current_user.has_voted_for?(@proposal) %>
         <p class="voted">Ya has votado esta propuesta</p>
       <% else %>  
-        <% form_tag new_proposal_vote_path(@proposal), {:method => :get, :class => "vote"} do -%>
+        <%= form_tag new_proposal_vote_path(@proposal), {:method => :get, :class => "vote"} do -%>
           <fieldset>
             <strong>Vota esta propuesta</strong>
             <div>
