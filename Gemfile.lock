@@ -69,6 +69,12 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     has_scope (0.5.0)
+    heroku (1.12.1)
+      json_pure (>= 1.2.0, < 1.5.0)
+      launchy (~> 0.3.2)
+      rest-client (>= 1.4.0, < 1.7.0)
+    heroku_san (1.0.2)
+      heroku
     i18n (0.4.2)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
@@ -109,6 +115,8 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     responders (0.6.2)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
@@ -157,6 +165,7 @@ DEPENDENCIES
   autotest-rails
   capybara
   dynamic_form
+  heroku_san
   inherited_resources
   launchy
   mechanize

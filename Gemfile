@@ -21,4 +21,5 @@ group :development, :test do
   gem 'autotest-rails'
   gem 'autotest-growl'
   gem 'autotest-fsevent'
+  gem 'heroku_san'
 end

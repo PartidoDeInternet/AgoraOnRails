@@ -1,0 +1,4 @@
+apps:
+  # shorthand: heroku app
+  production: agoraonrails
+  staging: agoraonrails-staging
