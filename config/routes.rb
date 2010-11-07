@@ -1,23 +1,4 @@
-AgoraOnRails::Application.routes.draw do |map|
-  
-  #map.resources :proposals, :has_many => :votes
-  #map.resource :user_session
-  #map.resources :users, :member => {:choose_as_spokesman => [:get, :put], :discharge_as_spokesman => [:get, :put]}
-  #map.resources :categories, :has_many => :proposals
-  #map.resources :proposers, :has_many => :proposals
-  #
-  #map.root :controller => :welcome
-  
-  resource :user_session
-  
-  resources :users do
-    member do
-      put 'choose_as_spokesman'
-      put 'discharge_as_spokesman'
-      get 'choose_as_spokesman'
-      get 'discharge_as_spokesman'
-    end
-  end
+AgoraOnRails::Application.routes.draw do
   
   resources :categories do
     resources :proposals
@@ -30,7 +11,18 @@ AgoraOnRails::Application.routes.draw do |map|
   resources :proposals do
     resources :votes
   end
+
+  resource :user_session
   
+  resources :users do
+    member do
+      put 'choose_as_spokesman'
+      put 'discharge_as_spokesman'
+      get 'choose_as_spokesman'
+      get 'discharge_as_spokesman'
+    end
+  end
+    
   root :to => "welcome#index"
 
   # The priority is based upon order of creation:

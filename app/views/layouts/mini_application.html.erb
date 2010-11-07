@@ -8,10 +8,8 @@
   <!--[if lte IE 6]>
     <link rel="stylesheet" href="/stylesheets/populo-ie.css" type="text/css" media="screen" charset="utf-8"/>
   <![endif]-->
-  <script src="/javascripts/html5.js" type="text/javascript" charset="utf-8"></script>
-  <script src="/javascripts/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="/javascripts/jquery.tools.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="/javascripts/app.js" type="text/javascript" charset="utf-8"></script>
+  <%= javascript_include_tag 'jquery', 'jquery_tools', 'rails', 'application' %>
+  <%= csrf_meta_tag %>
 </head>
 <body id="mini">
 
