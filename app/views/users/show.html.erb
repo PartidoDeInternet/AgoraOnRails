@@ -7,7 +7,7 @@
   </ul>
   
   <% if current_user && current_user.spokesman == @user %>
-    <% form_for @user, :url => discharge_as_spokesman_user_path(@user) do |f| -%>
+    <%= form_for @user, :url => discharge_as_spokesman_user_path(@user) do |f| -%>
        <%= submit_tag "Destituir a #{h @user.login} de ser mi portavoz", :id => "discharge_spokesman_button", :class => "discharge-my-spokesman" %>
      <% end -%>
   <% else %>
