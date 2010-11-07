@@ -15,17 +15,19 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
 
     bundle install
     
-    rake db:migrate 
+    rake agoraonrails:setup
     
-    rake scrapper:scrape
-    
-    script/server
+    rails server
     
     Start voting!
 
 == Running the test suite:
     
     rake spec
+
+== Contribute:
+
+  Fork it and make a pull request
     
 == License:
 
