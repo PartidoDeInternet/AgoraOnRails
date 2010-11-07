@@ -14,6 +14,8 @@ AgoraOnRails::Application.routes.draw do |map|
     member do
       put 'choose_as_spokesman'
       put 'discharge_as_spokesman'
+      get 'choose_as_spokesman'
+      get 'discharge_as_spokesman'
     end
   end
   
