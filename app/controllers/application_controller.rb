@@ -1,13 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper :all
+  helper :all 
   helper_method :current_user_session, :current_user
   
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
+      hello_world
     end
   
     def current_user
