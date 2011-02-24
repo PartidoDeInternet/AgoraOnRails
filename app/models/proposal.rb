@@ -60,4 +60,12 @@ class Proposal < ActiveRecord::Base
   def total_abstention
     self.abstention + self.delegated_vote.abstention
   end
+  
+  def proposer_name
+    proposer.name
+  end
+  
+  def category_name
+    category.name
+  end
 end
