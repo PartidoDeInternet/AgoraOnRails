@@ -1,3 +1,4 @@
+# coding: utf-8
 module ApplicationHelper
   def hot_categories
     @hot_categories ||= Category.hot
@@ -21,9 +22,9 @@ module ApplicationHelper
   
   def humanize(choice)
     case choice
-    when "in_favor": "Sí"
-    when "against": "No"
-    when "abstention": "Abs"
+    when "in_favor" then "Sí"
+    when "against" then "No"
+    when "abstention" then "Abs"
     end
   end
   

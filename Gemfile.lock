@@ -38,6 +38,7 @@ GEM
       activesupport (= 3.0.4)
     activesupport (3.0.4)
     addressable (2.2.4)
+    archive-tar-minitar (0.5.2)
     arel (2.0.8)
     autotest-growl (0.2.9)
     autotest-rails (4.1.0)
@@ -81,7 +82,8 @@ GEM
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    linecache (0.43)
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -128,11 +130,16 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
-    ruby-debug (0.10.4)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.4.0)
-    ruby-debug-base (0.10.4)
-      linecache (>= 0.3)
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.2)
       childprocess (~> 0.1.5)
@@ -170,9 +177,8 @@ DEPENDENCIES
   mechanize
   progressbar
   rails (= 3.0.4)
-  rspec
   rspec-rails
-  ruby-debug
+  ruby-debug19
   sqlite3-ruby
   steak (>= 1.0.0.rc.1)
   webmock

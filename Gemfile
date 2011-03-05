@@ -10,13 +10,12 @@ gem "dynamic_form"
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
-  gem "rspec"
   gem 'rspec-rails'
   gem 'steak', '>= 1.0.0.rc.1'
   gem 'capybara'
   gem 'webmock'
   gem 'launchy'
-  gem 'ruby-debug'
+  gem 'ruby-debug19'
   gem 'ZenTest'
   gem 'autotest-rails'
   gem 'autotest-growl'

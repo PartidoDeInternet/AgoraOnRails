@@ -1,17 +1,18 @@
+# coding: utf-8
 module UsersHelper  
   def humanize_vote_text(user, proposal)
     case find_choice user, proposal
-    when "si": "A favor"
-    when "no": "En contra" 
-    when "abstencion": "Abstención"
+    when "si" then "A favor"
+    when "no" then "En contra" 
+    when "abstencion" then "Abstención"
     end
   end
   
   def css_for_vote(user, proposal)
     case find_choice user, proposal
-    when "si": "voted_in_favor"
-    when "no": "voted_against" 
-    when "abstencion": "voted_abstention"
+    when "si" then "voted_in_favor"
+    when "no" then "voted_against" 
+    when "abstencion" then "voted_abstention"
     end
   end
   

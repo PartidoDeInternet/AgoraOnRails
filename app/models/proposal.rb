@@ -36,9 +36,9 @@ class Proposal < ActiveRecord::Base
       vote = user.delegated_vote_for(self)
       if vote    
         case vote.value
-        when "si": delegated_vote.in_favor += 1
-        when "no": delegated_vote.against += 1
-        when "abstencion": delegated_vote.abstention += 1
+        when "si" then delegated_vote.in_favor += 1
+        when "no" then delegated_vote.against += 1
+        when "abstencion" then delegated_vote.abstention += 1
         end
         delegated_vote.save!
       end

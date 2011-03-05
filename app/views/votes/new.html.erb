@@ -4,14 +4,14 @@
   <strong>Vas <%= confirmation_text(params[:value]) %></strong>
   la iniciativa “<%= @proposal.title %>”
   
-  <% if params[:explanation] and params[:explanation].any? %>
+  <% unless params[:explanation].blank? %>
     <p>Porque <%= params[:explanation] %></p>
   <% end %>
   
-  <% if params[:explanation] and params[:link].any? %>
+  <% unless params[:link].blank? %>
     <p>Más información <%= params[:link] %></p>
   <% end %>
-  
+    
 </p>
 
 <%= form_for([@proposal, @vote]) do |f| %>

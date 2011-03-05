@@ -1,3 +1,4 @@
+# coding: utf-8
 namespace :proposals do
   desc "promote home page proposals"
   task :promote => :environment do
