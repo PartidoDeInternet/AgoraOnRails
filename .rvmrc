@@ -1,1 +1,1 @@
-rvm 1.9.2-p180@agoraonrails
+rvm --create use 1.9.2-p180@agoraonrails > /dev/null
