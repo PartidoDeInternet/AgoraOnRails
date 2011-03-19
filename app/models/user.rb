@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
   has_many :represented_users, :class_name => "User", :foreign_key => :spokesman_id
   
+  after_save :count_votes
+  
   def name
     "#{first_name} #{last_name}"
   end
@@ -46,6 +48,12 @@ class User < ActiveRecord::Base
   
   def voted_and_delegated_proposals
     delegation_list.map(&:voted_proposals).flatten
+  end
+  
+  def count_votes
+    if spokesman_id_changed?
+      (spokesman || User.find_by_id(spokesman_id_was)).voted_and_delegated_proposals.map(&:count_votes!)
+    end
   end
 
 end

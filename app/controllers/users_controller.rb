@@ -29,18 +29,12 @@ class UsersController < ApplicationController
   def choose_as_spokesman
     spokesman = User.find(params[:id])
     current_user.update_attributes! :spokesman => spokesman
-    spokesman.voted_and_delegated_proposals.map(&:count_votes!)
-    # flash[:notice] = "Has elegido a tu portavoz."
-
     render :layout => "mini_application"
   end
 
   def discharge_as_spokesman
     spokesman = User.find(params[:id])
-    current_user.spokesman = nil
-    current_user.save!
-    spokesman.voted_proposals.map(&:count_votes!)
-    flash[:notice] = "Has destituido a tu portavoz."
-    redirect_to spokesman
+    current_user.update_attributes! :spokesman => nil
+    redirect_to spokesman, :notice => "Has destituido a tu portavoz."
   end
 end

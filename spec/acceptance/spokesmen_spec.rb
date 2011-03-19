@@ -221,6 +221,26 @@ feature "Spokesmen", %q{
       end
     end
     
+    scenario "Update vote count when a transitive spokesman is discharged" do
+      free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+      punset = create_user :login => "Punset"
+      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      create_vote :proposal => free_wifi, :user => punset, :value => "si"
+
+      login_as @user
+      
+      visit user_path(fan_de_punset)
+      click_button "Elegir a Fan de Punset como mi portavoz"
+      
+      visit user_path(fan_de_punset)
+      click_button "Destituir a Fan de Punset de ser mi portavoz"
+      page.should have_content("Has destituido a tu portavoz.")
+      
+      visit proposal_path(free_wifi)
+      page.should have_css(".in_favor span.vote_count", :text => "2 votos")
+      page.should have_css(".in_favor span.vote_percentage", :text => "100%") 
+    end
+    
     scenario "Delegation cycles are allowed but doesn't count votes if nobody votes" do
       free_wifi = create_proposal :title => "Wifi Gratis en toda España"
       punset = create_user :login => "Punset", :spokesman => @user
