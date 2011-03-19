@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
     voted_proposals + (spokesman.try(:voted_and_delegated_proposals) || [])
   end
 
+  def is_admin?
+    admin
+  end
+
 end

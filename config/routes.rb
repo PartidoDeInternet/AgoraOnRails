@@ -9,6 +9,9 @@ AgoraOnRails::Application.routes.draw do
   end
     
   resources :proposals do
+    member do
+      post :toggle
+    end
     resources :votes
   end
 
