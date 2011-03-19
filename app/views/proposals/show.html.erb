@@ -14,7 +14,7 @@
             <%=h @proposal.proposal_type %> (<a class="official_url" href="<%= @proposal.official_url %>">Enlace oficial</a>)
           </h3>
         </hgroup>
-        <%= show_toggle_button(current_user.is_admin?) %>
+        <%= show_toggle_button(current_user.is_admin?) if current_user %>
         <ul class="meta">
           <li class="votes"><%= number_with_delimiter @proposal.votes.count %> votos</li>
           <li class="views"><%= number_with_delimiter @proposal.visits %> visitas</li>
