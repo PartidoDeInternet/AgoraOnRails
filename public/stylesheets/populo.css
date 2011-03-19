@@ -58,7 +58,7 @@ fieldset {
   border: none;
 }
 
-.flash {
+.notice {
   display: block;
   font-size: 1.2em;
   padding: 5px;
@@ -66,6 +66,17 @@ fieldset {
   color: #FFF;
   text-align: center;
 }
+
+.alert {
+  display: block;
+  font-size: 1.2em;
+  padding: 5px;
+  background: #888;
+  color: #FFF;
+  text-align: center;
+  border: 1px solid #f00;    
+}
+
 
 /* custom selection colors */
 

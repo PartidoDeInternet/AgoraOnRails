@@ -7,7 +7,14 @@ describe User do
     user.spokesman.should == buenafuente
     buenafuente.represented_users.should include(user)
   end
-    
+
+  it "does not allow a user to choose himself as a spokesman" do
+    expect{
+      buenafuente = create_user(:login => "Buenafuente")
+      buenafuente.update_attributes!(:spokesman => buenafuente)
+    }.to raise_error
+  end
+
   it "should not have delegated vote if she has already voted" do
     user = create_user
     ley_sinde = create_proposal

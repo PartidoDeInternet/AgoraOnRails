@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :publicly_voted_proposals, :through => :votes, :source => :proposal, :conditions => ["votes.confidential = ?", false]
   belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
   has_many :represented_users, :class_name => "User", :foreign_key => :spokesman_id
+  validate :prevent_oneself_as_spokesman
   
   after_save :count_votes
   
@@ -54,6 +55,10 @@ class User < ActiveRecord::Base
     if spokesman_id_changed?
       (spokesman || User.find_by_id(spokesman_id_was)).voted_and_delegated_proposals.map(&:count_votes!)
     end
+  end
+
+  def prevent_oneself_as_spokesman
+    errors.add :spokesman_id, "No puedes ser tu propio portavoz." if spokesman == self 
   end
 
 end
