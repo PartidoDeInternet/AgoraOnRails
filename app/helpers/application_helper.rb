@@ -30,9 +30,9 @@ module ApplicationHelper
   
   def vote_text(proposal)
     if proposal.votes.blank?
-      "<strong>Vota!</strong> Se el primero en votar".html_safe
+      "<strong>Vota!</strong> Sé el primero en votar".html_safe
     else
-      "<strong>Vota!</strong> otros #{proposal.votes.count} ya lo han hecho".html_safe
+      "<strong>Vota!</strong> #{pluralize(proposal.votes.count, 'persona ya lo ha hecho', 'personas ya lo han hecho')}".html_safe
     end
   end
 end

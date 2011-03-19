@@ -121,7 +121,7 @@ feature "Vote for proposals", %q{
     login_as @user
     visit proposal_path(proposal)
 
-    page.should have_content("La Propuesta fué Derogada en el Congreso")
+    page.should have_content("La Propuesta fue Derogada en el Congreso")
 
     page.should_not have_css("button", :text => "Sí")
     page.should_not have_css("button", :text => "No")
@@ -197,5 +197,25 @@ feature "Vote for proposals", %q{
     proposal = create_proposal(:closed_at => Date.yesterday, :official_resolution => "Aceptada")
     visit proposal_path(proposal)
     page.should have_css(".official_resolution", :text => "Aceptada")
+  end
+
+  scenario "Concordance of voter's text and no votes" do
+    create_proposal
+    visit homepage
+    page.should have_content("Sé el primero en votar")
+  end
+
+  scenario "Concordance of voter's text and one vote" do
+    create_vote
+    visit homepage
+    page.should have_content("1 persona ya lo ha hecho")
+  end
+
+  scenario "Concordance of voter's text and two votes" do
+    prop = create_proposal(:title => "Ley ffdsafdsafdsaf")
+    create_vote(:user => @user, :proposal => prop)
+    create_vote(:user => @user2, :proposal => prop)
+    visit homepage
+    page.should have_content("2 personas ya lo han hecho")
   end
 end
