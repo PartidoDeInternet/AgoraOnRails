@@ -8,7 +8,7 @@ feature "Insert proposal manually", %q{
 } do
   
   scenario "insert a new proposal" do
-    admin = create_user :is_admin => true
+    admin = create_user :admin => true
     economia = create_category :name => 'Economía y Hacienda'
     pdi = create_proposer :name      => 'Partido de Internet',
                           :full_name => 'Partido de Internet'
