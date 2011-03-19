@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101016120730) do
+ActiveRecord::Schema.define(:version => 20110318215142) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20101016120730) do
     t.string   "link"
     t.text     "explanation"
     t.string   "value"
+    t.boolean  "confidential", :default => false
   end
 
 end

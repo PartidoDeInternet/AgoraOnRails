@@ -40,7 +40,7 @@ feature "See proposals", %q{
                     
     visit proposal_path(@proposal)
 
-    within(:css, ".proposal") do      
+    within(:css, ".proposal") do
       within(:css, "#vote_#{punsets_vote.id}") do 
         page.should have_css(".login", :text => "Punset")
         page.should have_css(".login a", :href => "users/#{punset.id}")
@@ -63,6 +63,27 @@ feature "See proposals", %q{
     within(:css, ".proposal") do
       page.should_not have_css(".login", :text => "Trol")
       page.should_not have_css(".link", :text => "http://youporn.com")
+    end
+  end
+  
+  scenario "Do not display comments and links from confidential votes" do
+    punset  = create_user(:login => "Punset")
+
+    punsets_vote = create_vote(
+      :user         => punset,
+      :proposal     => @proposal, 
+      :explanation  => "Internet es un derecho fundamental de todos los humanos",
+      :link         => "http://derechoshumanos.com",
+      :confidential => true)
+                    
+    visit proposal_path(@proposal)
+
+    within(:css, ".proposal") do
+      page.should_not have_css("#vote_#{punsets_vote.id}")
+      page.should_not have_css(".login", :text => "Punset")
+      page.should_not have_css(".login a", :href => "users/#{punset.id}")
+      page.should_not have_css(".explanation", :text => "Internet es un derecho fundamental de todos los humanos")
+      page.should_not have_css(".link", :text => "http://derechoshumanos.com")
     end
   end
   

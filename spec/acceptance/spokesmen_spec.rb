@@ -139,7 +139,7 @@ feature "Spokesmen", %q{
     economia_sostenible = create_proposal :title => "Ley de Economia sostenible"
     create_vote :proposal => economia_sostenible, :user => zapatero, :value => "si"
 
-    economia_sostenible.count_delegated_votes!
+    economia_sostenible.count_votes!
 
     visit user_path(zapatero)
 
@@ -177,4 +177,45 @@ feature "Spokesmen", %q{
     percentages_should_be(free_wifi, :in_favor => 50, :against => 50, :abstention => 0)
   end
 
+  context "Transitive delegation" do
+    
+    scenario "Spokesman chooses spokesman" do
+      punset = create_user :login => "Punset"
+      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+    
+      login_as @user
+    
+      visit users_path
+      click_link "Fan de Punset"
+      click_button "Elegir a Fan de Punset como mi portavoz"
+    
+      page.should have_content("Has elegido a tu portavoz.")
+      @user.reload
+      @user.spokesman.should == fan_de_punset
+    end
+
+    scenario "Update vote count when a transitive spokesman is chosen" do
+      free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+      punset = create_user :login => "Punset"
+      fan_de_punset = create_user :login => "Fan de Punset"
+      create_vote :proposal => free_wifi, :user => punset, :value => "si"    
+    
+      login_as fan_de_punset
+      visit user_path(punset)
+    
+      click_button "Elegir a Punset como mi portavoz"
+    
+      login_as @user
+      visit user_path(fan_de_punset)
+      click_button "Elegir a Fan de Punset como mi portavoz"
+    
+      visit user_path(punset)
+    
+      within(:css, "#proposal_#{free_wifi.id}") do
+        page.should have_css(".in_favor span.vote_count", :text => "3 votos")
+        page.should have_css(".in_favor span.vote_percentage", :text => "100%")
+      end
+    end
+    
+  end
 end
