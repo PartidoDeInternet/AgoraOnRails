@@ -6,7 +6,7 @@
   </ul>
   <article class="proposal" id="proposal_<%= @proposal.id %>">
     <section class="proposal-content">
-      
+
       <header>
         <hgroup>
           <h2 class="title"><%=h @proposal.title %></h2>
@@ -19,13 +19,14 @@
           <li class="views"><%= number_with_delimiter @proposal.visits %> visitas</li>
         </ul>
       </header>
-      
-      
+
+
       <% if @proposal.closed? %>
         <p class="solved">La Propuesta fué <span class="official_resolution"> <%= @proposal.official_resolution %></span> en el Congreso.</p>
       <% elsif current_user && current_user.has_voted_for?(@proposal) %>
         <p class="voted">Ya has votado esta propuesta</p>
-      <% else %>  
+        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="pdi">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+      <% else %>
         <%= form_tag new_proposal_vote_path(@proposal), {:method => :get, :class => "vote"} do -%>
           <fieldset>
             <strong>Vota esta propuesta</strong>
@@ -42,8 +43,8 @@
             <button type="submit" name="value" value="no" class="no"><span>No</span></button>
             <button type="submit" name="value" value="abstencion" class="abstencion"><span>Abstencion</span></button>
           </fieldset>
-        <% end -%>	
-	    <% end %>      
+        <% end -%>
+	    <% end %>
       <section class="vote-results documents-list">
         <dl>
           <dt><strong>Votación popular</strong></dt>
@@ -52,12 +53,12 @@
           </dd>
         </dl>
       </section>
-      
+
       <p class="votes_with_explanations">
         <%= render :partial => "vote", :collection => @proposal.votes.order_by_represented_users %>
       </p>
-      
-      <!-- 
+
+      <!--
       <section class="documentation documents-list">
         <dl>
           <dt><strong>Documentación</strong></dt>
@@ -70,7 +71,7 @@
           </dd>
         </dl>
       </section>
-    
+
       <section class="sessions documents-list">
         <dl>
           <dt><strong>Diario de sesiones</strong></dt>
@@ -97,9 +98,9 @@
       </dd>
     </dl>
     <% end %>
-    
+
     <span class="decorate up"></span>
     <span class="decorate down"></span>
   </article>
-  
+
 </section>
