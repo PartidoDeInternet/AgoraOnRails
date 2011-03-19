@@ -29,9 +29,12 @@ class UsersController < ApplicationController
   def choose_as_spokesman
     user = current_user
     spokesman = User.find(params[:id])
-    user.update_attributes! :spokesman => spokesman
-    spokesman.voted_and_delegated_proposals.map(&:count_votes!)
-    flash[:notice] = "Has elegido a tu portavoz."
+    if user.update_attributes :spokesman => spokesman
+      spokesman.voted_and_delegated_proposals.map(&:count_votes!)
+      flash[:notice] = "Has elegido a tu portavoz."
+    else
+      flash[:alert] = user.errors[:spokesman_id].first
+    end
     redirect_to spokesman
   end
   

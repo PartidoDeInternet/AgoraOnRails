@@ -85,12 +85,28 @@ feature "Spokesmen", %q{
     
     page.should have_content("Has elegido a tu portavoz.")
   end
-  
-  scenario "Don't allow to choose myself as a my own spokesman" do
-    login_as @user
-    visit user_path(@user)
-    page.should_not have_css("#choose_spokesman_button")
+
+  context "logged in" do
+    scenario "Don't allow to choose myself as a my own spokesman" do
+      login_as @user
+      visit user_path(@user)
+      page.should_not have_css("#choose_spokesman_button")
+    end
   end
+
+  context "logged out" do
+    scenario "Don't allow to choose myself as a my own spokesman" do
+      visit user_path(@user)
+      click_button "Elegir a 123456789A como mi portavoz"
+      fill_in "user_session_login", :with => @user.login
+      fill_in "user_session_password", :with => "secret"
+      click_button "user_session_submit"
+      
+      page.should have_content("No puedes ser tu propio portavoz.")
+    end
+
+  end
+
   
   scenario "View proposals voted by the user" do
     [["Ley Sinde",           "no",         "En contra",  "voted_against"], 
