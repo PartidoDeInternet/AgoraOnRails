@@ -31,9 +31,9 @@
             </nav>
           <% end %>
         </section>
-        
-        <% if flash[:notice] %>
-        <div class="flash"><%= flash[:notice] %></div>
+
+        <% flash.each do |key, value| %>
+          <div class="<%= key %>"><%= value %></div>
         <% end %>
         
         <%= yield %>
