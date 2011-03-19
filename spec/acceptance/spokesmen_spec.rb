@@ -125,6 +125,8 @@ feature "Spokesmen", %q{
     visit user_path(punset)
     click_button "Elegir a Punset como mi portavoz"
     
+    visit user_path(punset)
+
     within(:css, "#proposal_#{free_wifi.id}") do
       page.should have_css(".in_favor span.vote_count", :text => "2 votos")
       page.should have_css(".in_favor span.vote_percentage", :text => "100%")
@@ -171,7 +173,9 @@ feature "Spokesmen", %q{
     percentages_should_be(free_wifi, :in_favor => 50, :against => 50, :abstention => 0)
     
     click_button "Elegir a Punset como mi portavoz"
+    visit user_path(punset)
     percentages_should_be(free_wifi, :in_favor => 67, :against => 33, :abstention => 0)
+
     
     click_button "Destituir a Punset de ser mi portavoz"
     percentages_should_be(free_wifi, :in_favor => 50, :against => 50, :abstention => 0)

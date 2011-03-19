@@ -43,6 +43,21 @@ $(function(){
     }).load();
   });
   
+  // User spokesman!
+  $("form .make-my-spokesman").click(function(e) { 
+    e.preventDefault();
+    $("#overlay iframe").attr("src", $("form.edit_user").attr("action"));
+    $("#overlay").overlay({ 
+      expose: { 
+        color: '#fff', 
+        loadSpeed: 200, 
+        opacity: 0.7 
+      }, 
+      closeOnClick: false, 
+      api: true 
+    }).load();
+  });
+
   // Home!
   var hot_proposals = $("#hot_proposals"),
   recently_closed =  $("#recently_closed"),
