@@ -2,7 +2,6 @@ class Proposal < ActiveRecord::Base
   has_many :votes
   belongs_to :category, :counter_cache => true
   belongs_to :proposer, :counter_cache => true
-  has_one :delegated_vote
   
   scope :open, where("closed_at is null")
   scope :hot,  order("(visits + votes_count * 3) DESC").limit(5)
@@ -29,20 +28,22 @@ class Proposal < ActiveRecord::Base
     Proposal.increment_counter :visits, id
   end
   
-  def count_delegated_votes!
-    delegated_vote.reset!
+  def count_votes!
+    self.in_favor = 0
+    self.against = 0
+    self.abstention = 0
     
     User.all.each do |user|
-      vote = user.delegated_vote_for(self)
-      if vote    
+      if vote = user.vote_for(self)    
         case vote.value
-        when "si" then delegated_vote.in_favor += 1
-        when "no" then delegated_vote.against += 1
-        when "abstencion" then delegated_vote.abstention += 1
+        when "si" then self.in_favor += 1
+        when "no" then self.against += 1
+        when "abstencion" then self.abstention += 1
         end
-        delegated_vote.save!
       end
     end
+    
+    save!
   end
     
   def total_votes
@@ -50,15 +51,15 @@ class Proposal < ActiveRecord::Base
   end
   
   def total_in_favor
-    self.in_favor + self.delegated_vote.in_favor
+    self.in_favor
   end
   
   def total_against
-    self.against + self.delegated_vote.against
+    self.against
   end
   
   def total_abstention
-    self.abstention + self.delegated_vote.abstention
+    self.abstention
   end
   
   def proposer_name
