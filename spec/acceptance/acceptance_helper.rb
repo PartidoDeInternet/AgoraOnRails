@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/../spec_helper"
 require "steak"
-require 'capybara/rails'
+require 'capybara/rspec'
 
 RSpec.configuration.include Capybara, :type => :acceptance
 

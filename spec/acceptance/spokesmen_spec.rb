@@ -133,6 +133,21 @@ feature "Spokesmen", %q{
     end
   end
   
+  scenario "Update vote count when spokesman votes in the future" do
+    free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+    punset = create_user :login => "Punset"
+    fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+    
+    login_as punset
+    visit proposal_path(free_wifi)
+    
+    click_button "Sí"
+    click_button "Estoy seguro"
+    
+    visit proposal_path(free_wifi)
+    page.should have_css(".in_favor", :text => "2 votos")
+  end  
+  
   scenario "Update vote count when a spokesman is discharged" do
     zapatero = create_user :login => "Zapatero" 
     @user.spokesman = zapatero
