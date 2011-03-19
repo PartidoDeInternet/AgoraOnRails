@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     if current_user.update_attributes :spokesman => spokesman
       render :layout => "mini_application"
     else
-      flash[:alert] = user.errors[:spokesman_id].first
+      flash[:alert] = current_user.errors[:spokesman_id].first
       redirect_to spokesman
     end
   end
