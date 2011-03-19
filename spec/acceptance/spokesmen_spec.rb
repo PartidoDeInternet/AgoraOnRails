@@ -95,7 +95,7 @@ feature "Spokesmen", %q{
   scenario "View proposals voted by the user" do
     [["Ley Sinde",           "no",         "En contra",  "voted_against"], 
      ["Wifi gratis",         "si",         "A favor",    "voted_in_favor"], 
-     ["Ley que no entiendo", "abstencion", "Abstención", "voted_abstention"]].each do |title, vote, humanize_vote_text, css_image|
+  ["Ley que no entiendo", "abstencion", "Abstención", "voted_abstention"]].each do | title, vote, humanize_vote_text, css_image |
  
       proposal = create_proposal :title => title
       create_vote :user => @user, :proposal => proposal, :value => vote
@@ -215,6 +215,60 @@ feature "Spokesmen", %q{
         page.should have_css(".in_favor span.vote_count", :text => "3 votos")
         page.should have_css(".in_favor span.vote_percentage", :text => "100%")
       end
+    end
+    
+    scenario "Delegation cycles are allowed but doesn't count votes if nobody votes" do
+      free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+      punset = create_user :login => "Punset", :spokesman => @user
+      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      
+      login_as @user
+      visit user_path(fan_de_punset)
+      
+      click_button "Elegir a Fan de Punset como mi portavoz"    
+      
+      visit proposal_path(free_wifi)
+      
+      page.should have_css(".in_favor span.vote_count", :text => "0 votos")
+      page.should have_css(".against span.vote_count", :text => "0 votos")
+      page.should have_css(".abstention span.vote_count", :text => "0 votos")
+    end
+    
+    scenario "Delegation cycles count votes if one spokesman votes" do
+      free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+      punset = create_user :login => "Punset", :spokesman => @user
+      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      create_vote :proposal => free_wifi, :user => punset, :value => "si"
+      
+      login_as @user
+      visit user_path(fan_de_punset)
+      
+      click_button "Elegir a Fan de Punset como mi portavoz"    
+      
+      visit proposal_path(free_wifi)
+      
+      page.should have_css(".in_favor span.vote_count", :text => "3 votos")
+      page.should have_css(".against span.vote_count", :text => "0 votos")
+      page.should have_css(".abstention span.vote_count", :text => "0 votos")
+    end
+    
+    scenario "Delegation cycles count votes if two spokesman votes" do
+      free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+      punset = create_user :login => "Punset", :spokesman => @user
+      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      create_vote :proposal => free_wifi, :user => punset, :value => "si"
+      create_vote :proposal => free_wifi, :user => fan_de_punset, :value => "no"
+      
+      login_as @user
+      visit user_path(fan_de_punset)
+      
+      click_button "Elegir a Fan de Punset como mi portavoz"    
+      
+      visit proposal_path(free_wifi)
+      
+      page.should have_css(".in_favor span.vote_count", :text => "1 votos")
+      page.should have_css(".against span.vote_count", :text => "2 votos")
+      page.should have_css(".abstention span.vote_count", :text => "0 votos")
     end
     
   end
