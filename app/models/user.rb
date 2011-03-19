@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :represented_users, :class_name => "User", :foreign_key => :spokesman_id
   validate :prevent_oneself_as_spokesman
   
+  after_save :count_votes
+  
   def name
     "#{first_name} #{last_name}"
   end
@@ -23,15 +25,36 @@ class User < ActiveRecord::Base
   end
   
   def vote_for(proposal)
-    if has_voted_for?(proposal) 
-      votes.find_by_proposal_id(proposal)
-    else
-      spokesman.vote_for(proposal) if spokesman.present?
+    delegation_list.each do |member|
+      if vote = member.find_vote(proposal) 
+        return vote 
+      end
     end
+    nil
+  end
+  
+  def find_vote(proposal)
+    return votes.find_by_proposal_id(proposal)
+  end
+  
+  def delegation_list
+    list = []
+    current = self
+    while current.present? && !list.include?(current)
+      list << current
+      current = current.spokesman
+    end
+    list
   end
   
   def voted_and_delegated_proposals
-    voted_proposals + (spokesman.try(:voted_and_delegated_proposals) || [])
+    delegation_list.map(&:voted_proposals).flatten
+  end
+  
+  def count_votes
+    if spokesman_id_changed?
+      (spokesman || User.find_by_id(spokesman_id_was)).voted_and_delegated_proposals.map(&:count_votes!)
+    end
   end
 
   def prevent_oneself_as_spokesman

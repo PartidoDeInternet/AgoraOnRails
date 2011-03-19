@@ -7,13 +7,13 @@ gem "mechanize"
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem "inherited_resources"
 gem "dynamic_form"
-
+gem 'webmock'
+  
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails'
   gem 'steak', '>= 1.0.0.rc.1'
   gem 'capybara'
-  gem 'webmock'
   gem 'launchy'
   gem 'ruby-debug19'
   gem 'ZenTest'

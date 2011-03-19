@@ -1,0 +1,12 @@
+<h2>Hooray!!</h2>
+
+<p class="confirmation-message">
+  <strong>Has elegido a tu portavoz.</strong>
+  Si nadie lo remedia en 5 segundos te llevaremos a la página de tu portavoz.
+</p>
+
+
+<script type="text/javascript" charset="utf-8">
+  var t = setTimeout("top.document.location.href = '<%= user_path current_user.spokesman %>'", 5000);
+</script>
+
