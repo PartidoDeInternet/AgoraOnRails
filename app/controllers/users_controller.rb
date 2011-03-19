@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :choose_as_spokesman
-  
+
   def index
     @users = User.all
   end
-  
+
   def new
    @user = User.new
    render :layout => "mini_application"
   end
-  
+
   def create
    @user = User.new(params[:user])
    if @user.save
@@ -20,12 +20,12 @@ class UsersController < ApplicationController
      render :action => :new
    end
   end
-  
+
   def show
     @user = User.find(params[:id])
     @proposals = (current_user && current_user == @user) ? @user.voted_proposals : @user.publicly_voted_proposals
-  end 
-  
+  end
+
   def choose_as_spokesman
     user = current_user
     spokesman = User.find(params[:id])
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     render :layout => "mini_application"
   end
-  
+
   def discharge_as_spokesman
     spokesman = User.find(params[:id])
     current_user.spokesman = nil
