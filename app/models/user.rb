@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :votes
   has_many :voted_proposals, :through => :votes, :source => :proposal
+  has_many :publicly_voted_proposals, :through => :votes, :source => :proposal, :conditions => ["votes.confidential = ?", false]
   belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
   has_many :represented_users, :class_name => "User", :foreign_key => :spokesman_id
   

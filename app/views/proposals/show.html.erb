@@ -54,7 +54,7 @@
       </section>
       
       <p class="votes_with_explanations">
-        <%= render :partial => "vote", :collection => @proposal.votes.order_by_represented_users %>
+        <%= render :partial => "vote", :collection => @proposal.votes.public.order_by_represented_users %>
       </p>
       
       <!-- 
