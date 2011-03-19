@@ -9,12 +9,7 @@ class Vote < ActiveRecord::Base
   after_create :update_results
   
   def update_results
-    case value
-    when "si" then proposal.in_favor += 1
-    when "no" then proposal.against += 1
-    when "abstencion" then proposal.abstention += 1
-    end
-    proposal.save!
+    proposal.count_votes!
   end
   
   def self.choices

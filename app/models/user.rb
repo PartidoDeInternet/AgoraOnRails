@@ -16,7 +16,20 @@ class User < ActiveRecord::Base
     
   def delegated_vote_for(proposal)
     return nil if has_voted_for?(proposal) or spokesman.nil? 
-    spokesman.has_voted_for?(proposal) ? spokesman.votes.find_by_proposal_id(proposal) : nil
+    
+    spokesman.vote_for(proposal)
+  end
+  
+  def vote_for(proposal)
+    if has_voted_for?(proposal) 
+      votes.find_by_proposal_id(proposal)
+    else
+      spokesman.vote_for(proposal) if spokesman.present?
+    end
+  end
+  
+  def voted_and_delegated_proposals
+    voted_proposals + (spokesman.try(:voted_and_delegated_proposals) || [])
   end
 
 end
