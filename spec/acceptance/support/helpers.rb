@@ -1,7 +1,21 @@
 module HelperMethods
   def login_as(user)
     stub_tractis_request
-    visit "/user_session/authenticate?&verification_code=f56dd2d18e490aa9246b993b95d8927e7147c91c&tractis%3Aattribute%3Adni=#{user.dni}&tractis%3Aattribute%3Aname=#{user.name.parameterize}&token=f83a65a341853b28c5e0732209433488a0958d04&api_key=36ec6e54ef3e73f61339456abc9d05329afc62b2&tractis%3Aattribute%3Aissuer=DIRECCION+GENERAL+DE+LA+POLICIA"
+    get_tractis_callback(user.name, user.dni)
+  end
+
+  def register_as(name, dni)
+    stub_tractis_request
+    get_tractis_callback(name, dni)
+  end
+  
+  def hack_attempt_to_reproduce_tractis_callback
+    stub_tractis_not_authorized_request
+    visit "/user_session/authenticate?&I_try_to_hack_you=all_your_bases_are_belongs_to_us"
+  end
+  
+  def get_tractis_callback(name, dni)
+    visit "/user_session/authenticate?&verification_code=f56dd2d18e490aa9246b993b95d8927e7147c91c&tractis%3Aattribute%3Adni=#{dni}&tractis%3Aattribute%3Aname=#{CGI.escape(name)}&token=f83a65a341853b28c5e0732209433488a0958d04&api_key=36ec6e54ef3e73f61339456abc9d05329afc62b2&tractis%3Aattribute%3Aissuer=DIRECCION+GENERAL+DE+LA+POLICIA"
   end
 
   def percentages_should_be(proposal, results)
@@ -33,11 +47,6 @@ module HelperMethods
   def stub_tractis_not_authorized_request
     stub_request(:post, "https://www.tractis.com/data_verification").
       to_return(:status => 403, :body => "", :headers => {})
-  end
-  
-  def hack_attempt_to_reproduce_tractis_callback
-    stub_tractis_not_authorized_request
-    visit "/user_session/authenticate?&I_try_to_hack_you=all_your_bases_are_belongs_to_us"
   end
 end
 

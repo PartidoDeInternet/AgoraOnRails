@@ -18,6 +18,17 @@ feature "DNI authentication", %q{
     page.should have_content("Estoy logueado como Bad Ass Mother Fucking Real User")
   end
 
+  scenario "Valid authentication with new user" do
+    visit login_path
+  
+    page.should have_css("input[@value='Identifícate con tu DNIe']")
+    
+    register_as("Bad Ass Mother Fucking New User", "12345678V")
+    
+    page.should have_content("Estoy logueado como Bad Ass Mother Fucking New User")
+    User.find_by_name_and_dni("Bad Ass Mother Fucking New User", "12345678V").should be
+  end
+
   scenario "Invalid authentication" do
     hack_attempt_to_reproduce_tractis_callback
     
