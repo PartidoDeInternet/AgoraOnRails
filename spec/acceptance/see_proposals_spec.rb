@@ -30,7 +30,7 @@ feature "See proposals", %q{
   end
   
   scenario "See comments and links for a proposal" do
-    punset  = create_user(:login => "Punset")
+    punset  = create_user(:name => "Punset")
 
     punsets_vote = create_vote(
       :user        => punset,
@@ -51,7 +51,7 @@ feature "See proposals", %q{
   end
 
   scenario "Only displays votes with a comment" do
-    trol = create_user(:login => "Trol")
+    trol = create_user(:name => "Trol")
  
     trols_vote = create_vote( 
        :user        => trol,
@@ -88,17 +88,17 @@ feature "See proposals", %q{
   end
   
   scenario "Order comments by number of represented users" do
-    jenny = create_user(:login => "Jenny")
+    jenny = create_user(:name => "Jenny")
     1.times { create_user :spokesman => jenny}
     
-    jonnhy = create_user(:login => "Jonnhy")
+    jonnhy = create_user(:name => "Jonnhy")
     3.times { create_user :spokesman => jonnhy}
     
-    punset = create_user(:login => "Punset")
+    punset = create_user(:name => "Punset")
     10.times { create_user :spokesman => punset}
     
     [jenny, punset, jonnhy].each { |user| 
-      create_vote :user => user, :proposal => @proposal, :explanation => "#{user.login}'s explanation" }
+      create_vote :user => user, :proposal => @proposal, :explanation => "#{user.name}'s explanation" }
     
     visit proposal_path(@proposal)
 

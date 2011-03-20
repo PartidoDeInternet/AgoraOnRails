@@ -14,7 +14,7 @@ scenario "Valid authentication with existing user" do
   page.should have_css("input[@value='Identifícate con tu DNIe']")
   
   login_as user
-  
+save_and_open_page  
   page.should have_content("Estoy logueado como Bad Ass Mother Fucking Real User")
 end
 

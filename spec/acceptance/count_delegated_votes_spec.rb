@@ -7,9 +7,9 @@ feature "", %q{
 } do
   
   background do
-    @zapatero  = create_user         :last_name =>  "Zapatero"
-    @rajoy     = create_user         :last_name =>  "Rajoy"
-    @pepe      = create_user         :first_name => "Pepe", :spokesman => @zapatero
+    @zapatero  = create_user         :name =>  "Zapatero"
+    @rajoy     = create_user         :name =>  "Rajoy"
+    @pepe      = create_user         :name =>  "Pepe", :spokesman => @zapatero
     @ley_sinde = create_proposal     :title =>      "Ley Sinde"
   end
   

@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/../spec_helper"
 
 describe User do
   it "could have a spokesman" do
-    buenafuente = create_user(:login => "Buenafuente")
+    buenafuente = create_user(:name => "Buenafuente")
     user = create_user(:spokesman => buenafuente)
     user.spokesman.should == buenafuente
     buenafuente.represented_users.should include(user)

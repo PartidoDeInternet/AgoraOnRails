@@ -8,12 +8,12 @@ feature "Spokesmen", %q{
 } do
   
   background do
-    @user = create_user(:login => "123456789A")
+    @user = create_user
   end
   
   scenario "View Users" do
-    zapatero = create_user :login => "Jose Luis"
-    rajoy = create_user :login => "Mariano"
+    zapatero = create_user :name => "Jose Luis"
+    rajoy = create_user :name => "Mariano"
     
     visit "/"
     click_link "Usuari@s"
@@ -23,7 +23,7 @@ feature "Spokesmen", %q{
   end
     
   scenario "Choose spokesman" do
-    fan_de_punset = create_user :login => "Fan de Punset"
+    fan_de_punset = create_user :name => "Fan de Punset"
     login_as @user
     
     visit users_path
@@ -36,7 +36,7 @@ feature "Spokesmen", %q{
   end
   
   scenario "Discharge spokesman" do
-    zapatero = create_user :login => "Zapatero"
+    zapatero = create_user :name => "Zapatero"
     @user.spokesman = zapatero
     @user.save!
     
@@ -53,8 +53,8 @@ feature "Spokesmen", %q{
   end
   
   scenario "Display the correct button in a spokeman's page" do
-    rajoy = create_user :login => "Rajoy"
-    zapatero = create_user :login => "Zapatero"
+    rajoy = create_user :name => "Rajoy"
+    zapatero = create_user :name => "Zapatero"
     
     @user.spokesman = zapatero
     @user.save!
@@ -70,18 +70,16 @@ feature "Spokesmen", %q{
   end
   
   scenario "Don't allow to choose spokesman unless user is logged in" do
-    fan_de_punset = create_user :login => "Fan de Punset"
+    fan_de_punset = create_user :name => "Fan de Punset"
     
     visit users_path
     click_link "Fan de Punset"
     click_button "Elegir a Fan de Punset como mi portavoz"
 
-    page.should have_content("Autenticación requerida")
+    page.should have_content("Autenticación con DNIe requerida")
     page.should_not have_content("Has elegido a tu portavoz.")
     
-    fill_in "user_session_login", :with => @user.login
-    fill_in "user_session_password", :with => "secret"
-    click_button "user_session_submit"
+    login_as @user
     
     page.should have_content("Has elegido a tu portavoz.")
   end
@@ -128,7 +126,7 @@ feature "Spokesmen", %q{
   
   scenario "Update vote count when a spokesman is chosen" do
     free_wifi = create_proposal :title => "Wifi Gratis en toda España"
-    punset = create_user :login => "Punset" 
+    punset = create_user :name => "Punset" 
     create_vote :proposal => free_wifi, :user => punset, :value => "si"
     
     visit user_path(punset)
@@ -165,7 +163,7 @@ feature "Spokesmen", %q{
   end  
   
   scenario "Update vote count when a spokesman is discharged" do
-    zapatero = create_user :login => "Zapatero" 
+    zapatero = create_user :name => "Zapatero" 
     @user.spokesman = zapatero
     @user.save!
     
@@ -192,8 +190,8 @@ feature "Spokesmen", %q{
     
   scenario "Update vote percentages when a spokesman is chosen/discharged" do    
     free_wifi = create_proposal :title => "Wifi Gratis en toda España"
-    punset = create_user :login => "Punset" 
-    telefonica = create_user :login => "Telefonica" 
+    punset = create_user :name => "Punset" 
+    telefonica = create_user :name => "Telefonica" 
 
     create_vote :proposal => free_wifi, :user => punset, :value => "si"
     create_vote :proposal => free_wifi, :user => telefonica, :value => "no"

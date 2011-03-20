@@ -8,7 +8,7 @@
 	<% for user in @users do %>
 		<article class="user">
 			<header>
-				<h3 class="name"><%= link_to user.login, user %></h3>
+				<h3 class="name"><%= link_to user.name, user %></h3>
 			</header>
 			
 			<p class="link"> <%= user.link %></p>

@@ -8,9 +8,9 @@ feature "Vote for proposals", %q{
 } do
 
   background do
-    @user = create_user(:login => "123456789A")
-    @user2 = create_user(:login => "123456789B")
-    @user3 = create_user(:login => "123456789C")
+    @user = create_user(:dni => "12345678A")
+    @user2 = create_user(:dni => "12345678B")
+    @user3 = create_user(:dni => "12345678C")
   end
 
   scenario "Vote for open proposals" do
@@ -105,13 +105,11 @@ feature "Vote for proposals", %q{
     visit proposal_path(proposal)
     click_button "Sí"
 
-    page.should have_content("Autenticación requerida")
+    page.should have_content("Autenticación con DNIe requerida")
     page.should_not have_css("button", :text => "Confirmar")
-
-    fill_in "user_session_login", :with => "123456789A"
-    fill_in "user_session_password", :with => "secret"
-    click_button "user_session_submit"
-
+      
+    login_as @user
+    
     page.should have_content("Vas a votar a favor de la iniciativa “Derogación del canon”")
   end
 
@@ -171,6 +169,7 @@ feature "Vote for proposals", %q{
 
     login_as @user2
     visit proposal_path(proposal)
+
     click_button "No"
     click_button "Estoy seguro"
     visit proposal_path(proposal)

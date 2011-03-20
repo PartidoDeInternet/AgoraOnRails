@@ -1,4 +1,4 @@
-<% @title = "#{@user.login}" %>
+<% @title = "#{@user.name}" %>
 <section id="content">
   <ul id="breadcrumb">
     <li><a href="/">Inicio »</a></li>
@@ -8,12 +8,12 @@
   
   <% if current_user && current_user.spokesman == @user %>
     <%= form_for @user, :url => discharge_as_spokesman_user_path(@user) do |f| -%>
-       <%= submit_tag "Destituir a #{h @user.login} de ser mi portavoz", :id => "discharge_spokesman_button", :class => "discharge-my-spokesman" %>
+       <%= submit_tag "Destituir a #{h @user.name} de ser mi portavoz", :id => "discharge_spokesman_button", :class => "discharge-my-spokesman" %>
      <% end -%>
   <% else %>
     <% unless current_user == @user %>
       <%= form_for @user, :url => choose_as_spokesman_user_path(@user) do |f| -%>
-        <%= submit_tag "Elegir a #{h @user.login} como mi portavoz", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
+        <%= submit_tag "Elegir a #{h @user.name} como mi portavoz", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
       <% end -%>
     <% end %>
   <% end %>  
