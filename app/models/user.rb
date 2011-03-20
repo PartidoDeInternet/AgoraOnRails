@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   
   after_save :count_votes
   
+  validates :dni, :presence => true
+  
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)
   end
