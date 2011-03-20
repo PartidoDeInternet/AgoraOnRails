@@ -29,6 +29,16 @@ module HelperMethods
     stub_request(:post, "https://www.tractis.com/data_verification").
       to_return(:status => 200, :body => "", :headers => {})
   end
+  
+  def stub_tractis_not_authorized_request
+    stub_request(:post, "https://www.tractis.com/data_verification").
+      to_return(:status => 403, :body => "", :headers => {})
+  end
+  
+  def hack_attempt_to_reproduce_tractis_callback
+    stub_tractis_not_authorized_request
+    visit "/user_session/authenticate?&I_try_to_hack_you=all_your_bases_are_belongs_to_us"
+  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

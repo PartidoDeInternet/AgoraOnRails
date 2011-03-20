@@ -18,7 +18,11 @@ feature "DNI authentication", %q{
     page.should have_content("Estoy logueado como Bad Ass Mother Fucking Real User")
   end
 
-  scenario "Invalid authentication"
+  scenario "Invalid authentication" do
+    hack_attempt_to_reproduce_tractis_callback
+    
+    page.should have_content("Access Denied Bitch")
+  end
   
 end
 
