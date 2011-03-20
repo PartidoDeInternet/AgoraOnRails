@@ -8,8 +8,8 @@ feature "Admin can close proposals", %q{
 } do
 
   background do
-    @user  = create_user(:login => "123456789A")
-    @admin = create_user(:login => "Administreitor", :admin => true)
+    @user  = create_user(:name => "123456789A")
+    @admin = create_user(:name => "Administreitor", :admin => true)
   end
 
   scenario "Admin can see the finish button" do

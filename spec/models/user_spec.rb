@@ -10,7 +10,7 @@ describe User do
 
   it "does not allow a user to choose himself as a spokesman" do
     expect{
-      buenafuente = create_user(:login => "Buenafuente")
+      buenafuente = create_user(:name => "Buenafuente")
       buenafuente.update_attributes!(:spokesman => buenafuente)
     }.to raise_error
   end

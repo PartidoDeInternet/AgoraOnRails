@@ -25,7 +25,7 @@ feature "User page", %q{
   end
   
   scenario "Voted proposals appear in the user page" do
-    bob  = create_user(:login => "BobMarley")
+    bob  = create_user(:name => "BobMarley")
 
     create_vote( :user  => bob,
           :proposal     => @proposal_2, 
@@ -55,7 +55,7 @@ feature "User page", %q{
   end
   
   scenario "Confidentially voted proposals do not appear in the user page" do
-    bob  = create_user(:login => "BobMarley")
+    bob  = create_user(:name => "BobMarley")
 
     create_vote( :user  => bob,
           :proposal     => @proposal_2, 

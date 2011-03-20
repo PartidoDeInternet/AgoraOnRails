@@ -67,7 +67,7 @@ feature "See proposals", %q{
   end
   
   scenario "Do not display comments and links from confidential votes" do
-    punset  = create_user(:login => "Punset")
+    punset  = create_user(:name => "Punset")
 
     punsets_vote = create_vote(
       :user         => punset,

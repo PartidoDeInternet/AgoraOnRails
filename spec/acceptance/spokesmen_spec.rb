@@ -94,12 +94,10 @@ feature "Spokesmen", %q{
 
   context "logged out" do
     scenario "Don't allow to choose myself as a my own spokesman" do
-      visit user_path(@user)
-      click_button "Elegir a 123456789A como mi portavoz"
-      fill_in "user_session_login", :with => @user.login
-      fill_in "user_session_password", :with => "secret"
-      click_button "user_session_submit"
-      
+      visit user_path(@user)            
+      click_button "Elegir a #{@user.name} como mi portavoz"
+      login_as @user
+    
       page.should have_content("No puedes ser tu propio portavoz.")
     end
 
@@ -149,8 +147,8 @@ feature "Spokesmen", %q{
   
   scenario "Update vote count when spokesman votes in the future" do
     free_wifi = create_proposal :title => "Wifi Gratis en toda España"
-    punset = create_user :login => "Punset"
-    fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+    punset = create_user :name => "Punset"
+    fan_de_punset = create_user :name => "Fan de Punset", :spokesman => punset
     
     login_as punset
     visit proposal_path(free_wifi)
@@ -213,8 +211,8 @@ feature "Spokesmen", %q{
   context "Transitive delegation" do
     
     scenario "Spokesman chooses spokesman" do
-      punset = create_user :login => "Punset"
-      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      punset = create_user :name => "Punset"
+      fan_de_punset = create_user :name => "Fan de Punset", :spokesman => punset
     
       login_as @user
     
@@ -229,8 +227,8 @@ feature "Spokesmen", %q{
 
     scenario "Update vote count when a transitive spokesman is chosen" do
       free_wifi = create_proposal :title => "Wifi Gratis en toda España"
-      punset = create_user :login => "Punset"
-      fan_de_punset = create_user :login => "Fan de Punset"
+      punset = create_user :name => "Punset"
+      fan_de_punset = create_user :name => "Fan de Punset"
       create_vote :proposal => free_wifi, :user => punset, :value => "si"    
     
       login_as fan_de_punset
@@ -252,8 +250,8 @@ feature "Spokesmen", %q{
     
     scenario "Update vote count when a transitive spokesman is discharged" do
       free_wifi = create_proposal :title => "Wifi Gratis en toda España"
-      punset = create_user :login => "Punset"
-      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      punset = create_user :name => "Punset"
+      fan_de_punset = create_user :name => "Fan de Punset", :spokesman => punset
       create_vote :proposal => free_wifi, :user => punset, :value => "si"
 
       login_as @user
@@ -272,8 +270,8 @@ feature "Spokesmen", %q{
     
     scenario "Delegation cycles are allowed but doesn't count votes if nobody votes" do
       free_wifi = create_proposal :title => "Wifi Gratis en toda España"
-      punset = create_user :login => "Punset", :spokesman => @user
-      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      punset = create_user :name => "Punset", :spokesman => @user
+      fan_de_punset = create_user :name => "Fan de Punset", :spokesman => punset
       
       login_as @user
       visit user_path(fan_de_punset)
@@ -289,8 +287,8 @@ feature "Spokesmen", %q{
     
     scenario "Delegation cycles count votes if one spokesman votes" do
       free_wifi = create_proposal :title => "Wifi Gratis en toda España"
-      punset = create_user :login => "Punset", :spokesman => @user
-      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      punset = create_user :name => "Punset", :spokesman => @user
+      fan_de_punset = create_user :name => "Fan de Punset", :spokesman => punset
       create_vote :proposal => free_wifi, :user => punset, :value => "si"
       
       login_as @user
@@ -307,8 +305,8 @@ feature "Spokesmen", %q{
     
     scenario "Delegation cycles count votes if two spokesman votes" do
       free_wifi = create_proposal :title => "Wifi Gratis en toda España"
-      punset = create_user :login => "Punset", :spokesman => @user
-      fan_de_punset = create_user :login => "Fan de Punset", :spokesman => punset
+      punset = create_user :name => "Punset", :spokesman => @user
+      fan_de_punset = create_user :name => "Fan de Punset", :spokesman => punset
       create_vote :proposal => free_wifi, :user => punset, :value => "si"
       create_vote :proposal => free_wifi, :user => fan_de_punset, :value => "no"
       
