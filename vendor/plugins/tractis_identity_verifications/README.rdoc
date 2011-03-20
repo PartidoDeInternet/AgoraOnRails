@@ -1,0 +1,88 @@
+= Tractis Identity Verifications
+
+{Tractis Identity Verifications}[https://www.tractis.com/identity_verifications] provide you with a gateway to get your users real identity proven with their electronic certificates.
+
+These custom gateways will request your users a certain set of attributes from their identity such as: name, birthdate, certificate issuer, etc... Your user will have to use an {accepted certificate}[https://www.tractis.com/accepted_certificates] to proof these attributes. Example Given: one website will be able to get his users' real name using Spain or Belgium eID cards.
+
+== How could I use identity verifications in my proyects?
+
+Identity verifications can be public or private. Public verifications give, apart from the user data, a URL to the Proof of Identity Verification for you to link from your website.
+
+You can make two kind of integrations depending on the type of identity verification, pulic or private:
+
+=== Strong authentication
+You can use private identity verification gateways as strong authentication gateways in order to provide login with certificates.
+
+=== Certified profiles
+Public identity verification gateways allow you to provide certified user profiles in your website where you can highlight those users with certified identity and link the Proof of Identity Verification.
+
+== Installation
+
+  script/plugin install git://github.com/tractis/tractis_identity_verifications.git 
+
+== Get your API-Key
+
+In order to use this plugin you will need to get an API-Key from https://www.tractis.com/identity_verifications
+
+Once you have your API-Key, you will be able to configure which identity attributes you will require and certificates 
+
+== Example usage
+
+Integrating Tractis Identity Verifications requires to:
+
+* Add a form to redirect your users to your gateway.
+* Add a controller action to receive the verification data and check it's authenticity.
+
+=== Example view (views/test/index.html.erb)
+
+Use our helper to add the form to redirect your users to your gateway.
+
+  <%= identity_verification_gateway("Identify!", "API-KEY", :action => 'create') %>
+
+=== Example controller (controllers/test_controller.rb)
+
+
+
+  class TestController < ApplicationController
+    include Tractis::IdentityVerifications
+    def create
+      valid_tractis_identity_verification!("API-KEY", params)
+  
+      render :text => <<-TEXT
+  <pre>
+  Identified
+    Name: #{params["tractis:attribute:name"]}
+    eID #: #{params["tractis:attribute:dni"]}
+    Certificate Issuer: #{params["tractis:attribute:issuer"]}
+  </pre>
+      TEXT
+    rescue Tractis::InvalidVerificationError
+      render :text => "Verification failed"
+    end
+  end
+
+=== Screencast from the demo
+
+You can watch {a technical screencast of this demo}[http://vimeo.com/5508268].
+
+=== Create Certified Profiles in your website
+
+With {Tractis Identity Verifications}[https://www.tractis.com/identity_verifications] you can provide Certified Profiles in your website where Tractis will certify the identity of you user.
+
+In order to create certified profiles you will need to <b>specify that the verification will be public</b> using <b><code>:public_verification => true</code></b>
+
+  <%= identity_verification_gateway("Identify!", "API-KEY", {:action => 'create'}, {:public_verification => true}) %>
+
+The public verification will send an extra parameter called <b><code>:verification_url</code></b> (<code>params[:verification_url]</code>) to the <code>notification_callback</code>. 
+
+This parameter will contain the URL for the Identity Verification Proof. You will be able to link this Proof only within your website to let your users check verified identity.
+
+== Further information
+
+* Check the {list of certificates accepted in Tractis}[https://www.tractis.com/accepted_certificates]
+* Need help o want to suggest anything? Join our {mailing list}[http://groups.google.com/group/tractis_identity_verifications]
+* Get more information about {Tractis Identity Verifications}[https://www.tractis.com/identity_verifications]
+* Get a {demo certificate}[http://acme.tractis.com/demo.p12] for your tests (password: 1111)
+
+
+Copyright (c) 2009 Tractis, released under the MIT license

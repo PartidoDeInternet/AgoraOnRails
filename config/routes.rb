@@ -15,7 +15,9 @@ AgoraOnRails::Application.routes.draw do
     resources :votes
   end
 
-  resource :user_session
+  resource :user_session do
+    get 'authenticate'
+  end
   
   resources :users do
     member do

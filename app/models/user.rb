@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  acts_as_authentic
-  
   has_many :votes
   has_many :voted_proposals, :through => :votes, :source => :proposal
   has_many :publicly_voted_proposals, :through => :votes, :source => :proposal, :conditions => ["votes.confidential = ?", false]
@@ -9,10 +7,6 @@ class User < ActiveRecord::Base
   validate :prevent_oneself_as_spokesman
   
   after_save :count_votes
-  
-  def name
-    "#{first_name} #{last_name}"
-  end
   
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)

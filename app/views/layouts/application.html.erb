@@ -26,7 +26,7 @@
           <% if current_user %>
             <nav id="user-nav">
               <ul>
-                <li>Estoy logueado y <%= link_to "quiero salir", user_session_path, :method => "delete" %></li>
+                <li>Estoy logueado como <%= current_user.name %> y <%= link_to "quiero salir", user_session_path, :method => "delete" %></li>
               </ul>
             </nav>
           <% end %>

@@ -4,7 +4,6 @@ gem 'rails', '3.0.5'
 
 gem "progressbar"
 gem "mechanize"
-gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem "inherited_resources"
 gem "dynamic_form"
 gem 'webmock'

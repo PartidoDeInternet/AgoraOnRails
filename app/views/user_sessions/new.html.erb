@@ -1,36 +1,6 @@
-<h2>Autenticación requerida</h2>
+<h2>Autenticación con DNIe requerida</h2>
 
 <section id="login-section">
-  <%= form_for @user_session, :url => user_session_path do |f| %>
-    <fieldset>
-      <%= f.error_messages %>
-  
-      <div class="overlayfield">
-        <%= f.label :login, "<span>Introduce tu usuario</span>".html_safe %>
-        <%= f.text_field :login %>
-      </div>
-  
-      <div class="overlayfield">
-        <%= f.label :password, "<span>Dinos tu contraseña</span>".html_safe %>
-        <%= f.password_field :password %>
-      </div>
-    
-      <!--
-        <%= f.check_box :remember_me %><%= f.label :remember_me %>
-      -->
-      
-      <p>
-        <button type="submit" class="login" id="user_session_submit"><span>Identifícate</span></button>
-      </p>
-    </fieldset>
-  <% end %>
+  <%= raw(identity_verification_gateway("Identifícate con tu DNIe", ENV["TRACTIS_API_KEY"], :action => 'authenticate')) %>
 </section>
 
-<section id="login-register">
-  <p>Para poder votar necesitas estar registrado. </p>
-  <p>
-    <a href="<%= new_user_path %>">
-      <button class="register"><span>Regístrate!!</span></button>
-    </a>
-  </p>
-</section>

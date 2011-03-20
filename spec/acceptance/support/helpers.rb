@@ -1,9 +1,7 @@
 module HelperMethods
   def login_as(user)
-    visit login_path
-    fill_in "user_session_login", :with => user.login
-    fill_in "user_session_password", :with => "secret"
-    click_button "user_session_submit"
+    stub_tractis_request
+    visit "/user_session/authenticate?&verification_code=f56dd2d18e490aa9246b993b95d8927e7147c91c&tractis%3Aattribute%3Adni=#{user.dni}&tractis%3Aattribute%3Aname=#{user.name.parameterize}&token=f83a65a341853b28c5e0732209433488a0958d04&api_key=36ec6e54ef3e73f61339456abc9d05329afc62b2&tractis%3Aattribute%3Aissuer=DIRECCION+GENERAL+DE+LA+POLICIA"
   end
 
   def percentages_should_be(proposal, results)
@@ -25,6 +23,11 @@ module HelperMethods
     titles.each_with_index do |title, index|
       page.should have_css("#hot_proposals .proposal:nth-child(#{index + 2}) .title", :text => title)
     end
+  end
+  
+  def stub_tractis_request
+    stub_request(:post, "https://www.tractis.com/data_verification").
+      to_return(:status => 200, :body => "", :headers => {})
   end
 end
 

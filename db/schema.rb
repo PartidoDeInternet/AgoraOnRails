@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110319180521) do
+ActiveRecord::Schema.define(:version => 20110319234436) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110319180521) do
     t.integer  "visits",                              :default => 0
     t.integer  "votes_count"
     t.integer  "position"
+    t.integer  "closer_id"
   end
 
   create_table "proposers", :force => true do |t|
@@ -57,28 +58,15 @@ ActiveRecord::Schema.define(:version => 20110319180521) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                      :null => false
-    t.string   "email",                                      :null => false
-    t.string   "crypted_password",                           :null => false
-    t.string   "password_salt",                              :null => false
-    t.string   "persistence_token",                          :null => false
-    t.string   "perishable_token",                           :null => false
-    t.integer  "login_count",             :default => 0,     :null => false
-    t.integer  "failed_login_count",      :default => 0,     :null => false
-    t.datetime "last_request_at"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
     t.integer  "representer_id"
     t.string   "link"
     t.integer  "spokesman_id"
     t.integer  "represented_users_count"
-    t.boolean  "is_admin",                :default => false, :null => false
+    t.string   "dni"
+    t.string   "name"
+    t.boolean  "admin",                   :default => false
   end
 
   create_table "votes", :force => true do |t|
