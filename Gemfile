@@ -6,7 +6,6 @@ gem "progressbar"
 gem "mechanize"
 gem "inherited_resources"
 gem "dynamic_form"
-gem 'webmock'
   
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -20,3 +19,5 @@ group :development, :test do
   gem 'autotest-growl'
   gem 'heroku_san'
 end
+
+gem 'webmock', :group => :test
