@@ -145,6 +145,67 @@ feature "Spokesmen", %q{
     end
   end
   
+  context "Change spokesman" do
+    background do
+      @free_wifi = create_proposal :title => "Wifi Gratis en toda España"
+      @free_cigars = create_proposal :title => "Puros Gratis en toda España"
+      @punset = create_user :name => "Punset"
+      @rajoy = create_user :name => "Rajoy"
+      @fan_de_punset = create_user :name => "Fan de Punset", :spokesman => @punset
+      create_vote :proposal => @free_wifi, :user => @punset, :value => "si"
+      create_vote :proposal => @free_cigars, :user => @rajoy, :value => "si"
+    end
+    
+    scenario "Update vote count" do
+    
+      login_as @fan_de_punset
+      visit user_path(@rajoy)
+      click_button "Elegir a Rajoy como mi portavoz"
+    
+      page.should have_content("Tu portavoz actual es Punset")
+      click_button "Estoy seguro"
+    
+      page.should have_content("Has cambiado de portavoz.")
+    
+      visit proposal_path(@free_wifi)
+
+      page.should have_css(".in_favor", :text => "1 votos")
+      page.should have_css(".against", :text => "0 votos")
+      page.should have_css(".abstention", :text => "0 votos")
+    
+      visit proposal_path(@free_cigars)
+
+      page.should have_css(".in_favor", :text => "2 votos")
+      page.should have_css(".against", :text => "0 votos")
+      page.should have_css(".abstention", :text => "0 votos")
+    end
+  
+    scenario "Do not update vote count for closed proposals" do
+      @free_cigars.update_attribute :closed_at, Time.now
+      
+      login_as @fan_de_punset
+      visit user_path(@rajoy)
+      click_button "Elegir a Rajoy como mi portavoz"
+    
+      page.should have_content("Tu portavoz actual es Punset")
+      click_button "Estoy seguro"
+    
+      page.should have_content("Has cambiado de portavoz.")
+    
+      visit proposal_path(@free_wifi)
+
+      page.should have_css(".in_favor", :text => "1 votos")
+      page.should have_css(".against", :text => "0 votos")
+      page.should have_css(".abstention", :text => "0 votos")
+    
+      visit proposal_path(@free_cigars)
+
+      page.should have_css(".in_favor", :text => "1 votos")
+      page.should have_css(".against", :text => "0 votos")
+      page.should have_css(".abstention", :text => "0 votos")
+    end
+  end
+  
   scenario "Update vote count when spokesman votes in the future" do
     free_wifi = create_proposal :title => "Wifi Gratis en toda España"
     punset = create_user :name => "Punset"

@@ -1,7 +1,13 @@
 <h2>Hooray!!</h2>
 
 <p class="confirmation-message">
-  <strong>Has elegido a tu portavoz.</strong>
+  <strong>
+  <% if @spokesman_change %>
+  Has cambiado de portavoz.
+  <% else %>
+  Has elegido a tu portavoz.
+  <% end %>
+  </strong>
   Si nadie lo remedia en 5 segundos te llevaremos a la página de tu portavoz.
 </p>
 

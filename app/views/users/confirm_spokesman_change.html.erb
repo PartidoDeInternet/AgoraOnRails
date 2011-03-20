@@ -1,0 +1,11 @@
+<h2>¿Estás seguro?</h2>
+
+<p class="confirmation-message">
+  <strong>Tu portavoz actual es <%= current_user.spokesman.name %>.</strong>
+  Estás seguro de que quieres cambiarlo por <%= @spokesman.name %>
+  
+  <%= form_for @spokesman, :url => choose_as_spokesman_user_path(@spokesman) do |f| -%>
+    <%= hidden_field_tag :confirmation, true %>
+    <%= submit_tag "Estoy seguro", :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
+  <% end -%>
+</p>

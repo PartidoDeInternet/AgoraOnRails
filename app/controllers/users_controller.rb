@@ -27,12 +27,18 @@ class UsersController < ApplicationController
   end
 
   def choose_as_spokesman
-    spokesman = User.find(params[:id])
-    if current_user.update_attributes :spokesman => spokesman
-      render :layout => "mini_application"
+    @spokesman = User.find(params[:id])
+    @spokesman_change = current_user.spokesman.present?
+    
+    if @spokesman_change && !params[:confirmation]
+      render :confirm_spokesman_change
     else
-      flash[:alert] = current_user.errors[:spokesman_id].first
-      redirect_to spokesman
+      if current_user.update_attributes :spokesman => @spokesman
+        render :layout => "mini_application"
+      else
+        flash[:alert] = current_user.errors[:spokesman_id].first
+        redirect_to @spokesman
+      end
     end
   end
 

@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(:version => 20110319234436) do
     t.string   "link"
     t.integer  "spokesman_id"
     t.integer  "represented_users_count"
+    t.boolean  "admin",                   :default => false
     t.string   "dni"
     t.string   "name"
-    t.boolean  "admin",                   :default => false
   end
 
   create_table "votes", :force => true do |t|
