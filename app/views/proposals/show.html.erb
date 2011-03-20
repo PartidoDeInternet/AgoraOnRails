@@ -1,3 +1,5 @@
+<%= render 'opengraph' %>
+
 <% @title = "#{awesome_truncate(@proposal.title, 100)}" %>
 <section id="content">
   <ul id="breadcrumb">
@@ -25,7 +27,7 @@
         <p class="solved">La Propuesta fué <span class="official_resolution"> <%= @proposal.official_resolution %></span> en el Congreso.</p>
       <% elsif current_user && current_user.has_voted_for?(@proposal) %>
         <p class="voted">Ya has votado esta propuesta</p>
-        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="pdi">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <%= render 'proposals/share' %>
       <% else %>
         <%= form_tag new_proposal_vote_path(@proposal), {:method => :get, :class => "vote"} do -%>
           <fieldset>

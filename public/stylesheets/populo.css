@@ -10,8 +10,8 @@ body {
   color: #666666;
 }
 
-* { 
-  margin: 0; 
+* {
+  margin: 0;
   padding: 0;
 }
 
@@ -82,7 +82,7 @@ fieldset {
 }
 
 
-/* page structure 
+/* page structure
 --------------------------------------------- */
 
 #mini,
@@ -116,7 +116,7 @@ fieldset {
 }
 
 
-/* header 
+/* header
 --------------------------------------------- */
 
 #header {
@@ -160,7 +160,7 @@ fieldset {
 }
 
 
-/* content 
+/* content
 --------------------------------------------- */
 
 #content {
@@ -175,7 +175,7 @@ fieldset {
   text-align: left;
 }
 
-/* sidebar 
+/* sidebar
 --------------------------------------------- */
 
 aside {
@@ -184,7 +184,7 @@ aside {
   float: right;
 }
 
-/* footer 
+/* footer
 --------------------------------------------- */
 
 footer {
@@ -537,6 +537,15 @@ button.abstencion span {
   text-shadow: 1px 1px 1px #6E2B48;
 }
 
+.share {
+  padding-top: 10px;
+  height: 30px;
+}
+
+.share.twitter-share {
+  padding-top: 5px;
+}
+
 
 /* tag list */
 
@@ -641,35 +650,35 @@ button.abstencion span {
 
 /* overlay */
 
-/* the overlayed element */ 
+/* the overlayed element */
 
-#overlay { 
-  display:none; 
-  z-index:10000; 
+#overlay {
+  display:none;
+  z-index:10000;
   background: #E1E2DF url('../images/content.gif');
   width:650px;
-  height:320px; 
-  -moz-box-shadow:0 0 4px 5px #CCC; 
-  -webkit-box-shadow: 0 0 4px #CCC;     
-} 
+  height:320px;
+  -moz-box-shadow:0 0 4px 5px #CCC;
+  -webkit-box-shadow: 0 0 4px #CCC;
+}
 
-#overlay-inner { 
+#overlay-inner {
   background: url('../images/content_deg.png') repeat-x top;
-} 
+}
 
-#overlay .close { 
+#overlay .close {
   background: url('../images/icon_delete.gif') no-repeat center center;
-  position:absolute; 
-  right:10px; 
-  top:10px; 
-  cursor:pointer; 
-  height:16px; 
-  width:16px; 
+  position:absolute;
+  right:10px;
+  top:10px;
+  cursor:pointer;
+  height:16px;
+  width:16px;
 }
 
 #overlay iframe {
   width:650px;
-  height:360px; 
+  height:360px;
   border: none;
 }
 
