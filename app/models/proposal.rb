@@ -50,18 +50,27 @@ class Proposal < ActiveRecord::Base
     self.total_in_favor + self.total_against + self.total_abstention
   end
   
-  def total_in_favor
-    self.in_favor
+  def total(choice)
+    self.send(choice)
   end
   
-  def total_against
-    self.against
+  def total_representatives(choice, representative_count)
+    percentage = self.send(choice).to_f / total_votes
+    (percentage * representative_count.to_f).floor
   end
   
-  def total_abstention
-    self.abstention
-  end
+  #syntatic sugar compatibility layer
+  Vote.choices.each do |choice|
+    define_method "total_#{choice}" do
+      total(choice)
+    end
   
+  #syntactic sugar compatibility layer
+    define_method "total_representatives_#{choice}" do |representative_count|
+      total_representatives(choice, representative_count)
+    end
+  end
+    
   def proposer_name
     proposer.name
   end

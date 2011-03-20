@@ -102,10 +102,11 @@ feature "See proposals", %q{
     
     visit proposal_path(@proposal)
 
-    within(:css, ".proposal") do           
-      page.should have_css(".vote:nth-child(5) .explanation", :text => "Punset's explanation")
-      page.should have_css(".vote:nth-child(6) .explanation", :text => "Jonnhy's explanation")
-      page.should have_css(".vote:nth-child(7) .explanation", :text => "Jenny's explanation")
+    within(:css, ".proposal") do        
+      explanations = all(".vote .explanation").map(&:text).map(&:strip)
+      explanations.first.should == "Punset's explanation"
+      explanations.second.should == "Jonnhy's explanation"
+      explanations.third.should == "Jenny's explanation"
     end
     
   end

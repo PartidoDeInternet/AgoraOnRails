@@ -55,7 +55,7 @@
           </dd>
         </dl>
       </section>
-      
+      <%= render :partial => "vote_calculator"%>
       <p class="votes_with_explanations">
         <%= render :partial => "vote", :collection => @proposal.votes.public.order_by_represented_users %>
       </p>
