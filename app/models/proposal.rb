@@ -55,6 +55,7 @@ class Proposal < ActiveRecord::Base
   end
   
   def total_representatives(choice, representative_count)
+    return 0 if total_votes == 0 
     percentage = self.send(choice).to_f / total_votes
     (percentage * representative_count.to_f).floor
   end

@@ -65,5 +65,15 @@ describe Proposal do
       proposal.total_representatives_against(20).should == 6
       proposal.total_representatives_abstention(20).should == 6
     end
+    
+    it "returns zero when there are no votes for a proposal" do
+      proposal = create_proposal(:title => "free WI-FI", 
+                                 :in_favor   => 0, 
+                                 :against    => 0, 
+                                 :abstention => 0)
+      proposal.total_representatives_in_favor(1).should == 0
+      proposal.total_representatives_against(1).should == 0
+      proposal.total_representatives_abstention(1).should == 0
+    end
   end
 end
