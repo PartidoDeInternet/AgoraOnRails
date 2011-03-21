@@ -45,11 +45,11 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
   
   Luismi Cavallé
   
-  Manuel Muñoz Solera
+  Manuel Muñoz
   
-  Raimond Garcia
+  Raimond García
   
-  Alberto Fernández Capel
+  Alberto Fernández
   
   Jaime Iniesta
   
@@ -57,7 +57,21 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
   
   Pat Maddox
   
+  Miguel Barcos
+  
   Paco Guzmán
+  
+  Jorge Álvarez
+  
+  Rafa García
+  
+  Adrián Pradilla
+  
+  Eduardo Martínez
+  
+  Enrique Macip
+  
+  Jorge Dias
    
 == License:
 
