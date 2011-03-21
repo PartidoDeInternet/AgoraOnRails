@@ -70,35 +70,6 @@ feature "Vote for proposals", %q{
     @user.votes.last.link.should == link
   end
 
-  scenario "Mark your vote as confidential" do
-    login_as @user
-    proposal = create_proposal(:title => "Ley Sinde")
-
-    visit proposal_path(proposal)
-    click_button "No"
-
-    page.should_not have_content("Más información")
-    page.should_not have_content("Porque")
-    page.should have_content("Quiero que mi voto sea confidencial")
-    check('vote_confidential')
-    click_button "Estoy seguro"
-
-    @user.votes.last.should be_confidential
-  end
-
-  scenario "By default a vote is public" do
-    login_as @user
-    proposal = create_proposal(:title => "Ley Sinde")
-
-    visit proposal_path(proposal)
-    click_button "No"
-
-    page.should have_content("Quiero que mi voto sea confidencial")
-    click_button "Estoy seguro"
-
-    @user.votes.last.should be_public
-  end
-
   scenario "Can't vote if i'm not logged in" do
     proposal = create_proposal(:title => "Derogación del canon")
 

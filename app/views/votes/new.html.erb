@@ -16,12 +16,9 @@
 
 <%= form_for([@proposal, @vote]) do |f| %>
   <%= f.error_messages %>
-  <p class="">
-    <%= f.hidden_field :value, :value => params[:value] %>
-    <%= f.hidden_field :explanation, :value => params[:explanation] %>
-    <%= f.hidden_field :link, :value => params[:link] %>
-    <%= f.check_box    :confidential %> Quiero que mi voto sea confidencial
-  </p>
+  <%= f.hidden_field :value, :value => params[:value] %>
+  <%= f.hidden_field :explanation, :value => params[:explanation] %>
+  <%= f.hidden_field :link, :value => params[:link] %>
   <p class="actions">
     <button type="submit" class="confirm"><span>Estoy seguro</span></button> o bueno... <%= link_to 'quiero pensármelo mejor', "#", :class => "oh-no" %>
   </p>
