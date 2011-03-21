@@ -33,6 +33,8 @@ feature "Vote for proposals", %q{
       click_button "Estoy seguro"
 
       page.should have_content("Tu voto ha sido contabilizado.")
+      page.should have_content("Compartir en Twitter")
+      page.should have_content("Compartir en Facebook")
     end
   end
 
@@ -64,7 +66,6 @@ feature "Vote for proposals", %q{
 
     page.should have_content("Más información #{link}")
     page.should_not have_content("Porque")
-
     click_button "Estoy seguro"
 
     @user.votes.last.link.should == link
@@ -188,4 +189,5 @@ feature "Vote for proposals", %q{
     visit homepage
     page.should have_content("2 personas ya lo han hecho")
   end
+
 end

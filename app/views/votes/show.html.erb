@@ -2,10 +2,6 @@
 
 <p class="confirmation-message">
   <strong>Tu voto ha sido contabilizado.</strong>
-  Si nadie lo remedia en 5 segundos te llevaremos a los resultados.
+  <p><%= share_on_facebook_link(@proposal) %></p>
+  <p><%= share_on_twitter_link(@proposal) %></p>
 </p>
-
-
-<script type="text/javascript" charset="utf-8">
-  var t = setTimeout("top.document.location.href = '<%= proposal_path @proposal %>'", 5000);  
-</script>
