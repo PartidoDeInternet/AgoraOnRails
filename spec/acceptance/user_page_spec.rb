@@ -1,4 +1,4 @@
-# coding: utf-8
+  # coding: utf-8
 require File.dirname(__FILE__) + '/acceptance_helper'
 
 feature "User page", %q{

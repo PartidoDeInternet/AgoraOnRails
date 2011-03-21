@@ -23,9 +23,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @proposals = (current_user && current_user == @user) ? @user.voted_proposals : @user.publicly_voted_proposals
-  end
-
+    @proposals = @user.voted_proposals
+  end 
+  
   def choose_as_spokesman
     @spokesman = User.find(params[:id])
     @spokesman_change = current_user.spokesman.present?
