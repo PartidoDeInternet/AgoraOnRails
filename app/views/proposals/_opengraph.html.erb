@@ -1,0 +1,9 @@
+<% content_for :head do -%>
+  <meta property="og:title" content="<%= @proposal.title %>"/>
+  <meta property="og:type" content="politics:proposal"/>
+  <meta property="og:url" content="<%= proposal_url(@proposal) %>"/>
+  <meta property="og:image" content="<%= image_url("explain.png") %>"/>
+  <meta property="og:site_name" content="Agora on Rails"/>
+  <meta property="fb:app_id" content="<%= FACEBOOK_APP_ID %>"/>
+  <meta property="og:description" content="<%= @proposal.proposal_type %>"/>
+<% end -%>

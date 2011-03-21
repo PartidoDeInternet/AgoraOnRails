@@ -11,6 +11,7 @@
   <%= javascript_include_tag 'jquery', 'jquery_tools', 'rails', 'application' %>
   <%= csrf_meta_tag %>
   <%= render :partial => "shared/google_analytics" %>
+  <%= yield :head %>
 </head>
 <body>
 
