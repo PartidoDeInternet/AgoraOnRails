@@ -53,34 +53,5 @@ feature "User page", %q{
       page.should have_content("En contra")
     end
   end
-  
-  scenario "Confidentially voted proposals do not appear in the user page" do
-    bob  = create_user(:name => "BobMarley")
-
-    create_vote( :user  => bob,
-          :proposal     => @proposal_2, 
-          :explanation  => "Purple haze all around",
-          :link         => "http://bobmarley.com",
-          :value        => "si",
-          :confidential => false)
-          
-    create_vote( :user  => bob,
-          :proposal     => @proposal_3, 
-          :explanation  => "Internet es un derecho fundamental de todos los humanos",
-          :link         => "http://derechoshumanos.com",
-          :value        => "no",
-          :confidential => true)
-    visit user_path(bob)
-
     
-    page.should_not have_css("#proposal_#{@proposal_1.id}")
-    within(:css, "#proposal_#{@proposal_2.id}") do
-      page.should have_content("Legalización")
-      page.should have_content("A favor")
-    end
-    page.should_not have_css("#proposal_#{@proposal_3.id}")
-    page.should_not have_content("Wifi gratis")
-    page.should_not have_content("En contra")
-  end
-  
 end
