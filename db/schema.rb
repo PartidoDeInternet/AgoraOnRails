@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110321010601) do
+ActiveRecord::Schema.define(:version => 20110319234436) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(:version => 20110321010601) do
     t.string   "link"
     t.integer  "spokesman_id"
     t.integer  "represented_users_count"
+    t.boolean  "admin",                   :default => false
     t.string   "dni"
     t.string   "name"
-    t.boolean  "admin",                   :default => false
   end
 
   create_table "votes", :force => true do |t|
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(:version => 20110321010601) do
     t.string   "link"
     t.text     "explanation"
     t.string   "value"
-    t.boolean  "confidential", :default => false
   end
 
 end

@@ -2,4 +2,13 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  currently_logged: "I am currently logged as"
+  want_to_sign_out: "I want to sign out"
+  what_proposals: "What are the proposals?"
+  who_proposed: "Who proposed?"
+  votes_through_agora: 'votes through AgoraOnRails'
+  hello: 'Hello!'
+  calculate_representatives_vote: 'Calculates the vote of the representatives'
+  representatives_number: 'number of representatives'
+  calculate: 'calculate'
+  proposals: "Proposals"

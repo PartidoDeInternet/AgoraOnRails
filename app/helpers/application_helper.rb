@@ -1,4 +1,3 @@
-# coding: utf-8
 module ApplicationHelper
   def hot_categories
     @hot_categories ||= Category.hot
@@ -21,18 +20,14 @@ module ApplicationHelper
   end
   
   def humanize(choice)
-    case choice
-    when "in_favor" then "Sí"
-    when "against" then "No"
-    when "abstention" then "Abs"
-    end
+    t(choice)
   end
   
-  def vote_text(proposal)
+  def who_did_vote(proposal)
     if proposal.votes.blank?
-      "<strong>Vota!</strong> Sé el primero en votar".html_safe
+       t(:be_first)
     else
-      "<strong>Vota!</strong> #{pluralize(proposal.votes.count, 'persona ya lo ha hecho', 'personas ya lo han hecho')}".html_safe
+      pluralize(proposal.votes.count, t(:one_did_it), t(:many_did_it))
     end
   end
 end

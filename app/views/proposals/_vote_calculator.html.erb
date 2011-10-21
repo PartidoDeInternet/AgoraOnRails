@@ -1,8 +1,8 @@
 <%= form_tag proposal_path(@proposal), :method => :get do %>
-  <p>Calcula el voto de los representantes:</p>
+  <p><%= t :calculate_representatives_vote %></p>
   <p>
-  <%= label_tag 'numero de representantes'%>
+  <%= label_tag t(:representatives_number)%>
   <%= text_field_tag 'representative_count' %>
   </p>
-  <%= submit_tag 'Calcular'%>
+  <%= submit_tag t(:calculate) %>
 <% end %>

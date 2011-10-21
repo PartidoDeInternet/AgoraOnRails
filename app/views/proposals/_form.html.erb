@@ -1,0 +1,17 @@
+<%= form_tag new_proposal_vote_path(@proposal), {:method => :get, :class => "vote"} do %>
+  <fieldset>
+    <strong><%= t :vote_proposal %></strong>
+    <div>
+    	<%= label_tag :explanation, t(:explain) %><br/>
+		  <%= text_area_tag :explanation, nil, :size => "40x5" %>
+		</div>
+		<div>
+			<%= label_tag :link, t(:optional_link) %><br/>
+		  <%= text_field_tag :link, nil, :size => "40" %>
+		</div>
+		<br/>
+    <button type="submit" name="value" value="si" class="si"><span><%= t(:yes_option)%></span></button>
+    <button type="submit" name="value" value="no" class="no"><span><%= t(:no_option)%></span></button>
+    <button type="submit" name="value" value="abstencion" class="abstencion"><span><%= t(:abstention)%></span></button>
+  </fieldset>
+<% end %>

@@ -4,18 +4,19 @@
       <hgroup>
         <h2 class="title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
         <h3>
-          Presentado por: <%= link_to proposal.proposer.name, proposal.proposer, :class => "proposer" %>
-          el <span class="proposed_at"><%= l proposal.proposed_at, :format => :long %></span>
+          <%= t(:proposed_by) %> <%= link_to proposal.proposer.name, proposal.proposer, :class => "proposer" %>
+          <%= t(:on) %>
+          <span class="proposed_at"><%= l proposal.proposed_at, :format => :long %></span>
         </h3>
       </hgroup>
     </header>
   </section>
     <% if proposal.closed? %>
     <section class="voters">
-      <p class="solved"><span class="official_resolution"> <%= proposal.official_resolution %></span> en el Congreso.</p>
+      <p class="solved"><span class="official_resolution"> <%= proposal.official_resolution %></span> <%= t(:in_congress) %>.</p>
       <section class="vote-results documents-list voters">
         <dl>
-          <dt><strong>Resultados de la votación popular</strong></dt>
+          <dt><strong><%= t :popular_vote_results %></strong></dt>
           <dd>
             <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 40} %>
           </dd>
@@ -24,7 +25,10 @@
     </section>
     <% else %>
     <section class="voters">
-      <%= link_to vote_text(proposal), proposal, :class => "vote-link" %>
+      <%= link_to proposal, :class => "vote-link" do %>
+        <strong><%= t(:vote_prompt) %></strong>
+        <%= who_did_vote(proposal) %>
+      <% end %>
     </section>
     <% end %>
   <span class="decorate up"></span>

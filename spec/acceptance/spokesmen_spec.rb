@@ -28,6 +28,7 @@ feature "Spokesmen", %q{
     
     visit users_path
     click_link "Fan de Punset"
+
     click_button "Elegir a Fan de Punset como mi portavoz"
     
     page.should have_content("Has elegido a tu portavoz.")

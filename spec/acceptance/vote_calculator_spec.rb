@@ -18,7 +18,8 @@ feature "Vote calculator", %q{
     visit proposal_path(proposal)
     
     fill_in "representative_count", :with => "10"
-    click_button "Calcular"
+
+    click_button I18n.t(:calculate)
     
     page.should have_css(".representative_count_in_favor", :text => "2")
     page.should have_css(".representative_count_against", :text => "7")

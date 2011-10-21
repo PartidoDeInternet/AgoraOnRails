@@ -1,37 +1,31 @@
 <section id="welcome">
   <p>
-    <h2>Hola!</h2>
-    <p>¿Qué pasaría si los ciudadanos pudieran participar de manera más
-    directa en las decisiones que se toman en el Congreso de los
-    Diputados?" Es el experimento detrás de esta propuesta.</p> 
-    <p>AgoraOnRails es un simulador de la aplicación web en la los ciudadanos
-    podrán decidir lo que votarán los diputados del <%= link_to "Partido de Internet", "http://partidodeinternet.es" %> en
-    el Congreso a partir de las Elecciones Generales de 2012.</p>
+    <h2><%= t(:hello)%></h2>
+    <p><%= t(:intro_paragraph)%></p> 
+    <p><%= t :whats_agora_html, :href => link_to(APP_CONFIG['org_name'], APP_CONFIG['org_url']) %></p>
 </section>
 <img src="/images/explain.png" width="951" height="33" alt="Explain"/>
 <section id="content">
   <nav id="nav">
     <ul>
-      <li><%= link_to "Hot!", "#hot_proposals", :id => "hot_proposals_link", :class => "navlinks" %></li>
-      <li><%= link_to "Recién tramitadas", "#recently_closed", :id => "recently_closed_link", :class => "navlinks" %></li>
-	  <li><%= link_to "Usuari@s", users_path %></li>
+      <li><%= link_to t(:hot), "#hot_proposals", :id => "hot_proposals_link", :class => "navlinks" %></li>
+      <li><%= link_to t(:recently_closed), "#recently_closed", :id => "recently_closed_link", :class => "navlinks" %></li>
+	  <li><%= link_to t(:users), users_path %></li>
     </ul>
   </nav>  
   <section id="hot_proposals" class="proposals">
     <header class="proposal-head">
-      <h2>Lo más hot!</h2>
-      <p>Las propuestas más visitadas o las más votadas. Vota y da tu opinión ahora que todavía estás a tiempo.</p>
+      <h2><%= t(:hottest)%></h2>
+      <p><%= t(:hottest_paragraph)%></p>
     </header>
     <%= render :partial => 'shared/proposal', :collection => @staff_choice %>
   </section>
   
   <section id="recently_closed" class="proposals">
     <header class="proposal-head">
-      <h2>Recién tramitadas</h2>
-      <p>Son las propuestas que acaban de ser tramitadas. Mira lo que se decidió en el congreso y lo que decidió la gente a través de la web.</p>
+      <h2><%= t(:recently_closed) %></h2>
+      <p><%= t(:recently_closed_paragraph)%></p>
     </header>
     <%= render :partial => 'shared/proposal', :collection => @recently_closed %>
   </section>
 </section>
-
-

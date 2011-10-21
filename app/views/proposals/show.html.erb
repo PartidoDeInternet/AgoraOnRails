@@ -1,10 +1,11 @@
 <%= render 'opengraph' %>
 
 <% @title = "#{awesome_truncate(@proposal.title, 100)}" %>
+
 <section id="content">
   <ul id="breadcrumb">
     <li><a href="/">Inicio »</a></li>
-    <li><%= link_to "Proposiciones", proposals_path %></li>
+    <li><%= link_to t(:proposals), proposals_path %></li>
   </ul>
   <article class="proposal" id="proposal_<%= @proposal.id %>">
     <section class="proposal-content">
@@ -13,46 +14,40 @@
         <hgroup>
           <h2 class="title"><%=h @proposal.title %></h2>
           <h3 class="proposal_type">
-            <%=h @proposal.proposal_type %> (<a class="official_url" href="<%= @proposal.official_url %>">Enlace oficial</a>)
+            <%=h @proposal.proposal_type %> 
+            <%= link_to t(:official_link), @proposal.official_url, :class => 'official_url' %>
           </h3>
         </hgroup>
         <%= show_toggle_button(current_user.is_admin?) if current_user %>
         <ul class="meta">
-          <li class="votes"><%= number_with_delimiter @proposal.votes.count %> votos</li>
-          <li class="views"><%= number_with_delimiter @proposal.visits %> visitas</li>
+          <li class="votes">
+            <%= number_with_delimiter @proposal.votes.count %> <%= t(:votes) %>
+          </li>
+          <li class="views">
+            <%= number_with_delimiter @proposal.visits %> <%= t(:views) %>
+          </li>
         </ul>
       </header>
 
 
       <% if @proposal.closed? %>
         <p class="solved">
-          <%= show_closed_text.html_safe %>
+          <%= show_closed_text %>
         </p>
       <% elsif current_user && current_user.has_voted_for?(@proposal) %>
-        <p class="voted">Ya has votado esta propuesta</p>
+        <p class="voted">
+          <%= t :already_voted %>
+        </p>
         <%= render 'proposals/share' %>
       <% else %>
-        <%= form_tag new_proposal_vote_path(@proposal), {:method => :get, :class => "vote"} do -%>
-          <fieldset>
-            <strong>Vota esta propuesta</strong>
-            <div>
-            	<%= label_tag :explanation, "Explica tu opinión (opcional)" %><br/>
-						  <%= text_area_tag :explanation, nil, :size => "40x5" %>
-						</div>
-						<div>
-							<%= label_tag :link, "Enlace (opcional)" %><br/>
-						  <%= text_field_tag :link, nil, :size => "40" %>
-						</div>
-						<br/>
-            <button type="submit" name="value" value="si" class="si"><span>Sí</span></button>
-            <button type="submit" name="value" value="no" class="no"><span>No</span></button>
-            <button type="submit" name="value" value="abstencion" class="abstencion"><span>Abstencion</span></button>
-          </fieldset>
-        <% end -%>
+        <%= render 'proposals/form' %>
 	    <% end %>
+	    
       <section class="vote-results documents-list">
         <dl>
-          <dt><strong>Votación popular</strong></dt>
+          <dt>
+            <strong><%= t(:popular_vote)%></strong>
+          </dt>
           <dd>
             <%= render :partial => "shared/results", :locals => {:proposal => @proposal, :width => 20} %>
           </dd>
@@ -64,38 +59,13 @@
       <p class="votes_with_explanations">
         <%= render :partial => "vote", :collection => @proposal.votes.order_by_represented_users %>
       </p>
-
-      <!--
-      <section class="documentation documents-list">
-        <dl>
-          <dt><strong>Documentación</strong></dt>
-          <dd>
-            <ul>
-              <li><a href="#">BOCG. B-213-1 de 04/12/2009</a> <span>iniciativa</span></li>
-              <li><a href="#">BOCG. B-213-1 de 04/12/2009</a> <span>iniciativa</span></li>
-              <li><a href="#">BOCG. B-213-1 de 04/12/2009</a> <span>iniciativa</span></li>
-            </ul>
-          </dd>
-        </dl>
-      </section>
-
-      <section class="sessions documents-list">
-        <dl>
-          <dt><strong>Diario de sesiones</strong></dt>
-          <dd>
-            <ul>
-              <li><a href="#">BOCG. B-213-1 de 04/12/2009</a> <span>iniciativa</span></li>
-              <li><a href="#">BOCG. B-213-1 de 04/12/2009</a> <span>iniciativa</span></li>
-              <li><a href="#">BOCG. B-213-1 de 04/12/2009</a> <span>iniciativa</span></li>
-            </ul>
-          </dd>
-        </dl>
-      </section>
-      -->
     </section>
-    <% unless @proposal.category.blank? %>
+    
+    <% if @proposal.category.present? %>
     <dl class="tag_list" id="related">
-      <dt><strong>Relacionada con</strong></dt>
+      <dt>
+        <strong><%= t(:related_with)%></strong>
+      </dt>
       <dd>
         <ul>
           <li class="related">

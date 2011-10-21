@@ -30,8 +30,12 @@ feature "Admin can close proposals", %q{
     login_as @admin
     proposal = create_proposal(:title => "Ley Sinde")
     visit proposal_path(proposal)
-    click_button("Finalizar votaci&oacute;n")
-    page.should have_content('El periodo de votación para esta propuesta finalizó')
+    click_button I18n.t(:end_voting)
+    
+    proposal.reload
+    
+    proposal.closed_at.should_not be_nil
+    page.should have_content I18n.t(:closed, :date => I18n.l(proposal.closed_at))
   end
 
   scenario "User cannot finish a proposal" do

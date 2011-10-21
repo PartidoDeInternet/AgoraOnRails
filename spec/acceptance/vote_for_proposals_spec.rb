@@ -16,9 +16,9 @@ feature "Vote for proposals", %q{
   scenario "Vote for open proposals" do
     login_as @user
 
-    [["No",         "a votar en contra de"],
-     ["Sí",         "a votar a favor de"],
-     ["Abstencion", "a abstenerte de votar sobre"]].each do |vote, confirmation|
+    [["no",         I18n.t(:going_to_vote_against)],
+     ["si",         I18n.t(:going_to_vote_in_favor)],
+     ["abstencion", I18n.t(:going_to_abstain)]].each do |vote, confirmation|
 
       proposal = create_proposal(:title => "Ley Sinde")
 
@@ -26,13 +26,13 @@ feature "Vote for proposals", %q{
 
       click_button vote
 
-      page.should have_content("Vas #{confirmation} la iniciativa “Ley Sinde”")
-      page.should_not have_content("Porque")
-      page.should_not have_content("Más información")
+      page.should have_content confirmation
+      page.should_not have_content(I18n.t(:because))
+      page.should_not have_content(I18n.t(:more_info))
 
-      click_button "Estoy seguro"
+      click_button I18n.t(:i_am_sure)
 
-      page.should have_content("Tu voto ha sido contabilizado.")
+      page.should have_content(I18n.t(:vote_counted))
       page.should have_css(".share.fb-share iframe")
       page.should have_css(".share.twitter-share iframe")
     end
@@ -44,13 +44,13 @@ feature "Vote for proposals", %q{
     explanation = "we don't want the ignorance in 'A Brave New World'"
 
     visit proposal_path(proposal)
-    fill_in "Explica tu opinión (opcional)", :with => explanation
-    click_button "Sí"
+    fill_in I18n.t(:explain), :with => explanation
+    click_button I18n.t(:yes_option)
 
-    page.should have_content("Porque #{explanation}")
-    page.should_not have_content("Más información")
+    page.should have_content(I18n.t(:because, :explanation => explanation))
+    page.should_not have_content(I18n.t(:more_info))
 
-    click_button "Estoy seguro"
+    click_button I18n.t(:i_am_sure)
 
     @user.votes.last.explanation.should == explanation
   end
@@ -61,12 +61,12 @@ feature "Vote for proposals", %q{
     link = "http://en.wikipedia.org/wiki/Brave_New_World"
 
     visit proposal_path(proposal)
-    fill_in "Enlace", :with => link
-    click_button "Sí"
+    fill_in "link", :with => link
+    click_button I18n.t(:yes_option)
 
     page.should have_content("Más información #{link}")
-    page.should_not have_content("Porque")
-    click_button "Estoy seguro"
+    page.should_not have_content I18n.t(:because)
+    click_button I18n.t(:i_am_sure)
 
     @user.votes.last.link.should == link
   end
@@ -75,13 +75,13 @@ feature "Vote for proposals", %q{
     proposal = create_proposal(:title => "Derogación del canon")
 
     visit proposal_path(proposal)
-    click_button "Sí"
+    click_button I18n.t(:yes_option)
 
-    page.should have_content("Autenticación con DNIe requerida")
-    page.should_not have_css("button", :text => "Confirmar")
+    page.should have_content I18n.t(:dnie_auth_required)
+    page.should_not have_css("button", :text => I18n.t(:i_am_sure))
       
     login_as @user
-    
+
     page.should have_content("Vas a votar a favor de la iniciativa “Derogación del canon”")
   end
 
@@ -108,8 +108,8 @@ feature "Vote for proposals", %q{
     login_as @user
     visit proposal_path(proposal)
 
-    click_button "Sí"
-    click_button "Estoy seguro"
+    click_button I18n.t(:yes_option)
+    click_button I18n.t(:i_am_sure)
 
     visit proposal_path(proposal)
 
@@ -134,8 +134,8 @@ feature "Vote for proposals", %q{
 
     visit proposal_path(proposal)
 
-    click_button "Sí"
-    click_button "Estoy seguro"
+    click_button I18n.t(:yes_option)
+    click_button I18n.t(:i_am_sure)
 
     visit proposal_path(proposal)
 
@@ -145,8 +145,8 @@ feature "Vote for proposals", %q{
     login_as @user2
     visit proposal_path(proposal)
 
-    click_button "No"
-    click_button "Estoy seguro"
+    click_button I18n.t(:no_option)
+    click_button I18n.t(:i_am_sure)
     visit proposal_path(proposal)
 
     percentages_should_be(proposal, :in_favor => 50, :against => 50, :abstention => 0)
@@ -154,8 +154,8 @@ feature "Vote for proposals", %q{
 
     login_as @user3
     visit proposal_path(proposal)
-    click_button "Abstencion"
-    click_button "Estoy seguro"
+    click_button I18n.t(:abstention)
+    click_button I18n.t(:i_am_sure)
 
     visit proposal_path(proposal)
     percentages_should_be(proposal, :in_favor => 33, :against => 33, :abstention => 33)

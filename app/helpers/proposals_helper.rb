@@ -1,24 +1,34 @@
 module ProposalsHelper
   def proposals_heading
     case parent_type
-      when :category then "Propuestas relacionadas con #{parent.name}"
-      when :proposer then "Propuestas presentadas por #{parent.name}"
+      when :category then t(:related_with_category, :category => parent.name)
+      when :proposer then t(:proposed_by, :proposer => parent.name)
       else
-        "Propuestas"
+        t :proposals
     end
+  end
+  
+  def choice_result(proposal, choice)
+    content_tag :strong, :style => "width:#{percentage_for(proposal, choice)}-width" do
+      humanize(choice)
+    end
+  end
+  
+  def percentage_for(proposal, choice)
+    number_to_percentage(proposal.percentage_for(choice.to_sym), :precision => 0)
   end
 
   def show_toggle_button(is_admin)
-    if (is_admin and !@proposal.closed?)
-      button_to("Finalizar votaci&oacute;n", toggle_proposal_path(@proposal)).html_safe
+    if is_admin && @proposal.open?
+      button_to t(:end_voting), toggle_proposal_path(@proposal)
     end
   end
 
   def show_closed_text
-    if @proposal.closer_id.present?
-      "El periodo de votaci&oacute;n para esta propuesta finaliz&oacute; el #{l(@proposal.closed_at)}"
+    if @proposal.closed? && @proposal.official_resolution.blank?
+      t(:closed, :date => l(@proposal.closed_at))
     else
-      "La Propuesta fue <span class=\"official_resolution\"> #{@proposal.official_resolution}</span> en el Congreso."
+      t(:congress_resolution_html, :resolution => @proposal.official_resolution)
     end
 
   end

@@ -79,15 +79,19 @@ class Proposal < ActiveRecord::Base
   def category_name
     category.name
   end
+  
+  def closed?
+    closed_at.present?
+  end
+  
+  def open?
+    closed_at.blank?
+  end
 
   def close(cid)
     self.closed_at = DateTime.now
     self.closer_id = cid
     self.save!
     count_votes!
-  end
-
-  def reopen
-
   end
 end

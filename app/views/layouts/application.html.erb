@@ -6,11 +6,10 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" href="/stylesheets/populo.css" type="text/css" media="screen" charset="utf-8"/>
   <!--[if lte IE 6]>
-    <link rel="stylesheet" href="/stylesheets/populo-ie.css" type="text/css" media="screen" charset="utf-8"/>
+  <link rel="stylesheet" href="/stylesheets/populo-ie.css" type="text/css" media="screen" charset="utf-8"/>
   <![endif]-->
   <%= javascript_include_tag 'jquery', 'jquery_tools', 'rails', 'application' %>
   <%= csrf_meta_tag %>
-  <%= render :partial => "shared/google_analytics" %>
   <%= yield :head %>
 </head>
 <body>
@@ -20,28 +19,29 @@
   <div id="wrap">
     <div id="wrap-inner">
       <div class="wrap-fit">
-    
+        
         <section id="header">
-          <header>
-          </header>
           <% if current_user %>
-            <nav id="user-nav">
-              <ul>
-                <li>Estoy logueado como <%= current_user.name %> y <%= link_to "quiero salir", user_session_path, :method => "delete" %></li>
-              </ul>
-            </nav>
+          <nav id="user-nav">
+            <ul>
+              <li>
+                <%= t :currently_logged_as, :username => current_user.name, 
+                :href => link_to(t("want_to_sign_out"), user_session_path, :method => "delete") %>
+              </li>
+            </ul>
+          </nav>
           <% end %>
         </section>
 
         <% flash.each do |key, value| %>
           <div class="<%= key %>"><%= value %></div>
         <% end %>
-        
+
         <%= yield %>
-      
+
         <aside>
           <dl class="tag_list" id="categories">
-            <dt><strong>¿De qué se habla?</strong></dt>
+            <dt><strong><%= t :what_proposals %></strong></dt>
             <dd>
               <ul>
                 <% hot_categories.each_with_index do |category, index| %>
@@ -57,7 +57,7 @@
           </dl>
 
           <dl class="tag_list" id="proposers">
-            <dt><strong>¿Quién propone?</strong></dt>
+            <dt><strong><%= t :who_proposed %></strong></dt>
             <dd>
               <ul>
                 <% hot_proposers.each_with_index do |proposer, index| %>
@@ -73,17 +73,16 @@
           </dl>
 
         </aside>
-      
+
       </div>
     </div>
   </div>
 
-<footer>
-  <div class="wrap-fit">
-    <section id="total-votes"><strong><%= number_with_delimiter Vote.count %></strong> votos a través de AgoraOnRails</section>
-    <p>Proyecto desarrollado a partir de <a href="http://populo.heroku.com/">Populo</a></p>
-  </div>
-</footer>
+  <footer>
+    <div class="wrap-fit">
+      <section id="total-votes"><strong><%= number_with_delimiter Vote.count %></strong> <%= t :votes_through_agora %></section>
+    </div>
+  </footer>
 
   <div id="overlay">
     <div id="overlay-inner">
@@ -91,5 +90,6 @@
     </div>
   </div>
 
+  <%= render :partial => "shared/google_analytics" if Rails.env == 'production' %>
 </body>
 </html>
