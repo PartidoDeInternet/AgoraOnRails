@@ -1,10 +1,11 @@
 <section id="user_list">
 	<header>
-		<h2>Usuari@s presentes en AgoraOnRails</h2>
+		<h2><%= t(:present_users) %></h2>
 		<p>
-			Puedes delegar tu voto en ell@s para las propuestas en las que no votes directamente.
+			<%= t(:can_delegate_vote) %>
 		</p>
 	</header>
+	
 	<% for user in @users do %>
 		<article class="user">
 			<header>

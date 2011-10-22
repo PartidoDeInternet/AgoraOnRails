@@ -1,0 +1,11 @@
+development:
+  org_name: 'Partido de Internet'
+  org_url: 'http://partidodeinternet.es'
+
+test:
+  org_name: 'Partido de Internet'
+  org_url: 'http://partidodeinternet.es'
+
+production:
+  org_name: 'Partido de Internet'
+  org_url: 'http://partidodeinternet.es'

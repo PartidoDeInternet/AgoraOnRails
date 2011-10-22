@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 module ShareHelper
   def image_url(source)
     abs_path = image_path(source)
@@ -9,7 +8,7 @@ module ShareHelper
   end
 
   def share_text(proposal)
-    "He votado a través del partido del internet la propuesta #{proposal_url(proposal)}"
+    t(:share_text, :url => proposal_url(proposal))
   end
 
   def share_on_facebook_link(proposal)

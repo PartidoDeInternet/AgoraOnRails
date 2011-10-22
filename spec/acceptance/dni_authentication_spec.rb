@@ -15,7 +15,7 @@ feature "DNI authentication", %q{
     
     login_as user
     
-    page.should have_content("Estoy logueado como Bad Ass Mother Fucking Real User")
+    page.should have_content I18n.t(:currently_logged_as, :username => "Bad Ass Mother Fucking Real User")
   end
 
   scenario "Valid authentication with new user" do
@@ -25,7 +25,7 @@ feature "DNI authentication", %q{
     
     register_as("Bad Ass Mother Fucking New User", "12345678V")
     
-    page.should have_content("Estoy logueado como Bad Ass Mother Fucking New User")
+    page.should have_content I18n.t(:currently_logged_as, :username => "Bad Ass Mother Fucking New User")
     User.find_by_name_and_dni("Bad Ass Mother Fucking New User", "12345678V").should be
   end
 
@@ -48,7 +48,7 @@ feature "Tongo", %q{
     fill_in 'name', :with => 'Backdoor Mother Fucker'
     click_button 'Haz tongo aquí'
 
-    page.should have_content("Estoy logueado como Backdoor Mother Fucker ")
+    page.should have_content(I18n.t(:currently_logged_as, :username => 'Backdoor Mother Fucker'))
   end
 end
 

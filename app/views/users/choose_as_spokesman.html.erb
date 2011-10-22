@@ -1,14 +1,15 @@
-<h2>Hooray!!</h2>
+<h2><%= t(:hooray)%></h2>
 
 <p class="confirmation-message">
   <strong>
   <% if @spokesman_change %>
-  Has cambiado de portavoz.
+    <%= t(:changed_spokesman) %>
   <% else %>
-  Has elegido a tu portavoz.
+    <%= t(:chosen_spokesman) %>
   <% end %>
   </strong>
-  Si nadie lo remedia en 5 segundos te llevaremos a la página de tu portavoz.
+  
+  <%= t :spokeman_redirect %>
 </p>
 
 

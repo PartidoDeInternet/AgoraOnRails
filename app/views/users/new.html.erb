@@ -1,37 +1,37 @@
-<h2>Regístrate </h2>
+<h2><%= t(:sign_up)%></h2>
 
 <%= form_for @user, :url => users_path do |f| %>
-  <%= f.error_messages %>
-  
-  <fieldset id="login-section">
-  
-          <div class="overlayfield">
-            <%= f.label :login, "<span>Introduce tu usuario</span>".html_safe %>
-            <%= f.text_field :login %>
-          </div>
-  
-          <div class="overlayfield">
-            <%= f.label :password, "<span>Dinos tu contraseña</span>".html_safe %>
-            <%= f.password_field :password %>
-          </div>
+<%= f.error_messages %>
 
-          <div class="overlayfield">
-            <%= f.label :password_confirmation, "<span>Repite tu contraseña</span>".html_safe %>
-            <%= f.password_field :password_confirmation %>
-          </div>
-      
-    </fieldset>
-    
-    <fieldset>
-      
-      <div class="overlayfield">
-        <%= f.label :email, "<span>Y por último tu email</span>".html_safe %>
-        <%= f.text_field :email %>
-      </div>
-      
-    </fieldset>
+<fieldset id="login-section">
 
-    <p class="actions">
-      <button type="submit" class="confirm"><span>Regístrate</span></button>
-    </p>
+  <div class="overlayfield">
+    <%= f.label :login, t(:username) %>
+    <%= f.text_field :login %>
+  </div>
+
+  <div class="overlayfield">
+    <%= f.label :password, t(:password) %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="overlayfield">
+    <%= f.label :password_confirmation, t(:password_confirmation) %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+</fieldset>
+
+<fieldset>
+
+  <div class="overlayfield">
+    <%= f.label :email, t(:email) %>
+    <%= f.text_field :email %>
+  </div>
+
+</fieldset>
+
+<p class="actions">
+  <button type="submit" class="confirm"><span><%= t(:sign_up)%></span></button>
+</p>
 <% end %>

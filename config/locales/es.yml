@@ -1,4 +1,92 @@
 "es":
+  currently_logged_as: "Estoy logueado como %{username}"
+  what_proposals: "¿De qué se habla?"
+  want_to_sign_out: "quiero salir de la applicación"
+  hello: 'Hola!'
+  intro_paragraph: '¿Qué pasaría si los ciudadanos pudieran participar de manera más directa en las decisiones que se toman en el Congreso de los Diputados? Es el experimento detrás de esta propuesta.'
+  whats_agora_html: 'AgoraOnRails es un simulador de la aplicación web en la los ciudadanos podrán decidir lo que votarán los diputados del %{href} en el Congreso a partir de las Elecciones Generales de 2012.'
+  hot: 'Hot!'
+  recently_closed: "Recién tramitadas"
+  users: "Usuari@s"
+  hottest: 'Lo más hot!'
+  hottest_paragraph: 'Las propuestas más visitadas o las más votadas. Vota y da tu opinión ahora que todavía estás a tiempo.'
+  proposed_by: 'Propuestas presentadas por %{proposer}'
+  on_html: 'el <span class="date">%{date}</span>'
+  in_congress: 'en el Congreso'
+  vote_prompt: 'Vota!'
+  end_voting: 'Finalizar votación'
+  be_first: 'Sé el primero en votar'
+  one_did_it: 'persona ya lo ha hecho'
+  many_did_it: 'personas ya lo han hecho'
+  popular_vote_results: 'Resultados de la votación popular'
+  votes: 'votos'
+  representatives: 'representantes'
+  recently_closed_paragraph: 'Son las propuestas que acaban de ser tramitadas. Mira lo que se decidió en el congreso y lo que decidió la gente a través de la web.'
+  who_proposed: "¿Quién propone?"
+  votes_through_agora: 'votos a través de AgoraOnRails'
+  calculate_representatives_vote: 'Calcula el voto de los representantes'
+  representatives_number: 'numero de representantes'
+  calculate: 'calcular'
+  proposals: "Propuestas"
+  in_favor: "Sí"
+  against: "No"
+  abstention: "Abs"
+  related_with_category: "Propuestas relacionadas con %{category}"
+  proposals_by: "Propuestas presentadas por %{proposer}"
+  closed: "El periodo de votación para esta propuesta finalizó el %{date}"
+  congress_resolution_html: 'La Propuesta fue <span class="official_resolution">%{resolution}</span> en el Congreso.'
+  share_text: "He votado a través del partido del internet la propuesta %{url}"
+  official_link: 'Enlace oficial'
+  votes: 'votos'
+  views: 'visitas'
+  already_voted: 'Ya has votado esta propuesta'
+  vote_proposal: 'Vota esta propuesta'
+  explain: "Explica tu opinión (opcional)"
+  optional_link: "Enlace (opcional)"
+  dnie_auth_required: 'Autenticación con DNIe requerida'
+  identify_with_dnie: 'Identifícate con tu DNIe'
+  try_with_test_id: 'o haz tongo creando una identidad falsa...'
+  fake_name: 'falso nombre'
+  try_here: 'Haz tongo aquí'
+  popular_vote: 'Votación popular'
+  related_with: 'Relacionada con'
+  on: 'el'
+  yes_option: 'Sí'
+  no_option: 'No'
+  abstention: 'Abstención'
+  start: 'Inicio'
+  proposal_desc_html: 'Presentado por: %{proposer}'
+  popular_vote: 'Votación popular'
+  hooray: 'Hooray!!'
+  changed_spokesman: 'Has cambiado de portavoz.'
+  chosen_spokesman: 'Has elegido a tu portavoz.'
+  spokeman_redirect: 'Si nadie lo remedia en 5 segundos te llevaremos a la página de tu portavoz.'
+  are_you_sure: '¿Estás seguro?'
+  your_current_spokeman: 'Tu portavoz actual es %{spokeman}.'
+  sure_to_change_spokeman: 'Estás seguro de que quieres cambiarlo por %{spokeman}'
+  i_am_sure: "Estoy seguro"
+  present_users: 'Usuari@s presentes en AgoraOnRails'
+  can_delegate_vote: 'Puedes delegar tu voto en ell@s para las propuestas en las que no votes directamente.'
+  sign_up: 'Regístrate'
+  username: 'Nombre de usuario'
+  password: 'Contraseña'
+  password_confirmation: 'Confirma la contraseña'
+  email: 'Email'
+  users: 'Usuari@s'
+  discharge_spokesman: "Destituir a %{name} de ser mi portavoz"
+  choose_spokeman: "Elegir a %{name} como mi portavoz"
+  review_vote: "Revisa tu voto"
+  going_to_vote_in_favor: 'Vas a votar a favor de'
+  going_to_abstain: 'Vas a abstenerte'
+  going_to_vote_against: 'Vas a votar en contra de'
+  vote_counted: 'Tu voto ha sido contabilizado.'
+  the_proposal: 'la iniciativa “%{title}”'
+  because: 'Porque %{explanation}'
+  more_info: 'Más información %{link}'
+  i_am_sure: 'Estoy seguro'
+  or_well: 'o bueno...'
+  think_more: 'quiero pensármelo mejor'
+  
   # Action View
   number:
     # Used in number_with_delimiter()

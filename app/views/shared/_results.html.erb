@@ -1,14 +1,14 @@
 <ul>
   <% Vote.choices.each do |choice| %>
     <li class="<%= choice %>">
-      <strong style="width:<%= "#{ number_to_percentage(proposal.percentage_for(choice.to_sym)-width, :precision => 0) }" %>"><%= humanize(choice) %></strong>
-      <span class="vote_percentage"><%= "#{ number_to_percentage(proposal.percentage_for(choice.to_sym), :precision => 0) }" %></span>
-      <span class="vote_count"><%= "#{ proposal.send("total_#{choice}")} votos" %></span>
-      <% if params[:representative_count].present?%>
+      <%= choice_result(proposal, choice) %>
+      <span class="vote_percentage"><%= percentage_for(proposal, choice) %></span>
+      <span class="vote_count"><%= proposal.total(choice)%> <%= t(:votes) %></span>
+      <% if params[:representative_count].present? %>
         <span class="representative_count_<%= choice %>">
-          <%= "#{ proposal.send("total_representatives_#{choice}", params[:representative_count])} representantes" %>
+          <%= proposal.total_representatives(choice, params[:representative_count]) %> <%= t(:representatives) %> %>
         </span>
-      <%end%>
+      <% end %>
     </li>
   <% end %>
 </ul>

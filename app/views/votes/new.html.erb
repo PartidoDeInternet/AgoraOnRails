@@ -1,15 +1,16 @@
-<h2>Revisa tu voto</h2>
+<h2><%= t(:review_vote)%></h2>
 
 <p class="confirmation-message">
-  <strong>Vas <%= confirmation_text(params[:value]) %></strong>
-  la iniciativa “<%= @proposal.title %>”
+  <strong><%= confirmation_text(params[:value]) %></strong>
   
-  <% unless params[:explanation].blank? %>
-    <p>Porque <%= params[:explanation] %></p>
+  <%= t(:the_proposal, :title => @proposal.title) %> 
+  
+  <% if params[:explanation].present? %>
+    <p><%= t :because, :explanation => params[:explanation] %></p>
   <% end %>
   
-  <% unless params[:link].blank? %>
-    <p>Más información <%= params[:link] %></p>
+  <% if params[:link].present? %>
+    <p><%= t :more_info, :link => params[:link] %></p>
   <% end %>
     
 </p>
@@ -20,7 +21,9 @@
   <%= f.hidden_field :explanation, :value => params[:explanation] %>
   <%= f.hidden_field :link, :value => params[:link] %>
   <p class="actions">
-    <button type="submit" class="confirm"><span>Estoy seguro</span></button> o bueno... <%= link_to 'quiero pensármelo mejor', "#", :class => "oh-no" %>
+    <button type="submit" class="confirm"><span><%= t(:i_am_sure) %></span></button>
+    <%= t(:or_well)%> 
+    <%= link_to t(:think_more), "#", :class => "oh-no" %>
   </p>
 <% end %>
 

@@ -1,18 +1,18 @@
-<h2>Autenticación con DNIe requerida</h2>
+<h2><%= t(:dnie_auth_required)%></h2>
 
 <section id="login-section">
   <div style="margin-bottom: 10px;">
-    <%= identity_verification_gateway("Identifícate con tu DNIe", ENV["TRACTIS_API_KEY"], :action => 'authenticate') %>
+    <%= identity_verification_gateway(t(:identify_with_dnie), ENV["TRACTIS_API_KEY"], :action => 'authenticate') %>
   </div>
   
   <% if Rails.env != 'production' %>
     <%= form_tag user_session_path do %>
-      <p>o haz tongo creando una identidad falsa...</p>
+      <p><%= t(:try_with_test_id) %></p>
       <p>
-      <%= label_tag 'falso nombre'%>
+      <%= label_tag t(:fake_name) %>
       <%= text_field_tag 'name' %>
       </p>
-      <%= submit_tag 'Haz tongo aquí'%>
+      <%= submit_tag t(:try_here) %>
     <% end %>
   <% end %>
 </section>
