@@ -6,6 +6,7 @@ gem "progressbar"
 gem "mechanize"
 gem "inherited_resources"
 gem "dynamic_form"
+gem "congress-scrapper"
   
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
