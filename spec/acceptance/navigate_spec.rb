@@ -37,7 +37,7 @@ feature "Feature name", %q{
     
     within(:css, "aside") { click_link "Gobierno" }
 
-    page.should have_content(I18n.t(:proposed_by, :proposer => "Gobierno"))
+    page.should have_content(I18n.t(:proposed_by_html, :proposer => "Gobierno"))
     page.should have_css(".proposal .title", :text => "Ley Sinde")
     page.should_not have_css(".proposal .title", :text => "Usar Google en los examenes")
     

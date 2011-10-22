@@ -10,7 +10,7 @@
   users: "Usuari@s"
   hottest: 'Lo más hot!'
   hottest_paragraph: 'Las propuestas más visitadas o las más votadas. Vota y da tu opinión ahora que todavía estás a tiempo.'
-  proposed_by: 'Propuestas presentadas por %{proposer}'
+  proposed_by_html: "Propuestas presentadas por %{proposer}"
   on_html: 'el <span class="date">%{date}</span>'
   in_congress: 'en el Congreso'
   vote_prompt: 'Vota!'
@@ -50,7 +50,6 @@
   try_here: 'Haz tongo aquí'
   popular_vote: 'Votación popular'
   related_with: 'Relacionada con'
-  on: 'el'
   yes_option: 'Sí'
   no_option: 'No'
   abstention: 'Abstención'

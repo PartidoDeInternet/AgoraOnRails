@@ -4,9 +4,8 @@
       <hgroup>
         <h2 class="title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
         <h3>
-          <%= t(:proposed_by) %> <%= link_to proposal.proposer.name, proposal.proposer, :class => "proposer" %>
-          <%= t(:on) %>
-          <span class="proposed_at"><%= l proposal.proposed_at, :format => :long %></span>
+          <%= t(:proposed_by_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %> 
+          <span class="proposed_at"><%= t(:on_html, :date => l(proposal.proposed_at, :format => :long)) %></span>
         </h3>
       </hgroup>
     </header>

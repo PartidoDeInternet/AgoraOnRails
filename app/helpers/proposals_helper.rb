@@ -2,7 +2,7 @@ module ProposalsHelper
   def proposals_heading
     case parent_type
       when :category then t(:related_with_category, :category => parent.name)
-      when :proposer then t(:proposed_by, :proposer => parent.name)
+      when :proposer then t(:proposed_by_html, :proposer => parent.name)
       else
         t :proposals
     end
@@ -10,7 +10,9 @@ module ProposalsHelper
   
   def choice_result(proposal, choice)
     content_tag :strong, :style => "width:#{percentage_for(proposal, choice)}-width" do
-      humanize(choice)
+      content_tag :span do
+        humanize(choice)
+      end
     end
   end
   
