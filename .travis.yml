@@ -1,3 +1,4 @@
 rvm: 1.9.2
 before_script:
+  - "sh -c 'bundle exec rake db:migrate'"
   - "sh -c 'bundle exec rake db:test:prepare'"
