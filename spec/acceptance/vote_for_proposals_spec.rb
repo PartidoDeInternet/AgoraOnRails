@@ -77,7 +77,7 @@ feature "Vote for proposals", %q{
     visit proposal_path(proposal)
     click_button I18n.t(:yes_option)
 
-    page.should have_content I18n.t(:dnie_auth_required)
+    page.should have_content I18n.t(:auth_required)
     page.should_not have_css("button", :text => I18n.t(:i_am_sure))
       
     login_as @user

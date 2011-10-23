@@ -7,7 +7,8 @@ gem "mechanize"
 gem "inherited_resources"
 gem "dynamic_form"
 gem "congress-scrapper"
-  
+gem "omniauth"
+
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails'

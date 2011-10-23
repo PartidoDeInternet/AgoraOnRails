@@ -43,7 +43,7 @@
   vote_proposal: 'Vota esta propuesta'
   explain: "Explica tu opinión (opcional)"
   optional_link: "Enlace (opcional)"
-  dnie_auth_required: 'Autenticación con DNIe requerida'
+  auth_required: 'Autenticación requerida'
   identify_with_dnie: 'Identifícate con tu DNIe'
   try_with_test_id: 'o haz tongo creando una identidad falsa...'
   fake_name: 'falso nombre'
