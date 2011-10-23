@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.1.1'
 
 gem "progressbar"
 gem "mechanize"
@@ -12,7 +12,7 @@ group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails'
   gem 'steak'
-  gem 'capybara', :git => "git://github.com/jnicklas/capybara.git"
+  gem 'capybara', '0.4.1.1'
   gem 'launchy'
   gem 'ruby-debug19'
   gem 'ZenTest'

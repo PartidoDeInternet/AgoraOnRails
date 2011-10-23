@@ -72,20 +72,20 @@ module Tractis
     
     def self.DEBUG(debug) # :nodoc:
       if debug.kind_of?(Net::HTTPRequest)
-        RAILS_DEFAULT_LOGGER.debug "#{debug.method} #{debug.path} HTTP/1.1"
+        Rails.logger.debug "#{debug.method} #{debug.path} HTTP/1.1"
       else
-        RAILS_DEFAULT_LOGGER.debug "HTTP/#{debug.http_version} #{debug.code} #{debug.message}"
+        Rails.logger.debug "HTTP/#{debug.http_version} #{debug.code} #{debug.message}"
       end
       
       debug.each_key do |key|
         next unless DEBUGGED_HEADERS.include?(key)
         header = key.split('-').collect {|word| word.capitalize }.join('-')
-        RAILS_DEFAULT_LOGGER.debug "#{header}: #{debug[key]}"
+        Rails.logger.debug "#{header}: #{debug[key]}"
       end
       
-      RAILS_DEFAULT_LOGGER.debug
-      RAILS_DEFAULT_LOGGER.debug debug.body if debug.body
-      RAILS_DEFAULT_LOGGER.debug
+      Rails.logger.debug
+      Rails.logger.debug debug.body if debug.body
+      Rails.logger.debug
     end
   end
 end
