@@ -1,12 +1,15 @@
 <h2><%= t(:dnie_auth_required)%></h2>
 
 <section id="login-section">
+
+  <p><%= link_to "Sign in with Twitter", "/auth/twitter" %></p>
+
   <div style="margin-bottom: 10px;">
     <%= identity_verification_gateway(t(:identify_with_dnie), ENV["TRACTIS_API_KEY"], :action => 'authenticate') %>
   </div>
   
   <% if Rails.env != 'production' %>
-    <%= form_tag user_session_path do %>
+    <%= form_tag create_fake_user_session_path do %>
       <p><%= t(:try_with_test_id) %></p>
       <p>
       <%= label_tag t(:fake_name) %>

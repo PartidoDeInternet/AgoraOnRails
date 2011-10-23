@@ -18,12 +18,19 @@ class UserSessionsController < ApplicationController
     redirect_back_or_default root_url
   end
   
-  def create
+  def create_fake
     name = params[:name].present? ? params[:name] : "Backdoor Mother Fucking Fake User"
     @current_user = User.find_or_create_by_name(name) do |user|
       user.dni = "#{rand(99999999)}V"
     end
     
+    session[:current_user_id] = @current_user.id
+    redirect_back_or_default root_url
+  end
+
+  def create
+    auth = request.env["omniauth.auth"]
+    @current_user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
     session[:current_user_id] = @current_user.id
     redirect_back_or_default root_url
   end

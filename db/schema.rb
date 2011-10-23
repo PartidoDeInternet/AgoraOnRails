@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110319234436) do
+ActiveRecord::Schema.define(:version => 20111023200908) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20110319234436) do
     t.boolean  "admin",                   :default => false
     t.string   "dni"
     t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   create_table "votes", :force => true do |t|
