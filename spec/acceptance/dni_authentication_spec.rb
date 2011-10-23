@@ -26,7 +26,7 @@ feature "DNI authentication", %q{
     register_as("Bad Ass Mother Fucking New User", "12345678V")
     
     page.should have_content I18n.t(:currently_logged_as, :username => "Bad Ass Mother Fucking New User")
-    User.find_by_name_and_dni("Bad Ass Mother Fucking New User", "12345678V").should be
+    User.find_by_name_and_uid("Bad Ass Mother Fucking New User", "12345678V").should be
   end
 
   scenario "Invalid authentication" do

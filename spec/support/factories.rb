@@ -15,7 +15,8 @@ module Factories
   end
   
   def create_user(attrs = {})
-    attrs[:dni] ||= "#{rand(9999999)}V"
+    attrs[:provider] ||= "test"
+    attrs[:uid] ||= "#{rand(9999999)}V"
     attrs[:name] ||= "Mother Fucking Real User"
     User.create!(attrs)
   end

@@ -1,7 +1,7 @@
 module HelperMethods
   def login_as(user)
     stub_tractis_request
-    get_tractis_callback(user.name, user.dni)
+    get_tractis_callback(user.name, user.uid)
   end
 
   def register_as(name, dni)

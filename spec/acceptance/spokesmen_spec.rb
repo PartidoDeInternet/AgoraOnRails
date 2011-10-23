@@ -77,7 +77,7 @@ feature "Spokesmen", %q{
     click_link "Fan de Punset"
     click_button "Elegir a Fan de Punset como mi portavoz"
 
-    page.should have_content("Autenticación con DNIe requerida")
+    page.should have_content("Autenticación requerida")
     page.should_not have_content("Has elegido a tu portavoz.")
     
     login_as @user

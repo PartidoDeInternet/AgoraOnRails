@@ -10,7 +10,8 @@ class UserSessionsController < ApplicationController
   def authenticate
     valid_tractis_identity_verification!(ENV["TRACTIS_API_KEY"], params)
    
-    @current_user = User.find_or_create_by_dni(params["tractis:attribute:dni"]) do |user|
+    @current_user = User.find_or_create_by_uid(params["tractis:attribute:dni"]) do |user|
+      user.provider = "tractis"
       user.name = params["tractis:attribute:name"]
     end
     
@@ -21,7 +22,8 @@ class UserSessionsController < ApplicationController
   def create_fake
     name = params[:name].present? ? params[:name] : "Backdoor Mother Fucking Fake User"
     @current_user = User.find_or_create_by_name(name) do |user|
-      user.dni = "#{rand(99999999)}V"
+      user.provider = "fake"
+      user.uid = name
     end
     
     session[:current_user_id] = @current_user.id
