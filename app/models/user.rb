@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   
   after_save :count_votes
   
-  validates :dni, :presence => true
+  validates :provider, :presence => true
+  validates :uid, :presence => true
   
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)
@@ -65,6 +66,14 @@ class User < ActiveRecord::Base
 
   def is_admin?
     admin
+  end
+
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["user_info"]["name"]
+    end
   end
 
 end

@@ -17,6 +17,7 @@ AgoraOnRails::Application.routes.draw do
 
   resource :user_session do
     get 'authenticate'
+    post 'create_fake'
   end
   
   resources :users do
@@ -28,6 +29,8 @@ AgoraOnRails::Application.routes.draw do
     end
   end
     
+  get '/auth/twitter/callback', :to => 'user_sessions#create', :as => 'callback'
+
   root :to => "welcome#index"
 
   # The priority is based upon order of creation:
