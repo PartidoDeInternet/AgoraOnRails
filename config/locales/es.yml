@@ -35,7 +35,7 @@
   proposals_by: "Propuestas presentadas por %{proposer}"
   closed: "El periodo de votación para esta propuesta finalizó el %{date}"
   congress_resolution_html: 'La Propuesta fue <span class="official_resolution">%{resolution}</span> en el Congreso.'
-  share_text: "He votado a través del partido del internet la propuesta %{url}"
+  share_text: "He votado a través del partido del internet la propuesta"
   official_link: 'Enlace oficial'
   votes: 'votos'
   views: 'visitas'
