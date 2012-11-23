@@ -6,19 +6,19 @@ module ShareHelper
     end
    abs_path
   end
-
-  def share_text(proposal)
-    t(:share_text, :url => proposal_url(proposal))
+  
+  def share_text
+    t(:share_text)
   end
 
   def share_on_facebook_link(proposal)
-    %{<iframe src="http://www.facebook.com/plugins/like.php?href=#{CGI.escape(proposal_url(proposal))}&locale=es_ES&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=recommend&amp;font=arial&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true" name="fb-share"></iframe>
+    %{<iframe src="http://www.facebook.com/plugins/like.php?href=#{CGI.escapeHTML(proposal_url(proposal))}&locale=es_ES&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=recommend&amp;font=arial&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true" name="fb-share"></iframe>
 }.html_safe
   end
 
   def share_on_twitter_link(proposal)
     %{<iframe allowtransparency="true" frameborder="0" scrolling="no"
-        src="http://platform.twitter.com/widgets/tweet_button.html?url=#{CGI.escapeHTML(proposal_url(proposal))}&via=#{CGI.escapeHTML("pdi: El Partido de Internet")}&text=#{CGI.escapeHTML(share_text(proposal))}&lang=es&count=horizontal"
+        src="http://platform.twitter.com/widgets/tweet_button.html?url=#{CGI.escapeHTML(proposal_url(proposal))}&via=#{CGI.escapeHTML("pdi: El Partido de Internet")}&text=#{CGI.escapeHTML(share_text)}&lang=es&count=horizontal"
         style="width:130px; height:50px;" name="twitter-share"></iframe>
 }.html_safe
   end
