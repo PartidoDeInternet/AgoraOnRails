@@ -10,11 +10,14 @@ class UserSessionsController < ApplicationController
   def authenticate
     valid_tractis_identity_verification!(ENV["TRACTIS_API_KEY"], params)
    
-    @current_user = User.find_or_create_by_uid(params["tractis:attribute:dni"]) do |user|
+    random_username = SecureRandom.hex(7)
+
+    @current_user = User.find_or_create_by_uid(random_username) do |user|
       user.provider = "tractis"
-      user.name = params["tractis:attribute:name"]
+      user.name = random_username
     end
-    
+
+    session[:current_user_name] = params["tractis:attribute:name"]
     session[:current_user_id] = @current_user.id
     redirect_back_or_default root_url
   end
@@ -39,6 +42,7 @@ class UserSessionsController < ApplicationController
   
   def destroy
     session[:current_user_id] = nil
+    session[:current_user_name] = nil
     flash[:notice] = "oh! adios :("
     redirect_to root_path
   end

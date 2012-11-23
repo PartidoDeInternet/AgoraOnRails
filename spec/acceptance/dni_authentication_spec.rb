@@ -6,27 +6,30 @@ feature "DNI authentication", %q{
   As a real mother fucking user
   I want to authenticate myself with my DNI
 } do
-  
-  scenario "Valid authentication with existing user" do
-    user = create_user(:name => "Bad Ass Mother Fucking Real User")
-    visit login_path
-  
-    page.should have_css("input[@value='Identifícate con tu DNIe']")
-    
-    login_as user
-    
-    page.should have_content I18n.t(:currently_logged_as, :username => "Bad Ass Mother Fucking Real User")
-  end
 
   scenario "Valid authentication with new user" do
     visit login_path
   
     page.should have_css("input[@value='Identifícate con tu DNIe']")
     
-    register_as("Bad Ass Mother Fucking New User", "12345678V")
+    register_with_tractis_as("Bad Ass Mother Fucking New User", "12345678V")
     
     page.should have_content I18n.t(:currently_logged_as, :username => "Bad Ass Mother Fucking New User")
-    User.find_by_name_and_uid("Bad Ass Mother Fucking New User", "12345678V").should be
+  end
+
+  context "Anonymity" do
+    scenario "Should not store the user DNI and name" do
+      register_with_tractis_as("Bad Ass Mother Fucking New User", "12345678V")
+      User.count.should == 1
+      User.first.name.should_not == "Bad Ass Mother Fucking New User"
+      User.first.dni.should_not == "12345678V"
+    end
+  
+    scenario "Should create two different users when loging in twice with the same DNI" do
+      register_with_tractis_as("Bad Ass Mother Fucking New User", "12345678V")
+      register_with_tractis_as("Bad Ass Mother Fucking New User", "12345678V")
+      User.count.should == 2
+    end
   end
 
   scenario "Invalid authentication" do
