@@ -18,7 +18,7 @@ module ShareHelper
 
   def share_on_twitter_link(proposal)
     %{<iframe allowtransparency="true" frameborder="0" scrolling="no"
-        src="http://platform.twitter.com/widgets/tweet_button.html?url=#{CGI.escape(proposal_url(proposal))}&via=#{CGI.escape("pdi: El Partido de Internet")}&text=#{CGI.escape(share_text(proposal))}&lang=es&count=horizontal"
+        src="http://platform.twitter.com/widgets/tweet_button.html?url=#{CGI.escapeHTML(proposal_url(proposal))}&via=#{CGI.escapeHTML("pdi: El Partido de Internet")}&text=#{CGI.escapeHTML(share_text(proposal))}&lang=es&count=horizontal"
         style="width:130px; height:50px;" name="twitter-share"></iframe>
 }.html_safe
   end
