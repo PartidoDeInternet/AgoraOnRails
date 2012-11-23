@@ -25,8 +25,8 @@
           <nav id="user-nav">
             <ul>
               <li>
-                <%= t :currently_logged_as, :username => current_user.name, 
-                :href => link_to(t("want_to_sign_out"), user_session_path, :method => "delete") %>
+                <%= t :currently_logged_as, :username => current_user.name %>
+                <%= link_to t("want_to_sign_out"), user_session_path, :method => "delete" %>
               </li>
             </ul>
           </nav>
