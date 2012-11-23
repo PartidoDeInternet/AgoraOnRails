@@ -23,3 +23,7 @@ group :development, :test do
 end
 
 gem 'webmock', :group => :test
+
+group :production do
+  gem 'pg'
+end
