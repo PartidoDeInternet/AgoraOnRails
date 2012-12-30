@@ -8,6 +8,7 @@ gem "inherited_resources"
 gem "dynamic_form"
 gem "congress-scrapper"
 gem "omniauth"
+gem 'pg'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -23,7 +24,3 @@ group :development, :test do
 end
 
 gem 'webmock', :group => :test
-
-group :production do
-  gem 'pg'
-end
