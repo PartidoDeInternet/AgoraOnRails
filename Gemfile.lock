@@ -51,10 +51,17 @@ GEM
     celerity (0.9.1)
     childprocess (0.2.2)
       ffi (~> 1.0.6)
+    colorize (0.5.8)
     columnize (0.3.4)
     congress-scrapper (0.0.1)
       mechanize
       progressbar
+    coveralls (0.5.8)
+      colorize
+      json
+      rest-client
+      simplecov (>= 0.7)
+      thor
     crack (0.3.1)
     culerity (0.2.15)
     diff-lcs (1.1.3)
@@ -214,6 +221,10 @@ GEM
       ffi (= 1.0.9)
       json_pure
       rubyzip
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -250,6 +261,7 @@ DEPENDENCIES
   autotest-rails
   capybara (= 0.4.1.1)
   congress-scrapper
+  coveralls
   dynamic_form
   heroku_san
   inherited_resources
