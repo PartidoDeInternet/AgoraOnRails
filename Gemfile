@@ -21,7 +21,8 @@ group :development, :test do
   gem 'autotest-rails'
   gem 'autotest-growl'
   gem 'heroku_san'
-  gem 'coveralls', require: false
 end
 
 gem 'webmock', :group => :test
+
+gem 'coveralls', require: false
