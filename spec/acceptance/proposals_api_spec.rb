@@ -16,7 +16,7 @@ feature "Proposals API", %q{
                      :abstention    => 1,
                      :proposal_type => "National",
                      :official_url  => "http://thecongress.com/the_proposal",
-                     :official_resolution => "Rejected",
+                     :status => "Rejected",
                      :proposer => proposer,
                      :category => category)
 
@@ -40,7 +40,7 @@ feature "Proposals API", %q{
     proposal_hash['official_url'].should == "http://thecongress.com/the_proposal"
     proposal_hash['proposer_id'].should == proposer.id
     proposal_hash['proposer_name'].should == "Greenpeace"
-    proposal_hash['official_resolution'].should == "Rejected"
+    proposal_hash['status'].should == "Rejected"
   end
   
 end

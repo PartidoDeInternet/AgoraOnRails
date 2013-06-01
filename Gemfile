@@ -1,14 +1,17 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '3.1.1'
 
-gem "progressbar"
 gem "mechanize"
 gem "inherited_resources"
 gem "dynamic_form"
-gem "congress-scrapper"
 gem "omniauth"
 gem 'pg'
+
+gem 'faraday'
+gem 'faraday_middleware'
+gem 'hashie'
+gem "json"
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -20,9 +23,11 @@ group :development, :test do
   gem 'ZenTest'
   gem 'autotest-rails'
   gem 'autotest-growl'
-  gem 'heroku_san'
 end
 
-gem 'webmock', :group => :test
+group :test do
+  gem "vcr"
+  gem 'webmock'
+  gem 'coveralls', require: false
+end
 
-gem 'coveralls', require: false

@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     XMLCanonicalizer (1.0.1)
       log4r (>= 1.0.4)
@@ -32,7 +32,7 @@ GEM
       activesupport (= 3.1.1)
     activesupport (3.1.1)
       multi_json (~> 1.0)
-    addressable (2.2.6)
+    addressable (2.2.8)
     archive-tar-minitar (0.5.2)
     arel (2.2.1)
     autotest-growl (0.2.14)
@@ -53,34 +53,26 @@ GEM
       ffi (~> 1.0.6)
     colorize (0.5.8)
     columnize (0.3.4)
-    congress-scrapper (0.0.1)
-      mechanize
-      progressbar
     coveralls (0.5.8)
       colorize
       json
       rest-client
       simplecov (>= 0.7)
       thor
-    crack (0.3.1)
+    crack (0.3.2)
     culerity (0.2.15)
     diff-lcs (1.1.3)
     dynamic_form (1.1.4)
     erubis (2.7.0)
-    faraday (0.7.5)
-      addressable (~> 2.2.6)
-      multipart-post (~> 1.1.3)
-      rack (>= 1.1.0, < 2)
+    faraday (0.7.6)
+      addressable (~> 2.2)
+      multipart-post (~> 1.1)
+      rack (~> 1.1)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     ffi (1.0.9)
     has_scope (0.5.1)
-    heroku (2.11.0)
-      launchy (>= 0.3.2)
-      rest-client (~> 1.6.1)
-      rubyzip
-      term-ansicolor (~> 1.0.5)
-    heroku_san (1.2.3)
-      heroku (>= 2)
-      rails (>= 2)
+    hashie (2.0.5)
     hike (1.2.1)
     i18n (0.6.0)
     inherited_resources (1.3.0)
@@ -107,7 +99,7 @@ GEM
     mime-types (1.16)
     multi_json (1.0.3)
     multi_xml (0.4.1)
-    multipart-post (1.1.3)
+    multipart-post (1.2.0)
     net-http-digest_auth (1.1.1)
     net-http-persistent (1.9)
     net-ldap (0.2.2)
@@ -153,9 +145,8 @@ GEM
       oa-openid (= 0.3.2)
     pg (0.14.1)
     polyglot (0.3.2)
-    progressbar (0.9.1)
     pyu-ruby-sasl (0.0.3.3)
-    rack (1.3.5)
+    rack (1.3.10)
     rack-cache (1.1)
       rack (>= 0.4)
     rack-mount (0.8.3)
@@ -235,7 +226,6 @@ GEM
     steak (1.1.0)
       rspec (>= 1.3)
     systemu (2.2.0)
-    term-ansicolor (1.0.7)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -244,9 +234,10 @@ GEM
     tzinfo (0.3.30)
     uuid (2.3.4)
       macaddr (~> 1.0)
-    webmock (1.7.7)
-      addressable (~> 2.2, > 2.2.5)
-      crack (>= 0.1.7)
+    vcr (2.5.0)
+    webmock (1.11.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
     webrobots (0.0.12)
       nokogiri (>= 1.4.4)
     xpath (0.1.4)
@@ -260,19 +251,21 @@ DEPENDENCIES
   autotest-growl
   autotest-rails
   capybara (= 0.4.1.1)
-  congress-scrapper
   coveralls
   dynamic_form
-  heroku_san
+  faraday
+  faraday_middleware
+  hashie
   inherited_resources
+  json
   launchy
   mechanize
   omniauth
   pg
-  progressbar
   rails (= 3.1.1)
   rspec-rails
   ruby-debug19
   sqlite3-ruby
   steak
+  vcr
   webmock

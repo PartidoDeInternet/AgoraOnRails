@@ -27,10 +27,10 @@ module ProposalsHelper
   end
 
   def show_closed_text
-    if @proposal.closed? && @proposal.official_resolution.blank?
+    if @proposal.closed? && @proposal.status.blank?
       t(:closed, :date => l(@proposal.closed_at))
     else
-      t(:congress_resolution_html, :resolution => @proposal.official_resolution)
+      t(:congress_status_html, :status => @proposal.status)
     end
 
   end

@@ -36,13 +36,13 @@ feature "Home page", %q{
   end
   
   scenario "Recently closed proposals" do
-    create_proposal :title => "Legalize it",         :closed_at => 20.days.ago.to_date, :official_resolution => "Aceptada"
-    create_proposal :title => "Cafe para todos",     :closed_at => 15.days.ago.to_date, :official_resolution => "Aceptada"
-    create_proposal :title => "Zapatero Dimisión",   :closed_at => 23.days.ago.to_date, :official_resolution => "Aceptada"
+    create_proposal :title => "Legalize it",         :closed_at => 20.days.ago.to_date, :status => "Aceptada"
+    create_proposal :title => "Cafe para todos",     :closed_at => 15.days.ago.to_date, :status => "Aceptada"
+    create_proposal :title => "Zapatero Dimisión",   :closed_at => 23.days.ago.to_date, :status => "Aceptada"
     create_proposal :title => "Juanjo for president"
-    create_proposal :title => "WIFI en todo Madrid", :closed_at => 1.days.ago.to_date,  :official_resolution => "Aceptada"
-    create_proposal :title => "Ley Sinde",           :closed_at => 2.days.ago.to_date,  :official_resolution => "Aceptada"
-    create_proposal :title => "Bajar el IVA",        :closed_at => 5.days.ago.to_date,  :official_resolution => "Aceptada"
+    create_proposal :title => "WIFI en todo Madrid", :closed_at => 1.days.ago.to_date,  :status => "Aceptada"
+    create_proposal :title => "Ley Sinde",           :closed_at => 2.days.ago.to_date,  :status => "Aceptada"
+    create_proposal :title => "Bajar el IVA",        :closed_at => 5.days.ago.to_date,  :status => "Aceptada"
     
     visit homepage
     click_link "Recién tramitadas"

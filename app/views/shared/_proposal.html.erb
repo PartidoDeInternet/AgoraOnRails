@@ -12,7 +12,7 @@
   </section>
     <% if proposal.closed? %>
     <section class="voters">
-      <p class="solved"><span class="official_resolution"> <%= proposal.official_resolution %></span> <%= t(:in_congress) %>.</p>
+      <p class="solved"><span class="status"> <%= proposal.status %></span> <%= t(:in_congress) %>.</p>
       <section class="vote-results documents-list voters">
         <dl>
           <dt><strong><%= t :popular_vote_results %></strong></dt>

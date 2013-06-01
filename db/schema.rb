@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111023200908) do
+ActiveRecord::Schema.define(:version => 20130601113810) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -31,23 +31,24 @@ ActiveRecord::Schema.define(:version => 20111023200908) do
   end
 
   create_table "proposals", :force => true do |t|
-    t.string   "title",               :limit => 1024
-    t.string   "official_url",        :limit => 1024
+    t.string   "title",         :limit => 1024
+    t.string   "official_url",  :limit => 1024
     t.string   "proposal_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "in_favor",                            :default => 0
-    t.integer  "against",                             :default => 0
-    t.integer  "abstention",                          :default => 0
-    t.string   "official_resolution"
+    t.integer  "in_favor",                      :default => 0
+    t.integer  "against",                       :default => 0
+    t.integer  "abstention",                    :default => 0
+    t.string   "status"
     t.integer  "category_id"
     t.integer  "proposer_id"
     t.date     "proposed_at"
     t.date     "closed_at"
-    t.integer  "visits",                              :default => 0
+    t.integer  "visits",                        :default => 0
     t.integer  "votes_count"
     t.integer  "position"
     t.integer  "closer_id"
+    t.text     "body"
   end
 
   create_table "proposers", :force => true do |t|
