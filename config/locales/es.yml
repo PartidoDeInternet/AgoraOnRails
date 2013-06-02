@@ -4,7 +4,7 @@
   want_to_sign_out: "quiero salir de la applicación"
   hello: 'Hola!'
   intro_paragraph: '¿Qué pasaría si los ciudadanos pudieran participar de manera más directa en las decisiones que se toman en el Congreso de los Diputados? Es el experimento detrás de esta propuesta.'
-  whats_agora_html: 'AgoraOnRails es un simulador de la aplicación web en la los ciudadanos podrán decidir lo que votarán los diputados del %{href} en el Congreso a partir de las Elecciones Generales de 2012.'
+  whats_agora_html: 'AgoraOnRails es un simulador de la aplicación web en la los ciudadanos podrán decidir lo que votarán los diputados del %{href} en el Congreso.'
   hot: 'Hot!'
   recently_closed: "Recién tramitadas"
   users: "Usuari@s"
