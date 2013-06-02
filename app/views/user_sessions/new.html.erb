@@ -2,7 +2,8 @@
 
 <section id="login-section">
 
-  <p><%= link_to "Sign in with Twitter", "/auth/twitter" %></p>
+  <p><%= link_to "Sign in with Twitter", "/auth/twitter",
+                :class => "popup", :"data-width" => 600, :"data-height" => 400 %></p>
 
   <div style="margin-bottom: 10px;">
     <%= identity_verification_gateway(t(:identify_with_dnie), ENV["TRACTIS_API_KEY"], :action => 'authenticate') %>
@@ -19,3 +20,4 @@
     <% end %>
   <% end %>
 </section>
+  

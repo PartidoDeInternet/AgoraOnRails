@@ -35,3 +35,10 @@ $(function(){
   });
 });
 </script>
+
+<script type="text/javascript" charset="utf-8">
+  if(window.opener) {
+    window.opener.location.href = '<%= session[:return_to] %>'
+    window.close();
+  }
+</script>
