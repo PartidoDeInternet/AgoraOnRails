@@ -20,7 +20,6 @@ feature "Authentication", %q{
   end
 
   scenario "Sign in with tractis" do
-pending "Tractis gem implementation"    
     user = create_user
     stub_tractis_request
     get_tractis_callback(user.name, user.uid)

@@ -1,4 +1,4 @@
-require 'tractis/http'
+require 'tractis_identity_verifications/tractis/http'
 
 module Tractis
   module IdentityVerifications

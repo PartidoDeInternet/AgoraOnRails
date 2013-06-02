@@ -31,7 +31,4 @@ feature "", %q{
     proposal.body                 =~ /En cumplimiento de lo dispuesto en el artículo 86.2 de la Constitución, el Real Decreto-ley 27\/2012, de 15 de noviembre, de medidas urgentes para reforzar la protección a los deudores hipotecarios/
     proposal.api_id               == "1"
   end
-
-  pending "find or create category"
-  pending "find or create proposer"
 end
