@@ -85,7 +85,7 @@
   i_am_sure: 'Estoy seguro'
   or_well: 'o bueno...'
   think_more: 'quiero pensármelo mejor'
-  i_am_done: 'no quiero compatir en redes sociales'
+  vote_redirect: 'Si nadie lo remedia en 5 segundos te llevaremos a la página de la propuesta.'
   
   # Action View
   number:

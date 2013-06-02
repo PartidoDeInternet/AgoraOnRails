@@ -1,19 +1,11 @@
-<h2><% t(:hooray)%></h2>
+<h2><%= t(:hooray)%></h2>
 
 <p class="confirmation-message">
   <strong><%= t :vote_counted %></strong>
-  <%= render 'proposals/share' %>
 
-  <p class="actions">
-		<%= link_to t(:i_am_done), "#", :class => "done" %>
-	</p>
+  <%= t :vote_redirect %>
 </p>
 
 <script type="text/javascript" charset="utf-8">
-$(function(){
-  $(".done").click(function(e){
-    e.preventDefault();
-    top.document.location.href = '<%= proposal_path @proposal %>'
-  });
-});
+  var t = setTimeout("top.document.location.href = '<%= proposal_path @proposal %>'", 5000);
 </script>
