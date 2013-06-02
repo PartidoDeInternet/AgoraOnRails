@@ -4,6 +4,5 @@ namespace :agoraonrails do
     Rake::Task['db:migrate'].invoke
     Rake::Task['db:seed'].invoke
     Rake::Task['scrapper:scrape'].invoke
-    Rake::Task['proposals:promote'].invoke
   end
 end

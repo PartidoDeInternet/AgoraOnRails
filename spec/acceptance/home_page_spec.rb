@@ -8,12 +8,12 @@ feature "Home page", %q{
 } do
   
   scenario "Hot proposals" do
-    create_proposal(:title => "Legalize it",         :position => 3)
-    create_proposal(:title => "Cafe para todos",     :position => 6)
-    create_proposal(:title => "Zapatero Dimisión",   :position => 5)
-    create_proposal(:title => "Ley Sinde",           :position => 1)
-    create_proposal(:title => "Bajar el IVA",        :position => 4)
-    create_proposal(:title => "WIFI en todo Madrid", :position => 2)
+    create_proposal(:title => "Legalize it",         :votes_count => 4)
+    create_proposal(:title => "Cafe para todos",     :votes_count => 1)
+    create_proposal(:title => "Zapatero Dimisión",   :votes_count => 2)
+    create_proposal(:title => "Ley Sinde",           :votes_count => 6)
+    create_proposal(:title => "Bajar el IVA",        :votes_count => 3)
+    create_proposal(:title => "WIFI en todo Madrid", :votes_count => 5)
     
     visit homepage
     

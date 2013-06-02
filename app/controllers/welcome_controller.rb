@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     @title = "Bienvenido"
-    @staff_choice = Proposal.staff_choice
+    @hot = Proposal.hot
     @recently_closed = Proposal.recently_closed
   end
 

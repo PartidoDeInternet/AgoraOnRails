@@ -6,9 +6,8 @@ class Proposal < ActiveRecord::Base
   belongs_to :proposer, :counter_cache => true
   
   scope :open,            -> { where("closed_at is null") }
-  scope :hot,             -> { order("(visits + votes_count * 3) DESC").limit(5) }
+  scope :hot,             -> { open.order("votes_count desc, visits desc").limit(5) }
   scope :recently_closed, -> { where("closed_at is not null and status is not null").order("closed_at DESC").limit(5) }
-  scope :staff_choice,    -> { where("position is not null").order("position ASC").limit(5) }
   
   after_create :set_delegated_vote
   

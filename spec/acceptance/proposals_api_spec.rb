@@ -29,7 +29,6 @@ feature "Proposals API", %q{
     proposal_hash['id'].should be_blank
     proposal_hash['updated_at]'].should be_blank
     proposal_hash['created_at'].should be_blank
-    proposal_hash['position'].should be_blank
     
     proposal_hash['in_favor'].should == 5
     proposal_hash['against'].should == 10

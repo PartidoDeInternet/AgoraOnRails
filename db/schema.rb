@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130602010715) do
+ActiveRecord::Schema.define(version: 20130602031600) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20130602010715) do
     t.date     "closed_at"
     t.integer  "visits",                     default: 0
     t.integer  "votes_count"
-    t.integer  "position"
     t.integer  "closer_id"
     t.text     "body"
     t.integer  "api_id"

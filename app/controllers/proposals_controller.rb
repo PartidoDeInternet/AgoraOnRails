@@ -10,7 +10,7 @@ class ProposalsController < InheritedResources::Base
   def show
     @proposal = Proposal.find(params[:id])
     @proposal.visited!
-    respond_with(@proposal, :except => [:id, :created_at, :position], :methods => [:proposer_name, :category_name])
+    respond_with(@proposal, :except => [:id, :created_at], :methods => [:proposer_name, :category_name])
   end
 
   def toggle
