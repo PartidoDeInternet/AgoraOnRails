@@ -85,6 +85,7 @@
   i_am_sure: 'Estoy seguro'
   or_well: 'o bueno...'
   think_more: 'quiero pensármelo mejor'
+  i_am_done: 'no quiero compatir en redes sociales'
   
   # Action View
   number:

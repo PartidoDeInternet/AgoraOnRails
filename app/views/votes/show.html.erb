@@ -3,4 +3,17 @@
 <p class="confirmation-message">
   <strong><%= t :vote_counted %></strong>
   <%= render 'proposals/share' %>
+
+  <p class="actions">
+		<%= link_to t(:i_am_done), "#", :class => "done" %>
+	</p>
 </p>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  $(".done").click(function(e){
+    e.preventDefault();
+    top.document.location.href = '<%= proposal_path @proposal %>'
+  });
+});
+</script>
