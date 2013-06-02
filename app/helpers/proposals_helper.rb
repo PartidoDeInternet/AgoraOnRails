@@ -9,7 +9,7 @@ module ProposalsHelper
   end
   
   def choice_result(proposal, choice)
-    content_tag :strong, :style => "width:#{percentage_for(proposal, choice)}" do
+    content_tag :strong, :style => "width:#{percentage_for(proposal, choice)}; max-width: 310px" do
       content_tag :span do
         humanize(choice)
       end
@@ -17,11 +17,7 @@ module ProposalsHelper
   end
   
   def percentage_for(proposal, choice)
-    number_to_percentage(avoid_overflow(proposal.percentage_for(choice.to_sym)) , :precision => 0)
-  end
-
-  def avoid_overflow(percentage)
-    percentage * 0.7
+    number_to_percentage(proposal.percentage_for(choice.to_sym) , :precision => 0)
   end
 
   def show_toggle_button(is_admin)

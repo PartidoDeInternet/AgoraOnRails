@@ -33,8 +33,6 @@ feature "Vote for proposals", %q{
       click_button I18n.t(:i_am_sure)
 
       page.should have_content(I18n.t(:vote_counted))
-      page.should have_css(".share.fb-share iframe")
-      page.should have_css(".share.twitter-share iframe")
     end
   end
 
