@@ -18,16 +18,20 @@ feature "", %q{
     VCR.use_cassette('congress-api', :re_record_interval => 1.day) do
       Scrapper.new.scrape
     end
-    Proposal.count.should be > 1
-    proposal = Proposal.last
-    proposal.title.should         == "Proyecto de Ley de medidas urgentes para la reforma del mercado laboral (procedente del Real Decreto-Ley 3/2012, de 10 de febrero)"
-    proposal.official_url.should  == "http://www.congreso.es/portal/page/portal/Congreso/Congreso/Iniciativas/Busqueda%20Avanzada?_piref73_1335465_73_1335464_1335464.next_page=/wc/servidorCGI&CMD=VERLST&BASE=IW10&PIECE=IWA0&FMT=INITXD1S.fmt&FORM1=INITXLTS.fmt&DOCS=22-22&QUERY=%28I%29.ACIN1.+%26+%28%22COMPETENCIA+LEGISLATIVA+PLENA%22%29.TPTR."
+    Proposal.count.should be > 1    
+    proposal = Proposal.where(:api_id => 1).first
+    proposal.title.should         == "Proyecto de Ley de medidas urgentes para reforzar la protección a los deudores hipotecarios (procedente del Real Decreto-Ley 27/2012, de 15 de noviembre)"
+    proposal.official_url.should  == "http://www.congreso.es/portal/page/portal/Congreso/Congreso/Iniciativas/Busqueda%20Avanzada?_piref73_1335465_73_1335464_1335464.next_page=/wc/servidorCGI&CMD=VERLST&BASE=IW10&PIECE=IWA0&FMT=INITXD1S.fmt&FORM1=INITXLTS.fmt&DOCS=10-10&QUERY=%28I%29.ACIN1.+%26+%28%22COMPETENCIA+LEGISLATIVA+PLENA%22%29.TPTR."
     proposal.proposal_type.should == "Proyecto de ley"
-    proposal.status.should        == "Aprobado con modificaciones"
-    proposal.category.name        == "Empleo y Seguridad Social"
+    proposal.status.should        == "Concluido- (Subsumido en otra iniciativa)"
+    proposal.category.name        == "Economía y Competitividad"
     proposal.proposer.name        == "Gobierno"
-    proposal.proposed_at          == "08 de marzo de 2012"
-    proposal.closed_at            == "28 de junio de 2012"
-    proposal.body                 =~ /En cumplimiento de lo dispuesto en el artículo 86.2 de la Constitución, el Real Decreto-ley 3\/2012, de 10 de febrero, de medidas urgentes para la reforma del mercado laboral/
+    proposal.proposed_at          == "29 de noviembre de 2012"
+    proposal.closed_at            == "No disponible"
+    proposal.body                 =~ /En cumplimiento de lo dispuesto en el artículo 86.2 de la Constitución, el Real Decreto-ley 27\/2012, de 15 de noviembre, de medidas urgentes para reforzar la protección a los deudores hipotecarios/
+    proposal.api_id               == "1"
   end
+
+  pending "find or create category"
+  pending "find or create proposer"
 end

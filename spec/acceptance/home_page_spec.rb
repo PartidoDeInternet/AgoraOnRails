@@ -72,10 +72,10 @@ feature "Home page", %q{
     2.times { create_proposal(:category => justice) }
     
     visit homepage
-    
+
     page.should have_css("#categories .category", :count => 5)
-    page.should have_css("#categories .category:first .name", :text => "Education")
-    page.should have_css("#categories .category:first .count", :text => "3")
+    page.first("#categories .category .name").should have_content("Education")
+    page.first("#categories .category .count").should have_content("3")
     page.should_not have_css("#categories .category", :text => "Defense")
   end
   
@@ -97,8 +97,8 @@ feature "Home page", %q{
     visit homepage
 
     page.should have_css("#proposers .proposer", :count => 5)
-    page.should have_css("#proposers .proposer:first .name", :text => "PNV")
-    page.should have_css("#proposers .proposer:first .count", :text => "3")
+    page.first("#proposers .proposer .name").should have_content("PNV")
+    page.first("#proposers .proposer .count").should have_content("3")
     page.should_not have_css("#proposers .proposer", :text => "Gobierno")
   end
   

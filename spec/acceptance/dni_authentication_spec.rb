@@ -7,6 +7,10 @@ feature "DNI authentication", %q{
   I want to authenticate myself with my DNI
 } do
 
+  background do
+pending "Tractis gem implmementation"
+  end
+
   scenario "Valid authentication with new user" do
     visit login_path
   
@@ -47,6 +51,7 @@ feature "Tongo", %q{
 } do
   
   scenario "Backdoor" do
+pending "Tractis gem implementation"    
     visit new_user_session_path
     fill_in 'name', :with => 'Backdoor Mother Fucker'
     click_button 'Haz tongo aquí'

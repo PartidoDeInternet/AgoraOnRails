@@ -25,7 +25,7 @@ feature "Insert proposal manually", %q{
     select pdi.full_name, :from => 'proposal_proposer_id'
     
     select '12',   :from => 'proposal_proposed_at_3i'
-    select '4',    :form => 'proposal_proposed_at_2i'
+    select 'Abril',    :from => 'proposal_proposed_at_2i'
     select '2011', :from => 'proposal_proposed_at_1i'
 
     click_button 'Crear'

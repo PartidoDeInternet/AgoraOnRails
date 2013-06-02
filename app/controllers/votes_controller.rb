@@ -12,7 +12,13 @@ class VotesController < InheritedResources::Base
   
   def create
     params[:vote] ||= {}
-    params[:vote][:user] = current_user
+    params[:vote][:user_id] = current_user.id
     create!
+  end
+
+  private
+
+  def resource_params
+    params.require(:vote).permit(:value, :explanation, :link, :proposal_id, :user_id)
   end
 end

@@ -21,9 +21,7 @@ module HelperMethods
   end
   
   def should_see_hot_proposals_in_this_order(titles)
-    titles.each_with_index do |title, index|
-      page.should have_css("#hot_proposals .proposal:nth-child(#{index + 2}) .title", :text => title)
-    end
+    page.all("#hot_proposals .proposal .title").map(&:text).should == titles
   end
   
 end

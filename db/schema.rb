@@ -9,71 +9,72 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601113810) do
+ActiveRecord::Schema.define(version: 20130602010715) do
 
-  create_table "categories", :force => true do |t|
+  create_table "categories", force: true do |t|
     t.string   "name"
     t.string   "commission_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "proposals_count", :default => 0
+    t.integer  "proposals_count", default: 0
   end
 
-  create_table "delegated_votes", :force => true do |t|
+  create_table "delegated_votes", force: true do |t|
     t.integer  "proposal_id"
-    t.integer  "in_favor",    :default => 0
-    t.integer  "against",     :default => 0
-    t.integer  "abstention",  :default => 0
+    t.integer  "in_favor",    default: 0
+    t.integer  "against",     default: 0
+    t.integer  "abstention",  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "proposals", :force => true do |t|
-    t.string   "title",         :limit => 1024
-    t.string   "official_url",  :limit => 1024
+  create_table "proposals", force: true do |t|
+    t.string   "title",         limit: 1024
+    t.string   "official_url",  limit: 1024
     t.string   "proposal_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "in_favor",                      :default => 0
-    t.integer  "against",                       :default => 0
-    t.integer  "abstention",                    :default => 0
+    t.integer  "in_favor",                   default: 0
+    t.integer  "against",                    default: 0
+    t.integer  "abstention",                 default: 0
     t.string   "status"
     t.integer  "category_id"
     t.integer  "proposer_id"
     t.date     "proposed_at"
     t.date     "closed_at"
-    t.integer  "visits",                        :default => 0
+    t.integer  "visits",                     default: 0
     t.integer  "votes_count"
     t.integer  "position"
     t.integer  "closer_id"
     t.text     "body"
+    t.integer  "api_id"
   end
 
-  create_table "proposers", :force => true do |t|
+  create_table "proposers", force: true do |t|
     t.string   "name"
     t.string   "full_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "proposals_count", :default => 0
+    t.integer  "proposals_count", default: 0
   end
 
-  create_table "users", :force => true do |t|
+  create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "representer_id"
     t.string   "link"
     t.integer  "spokesman_id"
     t.integer  "represented_users_count"
-    t.boolean  "admin",                   :default => false
+    t.boolean  "admin",                   default: false
     t.string   "dni"
     t.string   "name"
     t.string   "provider"
     t.string   "uid"
   end
 
-  create_table "votes", :force => true do |t|
+  create_table "votes", force: true do |t|
     t.integer  "user_id"
     t.integer  "proposal_id"
     t.datetime "created_at"

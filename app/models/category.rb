@@ -4,8 +4,8 @@ class Category < ActiveRecord::Base
   
   before_create :set_name
   
-  scope :hot, order("proposals_count DESC").limit(5)
-  
+  scope :hot, -> { order("proposals_count DESC").limit(5) }
+
   def set_name
     if commission_name and name.nil?
       self.name = upcase_first(commission_name.gsub(/Comisión( Mixta)?( del?| para las?)? /, "")) 

@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  rescue_from Tractis::InvalidVerificationError do |exception|
-    render :text => "Access Denied Bitch", :status => 403
-  end
+#pending Tractis gem usage  
+# rescue_from Tractis::InvalidVerificationError do |exception|
+#   render :text => "Access Denied Bitch", :status => 403
+# end
   
   helper :all
   helper_method :current_user

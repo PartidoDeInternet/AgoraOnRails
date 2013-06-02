@@ -1,33 +1,34 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
-gem 'rails', '3.1.1'
+gem 'rails', '4.0.0.rc1'
 
-gem "mechanize"
-gem "inherited_resources"
-gem "dynamic_form"
-gem "omniauth"
+gem 'mechanize'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'dynamic_form'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'pg'
 
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'hashie'
-gem "json"
+gem 'json'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails'
   gem 'steak'
-  gem 'capybara', '0.4.1.1'
+  gem 'capybara'
   gem 'launchy'
-  gem 'ruby-debug19'
+  gem 'debugger'
   gem 'ZenTest'
   gem 'autotest-rails'
   gem 'autotest-growl'
 end
 
 group :test do
-  gem "vcr"
+  gem 'vcr'
   gem 'webmock'
   gem 'coveralls', require: false
 end
-

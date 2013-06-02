@@ -24,4 +24,8 @@ class ProposalsController < InheritedResources::Base
   def check_is_admin
     current_user.is_admin?
   end
+
+  def resource_params
+    params.require(:proposal).permit(:title, :official_url, :proposal_type, :category_id, :proposer_id, :proposed_at)
+  end
 end

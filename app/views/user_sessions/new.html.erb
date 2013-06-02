@@ -5,7 +5,8 @@
   <p><%= link_to "Sign in with Twitter", "/auth/twitter" %></p>
 
   <div style="margin-bottom: 10px;">
-    <%= identity_verification_gateway(t(:identify_with_dnie), ENV["TRACTIS_API_KEY"], :action => 'authenticate') %>
+    <!-- pending Tractis gem usage  -->
+    <%# identity_verification_gateway(t(:identify_with_dnie), ENV["TRACTIS_API_KEY"], :action => 'authenticate') %>
   </div>
   
   <% if Rails.env != 'production' %>
