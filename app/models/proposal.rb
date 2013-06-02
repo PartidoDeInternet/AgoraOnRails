@@ -55,21 +55,10 @@ class Proposal < ActiveRecord::Base
     self.send(choice)
   end
   
-  def total_representatives(choice, representative_count)
-    return 0 if total_votes == 0 
-    percentage = self.send(choice).to_f / total_votes
-    (percentage * representative_count.to_f).floor
-  end
-  
   #syntatic sugar compatibility layer
   Vote.choices.each do |choice|
     define_method "total_#{choice}" do
       total(choice)
-    end
-  
-  #syntactic sugar compatibility layer
-    define_method "total_representatives_#{choice}" do |representative_count|
-      total_representatives(choice, representative_count)
     end
   end
     

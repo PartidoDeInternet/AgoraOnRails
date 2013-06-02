@@ -4,11 +4,6 @@
       <%= choice_result(proposal, choice) %>
       <span class="vote_percentage"><%= percentage_for(proposal, choice) %></span>
       <span class="vote_count"><%= proposal.total(choice)%> <%= t(:votes) %></span>
-      <% if params[:representative_count].present? %>
-        <span class="representative_count_<%= choice %>">
-          <%= proposal.total_representatives(choice, params[:representative_count]) %> <%= t(:representatives) %> %>
-        </span>
-      <% end %>
     </li>
   <% end %>
 </ul>
