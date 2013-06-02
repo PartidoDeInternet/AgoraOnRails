@@ -3,10 +3,7 @@
 <% @title = "#{awesome_truncate(@proposal.title, 100)}" %>
 
 <section id="content">
-  <ul id="breadcrumb">
-    <li><a href="/">Inicio »</a></li>
-    <li><%= link_to t(:proposals), proposals_path %></li>
-  </ul>
+  <%= render "layouts/navigation" %>
   <article class="proposal" id="proposal_<%= @proposal.id %>">
     <section class="proposal-content">
 

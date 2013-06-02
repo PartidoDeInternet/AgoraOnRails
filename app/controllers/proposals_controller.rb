@@ -7,6 +7,16 @@ class ProposalsController < InheritedResources::Base
   
   respond_to :html, :xml
 
+  def hot
+    @proposals = Proposal.hot
+    render :index
+  end
+
+  def closed
+    @proposals = Proposal.recently_closed
+    render :index
+  end
+
   def show
     @proposal = Proposal.find(params[:id])
     @proposal.visited!
@@ -28,4 +38,5 @@ class ProposalsController < InheritedResources::Base
   def resource_params
     params.require(:proposal).permit(:title, :official_url, :proposal_type, :category_id, :proposer_id, :proposed_at)
   end
+
 end

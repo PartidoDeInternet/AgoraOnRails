@@ -1,11 +1,7 @@
 <% @title = "#{@user.name}" %>
 
 <section id="content">
-  <ul id="breadcrumb">
-    <li><a href="/">Inicio »</a></li>
-    <li><%= link_to t(:proposals), proposals_path %></li>
-    <li><%= link_to t(:users), users_path %></li>
-  </ul>
+  <%= render "layouts/navigation" %>
   
   <% if current_user && current_user.spokesman == @user %>
     <%= form_for @user, :url => discharge_as_spokesman_user_path(@user) do |f| %>

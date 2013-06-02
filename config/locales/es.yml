@@ -5,12 +5,24 @@
   hello: 'Hola!'
   intro_paragraph: '¿Qué pasaría si los ciudadanos pudieran participar de manera más directa en las decisiones que se toman en el Congreso de los Diputados? Es el experimento detrás de esta propuesta.'
   whats_agora_html: 'AgoraOnRails es un simulador de la aplicación web en la los ciudadanos podrán decidir lo que votarán los diputados del %{href} en el Congreso.'
-  hot: 'Hot!'
-  recently_closed: "Recién tramitadas"
-  users: "Usuari@s"
-  hottest: 'Lo más hot!'
-  hottest_paragraph: 'Las propuestas más visitadas o las más votadas. Vota y da tu opinión ahora que todavía estás a tiempo.'
-  proposed_by_html: "Propuestas presentadas por %{proposer}"
+  welcome: 'Bienvenido'
+  nav_start: 'Hot'
+  nav_recently_closed: "Recién tramitadas"
+  nav_users: "Usuari@s"
+  nav_proposals: "Propuestas"
+  heading_hot: 'Lo más hot!'
+  description_hot: 'Las propuestas más visitadas o las más votadas. Vota y da tu opinión ahora que todavía estás a tiempo.'
+  heading_closed: 'Recién tramitadas'
+  description_closed: 'Son las propuestas que acaban de ser tramitadas. Mira lo que se decidió en el congreso y lo que decidió la gente a través de la web.'
+  heading_proposer: "Propuestas presentadas por %{proposer}"
+  description_proposer: ""
+  heading_category: "Propuestas relacionadas con %{category}"
+  description_category: ""
+  heading_index: "Propuestas"
+  description_index: "Las propuestas más importantes en el Congreso desde la Legislatura de Zapatero"
+  heading_users: 'Usuari@s presentes en AgoraOnRails'
+  description_users: 'Puedes delegar tu voto en ell@s para las propuestas en las que no votes directamente.'
+  proposed_by_html: "Propuesta por %{proposer}"
   on_html: 'el <span class="date">%{date}</span>'
   in_congress: 'en el Congreso'
   vote_prompt: 'Vota!'
@@ -21,17 +33,13 @@
   popular_vote_results: 'Resultados de la votación popular'
   votes: 'votos'
   representatives: 'representantes'
-  recently_closed_paragraph: 'Son las propuestas que acaban de ser tramitadas. Mira lo que se decidió en el congreso y lo que decidió la gente a través de la web.'
   who_proposed: "¿Quién propone?"
   votes_through_agora: 'votos a través de AgoraOnRails'
   calculate_representatives_vote: 'Calcula el voto de los representantes'
   representatives_number: 'numero de representantes'
-  calculate: 'calcular'
-  proposals: "Propuestas"
   in_favor: "Sí"
   against: "No"
   abstention: "Abs"
-  related_with_category: "Propuestas relacionadas con %{category}"
   proposals_by: "Propuestas presentadas por %{proposer}"
   closed: "El periodo de votación para esta propuesta finalizó el %{date}"
   congress_status_html: 'La Propuesta fue <span class="status">%{status}</span> en el Congreso.'
@@ -53,7 +61,6 @@
   yes_option: 'Sí'
   no_option: 'No'
   abstention: 'Abstención'
-  start: 'Inicio'
   proposal_desc_html: 'Presentado por: %{proposer}'
   popular_vote: 'Votación popular'
   hooray: 'Hooray!!'
@@ -64,14 +71,12 @@
   your_current_spokeman: 'Tu portavoz actual es %{spokeman}.'
   sure_to_change_spokeman: 'Estás seguro de que quieres cambiarlo por %{spokeman}'
   i_am_sure: "Estoy seguro"
-  present_users: 'Usuari@s presentes en AgoraOnRails'
-  can_delegate_vote: 'Puedes delegar tu voto en ell@s para las propuestas en las que no votes directamente.'
+  
   sign_up: 'Regístrate'
   username: 'Nombre de usuario'
   password: 'Contraseña'
   password_confirmation: 'Confirma la contraseña'
   email: 'Email'
-  users: 'Usuari@s'
   discharge_spokesman: "Destituir a %{name} de ser mi portavoz"
   choose_spokeman: "Elegir a %{name} como mi portavoz"
   review_vote: "Revisa tu voto"

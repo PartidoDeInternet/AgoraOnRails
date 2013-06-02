@@ -6,7 +6,7 @@ feature "Feature name", %q{
   As a citizen
   I want to be able to navigate the site in different ways
 } do
-  
+
   scenario "Navigate using categories" do
     create_proposal :title => "Ley Sinde", 
                     :category => create_category(:name => "Cultura")
@@ -45,6 +45,45 @@ feature "Feature name", %q{
     page.should have_content("Propuestas presentadas por Andalucía")
     page.should have_css(".proposal .title", :text => "Usar Google en los examenes")
     page.should_not have_css(".proposal .title", :text => "Ley Sinde")
+  end
+
+  scenario "Navigate to Hot Proposals" do
+    visit homepage
+    page.should have_title   I18n.t(:welcome)
+    page.should have_content I18n.t(:intro_paragraph)
+    page.should have_content I18n.t(:heading_hot)
+    page.should have_content I18n.t(:description_hot)
+    
+    
+    click_link "Hot"
+    page.should have_title   I18n.t(:welcome)
+    page.should have_content I18n.t(:intro_paragraph)
+    page.should have_content I18n.t(:heading_hot)
+    page.should have_content I18n.t(:description_hot)
+  end
+
+  scenario "Navigate to Hot Recently Closed" do
+    visit homepage
+    click_link "Recién tramitadas"
+    page.should have_title   I18n.t(:heading_closed)
+    page.should have_content I18n.t(:heading_closed)
+    page.should have_content I18n.t(:description_closed)
+  end
+
+  scenario "Navigate to Hot All Proposals" do
+    visit homepage
+    click_link "Propuestas"
+    page.should have_title   I18n.t(:heading_index)
+    page.should have_content I18n.t(:heading_index)
+    page.should have_content I18n.t(:description_index)
+  end
+
+  scenario "Navigate to Users" do
+    visit homepage
+    click_link "Usuari@s"
+    page.should have_title   I18n.t(:heading_users)
+    page.should have_content I18n.t(:heading_users)
+    page.should have_content I18n.t(:description_users)
   end
   
   scenario "Using proposer from a proposal" do

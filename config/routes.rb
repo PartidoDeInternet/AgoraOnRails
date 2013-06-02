@@ -9,6 +9,10 @@ AgoraOnRails::Application.routes.draw do
   end
     
   resources :proposals do
+    collection do
+      get "hot"
+      get "closed"
+    end
     member do
       post :toggle
     end
@@ -31,5 +35,5 @@ AgoraOnRails::Application.routes.draw do
     
   get '/auth/twitter/callback', :to => 'user_sessions#create', :as => 'callback'
 
-  root :to => "welcome#index"
+  root :to => "proposals#hot"
 end

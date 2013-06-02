@@ -1,4 +1,11 @@
 module ApplicationHelper
+
+  def menu_link(text, url)
+    content_tag :li do
+      link_to text, url, :class => "navlinks"
+    end
+  end
+
   def hot_categories
     @hot_categories ||= Category.hot
   end

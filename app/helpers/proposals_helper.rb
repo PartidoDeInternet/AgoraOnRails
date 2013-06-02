@@ -1,11 +1,22 @@
 module ProposalsHelper
-  def proposals_heading
-    case parent_type
-      when :category then t(:related_with_category, :category => parent.name)
-      when :proposer then t(:proposed_by_html, :proposer => parent.name)
+  
+  def proposal_type
+    if parent then parent_type
+    else action_name end
+  end
+
+  def proposal_info(section)
+    case proposal_type
+      when :category, :proposer
+        t "#{section}_#{proposal_type}", proposal_type.to_sym => parent.name
       else
-        t :proposals
+        t "#{section}_#{proposal_type}"
     end
+  end
+
+  def proposal_title
+    if action_name == "hot" then t(:welcome)
+    else proposal_info(:heading) end
   end
   
   def choice_result(proposal, choice)

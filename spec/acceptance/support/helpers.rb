@@ -42,7 +42,7 @@ module HelperMethods
   end
   
   def should_see_hot_proposals_in_this_order(titles)
-    page.all("#hot_proposals .proposal .title").map(&:text).should == titles
+    page.all("#proposals .proposal .title").map(&:text).should == titles
   end
   
   def stub_tractis_request

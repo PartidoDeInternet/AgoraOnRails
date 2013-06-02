@@ -1,13 +1,23 @@
-<% @title = proposals_heading %>
-<section id="content">
-  <ul id="breadcrumb">
-    <li><a href="/"><%= t(:start) %> »</a></li>
-    <li><%= link_to t(:proposals), proposals_path %></li>
-  </ul>
+<% @title = proposal_title %>
+<% if request.path == root_path %>
+	<section id="welcome">
+	  <p>
+	    <h2><%= t(:hello)%></h2>
+	    <p><%= t(:intro_paragraph)%></p> 
+	    <p><%= t :whats_agora_html, :href => link_to(APP_CONFIG['org_name'], APP_CONFIG['org_url']) %>
+	  </p>
+	</section>
+	<img src="/images/explain.png" width="951" height="33" alt="Explain"/>
+<% end %>
 
+<section id="content">
+	<%= render "layouts/navigation" %>
   <header class="proposal-head">
-    <strong><%= proposals_heading %></strong>
+    <h2><%= proposal_info(:heading) %></h2>
+    <p><%= proposal_info(:description) %></p>
   </header>
   
-  <%= render :partial => 'shared/proposal', :collection => @proposals %>
+  <section id="proposals">
+  	<%= render :partial => 'shared/proposal', :collection => @proposals %>
+  </section>
 </section>
