@@ -13,8 +13,6 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
 
     cd AgoraOnRails
 
-    trust the .rvmrc file
-
     bundle install
 
     cp config/database.yml.example config/database.yml
