@@ -17,6 +17,10 @@ module UsersHelper
   end
   
   def find_choice(user, proposal)
-    Vote.find_by_user_id_and_proposal_id(user.id, proposal.id).value
+    find_vote(user, proposal).value
+  end
+
+  def find_vote(user, proposal)
+    Vote.find_by_user_id_and_proposal_id(user.id, proposal.id)    
   end
 end

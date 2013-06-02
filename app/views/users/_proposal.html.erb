@@ -1,11 +1,12 @@
+<!-- refactor with proposals/proposal -->
 <article class="proposal" id="proposal_<%= proposal.id %>">
   <section class="proposal-content">
     <header>
       <hgroup>
         <h2 class="title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
         <h3>
-          <%= t(:proposed_desc_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %>
-          <%= t(:on, :date => l(proposal.proposed_at, :format => :long))%>
+          <%= t(:proposed_by_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %> 
+          <span class="proposed_at"><%= t(:on_html, :date => l(proposal.proposed_at, :format => :long)) %>
         </h3>
       </hgroup>
     </header>
@@ -22,5 +23,10 @@
           <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 20} %>
         </dd>
       </dl>
+
+      <p class="votes_with_explanations">
+        <%= render :partial => "proposals/vote", 
+                   :locals => { :vote => find_vote(@user, proposal) } %>
+      </p>
     </section>
 </article>

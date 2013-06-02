@@ -104,21 +104,23 @@ feature "Spokesmen", %q{
 
   end
 
-  
+  # refactor
   scenario "View proposals voted by the user" do
-    [["Ley Sinde",           "no",         "En contra",  "voted_against"], 
-     ["Wifi gratis",         "si",         "A favor",    "voted_in_favor"], 
-  ["Ley que no entiendo", "abstencion", "Abstención", "voted_abstention"]].each do | title, vote, humanize_vote_text, css_image |
+    [["Ley Sinde",           "no",         "En contra",  "voted_against",    "Because...",       "http://google.com"], 
+     ["Wifi gratis",         "si",         "A favor",    "voted_in_favor",   "In my opinion...", "http://yahoo.com"], 
+     ["Ley que no entiendo", "abstencion", "Abstención", "voted_abstention", "I believe...",     "http://twitter.com"]].each do | title, vote, humanize_vote_text, css_image, explanation, link |
  
       proposal = create_proposal :title => title
-      create_vote :user => @user, :proposal => proposal, :value => vote
+      create_vote :user => @user, :proposal => proposal, :value => vote, :explanation => explanation, :link => link
       
       visit user_path(@user)
       
       page.should have_css(".proposal")
       within(:css, "#proposal_#{proposal.id}") do
-        page.should have_css(".title", :text => title)
-        page.should have_css(".#{css_image}", :text => humanize_vote_text)
+        page.should have_css(".title",                     :text => title)
+        page.should have_css(".#{css_image}",              :text => humanize_vote_text)           
+        page.should have_css(".vote-results .explanation", :text => explanation)
+        page.should have_css(".vote-results .link",        :text => link)
       end
     end
   end
