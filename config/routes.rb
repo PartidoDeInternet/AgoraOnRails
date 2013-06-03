@@ -33,7 +33,7 @@ AgoraOnRails::Application.routes.draw do
     end
   end
     
-  get '/auth/twitter/callback', :to => 'user_sessions#create', :as => 'callback'
+  get '/auth/:provider/callback', :to => 'user_sessions#create', :as => 'callback'
 
   root :to => "proposals#hot"
 end

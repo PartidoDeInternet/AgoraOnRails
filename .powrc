@@ -1,0 +1,4 @@
+if [ -f "$rvm_path/scripts/rvm" ] && [ -f ".ruby-version" ]; then
+  source "$rvm_path/scripts/rvm"
+  rvm use `cat .ruby-version`
+fi

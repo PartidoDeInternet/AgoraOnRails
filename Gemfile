@@ -8,6 +8,7 @@ gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'dynamic_form'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'pg'
 
 gem 'faraday'

@@ -1,4 +1,5 @@
-<h2><%= t(:sign_up)%></h2>
+<!-- refactor styles -->
+<h2 style="margin-left:40px"><%= t(:sign_up)%></h2>
 
 <%= form_for @user, :url => users_path do |f| %>
 <%= f.error_messages %>
@@ -6,17 +7,17 @@
 <fieldset id="login-section">
 
   <div class="overlayfield">
-    <%= f.label :login, t(:username) %>
-    <%= f.text_field :login %>
+    <%= f.label :login, "<span>#{t(:username)}</span>".html_safe %>
+    <%= f.text_field :name %>
   </div>
 
   <div class="overlayfield">
-    <%= f.label :password, t(:password) %>
+    <%= f.label :password, "<span>#{t(:password)}</span>".html_safe %>
     <%= f.password_field :password %>
   </div>
 
   <div class="overlayfield">
-    <%= f.label :password_confirmation, t(:password_confirmation) %>
+    <%= f.label :password_confirmation, "<span>#{t(:password_confirmation)}</span>".html_safe %>
     <%= f.password_field :password_confirmation %>
   </div>
 
@@ -25,8 +26,8 @@
 <fieldset>
 
   <div class="overlayfield">
-    <%= f.label :email, t(:email) %>
-    <%= f.text_field :email %>
+    <%= f.label :email, "<span>#{t(:email)}</span>".html_safe %>
+    <%= f.text_field :name %>
   </div>
 
 </fieldset>
@@ -35,3 +36,4 @@
   <button type="submit" class="confirm"><span><%= t(:sign_up)%></span></button>
 </p>
 <% end %>
+
