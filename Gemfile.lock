@@ -6,6 +6,17 @@ GIT
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
 
+GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
+  branch: rails4
+  specs:
+    devise (2.2.4)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,6 +51,7 @@ GEM
     autotest-growl (0.2.16)
     autotest-rails (4.1.2)
       ZenTest (~> 4.5)
+    bcrypt-ruby (3.0.1)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -126,6 +138,7 @@ GEM
     omniauth-twitter (0.0.16)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+    orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -191,6 +204,8 @@ GEM
       unf_ext
     unf_ext (0.0.6)
     vcr (2.5.0)
+    warden (1.2.1)
+      rack (>= 1.0)
     webmock (1.11.0)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
@@ -208,6 +223,7 @@ DEPENDENCIES
   capybara
   coveralls
   debugger
+  devise!
   dynamic_form
   faraday
   faraday_middleware

@@ -1,0 +1,36 @@
+<h2 style="margin-left:40px"><%= t(:sign_up)%></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <fieldset id="login-section">
+	  <div class="overlayfield">
+	  	<%= f.label :username, "<span>#{t(:username)}</span>".html_safe %>
+	  	<%= f.text_field :username, :autofocus => true %>
+	  </div>
+
+	  <div class="overlayfield">
+	  	<%= f.label :password, "<span>#{t(:password)}</span>".html_safe %>
+	  	<%= f.password_field :password %>
+	  </div>
+
+	  <div class="overlayfield">
+	  	<%= f.label :password_confirmation, "<span>#{t(:password_confirmation)}</span>".html_safe %>
+	  	<%= f.password_field :password_confirmation %>
+	  </div>
+	</fieldset>
+
+	<fieldset>
+	  <div class="overlayfield">
+	  	<%= f.label :email, "<span>#{t(:email)}</span>".html_safe %>
+	  	<%= f.email_field :email %>
+	  </div>
+	</fieldset>
+
+	<p class="actions">
+  	<button type="submit" class="confirm"><span><%= t(:sign_up)%></span></button>
+	</p>
+	
+<% end %>
+
+<%= render "devise/shared/links" %>

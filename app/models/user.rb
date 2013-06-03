@@ -1,15 +1,20 @@
 class User < ActiveRecord::Base
+  devise :database_authenticatable, :registerable,# :omniauthable,
+         :recoverable, :rememberable, :trackable, :validatable
+  
   has_many :votes
   has_many :voted_proposals, :through => :votes, :source => :proposal
   has_many :voted_open_proposals, -> { where(closed_at: nil) }, :through => :votes, :source => :proposal
-  belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
   has_many :represented_users, :class_name => "User", :foreign_key => :spokesman_id
+
+  belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
+  
   validate :prevent_oneself_as_spokesman
   
   after_save :count_votes
   
-  validates :provider, :presence => true
-  validates :uid, :presence => true
+  #validates :provider, :presence => true
+  #validates :uid, :presence => true
   
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)

@@ -34,4 +34,5 @@ AgoraOnRails::Application.configure do
   config.active_support.deprecation = :stderr
   
   config.i18n.locale = :es
+  config.action_mailer.default_url_options = { :host => 'agoraonrails.test' }
 end

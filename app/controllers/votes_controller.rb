@@ -1,6 +1,7 @@
 class VotesController < InheritedResources::Base
   belongs_to :proposal
-  before_filter :require_user
+  before_filter :authenticate_user!
+  #before_filter :require_user
   layout "mini_application"
   
   def new

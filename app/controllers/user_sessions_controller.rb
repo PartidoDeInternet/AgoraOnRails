@@ -1,4 +1,4 @@
-class UserSessionsController < ApplicationController
+class UserSessionsController < Devise::Controller
   include Tractis::IdentityVerifications
   
   before_filter :require_user, :only => :destroy
