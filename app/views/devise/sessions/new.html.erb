@@ -37,7 +37,7 @@
 	    <% if Rails.env.test? %>
 	      <div style="margin-bottom: 10px;">
 	        <%= identity_verification_gateway(t(:identify_with_dnie), 
-	         		  ENV["TRACTIS_API_KEY"], :action => 'authenticate') %>
+	         		  ENV["TRACTIS_API_KEY"], :action => 'tractis_authentication') %>
 	      </div>
 	    <% end %>
 	  </fieldset>

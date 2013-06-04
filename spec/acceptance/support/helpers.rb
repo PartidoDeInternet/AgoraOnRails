@@ -19,11 +19,11 @@ module HelperMethods
   
   def hack_attempt_to_reproduce_tractis_callback
     stub_tractis_not_authorized_request
-    visit "/user_session/authenticate?&I_try_to_hack_you=all_your_bases_are_belongs_to_us"
+    visit "/tractis_authentication?&I_try_to_hack_you=all_your_bases_are_belongs_to_us"
   end
   
   def get_tractis_callback(name, dni)
-    visit "/user_session/authenticate?&verification_code=f56dd2d18e490aa9246b993b95d8927e7147c91c&tractis%3Aattribute%3Adni=#{dni}&tractis%3Aattribute%3Aname=#{CGI.escape(name)}&token=f83a65a341853b28c5e0732209433488a0958d04&api_key=36ec6e54ef3e73f61339456abc9d05329afc62b2&tractis%3Aattribute%3Aissuer=DIRECCION+GENERAL+DE+LA+POLICIA"
+    visit "/tractis_authentication?&verification_code=f56dd2d18e490aa9246b993b95d8927e7147c91c&tractis%3Aattribute%3Adni=#{dni}&tractis%3Aattribute%3Aname=#{CGI.escape(name)}&token=f83a65a341853b28c5e0732209433488a0958d04&api_key=36ec6e54ef3e73f61339456abc9d05329afc62b2&tractis%3Aattribute%3Aissuer=DIRECCION+GENERAL+DE+LA+POLICIA"
   end
 
   def percentages_should_be(proposal, results)
