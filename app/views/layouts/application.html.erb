@@ -4,11 +4,7 @@
   <title><%= "#{@title} -" unless @title.blank? %> AgoraOnRails</title>
   <meta charset="utf-8" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" href="/stylesheets/populo.css" type="text/css" media="screen" charset="utf-8"/>
-  <!--[if lte IE 6]>
-  <link rel="stylesheet" href="/stylesheets/populo-ie.css" type="text/css" media="screen" charset="utf-8"/>
-  <![endif]-->
-  <%= javascript_include_tag 'jquery', 'jquery_tools', 'rails', 'application' %>
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
@@ -89,7 +85,8 @@
       <iframe name="overlay"></iframe>
     </div>
   </div>
-
+  
+  <%= javascript_include_tag "application" %>
   <%= render :partial => "shared/google_analytics" if Rails.env == 'production' %>
 </body>
 </html>

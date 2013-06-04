@@ -18,6 +18,12 @@ gem 'faraday_middleware'
 gem 'hashie'
 gem 'json'
 
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+
+gem 'jquery-rails' 
+
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails'

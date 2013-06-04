@@ -39,5 +39,8 @@ module AgoraOnRails
     
     config.time_zone = 'UTC'
     config.i18n.default_locale = :es
+
+    config.assets.enabled = true
+    config.assets.version = '1.0'
   end
 end

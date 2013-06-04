@@ -22,8 +22,6 @@ AgoraOnRails::Application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
-
-  config.assets.enabled = false
   
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
@@ -35,4 +33,22 @@ AgoraOnRails::Application.configure do
   
   config.i18n.locale = :es
   config.action_mailer.default_url_options = { :host => 'agoraonrails.test' }
+
+  # Enable assets
+  config.assets.enabled = true
+  
+  # Disable Rails's static asset server (Apache or nginx will already do this)
+  config.serve_static_assets = false
+
+  # Compress JavaScripts and CSS
+  config.assets.compress = false
+  
+  # Don't fallback to assets pipeline if a precompiled asset is missed
+  config.assets.compile = true
+  
+  # Generate digests for assets URLs
+  config.assets.digest = false
+
+  # Expands the lines which load the assets
+  config.assets.debug = true
 end

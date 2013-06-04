@@ -98,18 +98,18 @@ fieldset {
 
 #mini,
 #wrap {
-  background: #E1E2DF url('../images/content.gif');
+  background: #E1E2DF url('/assets/content.gif');
   border-bottom: 1px solid #FFF;
 }
 
 #mini,
 #mini #wrap {
-  background: #E1E2DF url('../images/content.gif');
+  background: #E1E2DF url('/assets/content.gif');
   border: none;
 }
 
 #wrap-inner {
-  background: url('../images/content_deg.png') repeat-x top;
+  background: url('/assets/content_deg.png') repeat-x top;
   height: 1%;
   padding: 0 0 20px;
   overflow: hidden;
@@ -134,7 +134,7 @@ fieldset {
   position: relative;
   display: block;
   padding: 25px 0;
-  background: url('../images/hr.gif') no-repeat bottom center;
+  background: url('/assets/hr.gif') no-repeat bottom center;
 }
 
 #mini #header {
@@ -145,7 +145,7 @@ fieldset {
   display: block;
   width: 140px;
   height: 35px;
-  background: url('../images/populo.gif') no-repeat center center;
+  background: url('/assets/populo.gif') no-repeat center center;
   overflow: hidden;
   text-indent: -9000em;
 }
@@ -154,7 +154,7 @@ fieldset {
   display: block;
   width: 59px;
   height: 15px;
-  background: url('../images/mini_populo.gif') no-repeat center center;
+  background: url('/assets/mini_populo.gif') no-repeat center center;
   overflow: hidden;
   text-indent: -9000em;
 }
@@ -254,7 +254,7 @@ footer p {
 
 #nav ul,
 #breadcrumb {
-  background: url('../images/hr_content.gif') no-repeat bottom center;
+  background: url('/assets/hr_content.gif') no-repeat bottom center;
   padding: 0;
   margin: 0 0 20px 0;
 }
@@ -365,13 +365,13 @@ footer p {
   height: 17px;
   left: 12px;
   top: -7px;
-  background: url('../images/decorate_up.gif') no-repeat left top;
+  background: url('/assets/decorate_up.gif') no-repeat left top;
 }
 
 .decorate.down {
   top: auto;
   bottom: -7px;
-  background: url('../images/decorate_down.gif') no-repeat left top;
+  background: url('/assets/decorate_down.gif') no-repeat left top;
 }
 
 .meta {
@@ -391,11 +391,11 @@ footer p {
 }
 
 .votes {
-  background: url('../images/icon_vote.gif') no-repeat left center;
+  background: url('/assets/icon_vote.gif') no-repeat left center;
 }
 
 .views {
-  background: url('../images/icon_view.gif') no-repeat left center;
+  background: url('/assets/icon_view.gif') no-repeat left center;
 }
 
 .solved {
@@ -404,7 +404,7 @@ footer p {
   padding: 10px;
   color: #333;
   font-size: 1.5em;
-  background: #66B9AF url('../images/icon_padlock_closed.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_padlock_closed.gif') no-repeat 10px center;
 }
 
 .voted {
@@ -413,8 +413,8 @@ footer p {
   padding: 10px;
   color: #333;
   font-size: 1.5em;
-  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
-  background: #66B9AF url('../images/icon_padlock_closed.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_checkmark.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_padlock_closed.gif') no-repeat 10px center;
 }
 
 form.vote {
@@ -461,15 +461,15 @@ form.vote button span {
 }
 
 button.si span {
-  background-image: url('../images/icon_si.gif');
+  background-image: url('/assets/icon_si.gif');
 }
 
 button.no span {
-  background-image: url('../images/icon_no.gif');
+  background-image: url('/assets/icon_no.gif');
 }
 
 button.abstencion span {
-  background-image: url('../images/icon_abstencion.gif');
+  background-image: url('/assets/icon_abstencion.gif');
 }
 
 .documents-list {
@@ -501,11 +501,11 @@ button.abstencion span {
   list-style: none;
   padding: 4px 4px 4px 25px;
   border-top: 1px solid #E8E8E8;
-  background: url('../images/icon_docu.gif') no-repeat 3px center;
+  background: url('/assets/icon_docu.gif') no-repeat 3px center;
 }
 
 .sessions ul li {
-  background: url('../images/icon_diary.gif') no-repeat 3px center;
+  background: url('/assets/icon_diary.gif') no-repeat 3px center;
 }
 
 .vote-results ul li {
@@ -666,7 +666,7 @@ button.abstencion span {
 #overlay {
   display:none;
   z-index:10000;
-  background: #E1E2DF url('../images/content.gif');
+  background: #E1E2DF url('/assets/content.gif');
   width:650px;
   height:320px;
   -moz-box-shadow:0 0 4px 5px #CCC;
@@ -674,11 +674,11 @@ button.abstencion span {
 }
 
 #overlay-inner {
-  background: url('../images/content_deg.png') repeat-x top;
+  background: url('/assets/content_deg.png') repeat-x top;
 }
 
 #overlay .close {
-  background: url('../images/icon_delete.gif') no-repeat center center;
+  background: url('/assets/icon_delete.gif') no-repeat center center;
   position:absolute;
   right:10px;
   top:10px;
@@ -793,15 +793,15 @@ button.confirm span {
 }
 
 button.login span {
-  background-image: url('../images/icon_key.gif');
+  background-image: url('/assets/icon_key.gif');
 }
 
 button.register span {
-  background-image: url('../images/icon_user.gif');
+  background-image: url('/assets/icon_user.gif');
 }
 
 button.confirm span {
-  background-image: url('../images/icon_checkmark_dark.gif');
+  background-image: url('/assets/icon_checkmark_dark.gif');
 }
 
 
@@ -812,8 +812,8 @@ button.confirm span {
   padding: 10px;
   color: #333;
   font-size: 1.5em;
-  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
-  background: #66B9AF url('../images/icon_si.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_checkmark.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_si.gif') no-repeat 10px center;
 	width:225px;
 }
 
@@ -823,8 +823,8 @@ button.confirm span {
   padding: 10px;
   color: #333;
   font-size: 1.5em;
-  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
-  background: #66B9AF url('../images/icon_no.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_checkmark.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_no.gif') no-repeat 10px center;
 	width:225px;
 }
 
@@ -834,8 +834,8 @@ button.confirm span {
   padding: 10px;
   color: #333;
   font-size: 1.5em;
-  background: #66B9AF url('../images/icon_checkmark.gif') no-repeat 10px center;
-  background: #66B9AF url('../images/icon_abstencion.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_checkmark.gif') no-repeat 10px center;
+  background: #66B9AF url('/assets/icon_abstencion.gif') no-repeat 10px center;
 	width:225px;
 }
 
