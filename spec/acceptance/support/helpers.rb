@@ -3,8 +3,8 @@ module HelperMethods
   def login_as(user)
     OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(user.provider, {:uid => user.uid, :user_info => {:name => user.name}})
-    visit "/user_session/new"
-    click_link "Sign in with Twitter"
+    visit "/users/sign_in"
+    click_link "#{user.provider}_sign_in"
   end
 
   def login_with_tractis_as(user)

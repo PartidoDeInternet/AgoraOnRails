@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20130603013738) do
     t.string   "username"
   end
 
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"

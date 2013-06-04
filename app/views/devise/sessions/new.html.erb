@@ -4,9 +4,10 @@
 	<p>Puedes identificarte con una de estas redes sociales. </p>
 	<p>
     <% ["twitter", "facebook"].each do |provider| %>
-      <%# link_to image_tag("#{service}.jpeg", :size => "50x50"), 
-      						omniauth_authorize_path(resource_name, provider),
-                  :class => "popup", :"data-width" => 580, :"data-height" => 400 %>
+      <%= link_to image_tag("#{provider}.jpeg", :size => "50x50"), 
+      						user_omniauth_authorize_path(provider),
+                  :class => "popup", :id => "#{provider}_sign_in",
+                  :"data-width" => 580, :"data-height" => 400 %>
     <% end %>
   </p>
 

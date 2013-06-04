@@ -17,6 +17,7 @@ module Factories
     attrs[:provider] ||= "twitter"
     attrs[:uid] ||= "#{rand(9999999)}V"
     attrs[:name] ||= "Mother Fucking Real User"
+    attrs[:email] ||= "user#{rand(999)}@example.com"
     User.create!(attrs)
   end
   
