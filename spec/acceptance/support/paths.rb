@@ -8,7 +8,7 @@ module NavigationHelpers
   end
   
   def login_path
-    "/user_session/new"
+    "/users/sign_in"
   end
   
   def proposal_votes_path(proposal)

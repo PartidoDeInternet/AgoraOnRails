@@ -1,10 +1,14 @@
 module HelperMethods
-  
+
   def login_as(user)
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.add_mock(user.provider, {:uid => user.uid, :user_info => {:name => user.name}})
-    visit "/users/sign_in"
-    click_link "#{user.provider}_sign_in"
+    Warden.test_mode!
+    super
+  end
+
+  def login_with_form_as(user)
+    fill_in :user_email, with: @user.email
+    fill_in :user_password, with: @user.password
+    click_button "user_session_submit"
   end
 
   def login_with_tractis_as(user)

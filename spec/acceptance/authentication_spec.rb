@@ -10,10 +10,19 @@ feature "Authentication", %q{
   scenario "Sign in with twitter" do
     user = create_user name: "José Luis Sampedro"
     OmniAuth.config.test_mode = true
-    OmniAuth.config.add_mock(:twitter, {:uid => user.uid, :user_info => {:name => user.name}})
+    OmniAuth.config.add_mock(:twitter, {:uid => user.uid, :info => {:name => user.name}})
     visit "/users/sign_in"
     click_link "twitter_sign_in"
     page.should have_content "José Luis Sampedro"
+  end
+
+  scenario "Sign in with facebook" do
+    user = create_user name: "Platón"
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.add_mock(:facebook, {:uid => user.uid, :info => {:name => user.name}})
+    visit "/users/sign_in"
+    click_link "facebook_sign_in"
+    page.should have_content "Platón"
   end
 
   scenario "Sign in with tractis" do
@@ -28,8 +37,10 @@ feature "Authentication", %q{
     user = create_user
     login_as user
     visit "/"
+    page.should have_content "Estoy logueado como Mother Fucking Real User"
+
     click_link "quiero salir de la applicación"
-    page.should_not have_content "Estoy logueado como Mother Fucking Real User"
     page.should have_content "Cerraste sesión correctamente"
+    page.should_not have_content "Estoy logueado como Mother Fucking Real User"
   end
 end

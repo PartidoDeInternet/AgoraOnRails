@@ -1,7 +1,11 @@
 AgoraOnRails::Application.routes.draw do
   
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",
-                                   sessions: "user_sessions" }
+                                   sessions: "sessions" }
+  devise_scope :user do
+    get  'tractis_authentication' => 'sessions#tractis_authentication'
+  end
+
   resources :categories do
     resources :proposals
   end
@@ -20,11 +24,6 @@ AgoraOnRails::Application.routes.draw do
     end
     resources :votes
   end
-
-  resource :user_session do
-    get 'authenticate'
-    post 'create_fake'
-  end
   
   resources :users do
     member do
@@ -34,8 +33,6 @@ AgoraOnRails::Application.routes.draw do
       get 'discharge_as_spokesman'
     end
   end
-    
-  get '/auth/:provider/callback', :to => 'user_sessions#create', :as => 'callback'
 
   root :to => "proposals#hot"
 end

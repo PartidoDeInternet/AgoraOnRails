@@ -14,7 +14,7 @@ feature "DNI authentication", %q{
     
     register_with_tractis_as("Bad Ass Mother Fucking New User", "12345678V")
 
-    page.should have_content I18n.t(:currently_logged_as, :username => "Bad Ass Mother Fucking New User")
+    page.should have_content I18n.t(:currently_logged_as, :name => "Bad Ass Mother Fucking New User")
   end
 
   scenario "Should store the user DNI and name" do
@@ -28,7 +28,7 @@ feature "DNI authentication", %q{
     register_with_tractis_as("Bad Ass Mother Fucking New User", "12345678V")
     click_link "quiero salir de la applicación"
     login_with_tractis_as(User.last)
-    page.should have_content I18n.t(:currently_logged_as, :username => "Bad Ass Mother Fucking New User")
+    page.should have_content I18n.t(:currently_logged_as, :name => "Bad Ass Mother Fucking New User")
     User.count.should == 1
   end
 

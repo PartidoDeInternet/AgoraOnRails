@@ -5,25 +5,18 @@
 
   <fieldset id="login-section">
 	  <div class="overlayfield">
-	  	<%= f.label :username, "<span>#{t(:username)}</span>".html_safe %>
-	  	<%= f.text_field :username, :autofocus => true %>
+	  	<%= f.label :name, "<span>#{t(:name)}</span>".html_safe %>
+	  	<%= f.text_field :name, :autofocus => true %>
+	  </div>
+
+	  <div class="overlayfield">
+	  	<%= f.label :email, "<span>#{t(:email)}</span>".html_safe %>
+	  	<%= f.email_field :email %>
 	  </div>
 
 	  <div class="overlayfield">
 	  	<%= f.label :password, "<span>#{t(:password)}</span>".html_safe %>
 	  	<%= f.password_field :password %>
-	  </div>
-
-	  <div class="overlayfield">
-	  	<%= f.label :password_confirmation, "<span>#{t(:password_confirmation)}</span>".html_safe %>
-	  	<%= f.password_field :password_confirmation %>
-	  </div>
-	</fieldset>
-
-	<fieldset>
-	  <div class="overlayfield">
-	  	<%= f.label :email, "<span>#{t(:email)}</span>".html_safe %>
-	  	<%= f.email_field :email %>
 	  </div>
 	</fieldset>
 

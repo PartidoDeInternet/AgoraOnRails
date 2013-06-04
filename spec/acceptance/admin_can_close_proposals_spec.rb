@@ -9,7 +9,7 @@ feature "Admin can close proposals", %q{
 
   background do
     @user  = create_user(:name => "123456789A")
-    @admin = create_user(:name => "Administreitor", :admin => true)
+    @admin = create_user(:name => "Administraitor", :admin => true)
   end
 
   scenario "Admin can see the finish button" do

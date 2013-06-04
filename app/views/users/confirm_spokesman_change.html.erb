@@ -4,7 +4,7 @@
   <strong><%= t :your_current_spokeman, :spokeman => current_user.spokesman.name %></strong>
   <%= t :sure_to_change_spokeman, :spokeman => @spokesman.name %>
   
-  <%= form_for @spokesman, :url => choose_as_spokesman_user_path(@spokesman) do |f| -%>
+  <%= form_for @spokesman, :url => choose_as_spokesman_user_path(@spokesman), method: "patch"  do |f| -%>
     <%= hidden_field_tag :confirmation, true %>
     <%= submit_tag t(:i_am_sure), :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
   <% end -%>

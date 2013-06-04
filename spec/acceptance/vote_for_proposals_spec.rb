@@ -8,7 +8,7 @@ feature "Vote for proposals", %q{
 } do
 
   background do
-    @user = create_user(:dni => "12345678A")
+    @user  = create_user(:dni => "12345678A")
     @user2 = create_user(:dni => "12345678B")
     @user3 = create_user(:dni => "12345678C")
   end
@@ -78,7 +78,7 @@ feature "Vote for proposals", %q{
     page.should have_content I18n.t(:auth_required)
     page.should_not have_css("button", :text => I18n.t(:i_am_sure))
       
-    login_as @user
+    login_with_form_as @user
 
     page.should have_content("Vas a votar a favor de la iniciativa “Derogación del canon”")
   end

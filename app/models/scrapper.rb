@@ -22,7 +22,7 @@ class Scrapper
   end
 
   def api_host
-    ENV['CONGRESS_API_URL'] || "http://congress-api.herokuapp.com"
+    "http://congress-api.herokuapp.com"
   end
 
   def update_or_create_proposal(attributes)

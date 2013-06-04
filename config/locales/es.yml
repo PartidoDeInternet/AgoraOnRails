@@ -1,5 +1,5 @@
 "es":
-  currently_logged_as: "Estoy logueado como %{username}"
+  currently_logged_as: "Estoy logueado como %{name}"
   what_proposals: "¿De qué se habla?"
   want_to_sign_out: "quiero salir de la applicación"
   hello: 'Hola!'
@@ -73,10 +73,9 @@
   i_am_sure: "Estoy seguro"
   
   sign_up: 'Regístrate'
-  username: 'Nombre de usuario'
-  password: 'Contraseña'
-  password_confirmation: 'Confirma la contraseña'
+  name: 'Nombre'
   email: 'Email'
+  password: 'Contraseña'
   discharge_spokesman: "Destituir a %{name} de ser mi portavoz"
   choose_spokeman: "Elegir a %{name} como mi portavoz"
   review_vote: "Revisa tu voto"
