@@ -29,41 +29,65 @@ feature "See proposals", %q{
     end
   end
   
-  scenario "See comments and links for a proposal" do
+  scenario "See comments for a proposal" do
     punset  = create_user(:name => "Punset")
 
     punsets_vote = create_vote(
       :user        => punset,
       :proposal    => @proposal, 
-      :explanation => "Internet es un derecho fundamental de todos los humanos",
-      :link        => "http://derechoshumanos.com")
+      :explanation => "Internet es un derecho fundamental de todos los humanos")
                     
     visit proposal_path(@proposal)
 
-    within(:css, ".proposal") do      
-      within(:css, "#vote_#{punsets_vote.id}") do 
+    within(".votes_with_explanations") do      
+      within("#vote_#{punsets_vote.id}") do    
         page.should have_css(".login", :text => "Punset")
         page.should have_link(punset.name, :href => "/users/#{punset.id}")
-        page.should have_css(".explanation", :text => "Internet es un derecho fundamental de todos los humanos")
-        page.should have_css(".link", :text => "http://derechoshumanos.com")
+        page.should have_content("Internet es un derecho fundamental de todos los humanos")
       end
+    end
+  end
+  
+  scenario "Display links in comments" do
+    buenafuente = create_user(:name => "Buenafuente")
+ 
+    buenafuente_vote = create_vote( 
+       :user        => buenafuente,
+       :proposal    => @proposal,
+       :explanation => "En mi último programa http://buenafuente.com hablo sobre esto")
+    
+    visit proposal_path(@proposal)
+          
+    within(".votes_with_explanations") do
+      page.should have_link("http://buenafuente.com")
+    end
+  end
+  
+  scenario "Display new paragraphs in comments" do
+    buenafuente = create_user(:name => "Buenafuente")
+ 
+    buenafuente_vote = create_vote( 
+       :user        => buenafuente,
+       :proposal    => @proposal,
+       :explanation => "En mi último programa\n\n hablo sobre esto")
+    
+    visit proposal_path(@proposal)
+    within(".votes_with_explanations") do
+      page.should have_css("p.explanation", :count => 2)
     end
   end
 
   scenario "Only displays votes with a comment" do
-pending "going to remove link functionality soon"    
-    trol = create_user(:name => "Trol")
+    john = create_user(:name => "John")
  
-    trols_vote = create_vote( 
-       :user        => trol,
-       :proposal    => @proposal, 
-       :link        => "http://youporn.com")
+    johns_vote = create_vote( 
+       :user        => john,
+       :proposal    => @proposal)
     
     visit proposal_path(@proposal)
         
     within(:css, ".proposal") do
-      page.should_not have_css(".login", :text => "Trol")
-      page.should_not have_css(".link", :text => "http://youporn.com")
+      page.should_not have_css(".login", :text => "John")
     end
   end
   
@@ -88,7 +112,6 @@ pending "going to remove link functionality soon"
       explanations.second.should == "Jonnhy's explanation"
       explanations.third.should == "Jenny's explanation"
     end
-    
   end
   
 end

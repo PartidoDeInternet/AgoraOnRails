@@ -53,23 +53,6 @@ feature "Vote for proposals", %q{
     @user.votes.last.explanation.should == explanation
   end
 
-  scenario "Add an optional link to your vote" do
-    login_as @user
-    proposal = create_proposal(:title => "Ley Sinde")
-    link = "http://en.wikipedia.org/wiki/Brave_New_World"
-
-    visit proposal_path(proposal)
-    click_link I18n.t(:yes_option)
-    
-    fill_in :vote_link, :with => link
-    click_button I18n.t(:i_am_sure)
-    
-    visit proposal_path(proposal)
-    page.should have_content(link)
-
-    @user.votes.last.link.should == link
-  end
-
   scenario "Can't vote if i'm not logged in", :js do
     proposal = create_proposal(:title => "Derogación del canon")
 

@@ -6,6 +6,7 @@ gem 'rails', '4.0.0.rc1'
 gem 'mechanize'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'simple_form'
+gem 'rails_autolink'
 
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'omniauth'

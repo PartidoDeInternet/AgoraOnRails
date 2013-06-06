@@ -5,5 +5,4 @@
     <%= link_to "<button class='no'><span>#{t(:no_option)}</span></button>".html_safe,          new_proposal_vote_path(@proposal, value: "no"),         class: "vote-value"  %>
     <%= link_to "<button class='abstencion'><span>#{t(:abstention)}</span></button>".html_safe, new_proposal_vote_path(@proposal, value: "abstencion"), class: "vote-value"  %>
   </fieldset>
-<%# end %>
 </div>

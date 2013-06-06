@@ -9,7 +9,6 @@
       <%= f.error_notification %>
       <div class="form-inputs text-center">
         <%= f.input :explanation, required: false, autofocus: true, as: :text, input_html:  { rows: 3 , class: "span6"}  %>
-        <%= f.input :link,        required: false, input_html: { class: "span6" } %>
         <%= f.input :value, :value => params[:value], as: :hidden %>
       </div>
       <br />

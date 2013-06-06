@@ -51,9 +51,9 @@
         </dl>
       </section>
 
-      <p class="votes_with_explanations">
+      <div class="votes_with_explanations">
         <%= render :partial => "vote", :collection => @proposal.votes.order_by_represented_users %>
-      </p>
+      </div>
     </section>
     
     <% if @proposal.category.present? %>
