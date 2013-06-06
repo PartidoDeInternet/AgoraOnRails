@@ -69,18 +69,18 @@
         <% end %>
       </div>
     </div>
-    <div class="span4 offset1">
+    <div id="signup" class="span4 offset1">
       <h3>Crea tu cuenta</h2>
 
       <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :email, :required => false, :autofocus => true %>
+          <%= f.input :name, :required => false, :autofocus => true %>
+          <%= f.input :email, :required => false %>
           <%= f.input :password, :required => false %>
-          <%= f.input :password_confirmation, :required => false %>
         </div>
-
+        <br />
         <div>
           <%= f.button :submit, "Sign up", class: "btn" %>
         </div>
