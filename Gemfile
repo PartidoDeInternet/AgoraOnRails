@@ -5,7 +5,7 @@ gem 'rails', '4.0.0.rc1'
 
 gem 'mechanize'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
-gem 'dynamic_form'
+gem 'simple_form'
 
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'omniauth'
@@ -21,6 +21,7 @@ gem 'json'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
+gem 'bootstrap-sass'
 
 gem 'jquery-rails' 
 
@@ -29,11 +30,13 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'steak'
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'launchy'
   gem 'debugger'
   gem 'ZenTest'
   gem 'autotest-rails'
   gem 'autotest-growl'
+  gem 'database_cleaner'
 end
 
 group :test do

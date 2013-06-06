@@ -13,19 +13,33 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|  
   config.include WebMock::API
-
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  config.use_transactional_fixtures = false
+  config.treat_symbols_as_metadata_keys_with_true_values = true
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
   
   config.before(:each) do
     Capybara.reset_sessions!
   end
+  
+  config.before(:each, :js) do
+    WebMock.allow_net_connect!
+    VCR.configure do |c|
+      c.ignore_localhost = true
+    end
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
 end
 
-
+Capybara.javascript_driver = :webkit

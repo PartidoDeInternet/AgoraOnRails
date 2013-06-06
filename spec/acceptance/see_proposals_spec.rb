@@ -51,6 +51,7 @@ feature "See proposals", %q{
   end
 
   scenario "Only displays votes with a comment" do
+pending "going to remove link functionality soon"    
     trol = create_user(:name => "Trol")
  
     trols_vote = create_vote( 

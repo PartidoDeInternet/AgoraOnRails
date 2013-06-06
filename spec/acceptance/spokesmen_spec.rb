@@ -226,7 +226,7 @@ feature "Spokesmen", %q{
     login_as punset
     visit proposal_path(free_wifi)
     
-    click_button "Sí"
+    click_link "Sí"
     click_button "Estoy seguro"
     
     visit proposal_path(free_wifi)

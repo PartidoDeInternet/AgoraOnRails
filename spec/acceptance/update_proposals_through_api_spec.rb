@@ -15,7 +15,7 @@ feature "", %q{
   end
   
   scenario "update proposals through the congress-api" do
-    VCR.use_cassette('congress-api', :re_record_interval => 1.day) do
+    VCR.use_cassette('congress-api', :re_record_interval => 1.week) do
       Scrapper.new.scrape
     end
     Proposal.count.should be > 1    

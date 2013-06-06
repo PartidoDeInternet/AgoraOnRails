@@ -1,6 +1,5 @@
 class SessionsController < Devise::SessionsController
   include Tractis::IdentityVerifications
-  layout proc{ |c| c.request.xhr? ? "mini_application" : "application" }
   
   # Refactor with omniauth_callbacks controller
   # by creating a custom tractis ominiauth stategy, inspiration:

@@ -16,15 +16,15 @@ feature "Vote for proposals", %q{
   scenario "Vote for open proposals" do
     login_as @user
 
-    [["no",         I18n.t(:going_to_vote_against)],
-     ["si",         I18n.t(:going_to_vote_in_favor)],
-     ["abstencion", I18n.t(:going_to_abstain)]].each do |vote, confirmation|
+    [["No",         I18n.t(:going_to_vote_against)],
+     ["Sí",         I18n.t(:going_to_vote_in_favor)],
+     ["Abstención", I18n.t(:going_to_abstain)]].each do |vote, confirmation|
 
       proposal = create_proposal(:title => "Ley Sinde")
 
       visit proposal_path(proposal)
-
-      click_button vote
+      
+      click_link vote
 
       page.should have_content confirmation
       page.should_not have_content(I18n.t(:because))
@@ -42,14 +42,14 @@ feature "Vote for proposals", %q{
     explanation = "we don't want the ignorance in 'A Brave New World'"
 
     visit proposal_path(proposal)
-    fill_in I18n.t(:explain), :with => explanation
-    click_button I18n.t(:yes_option)
-
-    page.should have_content(I18n.t(:because, :explanation => explanation))
-    page.should_not have_content(I18n.t(:more_info))
-
+    click_link I18n.t(:yes_option)
+    
+    fill_in :vote_explanation, :with => explanation
     click_button I18n.t(:i_am_sure)
 
+    visit proposal_path(proposal)
+    page.should have_content(explanation)
+    
     @user.votes.last.explanation.should == explanation
   end
 
@@ -59,23 +59,25 @@ feature "Vote for proposals", %q{
     link = "http://en.wikipedia.org/wiki/Brave_New_World"
 
     visit proposal_path(proposal)
-    fill_in "link", :with => link
-    click_button I18n.t(:yes_option)
-
-    page.should have_content("Más información #{link}")
-    page.should_not have_content I18n.t(:because)
+    click_link I18n.t(:yes_option)
+    
+    fill_in :vote_link, :with => link
     click_button I18n.t(:i_am_sure)
+    
+    visit proposal_path(proposal)
+    page.should have_content(link)
 
     @user.votes.last.link.should == link
   end
 
-  scenario "Can't vote if i'm not logged in" do
+  scenario "Can't vote if i'm not logged in", :js do
     proposal = create_proposal(:title => "Derogación del canon")
 
-    visit proposal_path(proposal)
-    click_button I18n.t(:yes_option)
+    visit proposal_path(proposal)  
+    click_link I18n.t(:yes_option)
 
-    page.should have_content I18n.t(:auth_required)
+    page.should have_content "Tienes que registrarte o iniciar sesión antes de continuar"
+    
     page.should_not have_css("button", :text => I18n.t(:i_am_sure))
       
     login_with_form_as @user
@@ -106,7 +108,7 @@ feature "Vote for proposals", %q{
     login_as @user
     visit proposal_path(proposal)
 
-    click_button I18n.t(:yes_option)
+    click_link I18n.t(:yes_option)
     click_button I18n.t(:i_am_sure)
 
     visit proposal_path(proposal)
@@ -132,7 +134,7 @@ feature "Vote for proposals", %q{
 
     visit proposal_path(proposal)
 
-    click_button I18n.t(:yes_option)
+    click_link I18n.t(:yes_option)
     click_button I18n.t(:i_am_sure)
 
     visit proposal_path(proposal)
@@ -143,7 +145,7 @@ feature "Vote for proposals", %q{
     login_as @user2
     visit proposal_path(proposal)
 
-    click_button I18n.t(:no_option)
+    click_link I18n.t(:no_option)
     click_button I18n.t(:i_am_sure)
     visit proposal_path(proposal)
 
@@ -152,7 +154,7 @@ feature "Vote for proposals", %q{
 
     login_as @user3
     visit proposal_path(proposal)
-    click_button I18n.t(:abstention)
+    click_link I18n.t(:abstention)
     click_button I18n.t(:i_am_sure)
 
     visit proposal_path(proposal)

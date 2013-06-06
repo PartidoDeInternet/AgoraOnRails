@@ -80,7 +80,7 @@
   choose_spokeman: "Elegir a %{name} como mi portavoz"
   review_vote: "Revisa tu voto"
   going_to_vote_in_favor: 'Vas a votar a favor de'
-  going_to_abstain: 'Vas a abstenerte'
+  going_to_abstain: 'Vas a abstenerte de'
   going_to_vote_against: 'Vas a votar en contra de'
   vote_counted: 'Tu voto ha sido contabilizado.'
   the_proposal: 'la iniciativa “%{title}”'
@@ -270,7 +270,7 @@
         vote:
           attributes:
             proposal_id:
-              taken: " - Ya has votado esta propuesta"
+              taken: "Ya has votado esta propuesta"
         
     # Translate model names. Used in Model.human_name().
     #models:

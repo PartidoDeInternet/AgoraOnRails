@@ -5,6 +5,9 @@
   <meta charset="utf-8" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <%= stylesheet_link_tag "application" %>
+  <% if controller_name != "proposals" %>
+    <%= stylesheet_link_tag controller_name %>
+  <% end %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
@@ -35,40 +38,42 @@
 
         <%= yield %>
 
-        <aside>
-          <dl class="tag_list" id="categories">
-            <dt><strong><%= t :what_proposals %></strong></dt>
-            <dd>
-              <ul>
-                <% hot_categories.each_with_index do |category, index| %>
-                <li class="category">
-                  <%= link_to category.name, [category, :proposals], :class => "name tag-#{index + 1}", :title => category.name %>
-                  <span class="count">
-                    <%= category.proposals_count %>
-                  </span>
-                </li>
-                <% end %>
-              </ul>
-            </dd>
-          </dl>
+        <% if controller_name == "proposals" %>
+          <aside>
+            <dl class="tag_list" id="categories">
+              <dt><strong><%= t :what_proposals %></strong></dt>
+              <dd>
+                <ul>
+                  <% hot_categories.each_with_index do |category, index| %>
+                  <li class="category">
+                    <%= link_to category.name, [category, :proposals], :class => "name tag-#{index + 1}", :title => category.name %>
+                    <span class="count">
+                      <%= category.proposals_count %>
+                    </span>
+                  </li>
+                  <% end %>
+                </ul>
+              </dd>
+            </dl>
 
-          <dl class="tag_list" id="proposers">
-            <dt><strong><%= t :who_proposed %></strong></dt>
-            <dd>
-              <ul>
-                <% hot_proposers.each_with_index do |proposer, index| %>
-                <li class="proposer">
-                  <%= link_to proposer.name, [proposer, :proposals], :class => "name tag-#{index + 1}", :title => proposer.name %>
-                  <span class="count">
-                    <%= proposer.proposals_count %>
-                  </span>
-                </li>
-                <% end %>
-              </ul>
-            </dd>
-          </dl>
+            <dl class="tag_list" id="proposers">
+              <dt><strong><%= t :who_proposed %></strong></dt>
+              <dd>
+                <ul>
+                  <% hot_proposers.each_with_index do |proposer, index| %>
+                  <li class="proposer">
+                    <%= link_to proposer.name, [proposer, :proposals], :class => "name tag-#{index + 1}", :title => proposer.name %>
+                    <span class="count">
+                      <%= proposer.proposals_count %>
+                    </span>
+                  </li>
+                  <% end %>
+                </ul>
+              </dd>
+            </dl>
 
-        </aside>
+          </aside>
+        <% end %>
 
       </div>
     </div>
@@ -79,12 +84,6 @@
       <section id="total-votes"><strong><%= number_with_delimiter Vote.count %></strong> <%= t :votes_through_agora %></section>
     </div>
   </footer>
-
-  <div id="overlay">
-    <div id="overlay-inner">
-      <iframe name="overlay"></iframe>
-    </div>
-  </div>
   
   <%= javascript_include_tag "application" %>
   <%= render :partial => "shared/google_analytics" if Rails.env == 'production' %>

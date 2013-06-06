@@ -17,7 +17,7 @@ feature "Home page", %q{
     
     visit homepage
     
-    page.should have_css("#proposals .proposal", :count => 5)
+    page.should have_css(".proposals .proposal", :count => 5)
 
     should_see_hot_proposals_in_this_order(
     ["Ley Sinde", "WIFI en todo Madrid", "Legalize it", "Bajar el IVA", "Zapatero Dimisión"])   
@@ -48,8 +48,8 @@ feature "Home page", %q{
 
     click_link "Recién tramitadas"
 
-    page.should have_css("#proposals .proposal", :count => 5)
-    page.should have_css("#proposals article.proposal:first-of-type .title", :text => "WIFI en todo Madrid")
+    page.should have_css(".proposals .proposal", :count => 5)
+    page.should have_css(".proposals article.proposal:first-of-type .title", :text => "WIFI en todo Madrid")
     
     page.should have_css(".in_favor", :text => "Sí")
     page.should have_css(".against", :text => "No")

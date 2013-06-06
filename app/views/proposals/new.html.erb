@@ -1,7 +1,7 @@
 <h1>New proposal</h1>
 
-<%= form_for(@proposal) do |f| %>
-  <%= f.error_messages %>
+<%= simple_form_for(@proposal) do |f| %>
+  <%= f.error_notification %>
 
   <p>
     <%= f.label :title %><br />

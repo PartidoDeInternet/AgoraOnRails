@@ -1,17 +1,9 @@
-<%= form_tag new_proposal_vote_path(@proposal), {:method => :get, :class => "vote"} do %>
+<div class="proposal-vote-choices">
   <fieldset>
     <strong><%= t :vote_proposal %></strong>
-    <div>
-    	<%= label_tag :explanation, t(:explain) %><br/>
-		  <%= text_area_tag :explanation, nil, :size => "40x5" %>
-		</div>
-		<div>
-			<%= label_tag :link, t(:optional_link) %><br/>
-		  <%= text_field_tag :link, nil, :size => "40" %>
-		</div>
-		<br/>
-    <button type="submit" name="value" value="si" class="si"><span><%= t(:yes_option)%></span></button>
-    <button type="submit" name="value" value="no" class="no"><span><%= t(:no_option)%></span></button>
-    <button type="submit" name="value" value="abstencion" class="abstencion"><span><%= t(:abstention)%></span></button>
+    <%= link_to "<button class='si'><span>#{t(:yes_option)}</span></button>".html_safe,         new_proposal_vote_path(@proposal, value: "si"),         class: "vote-value"  %>
+    <%= link_to "<button class='no'><span>#{t(:no_option)}</span></button>".html_safe,          new_proposal_vote_path(@proposal, value: "no"),         class: "vote-value"  %>
+    <%= link_to "<button class='abstencion'><span>#{t(:abstention)}</span></button>".html_safe, new_proposal_vote_path(@proposal, value: "abstencion"), class: "vote-value"  %>
   </fieldset>
-<% end %>
+<%# end %>
+</div>

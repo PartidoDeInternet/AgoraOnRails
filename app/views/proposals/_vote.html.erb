@@ -1,4 +1,4 @@
-<% unless vote.explanation.blank? %>
+<% if vote.explanation.present? or vote.link.present? %>
    <%= div_for vote do %>
      <p class="login">
        <%= link_to vote.user.name, vote.user %>

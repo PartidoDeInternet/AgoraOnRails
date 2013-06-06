@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  layout proc {|c| devise_controller? ? "pages" : "application"}
   protect_from_forgery
 
   rescue_from Tractis::InvalidVerificationError do |exception|

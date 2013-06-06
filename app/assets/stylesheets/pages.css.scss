@@ -1,0 +1,25 @@
+//= require populo
+$baseFontSize: 12px;
+@import "bootstrap";
+
+.social-network-icons{
+	text-align: center
+}
+
+.sign-in-wrapper {
+  display: block;
+  position: relative;
+  padding: 25px 13px 25px 60px;
+  margin-bottom: 10px;
+	margin-top:60px;
+  border: 1px solid #F6F6F6;
+  background: #FFFFFF;
+  -o-box-shadow: 1px 1px 1px #BBBCBA;
+  -icab-box-shadow: 1px 1px 1px #BBBCBA;
+  -khtml-box-shadow: 1px 1px 1px #BBBCBA;
+  -moz-box-shadow: 1px 1px 1px #BBBCBA;
+  -webkit-box-shadow: 1px 1px 1px #BBBCBA;
+  box-shadow: 1px 1px 1px #BBBCBA;
+}
+
+

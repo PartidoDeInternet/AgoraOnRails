@@ -15,7 +15,7 @@ module Factories
   
   def create_user(attrs = {})
     attrs[:name]     ||= "Mother Fucking Real User"
-    attrs[:email]    ||= "user#{rand(999)}@example.com"
+    attrs[:email]    ||= "user#{rand(999999)}@example.com"
     attrs[:password] ||= "secret"
     User.create!(attrs)
   end

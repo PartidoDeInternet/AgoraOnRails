@@ -6,9 +6,12 @@ module HelperMethods
   end
 
   def login_with_form_as(user)
-    fill_in :user_email, with: @user.email
-    fill_in :user_password, with: @user.password
-    click_button "user_session_submit"
+    click_link "Entra con tu cuenta de Agoraonrails"
+    within("#agoraonrails-account") do
+      fill_in :user_email, with: @user.email
+      fill_in :user_password, with: @user.password
+      click_button "Sign in"
+    end
   end
 
   def login_with_tractis_as(user)
@@ -46,7 +49,7 @@ module HelperMethods
   end
   
   def should_see_hot_proposals_in_this_order(titles)
-    page.all("#proposals .proposal .title").map(&:text).should == titles
+    page.all(".proposals .proposal .title").map(&:text).should == titles
   end
   
   def stub_tractis_request

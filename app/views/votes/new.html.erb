@@ -1,44 +1,23 @@
-<h2><%= t(:review_vote)%></h2>
+<div>
+  <h3><%= t(:review_vote)%></h3>
 
-<p class="confirmation-message">
-  <strong><%= confirmation_text(params[:value]) %></strong>
-  
-  <%= t(:the_proposal, :title => @proposal.title) %> 
-  
-  <% if params[:explanation].present? %>
-    <p><%= t :because, :explanation => params[:explanation] %></p>
-  <% end %>
-  
-  <% if params[:link].present? %>
-    <p><%= t :more_info, :link => params[:link] %></p>
-  <% end %>
-    
-</p>
-
-<%= form_for([@proposal, @vote]) do |f| %>
-  <%= f.error_messages %>
-  <%= f.hidden_field :value, :value => params[:value] %>
-  <%= f.hidden_field :explanation, :value => params[:explanation] %>
-  <%= f.hidden_field :link, :value => params[:link] %>
-  <p class="actions">
-    <button type="submit" class="confirm"><span><%= t(:i_am_sure) %></span></button>
-    <%= t(:or_well)%> 
-    <%= link_to t(:think_more), "#", :class => "oh-no" %>
+  <p class="confirmation-message">
+    <strong><%= confirmation_text(params[:value]) %></strong>
+    <%= t(:the_proposal, :title => @proposal.title) %>
+    <p>Si quieres puedes añadir una explicación y un link con más información.</p>
+    <%= simple_form_for([@proposal, @vote]) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs text-center">
+        <%= f.input :explanation, required: false, autofocus: true, as: :text, input_html:  { rows: 3 , class: "span6"}  %>
+        <%= f.input :link,        required: false, input_html: { class: "span6" } %>
+        <%= f.input :value, :value => params[:value], as: :hidden %>
+      </div>
+      <br />
+      <p class="actions">
+        <button type="submit" class="confirm"><span><%= t(:i_am_sure) %></span></button>
+        <%= t(:or_well)%> 
+        <%= link_to t(:think_more), proposal_path(@proposal), class: "oh-no" %>
+      </p>
+    <% end %>    
   </p>
-<% end %>
-
-<script type="text/javascript" charset="utf-8">
-$(function(){
-  $(".oh-no").click(function(e){
-    e.preventDefault();
-    top.document.location.href = '<%= proposal_path @proposal %>'
-  });
-});
-</script>
-
-<script type="text/javascript" charset="utf-8">
-  if(window.opener) {
-    window.opener.location.href = '<%= session[:return_to] %>'
-    window.close();
-  }
-</script>
+</div>

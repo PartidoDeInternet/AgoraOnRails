@@ -417,24 +417,24 @@ footer p {
   background: #66B9AF url('/assets/icon_padlock_closed.gif') no-repeat 10px center;
 }
 
-form.vote {
+.proposal-vote-choices {
   display: block;
   text-align: center;
   background: #66B9AF;
 }
 
-form.vote fieldset {
+.proposal-vote-choices fieldset {
   padding: 10px;
 }
 
-form.vote strong {
+.proposal-vote-choices strong {
   display: block;
   color: #333;
   font-size: 1.5em;
   padding-bottom: 10px;
 }
 
-form.vote button {
+.proposal-vote-choices button {
   margin: 0 3px;
   padding: 0;
   border: 1px solid #333;
@@ -452,7 +452,7 @@ form.vote button {
   box-shadow: 1px 1px 1px #579D95;
 }
 
-form.vote button span {
+.proposal-vote-choices button span {
   display: block;
   background-repeat: no-repeat;
   background-position: left center;
@@ -462,14 +462,17 @@ form.vote button span {
 
 button.si span {
   background-image: url('/assets/icon_si.gif');
+	cursor: pointer;
 }
-
+ 
 button.no span {
   background-image: url('/assets/icon_no.gif');
+	cursor: pointer;
 }
 
 button.abstencion span {
   background-image: url('/assets/icon_abstencion.gif');
+	cursor: pointer;
 }
 
 .documents-list {
@@ -881,4 +884,3 @@ button.confirm span {
 	border-right: 1px solid #D6D6D6;
   margin-bottom: 15px;
 }
-

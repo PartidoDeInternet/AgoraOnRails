@@ -1,0 +1,5 @@
+es:
+  simple_form:
+    labels:
+      vote:
+        explanation: 'Explicación'
