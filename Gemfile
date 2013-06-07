@@ -16,7 +16,6 @@ group :development, :test do
   gem 'steak'
   gem 'capybara', '0.4.1.1'
   gem 'launchy'
-  gem 'ruby-debug19'
   gem 'ZenTest'
   gem 'autotest-rails'
   gem 'autotest-growl'
@@ -24,5 +23,3 @@ group :development, :test do
 end
 
 gem 'webmock', :group => :test
-
-gem 'coveralls', require: false
