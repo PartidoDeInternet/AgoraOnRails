@@ -27,11 +27,13 @@
       
       <div id="agoraonrails-account" style="display:none;">
         <p>Introduce tu email y tu contraseña de Agoraonrails.com</p>
-        <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), validate: true) do |f| %>
           <div class="form-inputs">
-            <%= f.input :email, :required => false, :autofocus => true %>
-            <%= f.input :password, :required => false %>
-            <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+            <%= f.label :email, "Email" %>
+            <%= f.text_field :email %>
+            <%= f.label :password, "Contraseña" %>
+            <%= f.text_field :password %>
+            <%= f.label :remember_me, "Recordarme" %>
           </div>
 
           <p>
@@ -39,7 +41,7 @@
           </p>
           
           <div>
-            <%= f.button :submit, "Sign in", class: "btn" %>
+            <%= f.submit "Sign in", class: "btn" %>
           </div>
         <% end %>
         
@@ -52,15 +54,16 @@
         <!-- refactor with devise template -->
         <p>¿Olvidaste tu contraseña? Envíate un mensaje de restablecimiento de contraseña y comprueba tu email.</p>
 
-        <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-          <%= f.error_notification %>
+        <%= form_for(resource, :as => "forgot", :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+          <%# f.error_notification %>
 
           <div class="form-inputs">
-            <%= f.input :email, :required => false, :autofocus => true %>
+            <%= f.label :norl, "Email" %>
+            <%= f.text_field :email %>
           </div>
           <br />
           <div>
-            <%= f.button :submit, "Restablecer contraseña", class: "btn" %>
+            <%= f.submit "Restablecer contraseña", class: "btn" %>
           </div>
           <br />
           <p><%= link_to "O entra con tu cuenta de Agoraonrails.com", "#", class: "agoraonrails-account-link" %></p>
@@ -69,20 +72,23 @@
         <% end %>
       </div>
     </div>
-    <div id="signup" class="span4 offset1">
+    <div id="signup" class="span5 offset1">
       <h3>Crea tu cuenta</h2>
 
-      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
+      <%= form_for(resource, :as => "account", :url => registration_path(resource_name), validate: true) do |f| %>
+        <%# f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :name, :required => false, :autofocus => true %>
-          <%= f.input :email, :required => false %>
-          <%= f.input :password, :required => false %>
+          <%= f.label :name, "Nombre" %>
+          <%= f.text_field :name %>
+          <%= f.label :jarl, "Email" %>
+          <%= f.text_field :email %>
+          <%= f.label :password, "Contraseña" %>
+          <%= f.text_field :password %>
         </div>
         <br />
         <div>
-          <%= f.button :submit, "Sign up", class: "btn" %>
+          <%= f.submit "Sign up", class: "btn" %>
         </div>
       <% end %>
     </div>

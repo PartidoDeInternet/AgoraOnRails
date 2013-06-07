@@ -37,6 +37,7 @@
   </div>
   
   <%= javascript_include_tag "application" %>
+  <%= yield :custom_javascript %>
   <%= render :partial => "shared/google_analytics" if Rails.env == 'production' %>
 </body>
 </html>

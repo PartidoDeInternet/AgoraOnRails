@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/bcardarella/client_side_validations.git
+  revision: 9461cb92e1dfb64895d590c6d435cdf48fcede45
+  branch: 4-0-beta
+  specs:
+    client_side_validations (3.2.2)
+
+GIT
   remote: git://github.com/josevalim/inherited_resources.git
   revision: 2c57b0566e6eee75e84e3fb7d6ab45a812b493c1
   specs:
@@ -252,6 +259,7 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   capybara-webkit
+  client_side_validations!
   coffee-rails
   coveralls
   database_cleaner

@@ -56,14 +56,14 @@ SimpleForm.setup do |config|
   # config.label_class = nil
 
   # You can define the class to use on all forms. Default is simple_form.
-  config.form_class = 'simple_form form-horizontal'
+  # config.form_class = :simple_form
 
   # Whether attributes are required by default (or not). Default is true.
   # config.required_by_default = true
 
   # Tell browsers whether to use default HTML5 validations (novalidate option).
   # Default is enabled.
-  # config.browser_validations = true
+  config.browser_validations = false
 
   # Determines whether HTML5 types (:email, :url, :search, :tel) and attributes
   # (e.g. required) are used or not. True by default.

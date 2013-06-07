@@ -1,0 +1,10 @@
+<%= render file: "/devise/sessions/new" %>
+
+<% content_for :custom_javascript do %>
+  <script>
+  (function($){	
+    $('#social-network-account').hide();
+    $('#forgot-password').show();
+  })(jQuery);
+  </script>
+<% end %>

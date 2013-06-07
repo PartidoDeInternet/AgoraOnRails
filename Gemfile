@@ -7,6 +7,7 @@ gem 'mechanize'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'simple_form'
 gem 'rails_autolink'
+gem 'client_side_validations', github: 'bcardarella/client_side_validations', branch: '4-0-beta'
 
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'omniauth'

@@ -1,7 +1,7 @@
 AgoraOnRails::Application.routes.draw do
   
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",
-                                   sessions: "sessions" }
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", 
+                                   sessions: "sessions", registrations: "registrations"}
   devise_scope :user do
     get  'tractis_authentication' => 'sessions#tractis_authentication'
   end

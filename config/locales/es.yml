@@ -250,7 +250,7 @@
   activerecord:
     errors:
       messages:
-        taken: "ya está en uso hello"
+        taken: "ya está en uso"
         record_invalid: "La validación falló: %{errors}"
         # Append your own errors here or at the model/attributes scope.
       
@@ -308,7 +308,7 @@
       empty: "no puede estar vacío"
       blank: "no puede estar en blanco"
       too_long: "es demasiado largo (%{count} caracteres máximo)"
-      too_short: "es demasiado corto (%{count} caracteres mínimo)"
+      too_short: "es demasiado corto"
       wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
       not_a_number: "no es un número"
       greater_than: "debe ser mayor que %{count}"

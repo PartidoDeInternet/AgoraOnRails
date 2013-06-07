@@ -9,12 +9,13 @@ class User < ActiveRecord::Base
 
   belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
   
-  validate :prevent_oneself_as_spokesman
+  validates :name,     presence: true
+  validates :email,    presence: true
+  validates :password, presence: true
+  validates :uid,      presence: true, if: :provider 
+  validate  :prevent_oneself_as_spokesman
   
   after_save :count_votes
-  
-  #validates :provider, :presence => true
-  #validates :uid, :presence => true
   
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)
