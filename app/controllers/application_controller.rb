@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :maintenance_on
   protect_from_forgery
   
   rescue_from Tractis::InvalidVerificationError do |exception|
@@ -39,5 +40,9 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+    
+    def maintenance_on
+      redirect_to "/"
     end
 end

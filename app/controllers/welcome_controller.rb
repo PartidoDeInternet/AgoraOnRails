@@ -5,4 +5,7 @@ class WelcomeController < ApplicationController
     @recently_closed = Proposal.recently_closed
   end
 
+  def routing_error
+    redirect_to root_path
+  end
 end

@@ -32,7 +32,8 @@ AgoraOnRails::Application.routes.draw do
   get '/auth/twitter/callback', :to => 'user_sessions#create', :as => 'callback'
 
   root :to => "welcome#index"
-
+  match '*', :to => "welcome#routing_error"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
