@@ -28,8 +28,10 @@ feature "Spokesmen", %q{
     
     visit users_path
     click_link "Fan de Punset"
-
-    click_button "Elegir a Fan de Punset como mi portavoz"
+    click_link "Elegir a Fan de Punset como mi portavoz"
+    
+    page.should have_content "Vas a elegir a Fan de Punset como tu Portavoz"
+    click_button "Estoy seguro"
     
     page.should have_content("Has elegido a tu portavoz.")
     @user.reload
@@ -45,7 +47,7 @@ feature "Spokesmen", %q{
     
     visit users_path
     click_link "Zapatero"
-    click_button "Destituir a Zapatero de ser mi portavoz"
+    click_link "Destituir a Zapatero de ser mi portavoz"
 
     page.should have_content("Has destituido a tu portavoz.")
 
@@ -63,51 +65,44 @@ feature "Spokesmen", %q{
     login_as @user
 
     visit user_path(zapatero)
-    page.should have_css("#discharge_spokesman_button")
+    page.should have_css(".discharge-my-spokesman")
     
     visit user_path(rajoy)
-    page.should have_css("#choose_spokesman_button")
-    page.should_not have_css("#discharge_spokesman_button")
+    page.should have_css(".make-my-spokesman")
+    page.should_not have_css(".discharge-my-spokesman")
   end
   
-  #there seems to be a problem with using all as the method in routes
-  #refactor spokesman actions into a spokesman controller
-  pending "Don't allow to choose spokesman unless user is logged in" do
+  scenario "Don't allow to choose spokesman unless user is logged in", :js do
     fan_de_punset = create_user :name => "Fan de Punset"
     
     visit users_path
     click_link "Fan de Punset"
-    click_button "Elegir a Fan de Punset como mi portavoz"
+    click_link "Elegir a Fan de Punset como mi portavoz"
 
-    page.should have_content("Autenticación requerida")
+    page.should have_content("Entra en Agoraonrails")
     page.should_not have_content("Has elegido a tu portavoz.")
 
-    
-    # fill_in :user_email, with: @user.email
-    # fill_in :user_password, with: @user.password
-    # click_button "user_session_submit"
-    # page.should have_content("Has elegido a tu portavoz.")
+    login_with_form_as(@user)
+    click_button "Estoy seguro"
+    page.should have_content("Has elegido a tu portavoz.")
   end
 
   context "logged in" do
     scenario "Don't allow to choose myself as a my own spokesman" do
       login_as @user
       visit user_path(@user)
-      page.should_not have_css("#choose_spokesman_button")
+      page.should_not have_css(".make-my-spokesman")
     end
   end
 
-  #there seems to be a problem with using all as the method in routes
-  #refactor spokesman actions into a spokesman controller
   context "logged out" do
-    pending "Don't allow to choose myself as a my own spokesman" do
-      visit user_path(@user)            
-      click_button "Elegir a #{@user.name} como mi portavoz"
+    scenario "Don't allow to choose myself as a my own spokesman", :js do
+      visit user_path(@user)   
+      click_link "Elegir a #{@user.name} como mi portavoz"
      
-      fill_in :user_email, with: @user.email
-      fill_in :user_password, with: @user.password
-      click_button "user_session_submit"
+      login_with_form_as(@user)
 
+      click_button "Estoy seguro"
       page.should have_content("No puedes ser tu propio portavoz.")
     end
 
@@ -146,7 +141,8 @@ feature "Spokesmen", %q{
     
     login_as @user
     visit user_path(punset)
-    click_button "Elegir a Punset como mi portavoz"
+    click_link "Elegir a Punset como mi portavoz"
+    click_button "Estoy seguro"
     
     visit user_path(punset)
 
@@ -171,7 +167,7 @@ feature "Spokesmen", %q{
     
       login_as @fan_de_punset
       visit user_path(@rajoy)
-      click_button "Elegir a Rajoy como mi portavoz"
+      click_link "Elegir a Rajoy como mi portavoz"
     
       page.should have_content("Tu portavoz actual es Punset")
       click_button "Estoy seguro"
@@ -196,7 +192,7 @@ feature "Spokesmen", %q{
       
       login_as @fan_de_punset
       visit user_path(@rajoy)
-      click_button "Elegir a Rajoy como mi portavoz"
+      click_link "Elegir a Rajoy como mi portavoz"
     
       page.should have_content("Tu portavoz actual es Punset")
       click_button "Estoy seguro"
@@ -250,8 +246,9 @@ feature "Spokesmen", %q{
     
     login_as @user
     visit user_path(zapatero)
-    click_button "Destituir a Zapatero de ser mi portavoz"
-
+    click_link "Destituir a Zapatero de ser mi portavoz"
+    
+    visit proposal_path(economia_sostenible)
     within(:css, "#proposal_#{economia_sostenible.id}") do
       page.should have_css(".in_favor span.vote_count", :text => "1 votos")
       page.should have_css(".in_favor span.vote_percentage", :text => "100%")
@@ -271,12 +268,15 @@ feature "Spokesmen", %q{
     
     percentages_should_be(free_wifi, :in_favor => 50, :against => 50, :abstention => 0)
     
-    click_button "Elegir a Punset como mi portavoz"
+    click_link "Elegir a Punset como mi portavoz"
+    click_button "Estoy seguro"
+    
     visit user_path(punset)
     percentages_should_be(free_wifi, :in_favor => 67, :against => 33, :abstention => 0)
 
     
-    click_button "Destituir a Punset de ser mi portavoz"
+    click_link "Destituir a Punset de ser mi portavoz"
+    visit user_path(punset)
     percentages_should_be(free_wifi, :in_favor => 50, :against => 50, :abstention => 0)
   end
 
@@ -290,8 +290,9 @@ feature "Spokesmen", %q{
     
       visit users_path
       click_link "Fan de Punset"
-      click_button "Elegir a Fan de Punset como mi portavoz"
-    
+      click_link "Elegir a Fan de Punset como mi portavoz"
+      click_button "Estoy seguro"
+      
       page.should have_content("Has elegido a tu portavoz.")
       @user.reload
       @user.spokesman.should == fan_de_punset
@@ -306,12 +307,14 @@ feature "Spokesmen", %q{
       login_as fan_de_punset
       visit user_path(punset)
     
-      click_button "Elegir a Punset como mi portavoz"
+      click_link "Elegir a Punset como mi portavoz"
+      click_button "Estoy seguro"
     
       login_as @user
       visit user_path(fan_de_punset)
-      click_button "Elegir a Fan de Punset como mi portavoz"
-    
+      click_link "Elegir a Fan de Punset como mi portavoz"
+      click_button "Estoy seguro"
+      
       visit user_path(punset)
     
       within(:css, "#proposal_#{free_wifi.id}") do
@@ -329,10 +332,11 @@ feature "Spokesmen", %q{
       login_as @user
       
       visit user_path(fan_de_punset)
-      click_button "Elegir a Fan de Punset como mi portavoz"
+      click_link "Elegir a Fan de Punset como mi portavoz"
+      click_button "Estoy seguro"
       
       visit user_path(fan_de_punset)
-      click_button "Destituir a Fan de Punset de ser mi portavoz"
+      click_link "Destituir a Fan de Punset de ser mi portavoz"
       page.should have_content("Has destituido a tu portavoz.")
       
       visit proposal_path(free_wifi)
@@ -348,7 +352,8 @@ feature "Spokesmen", %q{
       login_as @user
       visit user_path(fan_de_punset)
       
-      click_button "Elegir a Fan de Punset como mi portavoz"    
+      click_link "Elegir a Fan de Punset como mi portavoz"    
+      click_button "Estoy seguro"
       
       visit proposal_path(free_wifi)
       
@@ -366,7 +371,8 @@ feature "Spokesmen", %q{
       login_as @user
       visit user_path(fan_de_punset)
       
-      click_button "Elegir a Fan de Punset como mi portavoz"    
+      click_link "Elegir a Fan de Punset como mi portavoz"    
+      click_button "Estoy seguro"
       
       visit proposal_path(free_wifi)
       
@@ -385,7 +391,8 @@ feature "Spokesmen", %q{
       login_as @user
       visit user_path(fan_de_punset)
       
-      click_button "Elegir a Fan de Punset como mi portavoz"    
+      click_link "Elegir a Fan de Punset como mi portavoz"    
+      click_button "Estoy seguro"
       
       visit proposal_path(free_wifi)
       

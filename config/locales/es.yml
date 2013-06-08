@@ -69,7 +69,7 @@
   spokeman_redirect: 'Si nadie lo remedia en 5 segundos te llevaremos a la página de tu portavoz.'
   are_you_sure: '¿Estás seguro?'
   your_current_spokeman: 'Tu portavoz actual es %{spokeman}.'
-  sure_to_change_spokeman: 'Estás seguro de que quieres cambiarlo por %{spokeman}'
+  sure_to_change_spokeman: '¿Estás seguro de que quieres cambiarlo por %{spokeman}?'
   i_am_sure: "Estoy seguro"
   
   sign_up: 'Regístrate'

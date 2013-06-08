@@ -25,14 +25,8 @@ AgoraOnRails::Application.routes.draw do
     resources :votes
   end
   
-  resources :users do
-    member do
-      patch 'choose_as_spokesman'
-      patch 'discharge_as_spokesman'
-      get 'choose_as_spokesman'
-      get 'discharge_as_spokesman'
-    end
-  end
+  resources :users
+  resource :spokesman
 
   root :to => "proposals#hot"
 end

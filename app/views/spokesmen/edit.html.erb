@@ -1,0 +1,7 @@
+<h2><%= t(:are_you_sure) %></h2>
+
+<p class="confirmation-message-spokesman">
+  <span><%= t :your_current_spokeman, :spokeman => current_user.spokesman.name %></span>
+  <strong><%= t :sure_to_change_spokeman, :spokeman => @spokesman.name %></strong>
+</p>
+<%= render 'form' %>

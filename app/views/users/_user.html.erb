@@ -1,7 +1,26 @@
-<article class="user">
-	<header>
-		<h3 class="name"><%= link_to user.name, user %></h3>
-	</header>
-	
-	<p class="link"> <%= user.link %></p>
+<article class="proposal">
+  <section class="proposal-content">
+    <header>
+      <hgroup>
+        <h2 class="title"><%= link_to user.name, user %></h2><%= user.email %>
+        <h3>
+          A votado sobre <strong><%= user.votes.count %></strong> propuestas
+          <span class="proposed_at">something else</span>
+        </h3>
+      </hgroup>
+    </header>
+  </section>
+
+    <% if current_spokesman?(user) %>
+      Este es tu representante!
+    <% else %>
+    <section class="voters">
+      <%= link_to user, :class => "vote-link" do %>
+        <strong>Elegir</strong>
+        <%# who_did_vote(proposal) %>
+        <p style="padding-top:5px">7 representates</p>
+      <% end %>
+    </section>
+    <% end %>
+  <span class="decorate up"></span>
 </article>

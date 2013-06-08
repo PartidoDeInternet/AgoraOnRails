@@ -2,19 +2,6 @@
 
 <section id="content">
   <%= render "layouts/navigation" %>
-  
-  <% if current_user && current_user.spokesman == @user %>
-    <%= form_for @user, :url => discharge_as_spokesman_user_path(@user) do |f| %>
-       <%= submit_tag t(:discharge_spokesman, :name => @user.name), :id => "discharge_spokesman_button", :class => "discharge-my-spokesman" %>
-     <% end %>
-  <% else %>
-    <% unless current_user == @user %>
-      <%= form_for @user, :url => choose_as_spokesman_user_path(@user) do |f| %>
-        <%= submit_tag t(:choose_spokeman, :name => @user.name), :id => "choose_spokesman_button", :class => "make-my-spokesman" %>
-      <% end %>
-    <% end %>
-  <% end %>  
-  
+  <%= render 'actions' %>
   <%= render :partial => "proposal", :collection => @proposals %>
 </section>
-
