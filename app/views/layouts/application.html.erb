@@ -4,6 +4,7 @@
   <title><%= "#{@title} -" unless @title.blank? %> AgoraOnRails</title>
   <meta charset="utf-8" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <%= include_gon %>
   <%= stylesheet_link_tag "application" %>
   <% if controller_name == "votes" %>
     <%= stylesheet_link_tag controller_name %>
@@ -86,6 +87,9 @@
   </footer>
   
   <%= javascript_include_tag "application" %>
+  <% if controller_name == "users" and action_name == "show" %>
+    <%= javascript_include_tag "tree" %>
+  <% end %>
   <%= render :partial => "shared/google_analytics" if Rails.env == 'production' %>
 </body>
 </html>

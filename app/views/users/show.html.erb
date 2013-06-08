@@ -5,3 +5,26 @@
   <%= render 'actions' %>
   <%= render :partial => "proposal", :collection => @proposals %>
 </section>
+
+<aside>
+  <div id="tree"></div>    
+<aside>
+<div id="log" style="display:none"></div>
+<table style="display:none">
+    <tr>
+        <td>
+            <label for="s-normal">Normal </label>
+        </td>
+        <td>
+            <input type="radio" id="s-normal" name="selection" checked="checked" value="normal" />
+        </td>
+    </tr>
+    <tr>
+         <td>
+            <label for="s-root">Set as Root </label>
+         </td>
+         <td>
+            <input type="radio" id="s-root" name="selection" value="root" />
+         </td>
+    </tr>
+</table>

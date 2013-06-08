@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @proposals = @user.voted_proposals
+    gon.jbuilder as: :user
   end 
 
 end

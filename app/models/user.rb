@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  default_scope order('represented_users_count DESC')
+  
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
   
@@ -48,6 +50,12 @@ class User < ActiveRecord::Base
       current = current.spokesman
     end
     list
+  end
+  
+  def represented_users_tree(nodes=represented_users)
+    nodes.map do |user|
+      {:name => user.name, :id => user.id, :children => user.represented_users_tree(user.represented_users)}
+    end
   end
   
   def voted_and_delegated_proposals

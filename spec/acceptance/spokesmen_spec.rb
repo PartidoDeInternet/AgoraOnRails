@@ -433,4 +433,5 @@ feature "Spokesmen", %q{
   end
   
   pending "Number of delegations through agoraonrails in the footer"
+  pending "Order users my number of representations"
 end
