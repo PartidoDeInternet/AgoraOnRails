@@ -1,0 +1,13 @@
+<%= simple_form_for([@proposal, @vote]) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs text-center">
+    <%= f.input :explanation, required: false, autofocus: true, as: :text, input_html:  { rows: 3 , class: "span6"}  %>
+    <%= f.input :value, :value => params[:value], as: :hidden %>
+  </div>
+  <br />
+  <p class="actions">
+    <button type="submit" class="confirm"><span><%= t(:i_am_sure) %></span></button>
+    <%= t(:or_well)%> 
+    <%= link_to t(:think_more), proposal_path(@proposal), class: "oh-no" %>
+  </p>
+<% end %>

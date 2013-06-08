@@ -17,6 +17,6 @@
       <h2><%= proposal_info(:heading) %></h2>
       <p><%= proposal_info(:description) %></p>
     </header>
-    <%= render :partial => 'shared/proposal', :collection => @proposals %>
+    <%= render partial: 'proposal', :collection => @proposals %>
   </section>
 </section>
