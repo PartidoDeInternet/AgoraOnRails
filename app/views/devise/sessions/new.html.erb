@@ -54,11 +54,11 @@
         <!-- refactor with devise template -->
         <p>¿Olvidaste tu contraseña? Envíate un mensaje de restablecimiento de contraseña y comprueba tu email.</p>
 
-        <%= form_for(resource, :as => "forgot", :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
           <%# f.error_notification %>
 
           <div class="form-inputs">
-            <%= f.label :norl, "Email" %>
+            <%= f.label :email, "Email" %>
             <%= f.text_field :email %>
           </div>
           <br />
@@ -81,7 +81,7 @@
         <div class="form-inputs">
           <%= f.label :name, "Nombre" %>
           <%= f.text_field :name %>
-          <%= f.label :jarl, "Email" %>
+          <%= f.label :email, "Email" %>
           <%= f.text_field :email %>
           <%= f.label :password, "Contraseña" %>
           <%= f.text_field :password %>

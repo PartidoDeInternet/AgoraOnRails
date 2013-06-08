@@ -10,9 +10,9 @@ feature "Authentication", %q{
   scenario "Sign up with standard account" do
     visit "/users/sign_in"
     within("#signup") do
-      fill_in :user_name, with: "Punset"
-      fill_in :user_email, with: "punset@spain.com"
-      fill_in :user_password, with: "secret"
+      fill_in :account_name, with: "Punset"
+      fill_in :account_email, with: "punset@spain.com"
+      fill_in :account_password, with: "secret"
       click_button "Sign up"
     end
     page.should have_content "Estoy logueado como Punset"
@@ -31,7 +31,7 @@ feature "Authentication", %q{
   end
   
   scenario "Sign in with twitter" do
-    user = create_user name: "José Luis Sampedro"
+    user = create_user name: "José Luis Sampedro", provider: :twitter, uid: 12345 
     OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(:twitter, {:uid => user.uid, :info => {:name => user.name}})
     visit "/users/sign_in"
@@ -40,7 +40,7 @@ feature "Authentication", %q{
   end
 
   scenario "Sign in with facebook" do
-    user = create_user name: "Platón"
+    user = create_user name: "Platón", provider: :facebook, uid: 123456
     OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(:facebook, {:uid => user.uid, :info => {:name => user.name}})
     visit "/users/sign_in"
@@ -49,7 +49,7 @@ feature "Authentication", %q{
   end
 
   scenario "Sign in with tractis" do
-    user = create_user provider: "tractis" 
+    user = create_user provider: "tractis", uid: 1234567
     stub_tractis_request
     get_tractis_callback(user.name, user.uid)
     visit "/"

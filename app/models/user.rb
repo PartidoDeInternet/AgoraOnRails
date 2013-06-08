@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
 
   belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
   
-  validates :name,     presence: true
-  validates :email,    presence: true, on: :create
-  validates :password, presence: true, on: :create
+  validates :name,     presence: true, unless: :provider
+  validates :email,    presence: true, unless: :provider, on: :create
+  validates :password, presence: true, unless: :provider, on: :create
   validates :uid,      presence: true, if: :provider 
   validate  :prevent_oneself_as_spokesman
   
