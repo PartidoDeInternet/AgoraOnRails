@@ -21,6 +21,35 @@ feature "Spokesmen", %q{
     page.should have_link "Jose Luis", :href => user_path(zapatero)
     page.should have_link "Mariano",   :href => user_path(rajoy)
   end
+  
+  scenario "View number of delegations" do
+    punset = create_user :name => "Punset"
+    fan_de_punset = create_user :name => "Fan de Punset", :spokesman => punset
+    peter = create_user :name => "Peter", :spokesman => punset
+    
+    visit users_path
+    within "#user_#{peter.id}" do
+      page.should have_content "Elige!"
+      page.should have_content "Sé el primero en delegar"
+    end
+    
+    within "#user_#{punset.id}" do
+      page.should have_content "Elige!"
+      page.should have_content "2 personas ya lo han hecho"
+    end
+  end
+  
+  scenario "View discharge spokesman" do
+    peter = create_user :name => "Peter"
+    fan_de_peter = create_user :name => "Fan de Peter", :spokesman => peter
+
+    login_as fan_de_peter
+    visit users_path
+
+    within "#user_#{peter.id}" do
+      page.should have_content "Destituir a mi representante"
+    end
+  end
     
   scenario "Choose spokesman" do
     fan_de_punset = create_user :name => "Fan de Punset"
@@ -402,4 +431,6 @@ feature "Spokesmen", %q{
     end
     
   end
+  
+  pending "Number of delegations through agoraonrails in the footer"
 end

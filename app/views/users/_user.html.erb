@@ -1,4 +1,4 @@
-<article class="proposal">
+<article class="proposal" id="user_<%= user.id %>">
   <section class="proposal-content">
     <header>
       <hgroup>
@@ -11,14 +11,16 @@
     </header>
   </section>
 
-    <% if current_spokesman?(user) %>
-      Este es tu representante!
-    <% else %>
     <section class="voters">
-      <%= link_to user, :class => "vote-link" do %>
-        <strong>Elegir</strong>
-        <%# who_did_vote(proposal) %>
-        <p style="padding-top:5px">7 representates</p>
+      <% if current_spokesman?(user) %>
+        <%= link_to user, :class => "fire-spokesman-large" do %>
+          <strong>Destituir</strong>
+          a mi representante
+        <% end %>
+      <% else %>
+      <%= link_to user, :class => "choose-spokesman-large" do %>
+        <strong>Elige!</strong>
+        <%= who_has_delegated?(user) %>
       <% end %>
     </section>
     <% end %>

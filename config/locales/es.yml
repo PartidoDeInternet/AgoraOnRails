@@ -28,6 +28,7 @@
   vote_prompt: 'Vota!'
   end_voting: 'Finalizar votación'
   be_first: 'Sé el primero en votar'
+  be_first_to_delegate: 'Sé el primero en delegar'
   one_did_it: 'persona ya lo ha hecho'
   many_did_it: 'personas ya lo han hecho'
   popular_vote_results: 'Resultados de la votación popular'
