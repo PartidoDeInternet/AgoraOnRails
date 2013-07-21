@@ -36,7 +36,7 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'launchy'
-  gem 'debugger'
+  gem 'byebug'
   gem 'ZenTest'
   gem 'autotest-rails'
   gem 'autotest-growl'
