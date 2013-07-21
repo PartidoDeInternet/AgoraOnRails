@@ -167,7 +167,7 @@ function init(){
         }
     };
     
-    top.onchange = left.onchange = bottom.onchange = right.onchange = changeHandler;
+		//top.onchange = left.onchange = bottom.onchange = right.onchange = changeHandler;
     //end
 
 }

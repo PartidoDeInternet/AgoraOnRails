@@ -34,7 +34,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'steak'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'launchy'
   gem 'byebug'
   gem 'ZenTest'
