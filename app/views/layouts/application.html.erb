@@ -37,6 +37,17 @@
           <div class="<%= key %>"><%= value %></div>
         <% end %>
 
+        <% if controller_name == "proposals" or controller_name == "users" %>
+          <section id="welcome">
+            <p>
+              <h2><%= t(:hello)%></h2>
+              <p><%= t(:intro_paragraph)%></p> 
+              <p><%= t :whats_agora_html, :href => link_to(APP_CONFIG['org_name'], APP_CONFIG['org_url']) %>
+            </p>
+          </section>
+          <img src="/assets/explain.png" width="951" height="33" alt="Explain"/>
+        <% end %>
+        
         <%= yield %>
 
         <% if controller_name == "proposals" %>
@@ -47,7 +58,9 @@
                 <ul>
                   <% hot_categories.each_with_index do |category, index| %>
                   <li class="category">
-                    <%= link_to category.name, [category, :proposals], :class => "name tag-#{index + 1}", :title => category.name %>
+                    <%= link_to category.name, [category, :proposals], 
+                               :class => "name tag-#{index + 1}", 
+                               :title => category.name %>
                     <span class="count">
                       <%= category.proposals_count %>
                     </span>
@@ -63,7 +76,9 @@
                 <ul>
                   <% hot_proposers.each_with_index do |proposer, index| %>
                   <li class="proposer">
-                    <%= link_to proposer.name, [proposer, :proposals], :class => "name tag-#{index + 1}", :title => proposer.name %>
+                    <%= link_to proposer.name, [proposer, :proposals], 
+                               :class => "name tag-#{index + 1}", 
+                               :title => proposer.name %>
                     <span class="count">
                       <%= proposer.proposals_count %>
                     </span>
@@ -82,7 +97,9 @@
 
   <footer>
     <div class="wrap-fit">
-      <section id="total-votes"><strong><%= number_with_delimiter Vote.count %></strong> <%= t :votes_through_agora %></section>
+      <section id="total-votes">
+        <strong><%= number_with_delimiter Vote.count %></strong> 
+        <%= t :votes_through_agora %></section>
     </div>
   </footer>
   
