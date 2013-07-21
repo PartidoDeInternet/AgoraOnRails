@@ -30,13 +30,11 @@ feature "User page", %q{
     create_vote( :user  => bob,
           :proposal     => @proposal_2, 
           :explanation  => "Purple haze all around",
-          :link         => "http://bobmarley.com",
           :value        => "si")
           
     create_vote( :user  => bob,
           :proposal     => @proposal_3, 
           :explanation  => "Internet es un derecho fundamental de todos los humanos",
-          :link         => "http://derechoshumanos.com",
           :value        => "no")
     visit user_path(bob)
 
