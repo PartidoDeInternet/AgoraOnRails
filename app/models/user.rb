@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  default_scope order('represented_users_count DESC')
+  default_scope { order('represented_users_count DESC') }
   
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
