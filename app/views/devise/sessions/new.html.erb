@@ -1,20 +1,20 @@
 <div class="row sign-in-wrapper">
     <div class="span4 offset1" >
       <h3>Entra en Agoraonrails</h3>
-      
+
       <div id="social-network-account">
         <p>Puedes identificarte con una de estas redes sociales. </p>
         <p class="">
           <% ["twitter", "facebook"].each do |provider| %>
-            <%= link_to image_tag("#{provider}.jpeg", :size => "50x50"), 
+            <%= link_to image_tag("#{provider}.jpeg", :size => "50x50"),
                         user_omniauth_authorize_path(provider),
                         :class => "popup", :id => "#{provider}_sign_in",
                         :"data-width" => 580, :"data-height" => 400 %>
           <% end %>
-          
+
           <% if Rails.env.test? %>
     	      <div style="margin-bottom: 10px;">
-    	        <%= identity_verification_gateway(t(:identify_with_dnie), 
+    	        <%= identity_verification_gateway(t(:identify_with_dnie),
     	         		  ENV["TRACTIS_API_KEY"], :action => 'tractis_authentication') %>
     	      </div>
     	    <% end %>
@@ -24,7 +24,7 @@
            Entra con tu cuenta de Agoraonrails
          </a>
       </div>
-      
+
       <div id="agoraonrails-account" style="display:none;">
         <p>Introduce tu email y tu contraseña de Agoraonrails.com</p>
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), validate: true) do |f| %>
@@ -39,17 +39,17 @@
           <p>
             <%= link_to "¿Olvidaste tu contraseña?", "#", class: "forgot-password-link" %>
           </p>
-          
+
           <div>
             <%= f.submit "Sign in", class: "btn" %>
           </div>
         <% end %>
-        
+
         <a href="#" class="social-network-account-link">
           Entra a través de Twitter ó Facebook
         </a>
       </div>
-      
+
       <div id="forgot-password" style="display:none">
         <!-- refactor with devise template -->
         <p>¿Olvidaste tu contraseña? Envíate un mensaje de restablecimiento de contraseña y comprueba tu email.</p>
@@ -68,7 +68,7 @@
           <br />
           <p><%= link_to "O entra con tu cuenta de Agoraonrails.com", "#", class: "agoraonrails-account-link" %></p>
           <p><%= link_to "Entra a través de Twitter ó Facebook", "#", class: "social-network-account-link" %></p>
-          
+
         <% end %>
       </div>
     </div>
@@ -84,7 +84,7 @@
           <%= f.label :email, "Email" %>
           <%= f.text_field :email %>
           <%= f.label :password, "Contraseña" %>
-          <%= f.text_field :password %>
+          <%= f.password_field :password %>
         </div>
         <br />
         <div>
