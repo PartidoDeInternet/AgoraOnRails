@@ -2,4 +2,4 @@ es:
   simple_form:
     labels:
       vote:
-        explanation: 'Explicación'
+        explanation: 'Si quieres puedes añadir una explicación.'

@@ -3,8 +3,9 @@
 
   <p class="confirmation-message">
     <strong><%= confirmation_text(params[:value]) %></strong>
+
     <%= t(:the_proposal, :title => @proposal.title) %>
-    <p>Si quieres puedes añadir una explicación y un link con más información.</p>
-    <%= render 'form' %>
+    <p style="text-align:center"><%= render 'form' %>
+    
   </p>
 </div>

@@ -337,6 +337,10 @@ footer p {
   width: 205px;
 }
 
+.voters a strong {
+  padding-bottom: 15px;
+}
+
 .vote-link {
   display: block;
   padding: 10px;
@@ -400,10 +404,18 @@ footer p {
 
 .solved {
   display: block;
-  text-align: center;
+  text-align: left;
   padding: 10px;
   color: #333;
   font-size: 1.5em;
+  background: #66B9AF;
+}
+
+.solved-icon {
+  float: left;
+  padding: 0px 18px;
+  display: block;
+  min-height: 45px;
   background: #66B9AF url('/assets/icon_padlock_closed.gif') no-repeat 10px center;
 }
 
@@ -843,6 +855,7 @@ button.confirm span {
 }
 
 .make-my-spokesman {
+  width: 300px;
   display: block;
   padding: 10px;
   background: #66B9AF;
@@ -859,7 +872,26 @@ button.confirm span {
   box-shadow: 1px 1px 1px #BBBCBA;
 }
 
+.make-my-spokesman-submit {
+  display: inline;
+  padding: 10px;
+  background: #66B9AF;
+  text-align: center;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  margin-right: 0px;
+  -o-box-shadow: 1px 1px 1px #BBBCBA;
+  -icab-box-shadow: 1px 1px 1px #BBBCBA;
+  -khtml-box-shadow: 1px 1px 1px #BBBCBA;
+  -moz-box-shadow: 1px 1px 1px #BBBCBA;
+  -webkit-box-shadow: 1px 1px 1px #BBBCBA;
+  box-shadow: 1px 1px 1px #BBBCBA;
+}
+
 .discharge-my-spokesman {
+  width: 300px;
   display: block;
   padding: 10px;
   background:#9B3666;

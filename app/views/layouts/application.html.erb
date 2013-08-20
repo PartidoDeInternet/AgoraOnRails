@@ -6,8 +6,8 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <%= include_gon %>
   <%= stylesheet_link_tag "application" %>
-  <% if controller_name == "votes" %>
-    <%= stylesheet_link_tag controller_name %>
+  <% if import_bootstrap? %>
+    <%= stylesheet_link_tag "boot" %>
   <% end %>
   <%= csrf_meta_tag %>
   <%= yield :head %>

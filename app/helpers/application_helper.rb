@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def import_bootstrap?
+    action_name == "new" and ["votes", "spokesmen"].include?(controller_name)
+  end
+  
   def menu_link(text, url)
     content_tag :li do
       link_to text, url, :class => "navlinks"
