@@ -67,6 +67,20 @@ feature "Spokesmen", %q{
     @user.spokesman.should == fan_de_punset
   end
   
+  scenario "Choose spokesman (cancel)" do
+    fan_de_punset = create_user :name => "Fan de Punset"
+    login_as @user
+    
+    visit users_path
+    click_link "Fan de Punset"
+    click_link "Elegir a Fan de Punset como mi portavoz"
+    
+    page.should have_content "Vas a elegir a Fan de Punset como tu Portavoz"
+    click_link "quiero pensármelo mejor"
+    
+    page.current_url.should == user_url(fan_de_punset)
+  end
+  
   scenario "Discharge spokesman" do
     zapatero = create_user :name => "Zapatero"
     @user.spokesman = zapatero

@@ -1,7 +1,10 @@
 <%= form_for @spokesman, :url => spokesman_url(:id => @spokesman.id) do |f| -%>
   <p class="actions">
-    <%= submit_tag t(:i_am_sure), :class => "make-my-spokesman" %>
-    <%= t(:or_well)%> 
-    <%= link_to t(:think_more), proposal_path(@proposal), class: "oh-no" %>
+    <span>
+      <%= submit_tag t(:i_am_sure), :class => "make-my-spokesman-submit" %>
+      <%= t(:or_well)%> 
+      <%= link_to t(:think_more), user_url(@spokesman), class: "oh-no" %>
+    </span>
   </p>
+
 <% end %>
