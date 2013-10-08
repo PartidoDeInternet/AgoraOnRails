@@ -17,7 +17,7 @@ GIT
       warden (~> 1.2.1)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     ZenTest (4.9.2)
     actionmailer (4.0.0)
