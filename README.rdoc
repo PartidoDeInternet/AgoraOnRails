@@ -9,6 +9,10 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
 
 == Install and Use:
 
+    rvm get stable
+    
+    rvm install ruby-2.0.0-p247
+    
     git clone git://github.com/PartidoDeInternet/AgoraOnRails.git
 
     cd AgoraOnRails
