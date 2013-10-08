@@ -8,15 +8,15 @@ AgoraOnRails aims to revolutionize democracy by empowering citizens to directly 
 extracted from the Spanish Congress official web page http://www.congreso.es/portal/page/portal/Congreso/Congreso/Iniciativas
 
 == Install and Use:
-
-    rvm get stable
+    
+    curl -L https://get.rvm.io | bash
     
     rvm install ruby-2.0.0-p247
     
     git clone git://github.com/PartidoDeInternet/AgoraOnRails.git
 
     cd AgoraOnRails
-
+    
     bundle install
 
     cp config/database.yml.example config/database.yml
