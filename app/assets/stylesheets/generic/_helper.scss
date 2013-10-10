@@ -10,7 +10,12 @@
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-
+ /**
+ * Add flag
+ */
+ .brd{
+    border: 1px solid red;
+ }
 
 /**
  * Add/remove floats
