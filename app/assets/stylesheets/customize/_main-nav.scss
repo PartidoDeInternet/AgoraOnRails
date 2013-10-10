@@ -1,0 +1,16 @@
+//*-----------------------------------------------
+//* Main nav 
+//*-----------------------------------------------
+.main-nav{
+	.nav{
+		@include border-radius(100%);
+	}
+	.nav-link{
+		@include size(150px,100px);
+		line-height: 100px;
+		text-align: center;
+		background: white;
+		text-decoration: none;
+		
+	}
+}

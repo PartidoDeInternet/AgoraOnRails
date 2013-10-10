@@ -1,5 +1,6 @@
 //= require populo
 
+@import "compass";
 /*------------------------------------*\
     INUIT.CSS
 \*------------------------------------*/
@@ -212,4 +213,8 @@
 @import "generic/helper";
 @import "generic/debug";
 
+/**
+ * Customize
+ */
+ @import "customize/main-nav";
 
