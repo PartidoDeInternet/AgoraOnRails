@@ -6,3 +6,4 @@ tmp/**/*
 test/
 config/database.yml
 coverage
+.sass-cache/
