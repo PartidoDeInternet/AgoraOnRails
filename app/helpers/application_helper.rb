@@ -4,9 +4,11 @@ module ApplicationHelper
     action_name == "new" and ["votes", "spokesmen"].include?(controller_name)
   end
   
-  def menu_link(text, url)
+  def menu_link(text, url, icon='')
     content_tag :li do
-      link_to text, url, :class => "navlinks"
+      link_to url, :class => "navlinks" do
+        "<span class='#{icon}'></span>#{text}".html_safe
+      end
     end
   end
 
