@@ -6,7 +6,7 @@ module ApplicationHelper
   
   def menu_link(text, url, icon='')
     content_tag :li do
-      link_to url, :class => "navlinks" do
+      link_to url, :class => "nav-link" do
         "<span class='#{icon}'></span>#{text}".html_safe
       end
     end

@@ -2,15 +2,22 @@
 //* Main nav 
 //*-----------------------------------------------
 .main-nav{
+	border-top: 5px solid #505951;
 	.nav{
 		@include border-radius(100%);
+
 	}
 	.nav-link{
 		@include size(150px,100px);
-		line-height: 100px;
+		line-height: 10px;
 		text-align: center;
 		background: white;
 		text-decoration: none;
-		
+		color: gray;
+	    [class*='icon-']{
+	    	display: block;
+	    	font-size: 3em;
+	    	line-height: 1.6em;
+	    }
 	}
 }
