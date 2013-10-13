@@ -20,7 +20,10 @@
   <div id="wrap">
     <div id="wrap-inner">
       <div class="wrap-fit">
-        <%= render "layouts/navigation" %>
+        <header class="main-header">
+          <h1 class="logo">logo</h1>
+          <%= render "layouts/navigation" %>
+        </header>
         <section id="header">
           <% if current_user %>
             <nav id="user-nav">
