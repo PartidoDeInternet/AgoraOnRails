@@ -1,8 +1,8 @@
-<nav id="nav">
-  <ul>
-    <%= menu_link t(:nav_start), root_path, 'hot' %>
-    <%= menu_link t(:nav_recently_closed), closed_proposals_path %>
-    <%= menu_link t(:nav_proposals), proposals_path %>
-    <%= menu_link t(:nav_users), users_path %>
+<nav class="main-nav">
+  <ul class="nav">
+    <%= menu_link t(:nav_start), root_path, 'icon-search' %>
+    <%= menu_link t(:nav_recently_closed), closed_proposals_path, 'icon-search' %>
+    <%= menu_link t(:nav_proposals), proposals_path, 'icon-search' %>
+    <%= menu_link t(:nav_users), users_path, 'icon-search' %>
   </ul>
 </nav>
