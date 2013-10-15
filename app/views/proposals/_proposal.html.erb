@@ -2,14 +2,15 @@
   <section class="proposal-content">
     <header>
       <hgroup>
-        <h2 class="title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
-        <h3>
+        <h2><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
+        <p>
           <%= t(:proposed_by_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %> 
           <span class="proposed_at"><%= t(:on_html, :date => l(proposal.proposed_at, :format => :long)) %></span>
-        </h3>
+        </p>
       </hgroup>
     </header>
   </section>
+
     <% if proposal.closed? %>
     <section class="voters">
       <span class="solved-icon"> </span>
@@ -25,12 +26,12 @@
       </section>
     </section>
     <% else %>
-    <section class="voters">
-      <%= link_to proposal, :class => "vote-link" do %>
+    <section class="text--right ">
+      <%= link_to proposal, :class => "btn btn--gamma btn--soft btn--primary" do %>
         <strong><%= t(:vote_prompt) %></strong>
         <%= who_did_vote(proposal) %>
       <% end %>
     </section>
     <% end %>
-  <span class="decorate up"></span>
+  
 </article>

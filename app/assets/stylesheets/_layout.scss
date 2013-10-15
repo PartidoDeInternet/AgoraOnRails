@@ -1,0 +1,17 @@
+.main-header{
+	border-top: 5px solid $dark-green;
+	overflow: hidden;
+}
+.main-bar{
+  position: relative;
+  display: block;
+  padding: 10px 0;
+  width: 100%;
+  > p{
+  	margin: 0;
+  	text-align: right;
+  }
+}
+.main-aside{
+  float: left;
+}
