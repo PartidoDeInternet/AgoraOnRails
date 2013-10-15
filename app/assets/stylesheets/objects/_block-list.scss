@@ -40,5 +40,11 @@
             padding:$half-spacing-unit;
             margin:-$half-spacing-unit;
         }
+        .block-list__count{
+          display: inline-block;
+          padding: 1px;
+          @include border-radius(50%);
+          color: white;
+        }
 
 }//endif

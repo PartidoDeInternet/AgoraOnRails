@@ -1,12 +1,7 @@
 <% @title = proposal_title %>
 
-<section id="content">
-	
-  <section class="proposals">
-    <header class="proposal-head">
-      <h2><%= proposal_info(:heading) %></h2>
-      <p><%= proposal_info(:description) %></p>
-    </header>
+  <div class="proposals">
+    <h2><%= proposal_info(:heading) %></h2>
+    <h5><%= proposal_info(:description) %></h5>
     <%= render partial: 'proposal', :collection => @proposals %>
-  </section>
-</section>
+  </div>

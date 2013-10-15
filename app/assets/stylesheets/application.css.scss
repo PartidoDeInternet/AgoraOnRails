@@ -216,6 +216,13 @@
 /**
  * Customize
  */
+ @import "layout";
  @import "customize/main-nav";
-  @import "customize/header";
+ @import "customize/header";
+ @import "customize/aside-nav";
+
+ /**
+ * Sections
+ */
+ @import "sections/home";
 

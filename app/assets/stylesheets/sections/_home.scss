@@ -1,0 +1,40 @@
+.claim{
+	padding: 60px;
+	margin-bottom: 30px;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 30px;
+	color: inherit;
+	background: #eeeeee url('/assets/logi.png') right bottom no-repeat;
+	background-size: 100px;
+	@include border-radius(5px);
+}
+.proposals{
+  width: 700px;
+  float: right;
+  > h2{
+  	margin: 0
+  }
+}
+.proposal {
+  position: relative;
+  padding: 25px 13px;
+  margin-bottom: 10px;
+  border: 1px solid #F6F6F6;
+  background: #FFFFFF;
+  overflow: hidden;
+  @include box-shadow(1px 1px 1px #BBBCBA);
+}
+
+.proposal h2 a {
+  color: #333;
+  text-decoration: none;
+}
+
+.proposal h2 a:hover {
+  text-decoration: underline;
+}
+
+
+
+

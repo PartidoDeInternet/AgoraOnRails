@@ -231,26 +231,7 @@ footer p {
 
 /* proposal-head */
 
-.proposal-head {
-  display: block;
-  padding: 0 50px 5px 0;
-  border-bottom: 1px solid #D6D6D6;
-  margin-bottom: 15px;
-}
-.proposal-head h2 {
-  font-size: 3em;
-  font-weight: normal;
-  letter-spacing: -1px;
-}
 
-.proposal-head strong {
-  display: block;
-  padding-bottom: 15px;
-  font-size: 2.5em;
-  font-weight: normal;
-  letter-spacing: -1px;
-  color: #333;
-}
 
 /* breadcrumb 
 
@@ -296,31 +277,9 @@ REMOVING ... 10 DE OCTUBRE
 
 /* proposal */
 
-.proposal {
-  display: block;
-  position: relative;
-  padding: 25px 13px;
-  margin-bottom: 10px;
-  border: 1px solid #F6F6F6;
-  background: #FFFFFF;
-  -o-box-shadow: 1px 1px 1px #BBBCBA;
-  -icab-box-shadow: 1px 1px 1px #BBBCBA;
-  -khtml-box-shadow: 1px 1px 1px #BBBCBA;
-  -moz-box-shadow: 1px 1px 1px #BBBCBA;
-  -webkit-box-shadow: 1px 1px 1px #BBBCBA;
-  box-shadow: 1px 1px 1px #BBBCBA;
-}
 
-.proposal h2 a {
-  color: #333;
-  text-decoration: none;
-}
 
-.proposal h2 a:hover {
-  text-decoration: underline;
-}
 
-.proposal-content,
 .proposal aside,
 .voters,
 .documents-list.voters,
@@ -332,9 +291,6 @@ REMOVING ... 10 DE OCTUBRE
   list-style: none;
 }
 
-.proposal-content {
-  width: 440px;
-}
 
 #related,
 .voters {
@@ -669,13 +625,6 @@ button.abstencion span {
   width: 5%;
 }
 
-/* welcome */
-#welcome {
-  padding: 10px;
-  background: #FFFFFF;
-  margin-top: 5px;
-  display: block;
-}
 
 
 /* overlay */
