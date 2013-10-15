@@ -19,78 +19,69 @@
 
   <div id="wrap">
     <div id="wrap-inner">
+      <!-- HEADER
+      ================================================== -->
+      <header class="main-header">
+        <%= render "layouts/navigation" %>
+      </header>
       <div class="wrap-fit">
-        <header class="main-header">
-          <h1 class="logo">logo</h1>
-          <%= render "layouts/navigation" %>
-        </header>
-        <section id="header">
+        
+        <div class="main-bar">
           <% if current_user %>
-            <nav id="user-nav">
-              <ul>
-                <li>
-                  <%= t :currently_logged_as, :name => current_user.name %>
-                  <%= link_to t(:want_to_sign_out), destroy_user_session_path, :method => :delete %>
-                </li>
-              </ul>
-            </nav>
+            <p>
+              <%= t :currently_logged_as, :name => current_user.name %>
+              <%= link_to t(:want_to_sign_out), destroy_user_session_path, :method => :delete %>
+             </p>
           <% end %>
-        </section>
+        </div>
 
         <% flash.each do |key, value| %>
           <div class="<%= key %>"><%= value %></div>
         <% end %>
 
         <% if controller_name == "proposals" or controller_name == "users" %>
-          <section id="welcome">
-            <p>
-              <h2><%= t(:hello)%></h2>
-              <p><%= t(:intro_paragraph)%></p> 
-              <p><%= t :whats_agora_html, :href => link_to(APP_CONFIG['org_name'], APP_CONFIG['org_url']) %>
-            </p>
-          </section>
-          <img src="/assets/explain.png" width="951" height="33" alt="Explain"/>
+          <div class="claim island">
+            <h2><%= t(:hello)%></h2>
+            <p><%= t(:intro_paragraph)%></p> 
+            <p><%= t :whats_agora_html, :href => link_to(APP_CONFIG['org_name'], APP_CONFIG['org_url']) %></p>
+          </div>
         <% end %>
         
         <%= yield %>
 
         <% if controller_name == "proposals" %>
-          <aside>
-            <dl class="tag_list" id="categories">
-              <dt><strong><%= t :what_proposals %></strong></dt>
-              <dd>
-                <ul>
+          <aside class="main-aside">
+            <div class="aside-nav" >
+              <h4><%= t :what_proposals %></h4>
+                <ul class="block-list">
                   <% hot_categories.each_with_index do |category, index| %>
                   <li class="category">
-                    <%= link_to category.name, [category, :proposals], 
+                    <%= link_to truncate(category.name,:length => 30), [category, :proposals], 
                                :class => "name tag-#{index + 1}", 
                                :title => category.name %>
-                    <span class="count">
+                    <span class="block-list__count">
                       <%= category.proposals_count %>
                     </span>
                   </li>
                   <% end %>
                 </ul>
-              </dd>
-            </dl>
+            </div>
 
-            <dl class="tag_list" id="proposers">
-              <dt><strong><%= t :who_proposed %></strong></dt>
-              <dd>
-                <ul>
+            <div class="aside-nav" >
+              <h4><%= t :who_proposed %></strong></h4>
+                <ul class="block-list">
                   <% hot_proposers.each_with_index do |proposer, index| %>
-                  <li class="proposer">
-                    <%= link_to proposer.name, [proposer, :proposals], 
+                  <li>
+                    <%= link_to truncate(proposer.name, :length => 30), [proposer, :proposals], 
                                :class => "name tag-#{index + 1}", 
                                :title => proposer.name %>
-                    <span class="count">
+                    <span class="block-list__count">
                       <%= proposer.proposals_count %>
                     </span>
                   </li>
                   <% end %>
                 </ul>
-              </dd>
-            </dl>
+            </div>
 
           </aside>
         <% end %>
