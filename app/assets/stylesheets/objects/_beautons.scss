@@ -173,8 +173,24 @@
     background-color: #80ab5b;
     color: white;
 }
-.btn--secondary{}
-.btn--tertiary{}
+.btn--secondary{
+
+}
+.btn--tertiary{
+
+}
+.btn--success{
+    background-color: $light-green;
+    color: white;
+}
+.btn--alert{
+    background-color: $red;
+    color: white;
+}
+.btn--info{
+    background-color: $orange;
+    color: white;
+}
 
 /**
  * Positive actions; e.g. sign in, purchase, submit, etc.

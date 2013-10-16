@@ -38,8 +38,7 @@
         <% flash.each do |key, value| %>
           <div class="<%= key %>"><%= value %></div>
         <% end %>
-
-        <% if controller_name == "proposals" or controller_name == "users" %>
+        <% if controller_name == "proposals" or controller_name == "users" and !@proposal %>
           <div class="claim island">
             <h2><%= t(:hello)%></h2>
             <p><%= t(:intro_paragraph)%></p> 

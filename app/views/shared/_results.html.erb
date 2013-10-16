@@ -1,9 +1,9 @@
-<ul>
+<ul class="list-graphic">
   <% Vote.choices.each do |choice| %>
-    <li class="<%= choice %>">
+    <li class="list-graphic__result <%= choice %>">
       <%= choice_result(proposal, choice) %>
-      <span class="vote_percentage"><%= percentage_for(proposal, choice) %></span>
-      <span class="vote_count"><%= proposal.total(choice)%> <%= t(:votes) %></span>
+      <small class="vote-percentage"><%= percentage_for(proposal, choice) %></small>
+      <small class="vote-count"><%= proposal.total(choice)%> <%= t(:votes) %></small>
     </li>
   <% end %>
 </ul>
