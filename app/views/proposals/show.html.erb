@@ -51,16 +51,11 @@
 ================================================== -->
 <!-- Begins the related content this proposal
 ================================================== -->
-  <div> 
+  
+  <div class="proposal-graphic"> 
       <section class="vote-results documents-list">
-        <dl>
-          <dt>
-            <strong><%= t(:popular_vote)%></strong>
-          </dt>
-          <dd>
-            <%= render :partial => "shared/results", :locals => {:proposal => @proposal, :width => 20} %>
-          </dd>
-        </dl>
+        <h5><%= t(:popular_vote)%></h5>
+        <%= render :partial => "shared/results", :locals => {:proposal => @proposal, :width => 20} %>
       </section>
 
       <div class="votes_with_explanations">

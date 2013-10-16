@@ -20,7 +20,7 @@ module ProposalsHelper
   end
   
   def choice_result(proposal, choice)
-    content_tag :strong, :style => "width:#{percentage_for(proposal, choice)}; max-width: 310px" do
+    content_tag :strong, :style => "max-width: 80%", :data => {'width'=> percentage_for(proposal, choice) } do
       content_tag :span do
         humanize(choice)
       end
