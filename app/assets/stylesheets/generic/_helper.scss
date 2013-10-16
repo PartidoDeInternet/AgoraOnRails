@@ -17,6 +17,14 @@
     border: 1px solid red;
  }
 
+ /**
+ * Separators
+ */
+ .separator--top{
+    border-top: 1px solid $light-grey;
+    padding-top: .5em
+ }
+
 /**
  * Add/remove floats
  */

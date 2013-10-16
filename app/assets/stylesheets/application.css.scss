@@ -170,6 +170,7 @@
 
 
 
+
 /**
  * Objects and abstractions
  */
@@ -198,6 +199,7 @@
 @import "objects/rules";
 @import "objects/stats";
 @import "objects/greybox";
+@import "objects/icons";
 
 
 
@@ -220,6 +222,9 @@
  @import "customize/main-nav";
  @import "customize/header";
  @import "customize/aside-nav";
+ @import "customize/proposal";
+ @import "customize/buttons";
+ @import "customize/voteresult";
 
  /**
  * Sections
