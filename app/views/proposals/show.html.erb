@@ -2,30 +2,36 @@
 
 <% @title = "#{awesome_truncate(@proposal.title, 100)}" %>
 
-<section id="content">
-  <%= render "layouts/navigation" %>
+<div class="proposals">
+  
   <article class="proposal" id="proposal_<%= @proposal.id %>">
+    
     <section class="proposal-content">
-
-      <header>
-        <hgroup>
-          <h2 class="title"><%=h @proposal.title %></h2>
-          <h3 class="proposal_type">
-            <%=h @proposal.proposal_type %> 
-            <%= link_to t(:official_link), @proposal.official_url, :class => 'official_url' %>
-          </h3>
-        </hgroup>
-        <%= show_toggle_button(current_user.is_admin?) if current_user %>
-        <ul class="meta">
-          <li class="votes">
+      <!-- Body of proposal
+      ================================================== -->
+      <h2><%=h @proposal.title %></h2>
+      <p class="proposal_type">
+        <%=h @proposal.proposal_type %> 
+        <%= link_to t(:official_link), @proposal.official_url, :class => 'official_url' %>
+      </p>
+      <!-- Footer of proposal
+      ================================================== -->
+      <div class="wrap cf separator--top">
+      <%= show_toggle_button(current_user.is_admin?) if current_user %>
+        <ul class="list meta float--right cf">
+          <li>
+            <small class="icon-heart icon-red icon-min"></small>
             <%= number_with_delimiter @proposal.votes.count %> <%= t(:votes) %>
           </li>
-          <li class="views">
+          <li>
+            <small class="icon-eye-open icon-min"></small>
             <%= number_with_delimiter @proposal.visits %> <%= t(:views) %>
           </li>
         </ul>
-      </header>
+      </div>
 
+      <!-- Votation system
+      ================================================== -->
 
       <% if @proposal.closed? %>
         <p class="solved">
@@ -39,7 +45,13 @@
       <% else %>
         <%= render 'proposals/form' %>
 	    <% end %>
-	    
+    </section>
+  </article>
+<!-- Finish the proposal
+================================================== -->
+<!-- Begins the related content this proposal
+================================================== -->
+  <div> 
       <section class="vote-results documents-list">
         <dl>
           <dt>
@@ -70,9 +82,6 @@
       </dd>
     </dl>
     <% end %>
+  </div>
 
-    <span class="decorate up"></span>
-    <span class="decorate down"></span>
-  </article>
-
-</section>
+</div>

@@ -1,0 +1,40 @@
+//*-----------------------------------------------
+//* Icons size {icon-x-min, icon-min, icon-x-med ...}
+//* http://cdpn.io/c90a1faf4b151b2f23749f8c9efcc7dd
+//*-----------------------------------------------
+$icon-size-collection: (x-min, min, 
+						x-med, med, 
+						x-large, large, 
+						x-super-large, super-large, 
+						x-extra-large, extra-large, 
+						huge);
+$initial-size : .6em;
+$huge-size : 3.4em;
+$size-count : .3em;
+
+@each $size in $icon-size-collection {
+	.icon-#{$size}{
+	  @if $size == 'huge' {
+		  font-size: $huge-size; 
+    }@else{
+      font-size: $initial-size + $size-count; 
+    }
+	}
+	$initial-size: $initial-size + $size-count;
+}
+
+//*-----------------------------------------------
+//* ICONS COLORS
+//*-----------------------------------------------
+$icon-color-collection	: ('red', $red)
+                          ('blue', $blue)
+                          ('orange', $orange)
+                          ('green', $green)
+                          ('light-green', $light-green)
+;
+
+@each $color in $icon-color-collection {	
+	.icon-#{nth($color, 1)}{
+		color: nth($color, 2)
+	}
+}

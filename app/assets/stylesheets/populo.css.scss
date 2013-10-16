@@ -100,18 +100,15 @@ fieldset {
 
 #mini,
 #wrap {
-  background: #E1E2DF url('/assets/content.gif');
   border-bottom: 1px solid #FFF;
 }
 
 #mini,
 #mini #wrap {
-  background: #E1E2DF url('/assets/content.gif');
   border: none;
 }
 
 #wrap-inner {
-  background: url('/assets/content_deg.png') repeat-x top;
   height: 1%;
   padding: 0 0 20px;
   overflow: hidden;
@@ -339,8 +336,6 @@ REMOVING ... 10 DE OCTUBRE
 }
 
 .meta {
-  border-top: 1px solid #E8E8E8;
-  border-bottom: 1px solid #E8E8E8;
   padding-left: 0;
   margin-bottom: 10px;
 }
@@ -392,60 +387,43 @@ REMOVING ... 10 DE OCTUBRE
 .proposal-vote-choices {
   display: block;
   text-align: center;
-  background: #66B9AF;
+  background: #fff;
+  width: 100%;
 }
 
 .proposal-vote-choices fieldset {
   padding: 10px;
 }
 
-.proposal-vote-choices strong {
+.proposal-vote-choices h5 {
   display: block;
   color: #333;
   font-size: 1.5em;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 2px;
 }
 
 .proposal-vote-choices button {
   margin: 0 3px;
   padding: 0;
-  border: 1px solid #333;
-  background: #333;
+ 
   color: #FFFFFF;
   letter-spacing: -1px;
   font-size: 1.5em;
   width: auto;
   overflow: visible;
-  -o-box-shadow: 1px 1px 1px #579D95;
-  -icab-box-shadow: 1px 1px 1px #579D95;
-  -khtml-box-shadow: 1px 1px 1px #579D95;
-  -moz-box-shadow: 1px 1px 1px #579D95;
-  -webkit-box-shadow: 1px 1px 1px #579D95;
-  box-shadow: 1px 1px 1px #579D95;
+
 }
 
 .proposal-vote-choices button span {
   display: block;
   background-repeat: no-repeat;
   background-position: left center;
-  padding: 5px 5px 5px 35px;
-  margin-left:5px;
+  padding: 5px;
+
 }
 
-button.si span {
-  background-image: url('/assets/icon_si.gif');
-	cursor: pointer;
-}
- 
-button.no span {
-  background-image: url('/assets/icon_no.gif');
-	cursor: pointer;
-}
 
-button.abstencion span {
-  background-image: url('/assets/icon_abstencion.gif');
-	cursor: pointer;
-}
 
 .documents-list {
   padding: 7px 0;
