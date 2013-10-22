@@ -47,14 +47,14 @@
 	    <% end %>
     </section>
   </article>
-<!-- Finish the proposal
-================================================== -->
-<!-- Begins the related content this proposal
-================================================== -->
-  
+  <!-- Finish the proposal
+  ================================================== -->
+  <!-- Begins the related content this proposal
+  ================================================== -->
+    
   <div class="proposal-graphic"> 
       <section class="vote-results documents-list">
-        <h5><%= t(:popular_vote)%></h5>
+        <h5 class="flush"><%= t(:popular_vote)%></h5>
         <%= render :partial => "shared/results", :locals => {:proposal => @proposal, :width => 20} %>
       </section>
 
@@ -62,7 +62,8 @@
         <%= render :partial => "vote", :collection => @proposal.votes.order_by_represented_users %>
       </div>
     </section>
-    
+    <!-- Begin tags
+    ================================================== -->
     <% if @proposal.category.present? %>
     <div class="tags">
       <h5 class="flush"><%= t(:related_with)%></h5>
