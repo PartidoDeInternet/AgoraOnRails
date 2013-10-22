@@ -33,6 +33,9 @@
     > li{
         border-bottom-width:1px;
         padding:$half-spacing-unit;
+        &.block-list--cln{
+          border: none;
+        }
     }
 }
         .block-list__link{
