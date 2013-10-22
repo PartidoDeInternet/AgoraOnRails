@@ -1,0 +1,50 @@
+.proposals{
+  width: 700px;
+  float: right;
+  > h2{
+  	margin: 0;
+  }
+  > h5{
+    font-weight: normal;
+  }
+}
+.proposal {
+  position: relative;
+  padding: 25px 13px;
+  margin-bottom: 10px;
+  border: 1px solid #F6F6F6;
+  background: #FFFFFF;
+
+  &:before, &:after{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 15px;
+    left: 10px;
+    width: 50%;
+    top: 80%;
+    max-width:300px;
+    background: #777;
+    @include box-shadow(0 15px 10px #777);
+    @include transform(rotate(-3deg));
+  }
+  &:after{
+     @include transform(rotate(3deg));
+    right: 10px;
+    left: auto;
+  }
+}
+
+.proposal h2 a {
+  color: #333;
+  text-decoration: none;
+}
+
+.proposal h2 a:hover {
+  text-decoration: underline;
+}
+.proposal-content{
+  h2{
+    line-height: 1.3em;
+  }
+}

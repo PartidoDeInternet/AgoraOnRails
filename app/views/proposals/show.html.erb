@@ -64,18 +64,14 @@
     </section>
     
     <% if @proposal.category.present? %>
-    <dl class="tag_list" id="related">
-      <dt>
-        <strong><%= t(:related_with)%></strong>
-      </dt>
-      <dd>
-        <ul>
-          <li class="related">
-            <%= link_to @proposal.category.name, [@proposal.category, :proposals], :title => @proposal.category.name %>
+    <div class="tags">
+      <h5 class="flush"><%= t(:related_with)%></h5>
+        <ul class="block-list">
+          <li class="block-list--cln">
+            <%= link_to @proposal.category.name, [@proposal.category, :proposals], :title => @proposal.category.name, :class => "tags-item" %>
           </li>
         </ul>
-      </dd>
-    </dl>
+    </div>
     <% end %>
   </div>
 

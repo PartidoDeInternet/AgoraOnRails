@@ -219,13 +219,13 @@
  * Customize
  */
  @import "layout";
- @import "customize/main-nav";
- @import "customize/header";
- @import "customize/aside-nav";
- @import "customize/proposal";
- @import "customize/buttons";
- @import "customize/voteresult";
-
+ @import "pieces/main-nav";
+ @import "pieces/header";
+ @import "pieces/aside-nav";
+ @import "pieces/proposal";
+ @import "pieces/buttons";
+ @import "pieces/voteresult";
+ @import "pieces/tags";
  /**
  * Sections
  */
