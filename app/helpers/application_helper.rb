@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def home?
+    request.original_url == root_url
+  end
+
   def import_bootstrap?
     action_name == "new" and ["votes", "spokesmen"].include?(controller_name)
   end
