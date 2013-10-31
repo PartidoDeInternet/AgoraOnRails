@@ -8,6 +8,9 @@
     font-weight: normal;
   }
 }
+.proposals-heading{
+  line-height: 1.1em;
+}
 .proposal {
   position: relative;
   padding: 25px 13px;
@@ -43,8 +46,14 @@
 .proposal h2 a:hover {
   text-decoration: underline;
 }
-.proposal-content{
-  h2{
-    line-height: 1.3em;
-  }
+.proposal-title{
+ line-height: 1.1em;
 }
+
+
+.proposal-resolution {
+  width: 100%;
+  color: grey;
+  font-size: 1.2em;
+}
+

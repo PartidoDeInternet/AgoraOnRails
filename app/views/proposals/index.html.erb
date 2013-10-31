@@ -1,7 +1,7 @@
 <% @title = proposal_title %>
 
   <div class="proposals">
-    <h2><%= proposal_info(:heading) %></h2>
+    <h1 class="proposals-heading"><%= proposal_info(:heading) %></h1>
     <h5><%= proposal_info(:description) %></h5>
     <%= render partial: 'proposal', :collection => @proposals %>
   </div>

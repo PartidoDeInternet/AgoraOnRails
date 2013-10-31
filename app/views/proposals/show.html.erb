@@ -9,7 +9,7 @@
     <section class="proposal-content">
       <!-- Body of proposal
       ================================================== -->
-      <h2><%=h @proposal.title %></h2>
+      <h2 class="proposal-title"><%=h @proposal.title %></h2>
       <p class="proposal_type">
         <%=h @proposal.proposal_type %> 
         <%= link_to t(:official_link), @proposal.official_url, :class => 'official_url' %>
