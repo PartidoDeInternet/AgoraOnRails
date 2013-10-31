@@ -4,6 +4,11 @@
 .main-nav{
 	width: 960px;
 	margin: 0 auto;
+	.logo{
+		.fa{
+			@include text-shadow(5px 5px 5px $light-grey,15px 15px 5px $light-grey);
+		}
+	}
 	.nav{
 		@include border-radius(100%);
 		margin-bottom: 5px;
@@ -28,7 +33,7 @@
 		text-align: center;
 		background: white;
 		text-decoration: none;
-	    [class*='icon-']{
+	    [class*='fa-']{
 	    	display: block;
 	    	font-size: 3em;
 	    	line-height: 1.6em;
