@@ -8,7 +8,7 @@
   <%= stylesheet_link_tag "application" %>
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <% if import_bootstrap? %>
-    <%= stylesheet_link_tag "boot" %>
+    <%# stylesheet_link_tag "boot" %>
   <% end %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
@@ -53,7 +53,7 @@
           <aside class="main-aside">
             <div class="aside-nav" >
               <h4><%= t :what_proposals %></h4>
-                <ul class="block-list">
+                <ul id="categories" class="block-list">
                   <% hot_categories.each_with_index do |category, index| %>
                     <%= nav_link category, [category, :proposals], index %>
                   <% end %>
@@ -62,7 +62,7 @@
 
             <div class="aside-nav" >
               <h4><%= t :who_proposed %></strong></h4>
-                <ul class="block-list">
+                <ul id="proposers" class="block-list">
                   <% hot_proposers.each_with_index do |proposer, index| %>
                     <%= nav_link proposer, [proposer, :proposals], index %>
                   <% end %>

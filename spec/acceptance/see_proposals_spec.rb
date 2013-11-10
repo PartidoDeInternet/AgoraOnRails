@@ -22,10 +22,11 @@ feature "See proposals", %q{
     page.should have_css(".proposal", :count => 1)
     within(:css, ".proposal") do
       page.should have_css(".proposal_type", :text => "Proyecto de Ley")
-      page.should have_css(".title", :text => "Ley Sinde")
+      page.should have_css(".proposal-title", :text => "Ley Sinde")
       page.should have_link("Enlace oficial", :href => "http://congreso.es/sinde")
-      page.should have_css(".votes", :text => "3 votos")
-      page.should have_css(".views", :text => "5 visitas")
+
+      page.should have_content "3 votos"
+      page.should have_content "5 visitas"
     end
   end
   
@@ -106,12 +107,10 @@ feature "See proposals", %q{
     
     visit proposal_path(@proposal)
 
-    within(:css, ".proposal") do        
-      explanations = all(".vote .explanation").map(&:text).map(&:strip)
-      explanations.first.should == "Punset's explanation"
-      explanations.second.should == "Jonnhy's explanation"
-      explanations.third.should == "Jenny's explanation"
-    end
+    explanations = all(".vote .explanation").map(&:text).map(&:strip)
+    explanations.first.should == "Punset's explanation"
+    explanations.second.should == "Jonnhy's explanation"
+    explanations.third.should == "Jenny's explanation"
   end
   
 end

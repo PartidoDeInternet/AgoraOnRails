@@ -18,13 +18,13 @@ feature "Feature name", %q{
     click_link "Cultura"
 
     page.should have_content("Propuestas relacionadas con Cultura")
-    page.should have_css(".proposal .title", :text => "Ley Sinde")
-    page.should_not have_css(".proposal .title", :text => "Usar Google en los examenes")
+    page.should have_css(".proposal .proposal-title", :text => "Ley Sinde")
+    page.should_not have_css(".proposal .proposal-title", :text => "Usar Google en los examenes")
     
     click_link "Educación"
     page.should have_content("Propuestas relacionadas con Educación")
-    page.should have_css(".proposal .title", :text => "Usar Google en los examenes")
-    page.should_not have_css(".proposal .title", :text => "Ley Sinde")
+    page.should have_css(".proposal .proposal-title", :text => "Usar Google en los examenes")
+    page.should_not have_css(".proposal .proposal-title", :text => "Ley Sinde")
   end
   
   scenario "Navigate using proposers" do
@@ -38,13 +38,13 @@ feature "Feature name", %q{
     within(:css, "aside") { click_link "Gobierno" }
 
     page.should have_content(I18n.t(:proposed_by_html, :proposer => "Gobierno"))
-    page.should have_css(".proposal .title", :text => "Ley Sinde")
-    page.should_not have_css(".proposal .title", :text => "Usar Google en los examenes")
+    page.should have_css(".proposal .proposal-title", :text => "Ley Sinde")
+    page.should_not have_css(".proposal .proposal-title", :text => "Usar Google en los examenes")
     
     within(:css, "aside") { click_link "Andalucía" }
     page.should have_content("Propuestas presentadas por Andalucía")
-    page.should have_css(".proposal .title", :text => "Usar Google en los examenes")
-    page.should_not have_css(".proposal .title", :text => "Ley Sinde")
+    page.should have_css(".proposal .proposal-title", :text => "Usar Google en los examenes")
+    page.should_not have_css(".proposal .proposal-title", :text => "Ley Sinde")
   end
 
   scenario "Navigate to Hot Proposals" do

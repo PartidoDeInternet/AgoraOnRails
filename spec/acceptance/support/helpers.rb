@@ -34,10 +34,8 @@ module HelperMethods
   end
 
   def percentages_should_be(proposal, results)
-    within(:css, "#proposal_#{proposal.id}") do
-      results.each do |key, value|
-        page.should have_css(".#{key} span.vote_percentage", :text => "#{value}%")
-      end
+    results.each do |key, value|
+      page.should have_css(".#{key} .vote-percentage", :text => "#{value}%")
     end
   end
   
@@ -49,7 +47,7 @@ module HelperMethods
   end
   
   def should_see_hot_proposals_in_this_order(titles)
-    page.all(".proposals .proposal .title").map(&:text).should == titles
+    page.all(".proposals .proposal .proposal-title").map(&:text).should == titles
   end
   
   def stub_tractis_request
