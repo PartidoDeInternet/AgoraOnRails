@@ -177,9 +177,9 @@ feature "Spokesmen", %q{
     create_vote :proposal => free_wifi, :user => punset, :value => "si"
     
     visit user_path(punset)
-    
+
     within(:css, "#proposal_#{free_wifi.id}") do
-      page.should have_css(".in_favor span.vote_count", :text => "1 votos")
+      page.should have_css(".in_favor .vote-count", :text => "1 votos")
     end
     
     login_as @user
@@ -190,8 +190,8 @@ feature "Spokesmen", %q{
     visit user_path(punset)
 
     within(:css, "#proposal_#{free_wifi.id}") do
-      page.should have_css(".in_favor span.vote_count", :text => "2 votos")
-      page.should have_css(".in_favor span.vote_percentage", :text => "100%")
+      page.should have_css(".in_favor .vote-count", :text => "2 votos")
+      page.should have_css(".in_favor .vote-percentage", :text => "100%")
     end
   end
   
@@ -284,7 +284,7 @@ feature "Spokesmen", %q{
     visit user_path(zapatero)
 
     within(:css, "#proposal_#{economia_sostenible.id}") do
-      page.should have_css(".in_favor span.vote_count", :text => "2 votos")
+      page.should have_css(".in_favor .vote-count", :text => "2 votos")
     end
     
     login_as @user
@@ -292,10 +292,9 @@ feature "Spokesmen", %q{
     click_link "Destituir a Zapatero de ser mi portavoz"
     
     visit proposal_path(economia_sostenible)
-    within(:css, "#proposal_#{economia_sostenible.id}") do
-      page.should have_css(".in_favor span.vote_count", :text => "1 votos")
-      page.should have_css(".in_favor span.vote_percentage", :text => "100%")
-    end
+    
+    page.should have_css(".in_favor .vote-count", :text => "1 votos")
+    page.should have_css(".in_favor .vote-percentage", :text => "100%")
   end
     
   scenario "Update vote percentages when a spokesman is chosen/discharged" do    
@@ -361,8 +360,8 @@ feature "Spokesmen", %q{
       visit user_path(punset)
     
       within(:css, "#proposal_#{free_wifi.id}") do
-        page.should have_css(".in_favor span.vote_count", :text => "3 votos")
-        page.should have_css(".in_favor span.vote_percentage", :text => "100%")
+        page.should have_css(".in_favor .vote-count", :text => "3 votos")
+        page.should have_css(".in_favor .vote-percentage", :text => "100%")
       end
     end
     
@@ -383,8 +382,8 @@ feature "Spokesmen", %q{
       page.should have_content("Has destituido a tu portavoz.")
       
       visit proposal_path(free_wifi)
-      page.should have_css(".in_favor span.vote_count", :text => "2 votos")
-      page.should have_css(".in_favor span.vote_percentage", :text => "100%") 
+      page.should have_css(".in_favor .vote-count", :text => "2 votos")
+      page.should have_css(".in_favor .vote-percentage", :text => "100%") 
     end
     
     scenario "Delegation cycles are allowed but doesn't count votes if nobody votes" do
@@ -400,9 +399,9 @@ feature "Spokesmen", %q{
       
       visit proposal_path(free_wifi)
       
-      page.should have_css(".in_favor span.vote_count", :text => "0 votos")
-      page.should have_css(".against span.vote_count", :text => "0 votos")
-      page.should have_css(".abstention span.vote_count", :text => "0 votos")
+      page.should have_css(".in_favor .vote-count", :text => "0 votos")
+      page.should have_css(".against .vote-count", :text => "0 votos")
+      page.should have_css(".abstention .vote-count", :text => "0 votos")
     end
     
     scenario "Delegation cycles count votes if one spokesman votes" do
@@ -419,9 +418,9 @@ feature "Spokesmen", %q{
       
       visit proposal_path(free_wifi)
       
-      page.should have_css(".in_favor span.vote_count", :text => "3 votos")
-      page.should have_css(".against span.vote_count", :text => "0 votos")
-      page.should have_css(".abstention span.vote_count", :text => "0 votos")
+      page.should have_css(".in_favor .vote-count", :text => "3 votos")
+      page.should have_css(".against .vote-count", :text => "0 votos")
+      page.should have_css(".abstention .vote-count", :text => "0 votos")
     end
     
     scenario "Delegation cycles count votes if two spokesman votes" do
@@ -439,9 +438,9 @@ feature "Spokesmen", %q{
       
       visit proposal_path(free_wifi)
       
-      page.should have_css(".in_favor span.vote_count", :text => "1 votos")
-      page.should have_css(".against span.vote_count", :text => "2 votos")
-      page.should have_css(".abstention span.vote_count", :text => "0 votos")
+      page.should have_css(".in_favor .vote-count", :text => "1 votos")
+      page.should have_css(".against .vote-count", :text => "2 votos")
+      page.should have_css(".abstention .vote-count", :text => "0 votos")
     end
     
   end

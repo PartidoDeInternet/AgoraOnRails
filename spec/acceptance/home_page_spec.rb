@@ -30,7 +30,7 @@ feature "Home page", %q{
     
     visit homepage
     
-    page.should have_css(".proposal .title", :text => "Ley Sinde")
+    page.should have_css(".proposal .proposal-title", :text => "Ley Sinde")
     page.should have_css(".proposal .proposer", :text => "Gobierno")
     page.should have_css(".proposal .proposed_at", :text => "24 de Abril de 2010")
   end
@@ -49,7 +49,7 @@ feature "Home page", %q{
     click_link "Recién tramitadas"
 
     page.should have_css(".proposals .proposal", :count => 5)
-    page.should have_css(".proposals article.proposal:first-of-type .title", :text => "WIFI en todo Madrid")
+    page.should have_css(".proposals article.proposal:first-of-type .proposal-title", :text => "WIFI en todo Madrid")
     
     page.should have_css(".in_favor", :text => "Sí")
     page.should have_css(".against", :text => "No")
@@ -74,9 +74,9 @@ feature "Home page", %q{
     
     visit homepage
 
-    page.should have_css("#categories .category", :count => 5)
-    page.first("#categories .category .name").should have_content("Education")
-    page.first("#categories .category .count").should have_content("3")
+    page.should have_css("#categories li", :count => 5)
+    page.first("#categories li").should have_content("Education")
+    page.first("#categories li").should have_content("3")
     page.should_not have_css("#categories .category", :text => "Defense")
   end
   
@@ -97,10 +97,10 @@ feature "Home page", %q{
     
     visit homepage
 
-    page.should have_css("#proposers .proposer", :count => 5)
-    page.first("#proposers .proposer .name").should have_content("PNV")
-    page.first("#proposers .proposer .count").should have_content("3")
-    page.should_not have_css("#proposers .proposer", :text => "Gobierno")
+    page.should have_css("#proposers li", :count => 5)
+    page.first("#proposers li").should have_content("PNV")
+    page.first("#proposers li").should have_content("3")
+    page.should_not have_css("#proposers li", :text => "Gobierno")
   end
   
   scenario "Vote count" do

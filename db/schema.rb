@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(version: 20130608092435) do
     t.integer  "spokesman_id"
     t.integer  "represented_users_count", default: 0
     t.boolean  "admin",                   default: false
-    t.string   "dni"
     t.string   "name"
     t.string   "provider"
     t.string   "uid"
+    t.string   "dni"
     t.string   "email",                   default: "",    null: false
     t.string   "encrypted_password",      default: "",    null: false
     t.string   "reset_password_token"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20130608092435) do
     t.string   "nickname"
   end
 
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
