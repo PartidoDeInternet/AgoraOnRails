@@ -20,14 +20,9 @@ module ApplicationHelper
     class_name = current_page?(path) ? 'selected' : ''
 
     content_tag(:li, :class => class_name) do
-      link_to(truncate(resource.name, :length => 30), path, 
-        :class => "name tag-#{index + 1} #{class_name}", 
-        :title => resource.name) +
-      
-      content_tag(:span, :class => "block-list__count") do
-        resource.proposals_count.to_s
-      end
-
+      link_to(truncate(resource.name, :length => 30) + content_tag(:span, :class => "block-list__count") do resource.proposals_count.to_s end, path, 
+        :class => "aside-nav-item name tag-#{index + 1} #{class_name}", 
+        :title => resource.name)
     end
   end
 

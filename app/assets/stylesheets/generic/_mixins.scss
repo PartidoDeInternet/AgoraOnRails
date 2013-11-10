@@ -378,3 +378,64 @@ $base-spacing: 1em;
     width: $width;
     height: $height;
 }
+
+//*-----------------------------------------------
+//* Clean Margin and Padding 
+//*-----------------------------------------------
+@mixin clean-mg-pd{
+  padding: 0;
+  margin: 0;
+}
+
+
+//*-----------------------------------------------
+//* IE7 inline-block 
+//*-----------------------------------------------
+@mixin ie7-inline-block {
+  *display: inline; /* IE7 inline-block hack */
+  *zoom: 1;
+}
+
+//*-----------------------------------------------
+//* Sizing shortcuts 
+//*-----------------------------------------------
+
+@mixin square($size){
+  @include size($size, $size);
+}
+
+//*-----------------------------------------------
+//* Reset your elements box model with ease. @include box-sizing(border-box);
+//*-----------------------------------------------
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+//*-----------------------------------------------
+//* Set the opacity for all browsers and provide a filter fallback for IE8. 
+//*-----------------------------------------------
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+//*-----------------------------------------------
+//* Absolute Positioned 
+//*-----------------------------------------------
+@mixin abs-pos($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+}
+//*-----------------------------------------------
+//* Truncate without ellipsis 
+//*-----------------------------------------------
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
