@@ -20,11 +20,11 @@
       <%= show_toggle_button(current_user.is_admin?) if current_user %>
         <ul class="list meta float--right cf">
           <li>
-            <small class="icon-heart icon-red icon-min"></small>
+            <small class="fa fa-heart icon-red icon-min"></small>
             <%= number_with_delimiter @proposal.votes.count %> <%= t(:votes) %>
           </li>
           <li>
-            <small class="icon-eye-open icon-min"></small>
+            <small class="fa fa-eye-open icon-min"></small>
             <%= number_with_delimiter @proposal.visits %> <%= t(:views) %>
           </li>
         </ul>

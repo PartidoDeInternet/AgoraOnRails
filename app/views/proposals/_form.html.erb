@@ -1,7 +1,7 @@
 <div class="proposal-vote-choices mb2">
     <h5><%= t :vote_proposal %></h5>
-    <%= link_to "<button class='btn btn--small btn--success btn--soft si'><span><small class='icon-thumbs-up icon-white icon-min'></small> #{t(:yes_option)}</span></button>".html_safe,         new_proposal_vote_path(@proposal, value: "si"),         class: "vote-value"  %>
-    <%= link_to "<button class='btn btn--small btn--alert btn--soft no'><span><small class='icon-thumbs-down icon-white icon-min'></small> #{t(:no_option)}</span></button>".html_safe,          new_proposal_vote_path(@proposal, value: "no"),         class: "vote-value"  %>
+    <%= link_to "<button class='btn btn--small btn--success btn--soft si'><span><small class='fa fa-thumbs-up icon-white icon-min'></small> #{t(:yes_option)}</span></button>".html_safe,         new_proposal_vote_path(@proposal, value: "si"),         class: "vote-value"  %>
+    <%= link_to "<button class='btn btn--small btn--alert btn--soft no'><span><small class='fa fa-thumbs-down icon-white icon-min'></small> #{t(:no_option)}</span></button>".html_safe,          new_proposal_vote_path(@proposal, value: "no"),         class: "vote-value"  %>
     <%= link_to "<button class='btn btn--small btn--info btn--soft abstencion'><span>#{t(:abstention)}</span></button>".html_safe, new_proposal_vote_path(@proposal, value: "abstencion"), class: "vote-value"  %>
 </div>
 
