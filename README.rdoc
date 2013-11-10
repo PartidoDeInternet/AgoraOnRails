@@ -31,6 +31,10 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
     
     rake spec
 
+== Updating the latest proposals from Congress:
+
+    bundle exec rake scrapper:scrape
+        
 == Contribute:
 
      1. Find or create an issue
