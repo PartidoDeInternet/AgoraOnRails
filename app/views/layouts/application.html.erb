@@ -55,14 +55,7 @@
               <h4><%= t :what_proposals %></h4>
                 <ul class="block-list">
                   <% hot_categories.each_with_index do |category, index| %>
-                  <li class="category">
-                    <%= link_to truncate(category.name,:length => 30), [category, :proposals], 
-                               :class => "name tag-#{index + 1}", 
-                               :title => category.name %>
-                    <span class="block-list__count">
-                      <%= category.proposals_count %>
-                    </span>
-                  </li>
+                    <%= nav_link category, [category, :proposals], index %>
                   <% end %>
                 </ul>
             </div>
@@ -71,14 +64,7 @@
               <h4><%= t :who_proposed %></strong></h4>
                 <ul class="block-list">
                   <% hot_proposers.each_with_index do |proposer, index| %>
-                  <li>
-                    <%= link_to truncate(proposer.name, :length => 30), [proposer, :proposals], 
-                               :class => "name tag-#{index + 1}", 
-                               :title => proposer.name %>
-                    <span class="block-list__count">
-                      <%= proposer.proposals_count %>
-                    </span>
-                  </li>
+                    <%= nav_link proposer, [proposer, :proposals], index %>
                   <% end %>
                 </ul>
             </div>
