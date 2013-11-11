@@ -19,19 +19,21 @@ module ApplicationHelper
   
   def nav_link(resource, path, index)
     content_tag :li, class: current_page_css(path) do
-      link_to(truncate(resource.name, length: 30), path, 
-        class: "name tag-#{index + 1}", 
-        title: resource.name) +
-      
-      content_tag(:span, class: "block-list__count") do
-        resource.proposals_count.to_s
+      link_to path, :class => "aside-nav-item name tag-#{index + 1}", :title => resource.name do
+        short_name(resource) +
+        content_tag(:span, class: "block-list__count") do 
+          resource.proposals_count.to_s 
+        end
       end
-
     end
   end
   
   def current_page_css(path)
     current_page?(path) ? 'selected' : ''
+  end
+  
+  def short_name(resource)
+    truncate(resource.name, :length => 30)
   end
   
   def hot_categories

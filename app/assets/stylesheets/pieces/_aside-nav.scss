@@ -1,9 +1,30 @@
 .aside-nav{
+ .block-list{
+ 	li{ padding: 0 }
+ 	.selected{
+ 		position: relative;
+ 		background: $light-grey;
+ 		&:after{
+ 			@include abs-pos(0, $left: -2px);
+ 			@include size(2px,100%);
+ 			display: block;
+ 			background: $light-green;
+ 			content: '';
+ 		}
+ 	}
+ }
  .block-list__count{
- 	font-size: 1em;
- 	color: #444
+ 	font-size: .9em;
+ 	color: #444;
+ 	padding-left: 10px;
  }
  > h4{
  	color: #505951;
  }
+}
+.aside-nav-item{
+	display: inline-block;
+	padding: 12px;
+	width: 100%; 
+	text-decoration: none;
 }
