@@ -19,7 +19,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.9.2)
+    ZenTest (4.9.5)
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)

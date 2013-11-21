@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(version: 20130608092435) do
     t.integer  "spokesman_id"
     t.integer  "represented_users_count", default: 0
     t.boolean  "admin",                   default: false
+    t.string   "dni"
     t.string   "name"
     t.string   "provider"
     t.string   "uid"
-    t.string   "dni"
     t.string   "email",                   default: "",    null: false
     t.string   "encrypted_password",      default: "",    null: false
     t.string   "reset_password_token"
