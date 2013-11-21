@@ -1,30 +1,27 @@
 <!-- refactor with proposals/proposal -->
 <article class="proposal" id="proposal_<%= proposal.id %>">
   <section class="proposal-content">
-    <header>
-      <hgroup>
-        <h2 class="title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
-        <h3>
+        <h2 class="proposal-title">
+          <%= link_to awesome_truncate(proposal.title, 150), proposal %>
+        </h2>
+        <p>
           <%= t(:proposed_by_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %> 
-          <span class="proposed_at"><%= t(:on_html, :date => l(proposal.proposed_at, :format => :long)) %>
-        </h3>
-      </hgroup>
-    </header>
+          <span class="proposed_at">
+            <%= t(:on_html, :date => l(proposal.proposed_at, :format => :long)) %>
+          </span>
+        </p>
   </section>
-  <span class="decorate up"></span>
   
 
-  <p class="<%= css_for_vote(@user, proposal) %>"><%= humanize_vote_text(@user, proposal) %></p>
+  <div class="proposal-resolution proposal-resolution__<%= css_for_vote(@user, proposal) %>">
+    <small class="fa fa-<%= icon_for_vote(@user, proposal) %>"></small>
+    <%= humanize_vote_text(@user, proposal) %>
+  </div>
   
    <section class="vote-results documents-list">
-      <dl>
-        <dt><strong><%= t(:popular_vote) %></strong></dt>
-        <dd>
-          <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 20} %>
-        </dd>
-      </dl>
-
-      <p class="votes_with_explanations">
+      <h5 class="flush"><%= t(:popular_vote) %></h5>
+        <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 20} %>
+        <p class="votes_with_explanations">
         <%= render :partial => "proposals/vote", 
                    :locals => { :vote => find_vote(@user, proposal) } %>
       </p>

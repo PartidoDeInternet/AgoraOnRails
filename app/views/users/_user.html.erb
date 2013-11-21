@@ -1,14 +1,15 @@
 <article class="proposal" id="user_<%= user.id %>">
+  
   <section class="proposal-content">
-    <header>
-      <hgroup>
-        <h2 class="title"><%= link_to user.name, user %></h2><%= user.email %>
-        <h3>
-          A votado sobre <strong><%= user.votes.count %></strong> propuestas
-          <span class="proposed_at">something else</span>
-        </h3>
-      </hgroup>
-    </header>
+    <h2 class="proposal-title">
+      <%= link_to user.name, user %>
+      <small><i class="fa fa-envelope-o"></i>  <%= user.email %></small>
+    </h2>
+    <p class="proposal_type">
+      A votado sobre <strong><%= user.votes.count %></strong> propuestas
+      <span class="proposed_at">something else</span>
+    </p>
+
   </section>
 
     <section class="voters">
@@ -18,11 +19,10 @@
           a mi representante
         <% end %>
       <% else %>
-      <%= link_to user, :class => "choose-spokesman-large" do %>
+      <%= link_to user, :class => "btn btn--gamma btn--soft btn--primary btn-smart" do %>
         <strong>Elige!</strong>
         <%= who_has_delegated?(user) %>
       <% end %>
     </section>
     <% end %>
-  <span class="decorate up"></span>
 </article>

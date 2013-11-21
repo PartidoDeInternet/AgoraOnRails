@@ -4,6 +4,7 @@
 .main-nav{
 	width: 960px;
 	margin: 0 auto;
+	// Temporary logo until we get one
 	.logo{
 		.fa{
 			@include text-shadow(5px 5px 5px $light-grey,15px 15px 5px $light-grey);
@@ -25,19 +26,26 @@
 		    &:nth-of-type(4) .nav-link{
 		    	color: $green
 		    }
+		    &.selected{
+		    	.nav-link{
+		    		@include border-bottom-right-radius(4px);
+		    		@include border-bottom-left-radius(4px);
+		    		background: $dark-green;
+		    		color: $white;	
+		    	}
+		    }
 		}
 	}
 	.nav-link{
 		@include size(150px,80px);
-		line-height: 10px;
+		background: $white;
 		text-align: center;
-		background: white;
 		text-decoration: none;
+		line-height: 10px;
 	    [class*='fa-']{
 	    	display: block;
 	    	font-size: 3em;
 	    	line-height: 1.6em;
-
 	    }
 	}
 }
