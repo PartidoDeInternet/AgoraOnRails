@@ -49,6 +49,7 @@ extracted from the Spanish Congress official web page http://www.congreso.es/por
      
      6. Wait for comments from maintainers or code merge
 
+     Google group: https://groups.google.com/forum/?hl=en#!forum/agoraonrails
      IRC channel #agorarumble
 
 == Credits:
