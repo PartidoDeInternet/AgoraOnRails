@@ -1,7 +1,6 @@
 <% @title = "#{@user.name}" %>
 
 <section id="content">
-  <%= render "layouts/navigation" %>
   <%= render 'actions' %>
   <%= render :partial => "proposal", :collection => @proposals %>
 </section>

@@ -61,3 +61,28 @@
   font-size: 1.2em;
 }
 
+.proposal-resolution{
+  margin: 0 auto;
+  width: 20%;
+  padding: 10px;
+  padding-right:0.5em;
+  padding-left: 0.5em;
+  line-height:2;
+  color: $white;
+  @include border-radius(200px);
+  text-align: center;
+  @include adjust-font-size-to($h4-size);
+  &.proposal-resolution__favor{
+    background-color: $light-green
+  }
+  &.proposal-resolution__against{
+     background-color: $red
+  }
+  &.proposal-resolution__abstention{
+     background-color: $orange
+  }
+  > small[class*="fa-"]{
+    font-size: 1.6em;
+  }
+}
+

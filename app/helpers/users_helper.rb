@@ -10,9 +10,17 @@ module UsersHelper
   
   def css_for_vote(user, proposal)
     case find_choice user, proposal
-    when "si" then "voted_in_favor"
-    when "no" then "voted_against" 
-    when "abstencion" then "voted_abstention"
+    when "si" then "favor"
+    when "no" then "against" 
+    when "abstencion" then "abstention"
+    end
+  end
+
+  def icon_for_vote(user, proposal)
+    case find_choice user, proposal
+    when "si" then "thumbs-up"
+    when "no" then "thumbs-down" 
+    when "abstencion" then ""
     end
   end
   
