@@ -1,6 +1,6 @@
 .proposals{
   width: 700px;
-  float: right;
+  float: right; 
   > h2{
   	margin: 0;
   }
@@ -9,7 +9,7 @@
   }
 }
 .proposals-heading{
-  line-height: 1.1em;
+  @include adjust-font-size-to($h1-size);
 }
 .proposal {
   position: relative;
@@ -47,7 +47,11 @@
   text-decoration: underline;
 }
 .proposal-title{
- line-height: 1.1em;
+  @include adjust-font-size-to($h1-size);
+  > small{
+    font-size: .5em;
+    font-weight: normal;
+  }
 }
 
 
