@@ -89,13 +89,18 @@ function init(){
             };
             //set label styles
             var style = label.style;
-            style.width = 60 + 'px';
-            style.height = 17 + 'px';            
+            style.width = 'auto';
+            style.height = 30 + 'px';
+            style.lineHeight = '1.1em';            
             style.cursor = 'pointer';
-            style.color = '#333';
-            style.fontSize = '0.8em';
+            style.color = '#fff';
+            style.fontSize = '1.3em';
             style.textAlign= 'center';
-            style.paddingTop = '3px';
+            style.paddingTop = '5px';
+            style.paddingLeft = '5px';
+            style.paddingBottom = '5px';
+            style.paddingRight = '5px';
+
         },
         
         //This method is called right before plotting
@@ -107,7 +112,7 @@ function init(){
             //add some color to the nodes in the path between the
             //root node and the selected node.
             if (node.selected) {
-                node.data.$color = "#ff7";
+                node.data.$color = "#80ab5b";
             }
             else {
                 delete node.data.$color;

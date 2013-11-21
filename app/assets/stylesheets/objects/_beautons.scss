@@ -53,6 +53,11 @@
  * 8. Basic cosmetics for default buttons. Change or override at will.
  * 9. Don’t allow buttons to have underlines; it kinda ruins the illusion.
  */
+
+.wrap-group-buttons{
+   font-size: 1.2em;
+}
+
 .btn{
     display:inline-block;       /* [1] */
     vertical-align:middle;      /* [2] */
@@ -174,7 +179,8 @@
     color: white;
 }
 .btn--secondary{
-
+    background-color: $light-grey;
+    color: #000;
 }
 .btn--tertiary{
 
@@ -240,6 +246,14 @@
 
 .btn--hard{
     border-radius:0;
+}
+
+//*-----------------------------------------------
+//* Btn text 
+//*-----------------------------------------------
+
+.btn--text{
+    @include hover-link();
 }
 
 }//endif
