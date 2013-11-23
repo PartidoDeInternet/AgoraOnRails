@@ -153,9 +153,9 @@ feature "Spokesmen", %q{
 
   # refactor
   scenario "View proposals voted by the user" do
-    [["Ley Sinde",           "no",         "En contra",  "voted_against",    "Because..."], 
-     ["Wifi gratis",         "si",         "A favor",    "voted_in_favor",   "In my opinion..."], 
-     ["Ley que no entiendo", "abstencion", "Abstención", "voted_abstention", "I believe..."]].each do | title, vote, humanize_vote_text, css_image, explanation |
+    [["Ley Sinde",           "no",         "En contra",  "against",    "Because..."], 
+     ["Wifi gratis",         "si",         "A favor",    "favor",   "In my opinion..."], 
+     ["Ley que no entiendo", "abstencion", "Abstención", "abstention", "I believe..."]].each do | title, vote, humanize_vote_text, css_image, explanation |
  
       proposal = create_proposal :title => title
       create_vote :user => @user, :proposal => proposal, :value => vote, :explanation => explanation
@@ -164,8 +164,8 @@ feature "Spokesmen", %q{
       
       page.should have_css(".proposal")
       within(:css, "#proposal_#{proposal.id}") do
-        page.should have_css(".title",                     :text => title)
-        page.should have_css(".#{css_image}",              :text => humanize_vote_text)           
+        page.should have_css(".proposal-title",                     :text => title)
+        page.should have_css(".proposal-resolution__#{css_image}",  :text => humanize_vote_text)           
         page.should have_css(".vote-results .explanation", :text => explanation)
       end
     end
