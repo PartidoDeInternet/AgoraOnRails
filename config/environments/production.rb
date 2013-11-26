@@ -11,7 +11,7 @@ AgoraOnRails::Application.configure do
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
-  config.action_dispatch.x_sendfile_header = "X-Sendfile"
+  config.action_dispatch.x_sendfile_header = nil
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
@@ -55,8 +55,11 @@ AgoraOnRails::Application.configure do
   config.assets.compress = true
   
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
   
   # Generate digests for assets URLs
   config.assets.digest = true
+  
+  # Compress assets with uglifier
+  config.assets.js_compressor = :uglifier
 end
