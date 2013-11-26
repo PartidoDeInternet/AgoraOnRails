@@ -10,6 +10,7 @@ gem 'rails_autolink'
 gem 'client_side_validations', github: 'bcardarella/client_side_validations', branch: '4-0-beta'
 gem 'jbuilder'
 gem 'gon'
+gem 'rack-cache'
 
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'omniauth'
@@ -27,6 +28,9 @@ gem 'jquery-rails'
 
 group :staging, :production do
   gem 'unicorn'
+  gem 'dalli'
+  gem "memcachier"
+  gem 'kgio'
   gem 'rails_12factor'
 end
 
