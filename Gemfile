@@ -25,6 +25,10 @@ gem 'bootstrap-sass'
 
 gem 'jquery-rails' 
 
+group :staging, :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
