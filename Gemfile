@@ -26,6 +26,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails' 
 
 group :staging, :production do
+  gem 'unicorn'
   gem 'rails_12factor'
 end
 

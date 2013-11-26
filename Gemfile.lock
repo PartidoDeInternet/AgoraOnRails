@@ -118,6 +118,7 @@ GEM
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kgio (2.8.1)
     launchy (2.3.0)
       addressable (~> 2.3)
     mail (2.5.4)
@@ -193,6 +194,7 @@ GEM
       activesupport (= 4.0.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    raindrops (0.12.0)
     rake (10.1.0)
     responders (0.6.5)
     rest-client (1.6.7)
@@ -246,6 +248,10 @@ GEM
     unf (0.1.1)
       unf_ext
     unf_ext (0.0.6)
+    unicorn (4.7.0)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     vcr (2.5.0)
     warden (1.2.1)
       rack (>= 1.0)
@@ -289,5 +295,6 @@ DEPENDENCIES
   sqlite3
   steak
   uglifier
+  unicorn
   vcr
   webmock
