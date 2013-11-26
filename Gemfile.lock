@@ -19,7 +19,6 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.9.5)
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)
@@ -47,9 +46,6 @@ GEM
     addressable (2.3.4)
     arel (4.0.0)
     atomic (1.1.10)
-    autotest-growl (0.2.16)
-    autotest-rails (4.1.2)
-      ZenTest (~> 4.5)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.3.1.3)
       sass (~> 3.2)
@@ -97,8 +93,6 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
-    faraday_middleware (0.9.0)
-      faraday (>= 0.7.4, < 0.9)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
     fssm (0.2.10)
@@ -261,9 +255,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ZenTest
-  autotest-growl
-  autotest-rails
   bootstrap-sass
   byebug
   capybara
@@ -273,14 +264,10 @@ DEPENDENCIES
   coveralls
   database_cleaner
   devise!
-  faraday
-  faraday_middleware
   gon
-  hashie
   inherited_resources
   jbuilder
   jquery-rails
-  json
   launchy
   mechanize
   omniauth
