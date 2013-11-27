@@ -18,6 +18,11 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'pg'
 
+gem 'faraday'
+gem 'faraday_middleware'
+gem 'hashie'
+gem 'json'
+
 gem 'sass-rails'
 gem "compass-rails", "~> 2.0.alpha.0"
 gem 'coffee-rails'

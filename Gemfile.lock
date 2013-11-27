@@ -94,6 +94,8 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
     fssm (0.2.10)
@@ -280,10 +282,14 @@ DEPENDENCIES
   dalli
   database_cleaner
   devise!
+  faraday
+  faraday_middleware
   gon
+  hashie
   inherited_resources
   jbuilder
   jquery-rails
+  json
   kgio
   launchy
   mechanize
