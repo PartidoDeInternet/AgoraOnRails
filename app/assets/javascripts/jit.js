@@ -14379,7 +14379,7 @@ Layouts.ForceDirected = new Class({
       })();
     } else {
       for(; i < times; i++) {
-        opt.t = opt.tstart * (1 - i/(times -1));
+        opt.t = opt.tstart * ((1 - i)/(times -1));
         this.computePositionStep(property, opt);
       }
     }
