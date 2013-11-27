@@ -42,6 +42,6 @@ module AgoraOnRails
 
     config.assets.enabled = true
     config.assets.version = '1.0'
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.precompile += %w(tree.js *.png *.jpg *.jpeg *.gif)
   end
 end
