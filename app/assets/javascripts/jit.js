@@ -14374,12 +14374,12 @@ Layouts.ForceDirected = new Class({
             return;
           }
         }
-        incremental.onStep(Math.round((i) / ((times -1) * 100)));
+        incremental.onStep(Math.round(i / (times -1) * 100));
         setTimeout(iter, 1);
       })();
     } else {
       for(; i < times; i++) {
-        opt.t = opt.tstart * ((1 - i)/(times -1));
+        opt.t = opt.tstart * (1 - i/(times -1));
         this.computePositionStep(property, opt);
       }
     }
