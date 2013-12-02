@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', "~> 4.0.0"
+gem 'rails', "~> 4.0.1"
 
 gem 'mechanize'
 gem 'inherited_resources'
@@ -11,7 +11,7 @@ gem 'jbuilder'
 gem 'gon'
 gem 'rack-cache'
 
-gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
