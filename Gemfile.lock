@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/bcardarella/client_side_validations.git
-  revision: 9461cb92e1dfb64895d590c6d435cdf48fcede45
-  branch: 4-0-beta
-  specs:
-    client_side_validations (3.2.2)
-
-GIT
   remote: git://github.com/plataformatec/devise.git
   revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
   branch: rails4
@@ -274,7 +267,6 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara
-  client_side_validations!
   coffee-rails
   compass-rails (~> 2.0.alpha.0)
   coveralls
