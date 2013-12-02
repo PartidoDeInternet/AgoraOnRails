@@ -1,47 +1,49 @@
-<article class="proposal">
-  <section class="proposal-content">
-    <header>
-      <hgroup>
-        <h2 class="proposal-title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
-        <p>
-          <%= t(:proposed_by_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %> 
-          <span class="proposed_at"><%= t(:on_html, :date => l(proposal.proposed_at, :format => :long)) %></span>
-        </p>
-      </hgroup>
-    </header>
-  </section>
+<% cache proposal do %>
+  <article class="proposal">
+    <section class="proposal-content">
+      <header>
+        <hgroup>
+          <h2 class="proposal-title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
+          <p>
+            <%= t(:proposed_by_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %> 
+            <span class="proposed_at"><%= t(:on_html, :date => l(proposal.proposed_at, :format => :long)) %></span>
+          </p>
+        </hgroup>
+      </header>
+    </section>
 
-    <% if proposal.closed? %>
-    <section class="proposal-footer">
+      <% if proposal.closed? %>
+      <section class="proposal-footer">
       
-      <div class="wrap cf separator--top">
-        <ul class="list meta cf flush">
-          <li class="visuallyhidden">
-            <small class="fa fa-plus icon-green icon-min"></small>
-            <a href="" class="js-show-content"> ver resultados</a>
-          </li>
-          <li class="float--right">
-            <small class="fa fa-lock icon-ligthgrey icon-min"></small>
-            <%= proposal.status %> <%= t(:in_congress) %>.
-          </li>
-        </ul>
-      </div>
+        <div class="wrap cf separator--top">
+          <ul class="list meta cf flush">
+            <li class="visuallyhidden">
+              <small class="fa fa-plus icon-green icon-min"></small>
+              <a href="" class="js-show-content"> ver resultados</a>
+            </li>
+            <li class="float--right">
+              <small class="fa fa-lock icon-ligthgrey icon-min"></small>
+              <%= proposal.status %> <%= t(:in_congress) %>.
+            </li>
+          </ul>
+        </div>
 
 
-      <section class="vote-results documents-list">
-        <h5 class="flush"><%= t :popular_vote_results %></h5>
+        <section class="vote-results documents-list">
+          <h5 class="flush"><%= t :popular_vote_results %></h5>
 
-        <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 40} %>
+          <%= render :partial => "shared/results", :locals => {:proposal => proposal, :width => 40} %>
 
+        </section>
       </section>
-    </section>
-    <% else %>
-    <section class="text--right ">
-      <%= link_to proposal, :class => "btn btn--gamma btn--soft btn--primary btn-smart" do %>
-        <strong><%= t(:vote_prompt) %></strong>
-        <%= who_did_vote(proposal) %>
+      <% else %>
+      <section class="text--right ">
+        <%= link_to proposal, :class => "btn btn--gamma btn--soft btn--primary btn-smart" do %>
+          <strong><%= t(:vote_prompt) %></strong>
+          <%= who_did_vote(proposal) %>
+        <% end %>
+      </section>
       <% end %>
-    </section>
-    <% end %>
   
-</article>
+  </article>
+<% end %>

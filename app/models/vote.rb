@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  belongs_to :proposal
+  belongs_to :proposal, touch: true
   belongs_to :user
   
   scope :order_by_represented_users, -> { order("users.represented_users_count DESC").includes("user") }
