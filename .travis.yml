@@ -1,4 +1,4 @@
-rvm: 2.0.0-p247
+rvm: 2.0.0-p353
 before_script:
 - sh -c 'cp config/database.yml.example config/database.yml'
 - sh -c 'bundle exec rake db:migrate'
