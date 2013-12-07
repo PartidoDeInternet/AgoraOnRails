@@ -73,6 +73,9 @@
     padding-right:1em;          /* [7] */
     padding-left: 1em;          /* [7] */
     border-radius:$brand-round; /* [8] */
+    &.btn--blck{
+        display: block;
+    }
 }
 
 .btn{
@@ -229,8 +232,18 @@
     }
 
 
-
-
+/**
+ * Modifiers for twitter, facebook, etc
+ * 
+ */
+.btn--facebook{
+    background-color: #39568d;
+    color: #fff;
+}
+.btn--twitter{
+    background-color: #00a4e2;
+    color: #fff;
+}
 
 /*------------------------------------*\
     $STYLES

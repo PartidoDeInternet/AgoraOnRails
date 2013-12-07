@@ -23,9 +23,21 @@ fieldset{
  */
 .text-input,
 textarea{
-    /**
-     * Style these via your theme stylesheet.
-     */
+    @include border-radius(4px);
+    @include box-sizing('border-box');
+    background-color: #f5f6f7;
+    @include box-shadow(0 1px #fff, inset 0 2px 2px rgba(0,0,0,.1));
+    border: 1px solid #b1b3b8;
+    padding: 5px;
+    &.text-input--small{
+
+    }
+    &.text-input--large{
+      @include adjust-font-size-to($h3-size);
+    }
+    &.text-input--huge{
+
+    }
 }
 
 
