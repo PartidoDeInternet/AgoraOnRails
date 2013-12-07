@@ -54,7 +54,10 @@ class User < ActiveRecord::Base
   
   def represented_users_tree(nodes=represented_users)
     nodes.map do |user|
-      {:name => user.name, :id => user.id, :children => user.represented_users_tree(user.represented_users)}
+      return nodes if nodes.include?(user)
+      { name:     user.name, 
+        id:       user.id, 
+        children: user.represented_users_tree(user.represented_users) }
     end
   end
   
