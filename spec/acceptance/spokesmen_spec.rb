@@ -458,6 +458,24 @@ feature "Spokesmen", %q{
 
   end
 
-  pending "Number of delegations through agoraonrails in the footer"
-  pending "Order users my number of representations"
+  scenario "Delegation count" do
+    punset = create_user :name => "Punset"
+    fan_de_punset = create_user :name => "Fan de Punset", :spokesman => punset
+    ana = create_user :name => "Ana", :spokesman => fan_de_punset
+    
+    visit users_path
+    
+    page.should have_content("2 delegaciones a través de AgoraOnRails")    
+  end
+  
+  scenario "Order by number of representations and last updated" do
+    punset = create_user :name => "Punset"
+    isabel = create_user :name => "Isabel", :spokesman => punset
+    ana    = create_user :name => "Ana",    :spokesman => punset
+    pedro  = create_user :name => "Pedro",  :spokesman => ana
+    
+    visit users_path
+
+    page.should have_content /Punset.*Ana.*Pedro.*Isabel/
+  end
 end

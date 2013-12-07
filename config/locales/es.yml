@@ -36,6 +36,7 @@
   representatives: 'representantes'
   who_proposed: "¿Quién propone?"
   votes_through_agora: 'votos a través de AgoraOnRails'
+  delegations_through_agora: 'delegaciones a través de AgoraOnRails'
   calculate_representatives_vote: 'Calcula el voto de los representantes'
   representatives_number: 'numero de representantes'
   in_favor: "Sí"

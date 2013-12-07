@@ -67,4 +67,12 @@ module ApplicationHelper
       pluralize(proposal.votes.count, t(:one_did_it), t(:many_did_it))
     end
   end
+  
+  def vote_or_delegation_count
+    users_page? ? User.sum(:represented_users_count) : Vote.count
+  end
+  
+  def vote_or_delegation_key
+    users_page? ? :delegations_through_agora : :votes_through_agora
+  end
 end
