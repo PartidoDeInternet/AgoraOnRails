@@ -1,7 +1,7 @@
 # coding: utf-8
 require File.dirname(__FILE__) + '/acceptance_helper'
 
-feature "Feature name", %q{
+feature "Navigation", %q{
   In order to find the proposals I'm interested in
   As a citizen
   I want to be able to navigate the site in different ways
