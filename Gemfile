@@ -4,7 +4,7 @@ ruby '2.0.0'
 gem 'rails', "~> 4.0.2"
 
 gem 'mechanize'
-gem 'inherited_resources'
+gem 'inherited_resources', github: "josevalim/inherited_resources"
 gem 'simple_form'
 gem 'rails_autolink'
 gem 'jbuilder'
