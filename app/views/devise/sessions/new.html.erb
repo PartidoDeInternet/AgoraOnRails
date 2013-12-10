@@ -8,7 +8,7 @@
          <fieldset>
           <legend>Entra con Twitter o Facebook</legend>
           <% ["twitter", "facebook"].each do |provider| %>
-            <%= link_to 'Conéctate usando ' + provider,
+            <%= link_to content_tag(:span, 'Conéctate usando ' + provider, class: provider ),
                         user_omniauth_authorize_path(provider),
                         :class => "btn btn--gamma btn--#{provider} btn--blck text--center mb1 popup", :id => "#{provider}_sign_in",
                         :"data-width" => 580, :"data-height" => 400 %>
