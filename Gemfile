@@ -27,6 +27,7 @@ gem "compass-rails", "~> 2.0.alpha.0"
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
 
 gem 'jquery-rails' 
 
