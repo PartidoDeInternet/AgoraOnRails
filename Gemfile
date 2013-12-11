@@ -23,7 +23,7 @@ gem 'hashie'
 gem 'json'
 
 gem 'sass-rails'
-gem "compass-rails", "~> 2.0.alpha.0"
+gem 'compass-rails', github: "Compass/compass-rails", branch: "rails4-hack"
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
