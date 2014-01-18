@@ -30,6 +30,9 @@ gem 'bootstrap-sass'
 
 gem 'jquery-rails' 
 
+#Image manipulation
+gem "carrierwave"
+
 group :staging, :production do
   gem 'unicorn'
   gem 'dalli'

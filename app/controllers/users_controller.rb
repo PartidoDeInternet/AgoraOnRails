@@ -11,4 +11,20 @@ class UsersController < ApplicationController
     gon.jbuilder as: :user
   end 
 
+  def edit
+  	@user = current_user
+  end
+
+  def update
+  	redirect_to current_user.tap { |user|
+      user.update!(user_params)
+    }
+  end
+
+  private
+
+  def user_params  
+    params.require(:user).permit(:profile_picture, :resume, :languages, :education)
+  end
+
 end

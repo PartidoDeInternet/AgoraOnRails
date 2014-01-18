@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
   
   helper :all
-  
+
   protected
 
   def configure_permitted_parameters

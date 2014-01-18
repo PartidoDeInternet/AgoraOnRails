@@ -1,6 +1,6 @@
 <div class="wrap-group-buttons">
 <% if current_user == @user %>
-  Bienvenido a tu perfil! Puedes editarlo aquí.
+  Bienvenido a tu perfil! Puedes editarlo <%= link_to "aquí", edit_user_path(@user) %>
 <% elsif current_spokesman?(@user) %>
    <%= link_to t(:discharge_spokesman, :name => @user.name), spokesman_path(id: @user.id),  
                  :class => "btn btn--secondary discharge-my-spokesman mb2", :method => :delete %>

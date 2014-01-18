@@ -247,5 +247,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
   
   config.secret_key = ENV['AGORAONRAILS_DEVISE_SECRET_KEY']
-  
+  config.secret_key = '91ae3a8fea70a79eeb1cc3b2b15a5f693eff4883a25e7e2e29a622b5a18e27be471989f8840abf8f1e60cecf968d422e6c84aa1d5bf7bbc32d8dabcab7ed9626'
 end
