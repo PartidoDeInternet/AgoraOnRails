@@ -4,6 +4,7 @@ log/*.log
 tmp/*
 tmp/**/*
 test/
+public/uploads/*
 config/database.yml
 coverage
 .sass-cache/
