@@ -12,3 +12,6 @@ en:
   representatives_number: 'number of representatives'
   calculate: 'calculate'
   proposals: "Proposals"
+
+  #Users
+  languages: 'Languages: %{languages}'

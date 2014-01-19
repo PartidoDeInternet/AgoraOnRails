@@ -23,7 +23,7 @@ gem 'hashie'
 gem 'json'
 
 gem 'sass-rails'
-gem "compass-rails", "~> 2.0.alpha.0"
+gem "compass-rails"
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
@@ -32,6 +32,8 @@ gem 'jquery-rails'
 
 #Image manipulation
 gem "carrierwave"
+gem "rmagick"
+
 
 group :staging, :production do
   gem 'unicorn'

@@ -358,3 +358,7 @@
       last_word_connector: ", y "
     select:
       prompt: "Por favor seleccione"
+
+  #Users
+  languages: 'Idiomas: %{languages}'
+
