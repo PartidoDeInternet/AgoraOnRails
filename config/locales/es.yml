@@ -366,3 +366,6 @@
   resume_hint: 'Aquí puedes poner todo lo que consideres relevante'
   languages_hint: 'Todos los idiomas que hables'
   education_label: 'Formación'   
+  resume_label: "Descripción"
+  languages_label: "Idiomas"
+  profile_picture_label: "Foto de perfil"

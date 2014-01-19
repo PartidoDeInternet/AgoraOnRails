@@ -20,3 +20,6 @@ en:
   resume_hint: "Here you can put what you consider important"
   languages_hint: 'All the languages you speak'
   education_label: 'Education'       
+  resume_label: "Resume"
+  languages_label: "Languages"
+  profile_picture_label: "Profile picture"
