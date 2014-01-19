@@ -15,3 +15,8 @@ en:
 
   #Users
   languages: 'Languages: %{languages}'
+  edit_profile: 'Edit profile'
+  #form
+  resume_hint: "Here you can put what you consider important"
+  languages_hint: 'All the languages you speak'
+  education_label: 'Education'       

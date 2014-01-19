@@ -1,19 +1,8 @@
-<%= form_for @user, :html => {:multipart => true} do |f| %>
-  <p>
-    <%= f.file_field :profile_picture %>
-    <%= f.hidden_field :profile_picture_cache %>
-  </p>
-  <p>
-    <%= f.label :resume %><br />
-    <%= f.text_field :resume %>
-  </p>
-  <p>
-    <%= f.label :languages %><br />
-    <%= f.text_field :languages %>
-  </p>
-  <p>
-    <%= f.label :education %><br />
-    <%= f.text_field :education %>
-  </p>  
-  <p><%= f.submit %></p>
+<%= simple_form_for @user, :html => {:multipart => true} do |f| %>
+  <p><%= f.input :resume, hint: (t :resume_hint) , as: :text,  :input_html => {  :cols => 255, :rows=> 10 }%></p>
+  <p><%= f.input :languages, hint:  (t :languages_hint) %></p>
+  <p><%= f.input :education, label: (t :education_label) %></p>
+  <p><%= f.file_field :profile_picture %></p>
+  <p><%= f.hidden_field :profile_picture_cache %></p>
+  <p><%= f.button :submit %></p>
 <% end %>
