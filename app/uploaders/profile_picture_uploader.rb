@@ -2,7 +2,7 @@
 
 class ProfilePictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
-  
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -15,9 +15,4 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
 
   #Process files as they are uploaded:
   process :resize_to_limit => [300, 300]
-
-  # Create different versions of your uploaded files:
-  version :mini do
-     process :resize_to_fit => [60, 60]
-  end
 end
