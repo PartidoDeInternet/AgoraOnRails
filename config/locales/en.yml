@@ -12,3 +12,14 @@ en:
   representatives_number: 'number of representatives'
   calculate: 'calculate'
   proposals: "Proposals"
+
+  #Users
+  languages: 'Languages: %{languages}'
+  edit_profile: 'Edit profile'
+  #form
+  resume_hint: "Here you can put what you consider important"
+  languages_hint: 'All the languages you speak'
+  education_label: 'Education'       
+  resume_label: "Resume"
+  languages_label: "Languages"
+  profile_picture_label: "Profile picture"

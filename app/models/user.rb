@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
   
+  mount_uploader :profile_picture, ProfilePictureUploader
+
   validates :name,     presence: true, unless: :provider
   validates :email,    presence: true, unless: :provider, on: :create
   validates :password, presence: true, unless: :provider, on: :create
@@ -18,7 +20,7 @@ class User < ActiveRecord::Base
   validate  :prevent_oneself_as_spokesman
   
   after_save :count_votes
-  
+
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)
   end
@@ -120,5 +122,4 @@ class User < ActiveRecord::Base
       super
     end
   end
-
 end

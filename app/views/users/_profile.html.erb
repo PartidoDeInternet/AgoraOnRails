@@ -1,0 +1,7 @@
+<%= image_tag @user.profile_picture, :class => "profile_picture" if @user.profile_picture? %>
+<div class ="resume">
+	<h2><%= @user.name %></h2>
+	<h5><%= @user.education %></h5>
+	<p><%= @user.resume %></p>
+	<p><%= t :languages, :languages => @user.languages%></p>
+</div>
