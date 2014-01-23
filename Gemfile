@@ -56,6 +56,6 @@ end
 
 group :test do
   gem 'vcr'
-  gem 'webmock'
+  gem 'webmock', '1.15'
   gem 'coveralls', require: false
 end
