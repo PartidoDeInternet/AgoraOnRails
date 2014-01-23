@@ -10,6 +10,7 @@
   <% if import_bootstrap? %>
     <%# stylesheet_link_tag "boot" %>
   <% end %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
@@ -85,7 +86,6 @@
     </div>
   </footer>
   
-  <%= javascript_include_tag "application" %>
   <% if controller_name == "users" and action_name == "show" %>
     <%= javascript_include_tag "tree" %>
   <% end %>

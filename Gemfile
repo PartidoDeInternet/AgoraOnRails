@@ -22,6 +22,7 @@ gem 'faraday_middleware'
 gem 'hashie'
 gem 'json'
 
+gem 'turbolinks'
 gem 'sass-rails'
 gem "compass-rails"
 gem 'coffee-rails'

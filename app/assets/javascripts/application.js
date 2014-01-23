@@ -6,5 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require agoraonrails
 //= require init.graphics

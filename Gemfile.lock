@@ -256,6 +256,8 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (2.2.0)
+      coffee-rails
     tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -319,6 +321,7 @@ DEPENDENCIES
   simple_form
   sqlite3
   steak
+  turbolinks
   uglifier
   unicorn
   vcr
