@@ -4,4 +4,12 @@
 	<h5><%= @user.education %></h5>
 	<p><%= @user.resume %></p>
 	<p><%= t :languages, :languages => @user.languages if @user.languages?%></p>
+	<% if @user.website_link? %>
+		<p><%=t :webpage %><%= link_to @user.website_link, "http://#{@user.website_link}", :target => '_blank' %></p>
+	<% end %>
+	<% if @user.other_link? %>
+		<p><%=t :other_link %><%= link_to @user.other_link, "http://#{@user.other_link}", :target => '_blank' %></p>
+	<% end %>
+	<%= link_to(image_tag("twitter.jpeg", :size => "25x25"), "https://twitter.com/#{@user.twitter_user}", :class => "twitter-follow-button") if @user.twitter_user%>
+
 </div>

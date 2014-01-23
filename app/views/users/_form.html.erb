@@ -2,7 +2,10 @@
   <p><%= f.input :resume, label: (t :resume_label), placeholder: (t :resume_hint) , as: :text,  :input_html => {  :cols => 255, :rows=> 10, :maxlength => 1000 }%></p>
   <p><%= f.input :languages, label: (t :languages_label), placeholder:  (t :languages_hint) %></p>
   <p><%= f.input :education, label: (t :education_label) %></p>
-  <p><%= f.file_field :profile_picture, label: (t :profile_picture_label) %></p>
+  <p><%= f.input :twitter_user, label: "Twitter" %></p>
+  <p><%= f.input :website_link, label: (t :webpage) %></p>
+  <p><%= f.input :other_link, label: (t :other_link) %></p>
+  <p><%= f.file_field :profile_picture %></p>
   <p><%= f.hidden_field :profile_picture_cache %></p>
   <p><%= f.button :submit %></p>
 <% end %>
