@@ -1,8 +1,10 @@
 <% @title = "#{@user.name}" %>
 
 <section id="content">
-  <%= render 'profile' %>
-  <%= render 'actions' %>
+  <div class ="container">
+    <%= render 'profile' %>
+    <%= render 'actions' %>
+  </div>
   <%= render :partial => "proposal", :collection => @proposals %>
 </section>
 
