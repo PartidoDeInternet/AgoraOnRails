@@ -43,7 +43,7 @@ feature "Admin can close proposals", %q{
     proposal = create_proposal(:title => "Ley Sinde")
     # Hacker-proof
     page.driver.post toggle_proposal_path(proposal)
-    page.should have_content("You are being redirected")
+    page.body.should have_content("You are being redirected")
   end
 
   scenario "Admin cannot finish a closed proposal" do

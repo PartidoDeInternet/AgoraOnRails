@@ -3,7 +3,8 @@
       <h3 class="gamma">Entra en Agoraonrails</h3>
       <!-- Social Login
       ================================================== -->
-      <div id="social-network-account" class="social-login one-half float--left">
+      
+      <div id="social-network-account" class="social-login five-twelfths float--left">
         <div class="row three-quarters">
          <fieldset>
           <legend>Entra con Twitter o Facebook</legend>
@@ -21,10 +22,36 @@
     	      </div>
     	    <% end %>
         </div>
+        
+        <a href="#" class="agoraonrails-account-link">
+          Entra con tu cuenta de Agoraonrails
+        </a>
       </div>
+      
+      <!-- Signup form
+      ================================================== -->
+      <div id="signup" class="five-twelfths float--right">
+        <fieldset>
+          <legend>Crea tu cuenta</legend>
+            <%= form_for(resource, :as => "account", :url => registration_path(resource_name), validate: true) do |f| %>
+            <%# f.error_notification %>
+            <div class="signup-form">
+              <%= f.label :name, "Nombre",:class=>"in-temp-hide" %>
+              <%= f.text_field :name, :class=>"text-input text-input--large one-whole mt1",:placeholder => "Nombre" %>
+              <%= f.label :email, "Email",:class=>"in-temp-hide" %>
+              <%= f.text_field :email,:class=>"text-input text-input--large one-whole mt1",:placeholder => "Email" %>
+              <%= f.label :password, "Contraseña",:class=>"in-temp-hide" %>
+              <%= f.password_field :password,:class=>"text-input text-input--large one-whole mt1",:placeholder => "Contraseña" %>
+            </div>
 
-
-      <div id="agoraonrails-account" class="agora-login one-half float--right">
+            <div class="row one-whole mt1 text--right">
+              <%= f.submit "Sign up", class: "btn btn--large btn--primary"  %>
+            </div>
+          <% end %>
+        </fieldset>
+      </div>
+      
+      <div id="agoraonrails-account" class="agora-login five-twelfths float--left" style="display:none">
       <!-- Agora Login
       ================================================== -->
         <fieldset>
@@ -44,50 +71,43 @@
             </div>
         <% end %>
         </fieldset>
+        
+        <a href="#" class="social-network-account-link">
+          Entra a través de Twitter ó Facebook
+        </a>
+      </div>
 
-        <!-- Forgot pass form
-        ================================================== -->
-        <div id="forgot-password" class="forgot-password">
-        <!-- refactor with devise template -->
-          <fieldset>
-           <legend>Reestablece tu contraseña</legend>
+      <!-- Forgot pass form
+      ================================================== -->
+      <div id="forgot-password" class="forgot-password five-twelfths float--left" style="display:none">
+      <!-- refactor with devise template -->
+        <fieldset>
+         <legend>Reestablece tu contraseña</legend>
 
-           <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-           <%# f.error_notification %>
+         <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+         <%# f.error_notification %>
 
-            <div class="forgot-password-form">
-              <%= f.label :email, "Email",:class=>"in-temp-hide" %>
-              <%= f.text_field :email,:class=>"text-input text-input--large one-whole",:placeholder=>"Introduce tu email y te envíamos instrucciones" %>
-            </div>
-            <div class="row text--right one-whole mt1">
-              <%= f.submit "Restablecer contraseña", class: "btn btn--large btn--primary" %>
-            </div>
-          </fieldset>
-          <% end %>
+          <div class="forgot-password-form">
+            <%= f.label :email, "Email",:class=>"in-temp-hide" %>
+            <%= f.text_field :email,:class=>"text-input text-input--large one-whole",:placeholder=>"Introduce tu email y te envíamos instrucciones" %>
+          </div>
+          <div class="row text--right one-whole mt1">
+            <%= f.submit "Restablecer contraseña", class: "btn btn--large btn--primary" %>
+          </div>
+        </fieldset>
+        <% end %>
+        
+        <div>
+          <a href="#" class="social-network-account-link">
+          Entra a través de Twitter ó Facebook
+          </a>
         </div>
-     
-        <!-- Signup form
-        ================================================== -->
-        <div id="signup">
-          <fieldset>
-            <legend>Crea tu cuenta</legend>
-              <%= form_for(resource, :as => "account", :url => registration_path(resource_name), validate: true) do |f| %>
-              <%# f.error_notification %>
-              <div class="signup-form">
-                <%= f.label :name, "Nombre",:class=>"in-temp-hide" %>
-                <%= f.text_field :name, :class=>"text-input text-input--large one-whole mt1",:placeholder => "Nombre" %>
-                <%= f.label :email, "Email",:class=>"in-temp-hide" %>
-                <%= f.text_field :email,:class=>"text-input text-input--large one-whole mt1",:placeholder => "Email" %>
-                <%= f.label :password, "Contraseña",:class=>"in-temp-hide" %>
-                <%= f.password_field :password,:class=>"text-input text-input--large one-whole mt1",:placeholder => "Contraseña" %>
-              </div>
 
-              <div class="row one-whole mt1 text--right">
-                <%= f.submit "Sign up", class: "btn btn--large btn--primary"  %>
-              </div>
-            <% end %>
-          </fieldset>
-        </div>    
+        <div>
+          <a href="#" class="agoraonrails-account-link">
+          Entra con tu cuenta de Agoraonrails
+        </a>
+        </div>
       </div>
     </div>
 
