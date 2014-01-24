@@ -60,4 +60,25 @@ feature "User page", %q{
     page.find('.profile_picture')['src'].should have_content 'rails.png' 
     #Would be nice to check the size no bigger than 300x300 here. 
   end
+
+  scenario "User can write all his information" do
+    login_as @bob
+    visit user_path(@bob)
+    click_link I18n.t(:edit_profile)
+
+    fill_in I18n.t(:resume_label), :with => "I\'m an honest man"
+    fill_in I18n.t(:languages_label), :with => "Jamaicano, Andalú"
+    fill_in I18n.t(:education_label), :with => "Aerospace engineer in University of Kingston"
+    fill_in "Twitter", :with => "bobmarley‎"
+    fill_in I18n.t(:webpage), :with => "www.BobMarley.com"
+    fill_in I18n.t(:other_link), :with => "es.wikipedia.org/wiki/Bob_Marley"
+    click_button "Actualizar User"
+
+    page.find('#resume').should have_content("I\'m an honest man")
+    page.find('#languages').should have_content("Jamaicano, Andalú")
+    page.find('#education').should have_content("Aerospace engineer in University of Kingston")
+    page.find('a#twitter')['href'].should have_content("https://twitter.com/bobmarley")
+    page.find('a#website')['href'].should have_content("http://www.BobMarley.com")
+    page.find('a#other-link')['href'].should have_content("http://es.wikipedia.org/wiki/Bob_Marley")
+  end
 end
