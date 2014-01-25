@@ -1,7 +1,15 @@
 <%= image_tag @user.profile_picture, :class => "profile_picture" if @user.profile_picture? %>
-<div class ="resume">
-	<h2><%= @user.name %></h2>
-	<h5><%= @user.education %></h5>
-	<p><%= @user.resume %></p>
-	<p><%= t :languages, :languages => @user.languages%></p>
+<div class ="user-information">
+	<h2 id = "name"><%= @user.name %></h2>
+	<h5 id = "education"><%= @user.education %></h5>
+	<p id = "resume"><%= @user.resume %></p>
+	<p id = "languages"><%= t :languages, :languages => @user.languages if @user.languages?%></p>
+	<% if @user.website_link? %>
+		<p><%=t :webpage %><%= link_to @user.website_link, "http://#{@user.website_link}", :id => "website", :target => '_blank' %></p>
+	<% end %>
+	<% if @user.other_link? %>
+		<p><%=t :other_link %><%= link_to @user.other_link, "http://#{@user.other_link}", :id => "other-link", :target => '_blank' %></p>
+	<% end %>
+	<%= link_to(image_tag("twitter.jpeg", :size => "25x25"), "https://twitter.com/#{@user.twitter_user}", :class => "twitter-follow-button", :id => "twitter") if @user.twitter_user?%>
+
 </div>

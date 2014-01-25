@@ -370,3 +370,6 @@
   resume_label: "Descripción"
   languages_label: "Idiomas"
   profile_picture_label: "Foto de perfil"
+  twitter_user_label: "Twitter"
+  webpage: 'Página web:'
+  other_link: 'Otros enlances:'

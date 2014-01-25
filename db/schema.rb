@@ -83,13 +83,15 @@ ActiveRecord::Schema.define(version: 20140116141043) do
     t.string   "last_sign_in_ip"
     t.string   "username"
     t.string   "nickname"
-    t.string   "resume"
-    t.string   "profile_picture"
-    t.string   "twitter_link"
     t.string   "website_sink"
-    t.string   "other_link"
     t.string   "languages"
     t.string   "education"
+    t.string   "twitter_link"
+    t.string   "resume"
+    t.string   "profile_picture"
+    t.string   "twitter_user"
+    t.string   "website_link"
+    t.string   "other_link"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
