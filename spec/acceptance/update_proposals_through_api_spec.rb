@@ -1,7 +1,7 @@
 # coding: utf-8
 require File.dirname(__FILE__) + '/acceptance_helper'
 
-feature "", %q{
+feature "Update proposals through api", %q{
   In order to have up-to-date proposals
   As an admin
   I want to update the proposals through congress-api

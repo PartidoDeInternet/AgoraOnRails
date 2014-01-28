@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/acceptance_helper'
 feature "Authentication", %q{
   In order to keep track of what proposals I have voted
   As a citizen
-  I want to basic authentication funcionalities
+  I want basic authentication functionalities
 } do
 
   scenario "Sign up with standard account" do

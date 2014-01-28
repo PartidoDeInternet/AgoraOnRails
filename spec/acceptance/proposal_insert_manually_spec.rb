@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/acceptance_helper'
 feature "Insert proposal manually", %q{
   In order to have new proposals in Agora
   As a district administrator
-  I want to insert new propositions
+  I want to insert new proposals
 } do
   
   scenario "insert a new proposal" do
