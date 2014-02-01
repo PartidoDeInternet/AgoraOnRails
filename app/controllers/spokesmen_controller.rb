@@ -2,7 +2,7 @@ class SpokesmenController < ApplicationController
   before_filter :authenticate_user!
 
   def new
-    @spokesman = User.find(params[:id])    
+    @spokesman = User.find(params[:id])
   end
   
   def edit

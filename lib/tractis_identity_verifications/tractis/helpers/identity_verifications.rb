@@ -10,7 +10,7 @@ module Tractis
         else
           notification_callback
         end
-      
+
         form_tag("https://www.tractis.com/verifications") do
           inputs = [
             hidden_field_tag(:api_key, api_key),
@@ -21,7 +21,7 @@ module Tractis
           inputs.join().html_safe
         end
       end
-    
+
       def identity_verification_gateway(button_caption, api_key, notification_callback, options = {})
         capture do
           form_for_identity_verification_gateway(api_key, notification_callback, options) do

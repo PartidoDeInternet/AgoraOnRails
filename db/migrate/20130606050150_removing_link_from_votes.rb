@@ -3,8 +3,8 @@ class RemovingLinkFromVotes < ActiveRecord::Migration
     Vote.all.each do |vote|
       if vote.link.present?
         vote.explanation += " #{vote.link}"
-        vote.save!  
-      end      
+        vote.save!
+      end
     end
     remove_column :votes, :link
   end

@@ -23,7 +23,7 @@
     <%= f.label :proposer %><br />
     <%= f.select :proposer_id, Proposer.all.map {|proposer| [proposer.name, proposer.id]} %>
   </p>
-  
+
   <p>
     <%= f.label :proposed_at %><br />
     <%= f.date_select :proposed_at %>

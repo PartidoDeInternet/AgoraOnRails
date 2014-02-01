@@ -3,15 +3,15 @@
 <% @title = "#{awesome_truncate(@proposal.title, 100)}" %>
 
 <div class="proposals">
-  
+
   <article class="proposal" id="proposal_<%= @proposal.id %>">
-    
+
     <section class="proposal-content">
       <!-- Body of proposal
       ================================================== -->
       <h2 class="proposal-title"><%=h @proposal.title %></h2>
       <p class="proposal_type">
-        <%=h @proposal.proposal_type %> 
+        <%=h @proposal.proposal_type %>
         <%= link_to t(:official_link), @proposal.official_url, :class => 'official_url' %>
       </p>
       <!-- Footer of proposal
@@ -51,8 +51,8 @@
   ================================================== -->
   <!-- Begins the related content this proposal
   ================================================== -->
-    
-  <div class="proposal-graphic"> 
+
+  <div class="proposal-graphic">
       <section class="vote-results documents-list">
         <h5 class="flush"><%= t(:popular_vote)%></h5>
         <%= render :partial => "shared/results", :locals => {:proposal => @proposal, :width => 20} %>

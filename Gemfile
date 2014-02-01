@@ -29,7 +29,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 
-gem 'jquery-rails' 
+gem 'jquery-rails'
 
 #Image manipulation
 gem "carrierwave"

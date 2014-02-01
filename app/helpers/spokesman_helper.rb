@@ -1,5 +1,5 @@
 module SpokesmanHelper
-  
+
   def current_spokesman?(user)
     current_user && current_user.spokesman == user
   end

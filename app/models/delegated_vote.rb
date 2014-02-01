@@ -1,6 +1,6 @@
 class DelegatedVote < ActiveRecord::Base
   belongs_to :proposal
-  
+
   def reset!
     self.in_favor = 0
     self.against = 0

@@ -27,7 +27,7 @@ AgoraOnRails::Application.configure do
 
   # Use a different cache store in production
   config.cache_store = :dalli_store
-  
+
   # How long an item should stay cached unless they have changed.
   config.static_cache_control = "public, max-age=2592000"
 

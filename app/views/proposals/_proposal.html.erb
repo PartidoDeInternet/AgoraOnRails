@@ -5,7 +5,7 @@
         <hgroup>
           <h2 class="proposal-title"><%= link_to awesome_truncate(proposal.title, 150), proposal %></h2>
           <p>
-            <%= t(:proposed_by_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %> 
+            <%= t(:proposed_by_html, :proposer => link_to(proposal.proposer.name, proposal.proposer, :class => "proposer")) %>
             <span class="proposed_at"><%= t(:on_html, :date => l(proposal.proposed_at, :format => :long)) %></span>
           </p>
         </hgroup>
@@ -14,7 +14,7 @@
 
       <% if proposal.closed? %>
       <section class="proposal-footer">
-      
+
         <div class="wrap cf separator--top">
           <ul class="list meta cf flush">
             <li class="visuallyhidden">
@@ -44,6 +44,6 @@
         <% end %>
       </section>
       <% end %>
-  
+
   </article>
 <% end %>

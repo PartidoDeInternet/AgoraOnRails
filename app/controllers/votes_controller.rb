@@ -1,7 +1,7 @@
 class VotesController < InheritedResources::Base
   belongs_to :proposal
   before_filter :authenticate_user!
-  
+
   def new
     @proposal = Proposal.find(params[:proposal_id])
     @vote = @proposal.votes.new(params[:vote])

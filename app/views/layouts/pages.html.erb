@@ -14,7 +14,7 @@
   <div id="wrap">
     <div id="wrap-inner">
       <div class="wrap-fit">
-        
+
         <section id="header">
           <% if current_user %>
             <nav id="user-nav">
@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  
+
   <%= javascript_include_tag "application" %>
   <%= yield :custom_javascript %>
   <%= render :partial => "shared/google_analytics" if Rails.env == 'production' %>

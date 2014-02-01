@@ -2,13 +2,13 @@
 <% if current_user == @user %>
  <%= link_to( (t :edit_profile) , edit_user_path(@user), :class => "btn  btn--info btn-smart")%>
 <% elsif current_spokesman?(@user) %>
-   <%= link_to t(:discharge_spokesman, :name => @user.name), spokesman_path(id: @user.id),  
+   <%= link_to t(:discharge_spokesman, :name => @user.name), spokesman_path(id: @user.id),
                  :class => "btn btn--secondary discharge-my-spokesman mb2", :method => :delete %>
 <% elsif has_spokesman? %>
-    <%= link_to t(:choose_spokeman, :name => @user.name), edit_spokesman_path(id: @user.id), 
+    <%= link_to t(:choose_spokeman, :name => @user.name), edit_spokesman_path(id: @user.id),
                   :class => "make-my-spokesman btn btn--secondary mb2" %>
 <% else %>
-    <%= link_to t(:choose_spokeman, :name => @user.name), new_spokesman_path(id: @user.id), 
+    <%= link_to t(:choose_spokeman, :name => @user.name), new_spokesman_path(id: @user.id),
                   :class => "make-my-spokesman btn btn--secondary mb2" %>
 <% end %>
 </div>
