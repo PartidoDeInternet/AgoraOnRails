@@ -21,12 +21,4 @@ describe User do
     create_vote(:user => user, :proposal => ley_sinde, :value => 'no')
     user.delegated_vote_for(ley_sinde).should == nil
   end
-
-  it "should voted if spokesman voted a proposal" do
-    buenafuente = create_user(:name => "Buenafuente")
-    user = create_user(:spokesman => buenafuente)
-    ley_sinde = create_proposal
-    create_vote(:user => buenafuente, :proposal => ley_sinde, :value => 'no')
-    user.delegated_vote_for(ley_sinde).value.should == 'no'
-  end
 end
