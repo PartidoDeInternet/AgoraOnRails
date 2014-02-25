@@ -21,7 +21,7 @@ feature "Update proposals through api", %q{
     Proposal.count.should be > 1    
     proposal = Proposal.where(:api_id => 1).first
     proposal.title.should         == "Proyecto de Ley de medidas urgentes para reforzar la protección a los deudores hipotecarios (procedente del Real Decreto-Ley 27/2012, de 15 de noviembre)"
-    proposal.official_url.should  ==  "http://www.congreso.es/portal/page/portal/Congreso/Congreso/Iniciativas/Busqueda%20Avanzada?_piref73_1335465_73_1335464_1335464.next_page=/wc/servidorCGI&CMD=VERLST&BASE=IW10&PIECE=IWA0&FMT=INITXD1S.fmt&FORM1=INITXLTS.fmt&DOCS=32-32&QUERY=%28I%29.ACIN1.+%26+%28%22COMPETENCIA+LEGISLATIVA+PLENA%22%29.TPTR."
+    proposal.official_url.should  ==  "http://www.congreso.es/portal/page/portal/Congreso/Congreso/Iniciativas/Busqueda%20Avanzada?_piref73_1335465_73_1335464_1335464.next_page=/wc/servidorCGI&CMD=VERLST&BASE=IW10&PIECE=IWA0&FMT=INITXD1S.fmt&FORM1=INITXLTS.fmt&DOCS=37-37&QUERY=%28I%29.ACIN1.+%26+%28%22COMPETENCIA+LEGISLATIVA+PLENA%22%29.TPTR."
     proposal.proposal_type.should == "Proyecto de ley"
     proposal.status.should        == "Subsumido en otra iniciativa"
     proposal.category.name        == "Economía y Competitividad"
@@ -32,3 +32,5 @@ feature "Update proposals through api", %q{
     proposal.api_id               == "1"
   end
 end
+
+
