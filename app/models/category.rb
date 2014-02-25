@@ -1,7 +1,7 @@
 # coding: utf-8
 class Category < ActiveRecord::Base
   has_many :proposals
-  
+
   before_create :set_name
   
   scope :hot, -> { order("proposals_count DESC").limit(5) }
