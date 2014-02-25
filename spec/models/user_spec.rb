@@ -15,10 +15,4 @@ describe User do
     }.to raise_error
   end
 
-  it "should not have delegated vote if she has already voted" do
-    user = create_user
-    ley_sinde = create_proposal
-    create_vote(:user => user, :proposal => ley_sinde, :value => 'no')
-    user.delegated_vote_for(ley_sinde).should == nil
-  end
 end
