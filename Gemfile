@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', "~> 4.0.2"
+gem 'rails', "~> 4.0.3"
 
 gem 'mechanize'
 gem 'inherited_resources', github: "josevalim/inherited_resources"
@@ -29,7 +29,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 
-gem 'jquery-rails' 
+gem 'jquery-rails'
 
 #Image manipulation
 gem "carrierwave"
