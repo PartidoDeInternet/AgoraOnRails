@@ -3,47 +3,41 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
   has_many :votes
   has_many :voted_proposals, :through => :votes, :source => :proposal
   has_many :voted_open_proposals, -> { where(closed_at: nil) }, :through => :votes, :source => :proposal
   has_many :represented_users, :class_name => "User", :foreign_key => :spokesman_id
 
   belongs_to :spokesman, :class_name => "User", :counter_cache => :represented_users_count
-  
+
   mount_uploader :profile_picture, ProfilePictureUploader
 
   validates :name,     presence: true, unless: :provider
   validates :email,    presence: true, unless: :provider, on: :create
   validates :password, presence: true, unless: :provider, on: :create
-  validates :uid,      presence: true, if: :provider 
+  validates :uid,      presence: true, if: :provider
   validate  :prevent_oneself_as_spokesman
-  
+
   after_save :count_votes
 
   def has_voted_for?(proposal)
     voted_proposals.include?(proposal)
   end
-    
-  def delegated_vote_for(proposal)
-    return nil if has_voted_for?(proposal) or spokesman.nil? 
-    
-    spokesman.vote_for(proposal)
-  end
-  
+
   def vote_for(proposal)
     delegation_chain.each do |member|
-      if vote = member.find_vote(proposal) 
-        return vote 
+      if vote = member.find_vote(proposal)
+        return vote
       end
     end
     nil
   end
-  
+
   def find_vote(proposal)
     return votes.find_by_proposal_id(proposal)
   end
-  
+
   def delegation_chain
     list = []
     current = self
@@ -53,24 +47,24 @@ class User < ActiveRecord::Base
     end
     list
   end
-  
+
   def represented_users_tree(nodes=represented_users)
     nodes.map do |user|
       return nodes if nodes.include?(user)
-      { name:     user.name, 
-        id:       user.id, 
+      { name:     user.name,
+        id:       user.id,
         children: user.represented_users_tree(user.represented_users) }
     end
   end
-  
+
   def voted_and_delegated_proposals
     delegation_chain.map(&:voted_proposals).flatten
   end
-  
+
   def voted_and_delegated_open_proposals
     delegation_chain.map(&:voted_open_proposals).flatten
   end
-  
+
   def count_votes
     if spokesman_id_changed?
       changed_spokesmen = [spokesman, User.find_by_id(spokesman_id_was)].compact
@@ -80,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   def prevent_oneself_as_spokesman
-    errors.add :spokesman_id, "No puedes ser tu propio portavoz." if spokesman == self 
+    errors.add :spokesman_id, "No puedes ser tu propio portavoz." if spokesman == self
   end
 
   def is_admin?
@@ -97,9 +91,9 @@ class User < ActiveRecord::Base
   end
 
   def self.new_with_session(params, session)
-    if session["devise.user_attributes"]      
+    if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
-        user.attributes = params        
+        user.attributes = params
         user.valid?
       end
     else
