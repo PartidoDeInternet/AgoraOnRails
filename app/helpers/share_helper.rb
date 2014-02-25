@@ -6,7 +6,7 @@ module ShareHelper
     end
    abs_path
   end
-  
+ 
   def share_text
     t(:share_text)
   end

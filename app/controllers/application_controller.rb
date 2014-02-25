@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   rescue_from Tractis::InvalidVerificationError do |exception|
     render :text => "Access Denied Bitch", :status => 403
   end
-  
+
   helper :all
   
   protected

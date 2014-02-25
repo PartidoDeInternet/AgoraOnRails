@@ -22,7 +22,7 @@ module AgoraOnRails
 
     # Raise exception if the passed locale is unavailable.
     config.i18n.enforce_available_locales = true
-    
+
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'UTC'

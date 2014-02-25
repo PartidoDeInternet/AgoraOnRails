@@ -1,6 +1,6 @@
 class Scrapper
 
-  def initialize 
+  def initialize
   end
 
   def scrape

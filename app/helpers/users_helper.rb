@@ -1,5 +1,5 @@
 # coding: utf-8
-module UsersHelper  
+module UsersHelper
   def humanize_vote_text(user, proposal)
     case find_choice user, proposal
     when "si" then "A favor"

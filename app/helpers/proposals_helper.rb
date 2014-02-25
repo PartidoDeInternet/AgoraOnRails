@@ -1,5 +1,5 @@
 module ProposalsHelper
-  
+
   def proposal_type
     if parent then parent_type
     else action_name end

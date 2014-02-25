@@ -5,6 +5,6 @@ class AddDefault0ToCounters < ActiveRecord::Migration
   end
 
   def self.down
-    
+
   end
 end

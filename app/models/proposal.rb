@@ -4,7 +4,7 @@ class Proposal < ActiveRecord::Base
   has_many :votes
   belongs_to :category, :counter_cache => true
   belongs_to :proposer, :counter_cache => true
-  
+
   scope :open,            -> { where("closed_at is null") }
   scope :hot,             -> { open.order("votes_count desc, visits desc").limit(5) }
   scope :recently_closed, -> { where("closed_at is not null and status is not null").order("closed_at DESC").limit(5) }

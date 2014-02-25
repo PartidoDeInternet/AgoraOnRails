@@ -1,6 +1,6 @@
 class SessionsController < Devise::SessionsController
   include Tractis::IdentityVerifications
-  
+ 
   # Refactor with omniauth_callbacks controller
   # by creating a custom tractis ominiauth stategy, inspiration:
   # https://gist.github.com/dira/722793
