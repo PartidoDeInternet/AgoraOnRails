@@ -1,4 +1,5 @@
 require 'coveralls'
+Coveralls::Output.silent = true
 Coveralls.wear!('rails')
 
 ENV["RAILS_ENV"] ||= 'test'
